@@ -2,71 +2,77 @@ openapi: 3.1.0
 info:
   title: Katopu Quantum AGI API
   summary: Production-ready unified API for quantum workflows, AGI optimization, guidance, security, and training automation.
-  description: |
-    This contract consolidates the draft APIs into a stricter production-oriented interface.
-
-    Design choices:
-      - explicit versioned base path
-      - normalized resource naming
-      - unique operationIds
-      - reusable components
-      - explicit authentication and authorization
-      - stricter request/response schemas
-      - examples cleaned up for implementation and testing
-  version: 1.0.0
+  description: "This contract consolidates the draft APIs into a stricter production-oriented interface.\n\nDesign choices:\n  - explicit versioned base path\n  - normalized resource naming\n  - unique operationIds\n  - reusable components\n  - explicit authentication and authorization\n  - stricter request/response schemas\n  - examples cleaned up for implementation and testing\n"
+  version: 1.1.0
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
-    url: https://orcid.org/0000-0003-0784-0152
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
+    url: mailto:tnsr_q@icloud.com
   license:
     name: Proprietary - review before production use
     url: https://orcid.org/0000-0003-0784-0152
-
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
-
 servers:
-  - url: https://api.{environment}.katopu.example.com/{basePath}
-    description: Main API gateway
-    variables:
-      environment:
-        default: prod
-        enum: [prod, staging, dev]
-      basePath:
-        default: v1
-  - url: https://{region}.api.{environment}.katopu.example.com/{basePath}
-    description: Regional API gateway
-    variables:
-      region:
-        default: us
-        enum: [us, eu, ap]
-      environment:
-        default: prod
-        enum: [prod, staging]
-      basePath:
-        default: v1
-
+- url: https://api.{environment}.katopu.example.com/{basePath}
+  description: Main API gateway
+  variables:
+    environment:
+      default: prod
+      enum:
+      - prod
+      - staging
+      - dev
+    basePath:
+      default: v1
+- url: https://{region}.api.{environment}.katopu.example.com/{basePath}
+  description: Regional API gateway
+  variables:
+    region:
+      default: us
+      enum:
+      - us
+      - eu
+      - ap
+    environment:
+      default: prod
+      enum:
+      - prod
+      - staging
+    basePath:
+      default: v1
 tags:
-  - name: Health
-  - name: Users
-  - name: Orders
-  - name: Circuits
-  - name: Quantum
-  - name: Guidance
-  - name: Security
-  - name: Monitoring
-  - name: Updates
-  - name: Training
-  - name: Notifications
-  - name: AGI
-
+- name: Health
+  description: Service health and readiness checks.
+- name: Users
+  description: User lifecycle and profile retrieval.
+- name: Orders
+  description: Order creation and lookup operations.
+- name: Circuits
+  description: Quantum circuit CRUD and optimization workflows.
+- name: Quantum
+  description: Quantum job submission and execution status.
+- name: Guidance
+  description: Assisted planning and recommendation endpoints.
+- name: Security
+  description: Encryption, decryption, and security controls.
+- name: Monitoring
+  description: Operational and security monitoring operations.
+- name: Updates
+  description: Release and update orchestration APIs.
+- name: Training
+  description: Training orchestration, analytics, and model outputs.
+- name: Notifications
+  description: Notification subscription and delivery contracts.
+- name: AGI
+  description: Controlled AGI self-improvement lifecycle operations.
 security:
-  - BearerAuth: []
-  - ApiKeyAuth: []
-
+- BearerAuth: []
+- ApiKeyAuth: []
 paths:
   /healthz:
     get:
-      tags: [Health]
+      tags:
+      - Health
       operationId: getHealthStatus
       summary: Get service health
       description: Returns a lightweight health summary for load balancers and uptime checks.
@@ -84,17 +90,20 @@ paths:
                     status: ok
                     version: 1.0.0
                     environment: prod
-                    timestamp: "2026-04-22T12:00:00Z"
-
+                    timestamp: '2026-04-22T12:00:00Z'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
   /users:
     post:
-      tags: [Users]
+      tags:
+      - Users
       operationId: createUser
       summary: Create user
       description: Creates a new user account.
       security:
-        - BearerAuth: []
-        - OAuth2ClientCredentials: [users.write]
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - users.write
       requestBody:
         required: true
         content:
@@ -104,14 +113,20 @@ paths:
             examples:
               default:
                 value:
-                  username: skundem
-                  email: serkan@example.edu
+                  username: tjacobsen
+                  email: tnsr_q@icloud.com
       responses:
         '201':
           description: User created
           headers:
             X-Request-Id:
               $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
           content:
             application/json:
               schema:
@@ -120,25 +135,34 @@ paths:
                 created:
                   value:
                     userId: usr_01HZZY9V74N7R0H0V7S0A0B123
-                    username: skundem
-                    email: serkan@example.edu
-                    createdAt: "2026-04-22T12:00:00Z"
+                    username: tjacobsen
+                    email: tnsr_q@icloud.com
+                    createdAt: '2026-04-22T12:00:00Z'
         '400':
           $ref: '#/components/responses/BadRequest'
         '409':
           $ref: '#/components/responses/Conflict'
-
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /users/{userId}:
     parameters:
-      - $ref: '#/components/parameters/UserId'
+    - $ref: '#/components/parameters/UserId'
     get:
-      tags: [Users]
+      tags:
+      - Users
       operationId: getUserById
       summary: Get user by ID
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [users.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - users.read
       responses:
         '200':
           description: User found
@@ -153,20 +177,21 @@ paths:
                 found:
                   value:
                     userId: usr_01HZZY9V74N7R0H0V7S0A0B123
-                    username: skundem
-                    email: serkan@example.edu
-                    createdAt: "2026-04-22T12:00:00Z"
+                    username: tjacobsen
+                    email: tnsr_q@icloud.com
+                    createdAt: '2026-04-22T12:00:00Z'
         '404':
           $ref: '#/components/responses/NotFound'
-
   /orders:
     post:
-      tags: [Orders]
+      tags:
+      - Orders
       operationId: createOrder
       summary: Create order
       security:
-        - BearerAuth: []
-        - OAuth2ClientCredentials: [orders.write]
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - orders.write
       requestBody:
         required: true
         content:
@@ -194,21 +219,39 @@ paths:
                     quantity: 10
                     price: 199.99
                     currency: USD
-                    createdAt: "2026-04-22T12:00:00Z"
+                    createdAt: '2026-04-22T12:00:00Z'
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
         '400':
           $ref: '#/components/responses/BadRequest'
-
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /orders/{orderId}:
     parameters:
-      - $ref: '#/components/parameters/OrderId'
+    - $ref: '#/components/parameters/OrderId'
     get:
-      tags: [Orders]
+      tags:
+      - Orders
       operationId: getOrderById
       summary: Get order by ID
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [orders.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - orders.read
       responses:
         '200':
           description: Order found
@@ -224,20 +267,21 @@ paths:
                     quantity: 10
                     price: 199.99
                     currency: USD
-                    createdAt: "2026-04-22T12:00:00Z"
+                    createdAt: '2026-04-22T12:00:00Z'
         '404':
           $ref: '#/components/responses/NotFound'
-
   /circuits:
     post:
-      tags: [Circuits]
+      tags:
+      - Circuits
       operationId: createCircuit
       summary: Create a quantum circuit
       description: Creates a circuit definition with optional optimization preferences.
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [circuits.write]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - circuits.write
       requestBody:
         required: true
         content:
@@ -250,11 +294,11 @@ paths:
                   qubits: 2
                   optimizationGoal: minimum_depth
                   gates:
-                    - type: H
-                      targetQubit: 0
-                    - type: CNOT
-                      controlQubit: 0
-                      targetQubit: 1
+                  - type: H
+                    targetQubit: 0
+                  - type: CNOT
+                    controlQubit: 0
+                    targetQubit: 1
       responses:
         '201':
           description: Circuit created
@@ -271,21 +315,39 @@ paths:
                     optimization:
                       reducedGateCount: 0
                       depth: 2
-                    createdAt: "2026-04-22T12:00:00Z"
+                    createdAt: '2026-04-22T12:00:00Z'
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
         '400':
           $ref: '#/components/responses/BadRequest'
-
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /circuits/{circuitId}:
     parameters:
-      - $ref: '#/components/parameters/CircuitId'
+    - $ref: '#/components/parameters/CircuitId'
     get:
-      tags: [Circuits]
+      tags:
+      - Circuits
       operationId: getCircuitById
       summary: Get circuit by ID
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [circuits.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - circuits.read
       responses:
         '200':
           description: Circuit found
@@ -300,26 +362,28 @@ paths:
                     qubits: 2
                     status: created
                     gates:
-                      - type: H
-                        targetQubit: 0
-                      - type: CNOT
-                        controlQubit: 0
-                        targetQubit: 1
-                    createdAt: "2026-04-22T12:00:00Z"
+                    - type: H
+                      targetQubit: 0
+                    - type: CNOT
+                      controlQubit: 0
+                      targetQubit: 1
+                    createdAt: '2026-04-22T12:00:00Z'
         '404':
           $ref: '#/components/responses/NotFound'
-
   /circuits/{circuitId}/simulate:
     parameters:
-      - $ref: '#/components/parameters/CircuitId'
+    - $ref: '#/components/parameters/CircuitId'
     post:
-      tags: [Circuits, Quantum]
+      tags:
+      - Circuits
+      - Quantum
       operationId: simulateCircuit
       summary: Simulate a circuit
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [circuits.execute]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - circuits.execute
       requestBody:
         required: false
         content:
@@ -343,26 +407,47 @@ paths:
                     circuitId: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
                     shots: 1000
                     probabilities:
-                      "00": 0.5
-                      "11": 0.5
+                      '00': 0.5
+                      '11': 0.5
                     histogram:
-                      "00": 497
-                      "11": 503
-                    completedAt: "2026-04-22T12:01:00Z"
+                      '00': 497
+                      '11': 503
+                    completedAt: '2026-04-22T12:01:00Z'
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
         '404':
           $ref: '#/components/responses/NotFound'
-
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /circuits/{circuitId}/optimize:
     parameters:
-      - $ref: '#/components/parameters/CircuitId'
+    - $ref: '#/components/parameters/CircuitId'
     post:
-      tags: [Circuits, AGI]
+      tags:
+      - Circuits
+      - AGI
       operationId: optimizeCircuit
       summary: Optimize a circuit
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [circuits.write]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - circuits.write
       requestBody:
         required: false
         content:
@@ -390,19 +475,39 @@ paths:
                     originalDepth: 3
                     optimizedDepth: 2
                     estimatedFidelity: 0.993
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
         '404':
           $ref: '#/components/responses/NotFound'
-
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /quantum/jobs:
     post:
-      tags: [Quantum]
+      tags:
+      - Quantum
       operationId: createQuantumJob
       summary: Submit a quantum computation job
       description: Creates a compute job from a QASM circuit or a structured circuit definition.
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [quantum.execute]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - quantum.execute
       requestBody:
         required: true
         content:
@@ -412,14 +517,21 @@ paths:
             examples:
               qasm:
                 value:
-                  qasm: |
-                    OPENQASM 2.0;
+                  qasm: 'OPENQASM 2.0;
+
                     include "qelib1.inc";
+
                     qreg q[2];
+
                     creg c[2];
+
                     h q[0];
+
                     cx q[0],q[1];
+
                     measure q -> c;
+
+                    '
       responses:
         '202':
           description: Job accepted
@@ -432,19 +544,39 @@ paths:
                   value:
                     jobId: qjob_01HZZYQJK5SM0Q4MB4J1F96M6B
                     status: queued
-                    submittedAt: "2026-04-22T12:00:00Z"
-
+                    submittedAt: '2026-04-22T12:00:00Z'
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /quantum/jobs/{jobId}:
     parameters:
-      - $ref: '#/components/parameters/JobId'
+    - $ref: '#/components/parameters/JobId'
     get:
-      tags: [Quantum]
+      tags:
+      - Quantum
       operationId: getQuantumJobById
       summary: Get quantum job status
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [quantum.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - quantum.read
       responses:
         '200':
           description: Job details
@@ -460,23 +592,24 @@ paths:
                     result:
                       fidelity: 0.981
                       measurements:
-                        "00": 0.49
-                        "11": 0.51
-                    startedAt: "2026-04-22T12:00:20Z"
-                    completedAt: "2026-04-22T12:01:05Z"
+                        '00': 0.49
+                        '11': 0.51
+                    startedAt: '2026-04-22T12:00:20Z'
+                    completedAt: '2026-04-22T12:01:05Z'
         '404':
           $ref: '#/components/responses/NotFound'
-
   /guidance/assist:
     post:
-      tags: [Guidance]
+      tags:
+      - Guidance
       operationId: generateGuidance
       summary: Generate guided assistance
       description: Produces step-by-step guidance based on target goal and experience level.
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [guidance.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - guidance.read
       requestBody:
         required: true
         content:
@@ -500,21 +633,41 @@ paths:
                 beginnerBell:
                   value:
                     steps:
-                      - Apply a Hadamard gate to qubit 0.
-                      - Apply a CNOT gate from qubit 0 to qubit 1.
-                      - Simulate the circuit with 1000 shots.
+                    - Apply a Hadamard gate to qubit 0.
+                    - Apply a CNOT gate from qubit 0 to qubit 1.
+                    - Simulate the circuit with 1000 shots.
                     totalSteps: 3
                     completionStatus: completed
-
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /security/encrypt:
     post:
-      tags: [Security]
+      tags:
+      - Security
       operationId: encryptPayload
       summary: Encrypt payload
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [security.write]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - security.write
       requestBody:
         required: true
         content:
@@ -524,7 +677,7 @@ paths:
             examples:
               default:
                 value:
-                  data: "sensitive payload"
+                  data: sensitive payload
       responses:
         '200':
           description: Payload encrypted
@@ -535,19 +688,39 @@ paths:
               examples:
                 encrypted:
                   value:
-                    encryptedData: "base64:c2VjdXJlLWJsb2I="
+                    encryptedData: base64:c2VjdXJlLWJsb2I=
                     algorithm: aes-256-gcm
                     keyId: key_2026_04
-
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /security/decrypt:
     post:
-      tags: [Security]
+      tags:
+      - Security
       operationId: decryptPayload
       summary: Decrypt payload
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [security.write]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - security.write
       requestBody:
         required: true
         content:
@@ -557,7 +730,7 @@ paths:
             examples:
               default:
                 value:
-                  encryptedData: "base64:c2VjdXJlLWJsb2I="
+                  encryptedData: base64:c2VjdXJlLWJsb2I=
       responses:
         '200':
           description: Payload decrypted
@@ -568,17 +741,38 @@ paths:
               examples:
                 decrypted:
                   value:
-                    data: "sensitive payload"
+                    data: sensitive payload
                     status: decrypted
-
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /monitoring/security:
     post:
-      tags: [Monitoring, Security]
+      tags:
+      - Monitoring
+      - Security
       operationId: runSecurityMonitoring
       summary: Run security monitoring
       description: Triggers an authenticated security monitoring cycle.
       security:
-        - OAuth2ClientCredentials: [monitoring.write]
+      - OAuth2ClientCredentials:
+        - monitoring.write
       responses:
         '200':
           description: Monitoring completed
@@ -592,14 +786,34 @@ paths:
                     securityStatus: healthy
                     findings: []
                     message: Security monitoring completed successfully.
-
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /monitoring/performance:
     post:
-      tags: [Monitoring]
+      tags:
+      - Monitoring
       operationId: runPerformanceMonitoring
       summary: Run performance monitoring
       security:
-        - OAuth2ClientCredentials: [monitoring.write]
+      - OAuth2ClientCredentials:
+        - monitoring.write
       responses:
         '200':
           description: Monitoring completed
@@ -614,15 +828,35 @@ paths:
                     p95LatencyMs: 187
                     errorRate: 0.002
                     message: Performance monitoring completed successfully.
-
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /updates/check:
     get:
-      tags: [Updates]
+      tags:
+      - Updates
       operationId: checkForSystemUpdates
       summary: Check for system updates
       security:
-        - BearerAuth: []
-        - OAuth2ClientCredentials: [updates.read]
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - updates.read
       responses:
         '200':
           description: Update status returned
@@ -636,14 +870,21 @@ paths:
                     updatesAvailable: true
                     currentVersion: 1.0.0
                     latestVersion: 1.0.3
-
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
   /updates/apply:
     post:
-      tags: [Updates]
+      tags:
+      - Updates
       operationId: applySystemUpdates
       summary: Apply system updates
       security:
-        - OAuth2ClientCredentials: [updates.write]
+      - OAuth2ClientCredentials:
+        - updates.write
       responses:
         '200':
           description: Update applied
@@ -657,15 +898,35 @@ paths:
                     success: true
                     version: 1.0.3
                     message: Update completed successfully.
-
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /agi/self-improvement/runs:
     post:
-      tags: [AGI]
+      tags:
+      - AGI
       operationId: startSelfImprovementRun
       summary: Start self-improvement run
       description: Starts a controlled AGI self-improvement cycle.
       security:
-        - OAuth2ClientCredentials: [agi.write]
+      - OAuth2ClientCredentials:
+        - agi.write
       responses:
         '202':
           description: Run accepted
@@ -677,15 +938,35 @@ paths:
                 accepted:
                   value:
                     message: Self-improvement run accepted.
-
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /training/jobs:
     post:
-      tags: [Training]
+      tags:
+      - Training
       operationId: createTrainingJob
       summary: Create training job
       security:
-        - BearerAuth: []
-        - OAuth2ClientCredentials: [training.write]
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - training.write
       requestBody:
         required: true
         content:
@@ -700,7 +981,7 @@ paths:
                   taskType: text-generation
                   numEpochs: 5
                   batchSize: 16
-                  learningRate: 0.00003
+                  learningRate: 3.0e-05
                   saveModel: true
       responses:
         '202':
@@ -714,19 +995,75 @@ paths:
                   value:
                     trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
                     status: queued
-                    submittedAt: "2026-04-22T12:00:00Z"
-
+                    submittedAt: '2026-04-22T12:00:00Z'
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+    get:
+      tags:
+      - Training
+      operationId: listTrainingJobs
+      summary: List training jobs
+      description: Returns a cursor-paginated list of training jobs.
+      security:
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - training.read
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Training jobs listed
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTrainingJobsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
   /training/jobs/{trainingId}:
     parameters:
-      - $ref: '#/components/parameters/TrainingId'
+    - $ref: '#/components/parameters/TrainingId'
     get:
-      tags: [Training]
+      tags:
+      - Training
       operationId: getTrainingJobById
       summary: Get training job status
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [training.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - training.read
       responses:
         '200':
           description: Training job details
@@ -745,17 +1082,18 @@ paths:
                     currentLoss: 0.0264
         '404':
           $ref: '#/components/responses/NotFound'
-
   /training/jobs/{trainingId}/stop:
     parameters:
-      - $ref: '#/components/parameters/TrainingId'
+    - $ref: '#/components/parameters/TrainingId'
     post:
-      tags: [Training]
+      tags:
+      - Training
       operationId: stopTrainingJob
       summary: Stop training job
       security:
-        - BearerAuth: []
-        - OAuth2ClientCredentials: [training.write]
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - training.write
       responses:
         '200':
           description: Training stopped
@@ -767,20 +1105,40 @@ paths:
                 stopped:
                   value:
                     message: Training has been stopped.
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
         '404':
           $ref: '#/components/responses/NotFound'
-
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
   /training/jobs/{trainingId}/results:
     parameters:
-      - $ref: '#/components/parameters/TrainingId'
+    - $ref: '#/components/parameters/TrainingId'
     get:
-      tags: [Training]
+      tags:
+      - Training
       operationId: getTrainingResultsById
       summary: Get training results
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [training.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - training.read
       responses:
         '200':
           description: Training results returned
@@ -802,18 +1160,19 @@ paths:
                     savedModelPath: /models/transformer-v1
         '404':
           $ref: '#/components/responses/NotFound'
-
   /training/jobs/{trainingId}/recommendations:
     parameters:
-      - $ref: '#/components/parameters/TrainingId'
+    - $ref: '#/components/parameters/TrainingId'
     get:
-      tags: [Training]
+      tags:
+      - Training
       operationId: getTrainingRecommendationsById
       summary: Get training recommendations
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [training.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - training.read
       responses:
         '200':
           description: Recommendations returned
@@ -825,21 +1184,28 @@ paths:
                 default:
                   value:
                     trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
-                    learningRate: 0.00002
+                    learningRate: 2.0e-05
                     batchSize: 32
                     message: Lower learning rate to improve convergence.
-
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
   /training/jobs/{trainingId}/analytics:
     parameters:
-      - $ref: '#/components/parameters/TrainingId'
+    - $ref: '#/components/parameters/TrainingId'
     get:
-      tags: [Training]
+      tags:
+      - Training
       operationId: getTrainingAnalyticsById
       summary: Get training analytics
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [training.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - training.read
       responses:
         '200':
           description: Analytics returned
@@ -855,18 +1221,25 @@ paths:
                     loss: 0.034
                     accuracy: 0.87
                     message: Epoch analytics data retrieved.
-
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
   /dashboard/metrics:
     get:
-      tags: [Training]
+      tags:
+      - Training
       operationId: getDashboardMetrics
       summary: Get dashboard metrics
       security:
-        - BearerAuth: []
-        - ApiKeyAuth: []
-        - OAuth2ClientCredentials: [training.read]
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - training.read
       parameters:
-        - $ref: '#/components/parameters/TrainingIdQuery'
+      - $ref: '#/components/parameters/TrainingIdQuery'
       responses:
         '200':
           description: Dashboard metrics returned
@@ -883,16 +1256,23 @@ paths:
                     loss: 0.05
                     timeRemaining: 1h 15m
                     recommendations:
-                      - Increase batch size to stabilize gradients.
-
+                    - Increase batch size to stabilize gradients.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
   /notifications:
     post:
-      tags: [Notifications]
+      tags:
+      - Notifications
       operationId: createNotificationSubscription
       summary: Create notification subscription
       security:
-        - BearerAuth: []
-        - OAuth2ClientCredentials: [notifications.write]
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - notifications.write
       requestBody:
         required: true
         content:
@@ -919,7 +1299,25 @@ paths:
                 created:
                   value:
                     message: Notification subscription created.
-
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -954,14 +1352,30 @@ components:
             training.write: Write training jobs
             notifications.write: Write notifications
             agi.write: Run AGI operations
-
   headers:
     XRequestId:
       description: Correlation ID for request tracing
       schema:
         type: string
         example: req_01HZZZXKZX7EP7DAX2GN9CT7R9
-
+    XRateLimitLimit:
+      description: Rate limit ceiling for the current window.
+      schema:
+        type: integer
+        minimum: 1
+        example: 120
+    XRateLimitRemaining:
+      description: Remaining requests in the current window.
+      schema:
+        type: integer
+        minimum: 0
+        example: 119
+    XRateLimitReset:
+      description: UTC epoch seconds when the window resets.
+      schema:
+        type: integer
+        minimum: 0
+        example: 1776868800
   parameters:
     UserId:
       name: userId
@@ -969,7 +1383,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: '^usr_[A-Za-z0-9]+$'
+        pattern: ^usr_[A-Za-z0-9]+$
       description: User identifier
     OrderId:
       name: orderId
@@ -977,7 +1391,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: '^ord_[A-Za-z0-9]+$'
+        pattern: ^ord_[A-Za-z0-9]+$
       description: Order identifier
     CircuitId:
       name: circuitId
@@ -985,7 +1399,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: '^cir_[A-Za-z0-9]+$'
+        pattern: ^cir_[A-Za-z0-9]+$
       description: Circuit identifier
     TrainingId:
       name: trainingId
@@ -993,7 +1407,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: '^trn_[A-Za-z0-9]+$'
+        pattern: ^trn_[A-Za-z0-9]+$
       description: Training job identifier
     TrainingIdQuery:
       name: trainingId
@@ -1001,7 +1415,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: '^trn_[A-Za-z0-9]+$'
+        pattern: ^trn_[A-Za-z0-9]+$
       description: Training job identifier
     JobId:
       name: jobId
@@ -1009,9 +1423,37 @@ components:
       required: true
       schema:
         type: string
-        pattern: '^qjob_[A-Za-z0-9]+$'
+        pattern: ^qjob_[A-Za-z0-9]+$
       description: Quantum job identifier
-
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      description: Client-provided unique key to safely retry idempotent POST operations without duplicating side effects.
+      schema:
+        type: string
+        minLength: 8
+        maxLength: 128
+        pattern: ^[A-Za-z0-9._:-]+$
+      example: idem_01HZZZZEXAMPLE0001
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: Opaque pagination cursor from a previous response.
+      schema:
+        type: string
+        minLength: 1
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return in one page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 50
   responses:
     BadRequest:
       description: Request validation failed
@@ -1070,35 +1512,37 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-
   schemas:
     HealthResponse:
       type: object
       additionalProperties: false
-      required: [status, version, environment, timestamp]
+      required:
+      - status
+      - version
+      - environment
+      - timestamp
       properties:
         status:
           type: string
-          enum: [ok]
+          enum:
+          - ok
         version:
           type: string
         environment:
           type: string
-          enum: [dev, staging, prod]
+          enum:
+          - dev
+          - staging
+          - prod
         timestamp:
           type: string
           format: date-time
-
     ErrorDetail:
       type: object
       additionalProperties: false
-      required: [code, message]
+      required:
+      - code
+      - message
       properties:
         code:
           type: string
@@ -1106,66 +1550,73 @@ components:
         message:
           type: string
           example: Request body failed validation.
-
     ErrorResponse:
       type: object
       additionalProperties: false
-      required: [requestId, error]
+      required:
+      - requestId
+      - error
       properties:
         requestId:
           type: string
           example: req_01HZZZXKZX7EP7DAX2GN9CT7R9
         error:
           $ref: '#/components/schemas/ErrorDetail'
-
     SuccessMessage:
       type: object
       additionalProperties: false
-      required: [message]
+      required:
+      - message
       properties:
         message:
           type: string
           example: Operation completed successfully.
-
     UserCreateRequest:
       type: object
       additionalProperties: false
-      required: [username, email]
+      required:
+      - username
+      - email
       properties:
         username:
           type: string
           minLength: 3
           maxLength: 64
-          pattern: '^[a-zA-Z0-9._-]+$'
-          example: skundem
+          pattern: ^[a-zA-Z0-9._-]+$
+          example: tjacobsen
         email:
           type: string
           format: email
-          example: serkan@example.edu
-
+          example: tnsr_q@icloud.com
     UserResponse:
       type: object
       additionalProperties: false
-      required: [userId, username, email, createdAt]
+      required:
+      - userId
+      - username
+      - email
+      - createdAt
       properties:
         userId:
           type: string
           example: usr_01HZZY9V74N7R0H0V7S0A0B123
         username:
           type: string
-          example: skundem
+          example: tjacobsen
         email:
           type: string
           format: email
-          example: serkan@example.edu
+          example: tnsr_q@icloud.com
         createdAt:
           type: string
           format: date-time
-
     OrderCreateRequest:
       type: object
       additionalProperties: false
-      required: [product, quantity, price]
+      required:
+      - product
+      - quantity
+      - price
       properties:
         product:
           type: string
@@ -1185,11 +1636,16 @@ components:
           maxLength: 3
           default: USD
           example: USD
-
     OrderResponse:
       type: object
       additionalProperties: false
-      required: [orderId, product, quantity, price, currency, createdAt]
+      required:
+      - orderId
+      - product
+      - quantity
+      - price
+      - currency
+      - createdAt
       properties:
         orderId:
           type: string
@@ -1210,15 +1666,27 @@ components:
         createdAt:
           type: string
           format: date-time
-
     Gate:
       type: object
       additionalProperties: false
-      required: [type, targetQubit]
+      required:
+      - type
+      - targetQubit
       properties:
         type:
           type: string
-          enum: [H, X, Y, Z, RX, RY, RZ, CNOT, CZ, SWAP, MEASURE]
+          enum:
+          - H
+          - X
+          - Y
+          - Z
+          - RX
+          - RY
+          - RZ
+          - CNOT
+          - CZ
+          - SWAP
+          - MEASURE
           example: H
         targetQubit:
           type: integer
@@ -1232,11 +1700,12 @@ components:
           type: number
           description: Rotation angle for parameterized gates
           example: 1.5708
-
     CircuitCreateRequest:
       type: object
       additionalProperties: false
-      required: [qubits, gates]
+      required:
+      - qubits
+      - gates
       properties:
         qubits:
           type: integer
@@ -1245,7 +1714,10 @@ components:
           example: 2
         optimizationGoal:
           type: string
-          enum: [minimum_depth, minimum_gate_count, fidelity]
+          enum:
+          - minimum_depth
+          - minimum_gate_count
+          - fidelity
           default: minimum_depth
           example: minimum_depth
         gates:
@@ -1253,11 +1725,15 @@ components:
           minItems: 1
           items:
             $ref: '#/components/schemas/Gate'
-
     CircuitCreateResponse:
       type: object
       additionalProperties: false
-      required: [circuitId, qubits, status, optimization, createdAt]
+      required:
+      - circuitId
+      - qubits
+      - status
+      - optimization
+      - createdAt
       properties:
         circuitId:
           type: string
@@ -1267,11 +1743,14 @@ components:
           minimum: 1
         status:
           type: string
-          enum: [created]
+          enum:
+          - created
         optimization:
           type: object
           additionalProperties: false
-          required: [reducedGateCount, depth]
+          required:
+          - reducedGateCount
+          - depth
           properties:
             reducedGateCount:
               type: integer
@@ -1284,11 +1763,15 @@ components:
         createdAt:
           type: string
           format: date-time
-
     CircuitResource:
       type: object
       additionalProperties: false
-      required: [circuitId, qubits, status, gates, createdAt]
+      required:
+      - circuitId
+      - qubits
+      - status
+      - gates
+      - createdAt
       properties:
         circuitId:
           type: string
@@ -1297,7 +1780,10 @@ components:
           minimum: 1
         status:
           type: string
-          enum: [created, optimized, simulated]
+          enum:
+          - created
+          - optimized
+          - simulated
         gates:
           type: array
           items:
@@ -1305,7 +1791,6 @@ components:
         createdAt:
           type: string
           format: date-time
-
     CircuitSimulationRequest:
       type: object
       additionalProperties: false
@@ -1316,21 +1801,27 @@ components:
           maximum: 100000
           default: 1000
           example: 1000
-
     CircuitOptimizationRequest:
       type: object
       additionalProperties: false
       properties:
         objective:
           type: string
-          enum: [fidelity, minimum_depth, minimum_gate_count]
+          enum:
+          - fidelity
+          - minimum_depth
+          - minimum_gate_count
           default: fidelity
           example: fidelity
-
     SimulationResult:
       type: object
       additionalProperties: false
-      required: [circuitId, shots, probabilities, histogram, completedAt]
+      required:
+      - circuitId
+      - shots
+      - probabilities
+      - histogram
+      - completedAt
       properties:
         circuitId:
           type: string
@@ -1344,24 +1835,29 @@ components:
           additionalProperties:
             type: number
           example:
-            "00": 0.5
-            "11": 0.5
+            '00': 0.5
+            '11': 0.5
         histogram:
           type: object
           additionalProperties:
             type: integer
           example:
-            "00": 497
-            "11": 503
+            '00': 497
+            '11': 503
         completedAt:
           type: string
           format: date-time
-
     OptimizationResult:
       type: object
       additionalProperties: false
       required:
-        [originalCircuitId, optimizedCircuitId, objective, reducedGateCount, originalDepth, optimizedDepth, estimatedFidelity]
+      - originalCircuitId
+      - optimizedCircuitId
+      - objective
+      - reducedGateCount
+      - originalDepth
+      - optimizedDepth
+      - estimatedFidelity
       properties:
         originalCircuitId:
           type: string
@@ -1371,7 +1867,10 @@ components:
           example: cir_01HZZYJ2DS44A6N9J23NT2K5A1
         objective:
           type: string
-          enum: [fidelity, minimum_depth, minimum_gate_count]
+          enum:
+          - fidelity
+          - minimum_depth
+          - minimum_gate_count
         reducedGateCount:
           type: integer
           minimum: 0
@@ -1389,13 +1888,15 @@ components:
           minimum: 0
           maximum: 1
           example: 0.993
-
     QuantumJobCreateRequest:
       type: object
       additionalProperties: false
       oneOf:
-        - required: [qasm]
-        - required: [qubits, gates]
+      - required:
+        - qasm
+      - required:
+        - qubits
+        - gates
       properties:
         qasm:
           type: string
@@ -1411,33 +1912,41 @@ components:
         parameters:
           type: object
           additionalProperties: true
-
     QuantumJobAcceptedResponse:
       type: object
       additionalProperties: false
-      required: [jobId, status, submittedAt]
+      required:
+      - jobId
+      - status
+      - submittedAt
       properties:
         jobId:
           type: string
           example: qjob_01HZZYQJK5SM0Q4MB4J1F96M6B
         status:
           type: string
-          enum: [queued]
+          enum:
+          - queued
         submittedAt:
           type: string
           format: date-time
-
     QuantumJobResponse:
       type: object
       additionalProperties: false
-      required: [jobId, status]
+      required:
+      - jobId
+      - status
       properties:
         jobId:
           type: string
           example: qjob_01HZZYQJK5SM0Q4MB4J1F96M6B
         status:
           type: string
-          enum: [queued, running, completed, failed]
+          enum:
+          - queued
+          - running
+          - completed
+          - failed
         result:
           type: object
           additionalProperties: false
@@ -1452,37 +1961,46 @@ components:
               additionalProperties:
                 type: number
               example:
-                "00": 0.49
-                "11": 0.51
+                '00': 0.49
+                '11': 0.51
         startedAt:
           type: string
           format: date-time
         completedAt:
           type: string
           format: date-time
-
     GuidanceRequest:
       type: object
       additionalProperties: false
-      required: [targetGoal, experienceLevel]
+      required:
+      - targetGoal
+      - experienceLevel
       properties:
         targetGoal:
           type: string
-          enum: [minimum_depth, high_fidelity, low_gate_count]
+          enum:
+          - minimum_depth
+          - high_fidelity
+          - low_gate_count
           example: high_fidelity
         experienceLevel:
           type: string
-          enum: [beginner, intermediate, advanced]
+          enum:
+          - beginner
+          - intermediate
+          - advanced
           example: beginner
         userPrompt:
           type: string
           maxLength: 2000
           example: Help me build a Bell-state circuit.
-
     GuidanceResponse:
       type: object
       additionalProperties: false
-      required: [steps, totalSteps, completionStatus]
+      required:
+      - steps
+      - totalSteps
+      - completionStatus
       properties:
         steps:
           type: array
@@ -1490,73 +2008,85 @@ components:
           items:
             type: string
           example:
-            - Apply a Hadamard gate to qubit 0.
-            - Apply a CNOT gate from qubit 0 to qubit 1.
-            - Simulate the circuit with 1000 shots.
+          - Apply a Hadamard gate to qubit 0.
+          - Apply a CNOT gate from qubit 0 to qubit 1.
+          - Simulate the circuit with 1000 shots.
         totalSteps:
           type: integer
           minimum: 1
           example: 3
         completionStatus:
           type: string
-          enum: [completed, in_progress, failed]
+          enum:
+          - completed
+          - in_progress
+          - failed
           example: completed
-
     EncryptRequest:
       type: object
       additionalProperties: false
-      required: [data]
+      required:
+      - data
       properties:
         data:
           type: string
           minLength: 1
           example: sensitive payload
-
     EncryptResponse:
       type: object
       additionalProperties: false
-      required: [encryptedData, algorithm, keyId]
+      required:
+      - encryptedData
+      - algorithm
+      - keyId
       properties:
         encryptedData:
           type: string
-          example: "base64:c2VjdXJlLWJsb2I="
+          example: base64:c2VjdXJlLWJsb2I=
         algorithm:
           type: string
           example: aes-256-gcm
         keyId:
           type: string
           example: key_2026_04
-
     DecryptRequest:
       type: object
       additionalProperties: false
-      required: [encryptedData]
+      required:
+      - encryptedData
       properties:
         encryptedData:
           type: string
           minLength: 1
-          example: "base64:c2VjdXJlLWJsb2I="
-
+          example: base64:c2VjdXJlLWJsb2I=
     DecryptResponse:
       type: object
       additionalProperties: false
-      required: [data, status]
+      required:
+      - data
+      - status
       properties:
         data:
           type: string
           example: sensitive payload
         status:
           type: string
-          enum: [decrypted]
-
+          enum:
+          - decrypted
     SecurityMonitoringResponse:
       type: object
       additionalProperties: false
-      required: [securityStatus, findings, message]
+      required:
+      - securityStatus
+      - findings
+      - message
       properties:
         securityStatus:
           type: string
-          enum: [healthy, degraded, critical]
+          enum:
+          - healthy
+          - degraded
+          - critical
           example: healthy
         findings:
           type: array
@@ -1566,15 +2096,21 @@ components:
         message:
           type: string
           example: Security monitoring completed successfully.
-
     PerformanceMonitoringResponse:
       type: object
       additionalProperties: false
-      required: [performanceStatus, p95LatencyMs, errorRate, message]
+      required:
+      - performanceStatus
+      - p95LatencyMs
+      - errorRate
+      - message
       properties:
         performanceStatus:
           type: string
-          enum: [stable, degraded, critical]
+          enum:
+          - stable
+          - degraded
+          - critical
           example: stable
         p95LatencyMs:
           type: integer
@@ -1588,11 +2124,13 @@ components:
         message:
           type: string
           example: Performance monitoring completed successfully.
-
     UpdateCheckResponse:
       type: object
       additionalProperties: false
-      required: [updatesAvailable, currentVersion, latestVersion]
+      required:
+      - updatesAvailable
+      - currentVersion
+      - latestVersion
       properties:
         updatesAvailable:
           type: boolean
@@ -1603,11 +2141,13 @@ components:
         latestVersion:
           type: string
           example: 1.0.3
-
     UpdateApplyResponse:
       type: object
       additionalProperties: false
-      required: [success, version, message]
+      required:
+      - success
+      - version
+      - message
       properties:
         success:
           type: boolean
@@ -1618,11 +2158,17 @@ components:
         message:
           type: string
           example: Update completed successfully.
-
     TrainingCreateRequest:
       type: object
       additionalProperties: false
-      required: [modelType, datasetName, taskType, numEpochs, batchSize, learningRate, saveModel]
+      required:
+      - modelType
+      - datasetName
+      - taskType
+      - numEpochs
+      - batchSize
+      - learningRate
+      - saveModel
       properties:
         modelType:
           type: string
@@ -1632,7 +2178,10 @@ components:
           example: custom-dataset
         taskType:
           type: string
-          enum: [text-generation, classification, regression]
+          enum:
+          - text-generation
+          - classification
+          - regression
           example: text-generation
         numEpochs:
           type: integer
@@ -1645,40 +2194,72 @@ components:
         learningRate:
           type: number
           exclusiveMinimum: 0
-          example: 0.00003
+          example: 3.0e-05
         saveModel:
           type: boolean
           example: true
         savePath:
           type: string
           example: /models/transformer-v1
-
+        modelName:
+          type: string
+          enum:
+          - gpt-4-turbo
+          - claude-3-opus
+          - gemini-1.5-pro
+          - llama-3.1-70b-instruct
+          default: gpt-4-turbo
+          example: gpt-4-turbo
+          description: Base foundation model used for training initialization or adapter tuning.
+        modelProvider:
+          type: string
+          enum:
+          - openai
+          - anthropic
+          - google
+          - meta
+          default: openai
+          example: openai
     TrainingAcceptedResponse:
       type: object
       additionalProperties: false
-      required: [trainingId, status, submittedAt]
+      required:
+      - trainingId
+      - status
+      - submittedAt
       properties:
         trainingId:
           type: string
           example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
         status:
           type: string
-          enum: [queued]
+          enum:
+          - queued
         submittedAt:
           type: string
           format: date-time
-
     TrainingJobResponse:
       type: object
       additionalProperties: false
-      required: [trainingId, status, progress, currentEpoch, totalEpochs, currentLoss]
+      required:
+      - trainingId
+      - status
+      - progress
+      - currentEpoch
+      - totalEpochs
+      - currentLoss
       properties:
         trainingId:
           type: string
           example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
         status:
           type: string
-          enum: [queued, running, completed, failed, stopped]
+          enum:
+          - queued
+          - running
+          - completed
+          - failed
+          - stopped
         progress:
           type: number
           minimum: 0
@@ -1696,18 +2277,22 @@ components:
           type: number
           minimum: 0
           example: 0.0264
-
     TrainingResultsResponse:
       type: object
       additionalProperties: false
-      required: [trainingId, status, finalLoss, evaluationMetrics]
+      required:
+      - trainingId
+      - status
+      - finalLoss
+      - evaluationMetrics
       properties:
         trainingId:
           type: string
           example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
         status:
           type: string
-          enum: [completed]
+          enum:
+          - completed
         finalLoss:
           type: number
           minimum: 0
@@ -1715,7 +2300,11 @@ components:
         evaluationMetrics:
           type: object
           additionalProperties: false
-          required: [accuracy, f1Score, precision, recall]
+          required:
+          - accuracy
+          - f1Score
+          - precision
+          - recall
           properties:
             accuracy:
               type: number
@@ -1740,11 +2329,14 @@ components:
         savedModelPath:
           type: string
           example: /models/transformer-v1
-
     TrainingRecommendationResponse:
       type: object
       additionalProperties: false
-      required: [trainingId, learningRate, batchSize, message]
+      required:
+      - trainingId
+      - learningRate
+      - batchSize
+      - message
       properties:
         trainingId:
           type: string
@@ -1752,7 +2344,7 @@ components:
         learningRate:
           type: number
           exclusiveMinimum: 0
-          example: 0.00002
+          example: 2.0e-05
         batchSize:
           type: integer
           minimum: 1
@@ -1760,11 +2352,15 @@ components:
         message:
           type: string
           example: Lower learning rate to improve convergence.
-
     TrainingAnalyticsResponse:
       type: object
       additionalProperties: false
-      required: [trainingId, epoch, loss, accuracy, message]
+      required:
+      - trainingId
+      - epoch
+      - loss
+      - accuracy
+      - message
       properties:
         trainingId:
           type: string
@@ -1785,11 +2381,16 @@ components:
         message:
           type: string
           example: Epoch analytics data retrieved.
-
     DashboardMetricsResponse:
       type: object
       additionalProperties: false
-      required: [trainingId, progress, accuracy, loss, timeRemaining, recommendations]
+      required:
+      - trainingId
+      - progress
+      - accuracy
+      - loss
+      - timeRemaining
+      - recommendations
       properties:
         trainingId:
           type: string
@@ -1816,8 +2417,7 @@ components:
           items:
             type: string
           example:
-            - Increase batch size to stabilize gradients.
-
+          - Increase batch size to stabilize gradients.
     NotificationThresholds:
       type: object
       additionalProperties: false
@@ -1831,11 +2431,13 @@ components:
           type: number
           minimum: 0
           example: 0.01
-
     NotificationCreateRequest:
       type: object
       additionalProperties: false
-      required: [userId, trainingId, notificationType]
+      required:
+      - userId
+      - trainingId
+      - notificationType
       properties:
         userId:
           type: string
@@ -1845,7 +2447,178 @@ components:
           example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
         notificationType:
           type: string
-          enum: [email, webhook]
+          enum:
+          - email
+          - webhook
           example: email
         thresholds:
           $ref: '#/components/schemas/NotificationThresholds'
+    PaginationMeta:
+      type: object
+      additionalProperties: false
+      required:
+      - limit
+      - hasMore
+      properties:
+        cursor:
+          type: string
+          description: Cursor to request the next page. Omitted when hasMore=false.
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+          example: 50
+        hasMore:
+          type: boolean
+          example: true
+        next:
+          type: string
+          format: uri
+          description: Absolute URL for next page, if available.
+    TrainingJobSummary:
+      type: object
+      additionalProperties: false
+      required:
+      - trainingId
+      - status
+      - submittedAt
+      properties:
+        trainingId:
+          type: string
+          pattern: ^trn_[A-Za-z0-9]+$
+          example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+        status:
+          type: string
+          enum:
+          - queued
+          - running
+          - completed
+          - failed
+          - stopped
+        submittedAt:
+          type: string
+          format: date-time
+    PaginatedTrainingJobsResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      - pagination
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingJobSummary'
+        pagination:
+          $ref: '#/components/schemas/PaginationMeta'
+    WebhookEventTrainingCompleted:
+      type: object
+      additionalProperties: false
+      required:
+      - eventId
+      - eventType
+      - sentAt
+      - data
+      properties:
+        eventId:
+          type: string
+          pattern: ^evt_[A-Za-z0-9]+$
+          example: evt_01HZZZABCDEFG1234567890
+        eventType:
+          type: string
+          enum:
+          - training.completed
+        sentAt:
+          type: string
+          format: date-time
+        data:
+          $ref: '#/components/schemas/TrainingResultsResponse'
+    WebhookEventNotificationDelivered:
+      type: object
+      additionalProperties: false
+      required:
+      - eventId
+      - eventType
+      - sentAt
+      - data
+      properties:
+        eventId:
+          type: string
+          pattern: ^evt_[A-Za-z0-9]+$
+          example: evt_01HZZZABCDEFG1234567890
+        eventType:
+          type: string
+          enum:
+          - notification.delivered
+        sentAt:
+          type: string
+          format: date-time
+        data:
+          type: object
+          additionalProperties: false
+          required:
+          - subscriptionId
+          - deliveryStatus
+          properties:
+            subscriptionId:
+              type: string
+              pattern: ^sub_[A-Za-z0-9]+$
+              example: sub_01HZZZN0T1F1CAT10N
+            deliveryStatus:
+              type: string
+              enum:
+              - delivered
+              - failed
+webhooks:
+  training.completed:
+    post:
+      summary: Training completed webhook
+      description: Outbound callback when a training job completes. Verify X-Katopu-Signature header with HMAC-SHA256 and WEBHOOK_SIGNING_SECRET.
+      parameters:
+      - name: X-Katopu-Signature
+        in: header
+        required: true
+        schema:
+          type: string
+          pattern: ^sha256=[A-Fa-f0-9]{64}$
+        description: Webhook signature in sha256 format.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookEventTrainingCompleted'
+      responses:
+        '200':
+          description: Webhook accepted
+        '400':
+          description: Invalid payload
+        '401':
+          description: Invalid webhook signature
+      operationId: webhookTrainingCompleted
+  notification.delivered:
+    post:
+      summary: Notification delivery webhook
+      description: Outbound callback when notification delivery status changes. Verify X-Katopu-Signature header with HMAC-SHA256.
+      parameters:
+      - name: X-Katopu-Signature
+        in: header
+        required: true
+        schema:
+          type: string
+          pattern: ^sha256=[A-Fa-f0-9]{64}$
+        description: Webhook signature in sha256 format.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookEventNotificationDelivered'
+      responses:
+        '200':
+          description: Webhook accepted
+        '400':
+          description: Invalid payload
+        '401':
+          description: Invalid webhook signature
+      operationId: webhookNotificationDelivered

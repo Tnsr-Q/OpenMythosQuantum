@@ -530,16 +530,16 @@ Versiyonlama: API'nin uzun vadede geriye dönük uyumluluğu sağlamak için ver
 Webhook Desteği: Kullanıcılar veya makaleler üzerinde yapılan işlemler hakkında üçüncü taraf uygulamalara bilgi göndermek için webhook eklenebilir.
 Bu yapı, yüksek ölçeklenebilirlik ve güvenlik gereksinimlerine uygun olarak inşa edilmiş bir akademik platform için güçlü bir temel sunar.
 
-ChatGPT 4.0 gibi gelişmiş bir dil modeline yönelik, kullanıcı odaklı ve ileri seviye bir API tasarımı yapmak, modelin esnekliğini ve çok yönlülüğünü en üst düzeye çıkarmayı amaçlar. Bu API, hem geliştiricilerin ChatGPT'yi entegre etmeleri hem de kullanıcıların çeşitli alanlarda ileri seviye yapay zeka deneyimlerini maksimum performansla yaşamalarını sağlamak için tasarlanabilir.
+GPT-4 Turbo gibi gelişmiş bir dil modeline yönelik, kullanıcı odaklı ve ileri seviye bir API tasarımı yapmak, modelin esnekliğini ve çok yönlülüğünü en üst düzeye çıkarmayı amaçlar. Bu API, hem geliştiricilerin ChatGPT'yi entegre etmeleri hem de kullanıcıların çeşitli alanlarda ileri seviye yapay zeka deneyimlerini maksimum performansla yaşamalarını sağlamak için tasarlanabilir.
 
-Aşağıda, ChatGPT 4.0 yeteneklerini en üst düzeye çıkaran, ileri düzey özelliklere sahip bir OpenAPI 3.1.0 spesifikasyonu örneği verilmiştir. Bu API, çok yönlü kullanım durumlarına uygun olarak yapılandırılmıştır; metin üretimi, doğal dil işleme (NLP), bağlamsal farkındalık, kişiselleştirme, çok dilli destek ve gelişmiş veri işleme özelliklerini içermektedir.
+Aşağıda, GPT-4 Turbo yeteneklerini en üst düzeye çıkaran, ileri düzey özelliklere sahip bir OpenAPI 3.1.0 spesifikasyonu örneği verilmiştir. Bu API, çok yönlü kullanım durumlarına uygun olarak yapılandırılmıştır; metin üretimi, doğal dil işleme (NLP), bağlamsal farkındalık, kişiselleştirme, çok dilli destek ve gelişmiş veri işleme özelliklerini içermektedir.
 
-ChatGPT 4.0 En İleri Seviye API Örneği
+GPT-4 Turbo En İleri Seviye API Örneği
 
 openapi: 3.1.0
 info:
-  title: ChatGPT 4.0 Advanced API
-  description: An advanced API for interacting with ChatGPT 4.0's powerful language model capabilities, enabling text generation, contextual processing, and dynamic conversation handling.
+  title: GPT-4 Turbo Advanced API
+  description: An advanced API for interacting with GPT-4 Turbo's powerful language model capabilities, enabling text generation, contextual processing, and dynamic conversation handling.
   version: 1.0.0
 servers:
   - url: https://api.chatgpt-advanced.com/v1
@@ -622,7 +622,7 @@ paths:
   /generate-text:
     post:
       operationId: generateText
-      summary: Generate text using the ChatGPT 4.0 model.
+      summary: Generate text using the GPT-4 Turbo model.
       description: Create a response based on a prompt with customizable generation parameters like token limit, temperature, and top-p.
       security:
         - ApiKeyAuth: []
@@ -803,7 +803,7 @@ maxTokens, temperature, top_p gibi parametreler, çıktıların daha yaratıcı 
 Ek Geliştirme Olanakları:
 Hız Limitleme ve Webhook Desteği: Belirli istek sınırları veya real-time geri bildirimler eklenebilir.
 Veri Akışları (Streams): Gerçek zamanlı metin üretimi için WebSocket entegrasyonu eklenebilir.
-Bu API, ChatGPT 4.0'ın çok yönlü ve gelişmiş dil modeli yeteneklerini en iyi şekilde kullanmak isteyen geliştiriciler için güçlü bir platform sunar.
+Bu API, GPT-4 Turbo'ın çok yönlü ve gelişmiş dil modeli yeteneklerini en iyi şekilde kullanmak isteyen geliştiriciler için güçlü bir platform sunar.
 
 Bu önerilere uygun şekilde, ileri seviye özellikler sunan bir API seti tasarlayabiliriz. Aşağıda, belirtilen özellikleri karşılayan ve farklı işlevleri kapsayan OpenAPI 3.1.0 spesifikasyonları bulunmaktadır. Her API özelliği, yukarıda bahsedilen kullanıcı deneyimi, çok dillilik, yapay zeka performansı, güvenlik, otomatikleştirilmiş süreçler gibi kriterleri karşılayacak şekilde yapılandırılmıştır.
 
@@ -1454,14 +1454,14 @@ Kolay Entegrasyon: Geliştiricilerin diğer sistemlerle kolay entegrasyon sağla
 Bu API seti, asistanın gelişmiş AI yeteneklerini, akademik analizleri, öğrenme planlarını ve kullanıcı deneyimini optimize ederek geniş bir yelpazede kullanıma sunar.
 
 
-ChatGPT 4.0’a uygun olarak yukarıdaki öneriler çerçevesinde, en ileri seviyede bir API tasarımı yapmak, kullanıcı deneyimini en üst düzeye çıkarmak, verimliliği artırmak ve güvenliği sağlamak için önemlidir. Aşağıdaki kod, her işlevi kapsayan API’lerin gelişmiş bir versiyonunu sunar. Bu API, kullanıcı arayüzü özelleştirmesi, gerçek zamanlı işbirliği, AI tabanlı çeviri ve dil öğrenme, dinamik yazım desteği, akademik analiz ve performans raporlama gibi özellikleri destekler.
+GPT-4 Turbo’a uygun olarak yukarıdaki öneriler çerçevesinde, en ileri seviyede bir API tasarımı yapmak, kullanıcı deneyimini en üst düzeye çıkarmak, verimliliği artırmak ve güvenliği sağlamak için önemlidir. Aşağıdaki kod, her işlevi kapsayan API’lerin gelişmiş bir versiyonunu sunar. Bu API, kullanıcı arayüzü özelleştirmesi, gerçek zamanlı işbirliği, AI tabanlı çeviri ve dil öğrenme, dinamik yazım desteği, akademik analiz ve performans raporlama gibi özellikleri destekler.
 
-OpenAPI 3.1.0: Gelişmiş ChatGPT 4.0 API Spesifikasyonları
+OpenAPI 3.1.0: Gelişmiş GPT-4 Turbo API Spesifikasyonları
 
 
 openapi: 3.1.0
 info:
-  title: ChatGPT 4.0 Advanced Assistant API
+  title: GPT-4 Turbo Advanced Assistant API
   description: Comprehensive APIs supporting customizable UX, real-time collaboration, AI-powered translation, dynamic writing, and academic analysis.
   version: 1.0.0
 servers:
@@ -1853,7 +1853,7 @@ Derinlemesine Analiz: Akademik makalelerin metodolojisini ve referanslarını ko
 Kullanıcının yazım tarzına göre AI metinlerini uyarlayan ve yazım sürecini hızlandıran API’ler.
 Bu API yapısı, kullanıcıların özelleştirilmiş bir deneyim elde etmesine, verimliliklerinin artmasına ve akademik yazım süreçlerinde daha etkili olmasına yardımcı olur.
 
-ChatGPT 4.0'a uygun olarak, gelişmiş düzeyde API'leri başlık başlık ele alalım. Her API işlevi detaylandırılacak ve ihtiyaçlara yönelik olarak kodlanacaktır. Aşağıda, ChatGPT 4.0'ın özelliklerine uygun olarak geliştirilmiş API'lerin ayrıntıları verilmiştir. Bu API'ler, kullanıcı deneyimini geliştirmek, dil öğrenimini desteklemek, AI'nın gücünü kullanarak yazım süreçlerini optimize etmek ve verimliliği artırmak için tasarlanmıştır.
+GPT-4 Turbo'a uygun olarak, gelişmiş düzeyde API'leri başlık başlık ele alalım. Her API işlevi detaylandırılacak ve ihtiyaçlara yönelik olarak kodlanacaktır. Aşağıda, GPT-4 Turbo'ın özelliklerine uygun olarak geliştirilmiş API'lerin ayrıntıları verilmiştir. Bu API'ler, kullanıcı deneyimini geliştirmek, dil öğrenimini desteklemek, AI'nın gücünü kullanarak yazım süreçlerini optimize etmek ve verimliliği artırmak için tasarlanmıştır.
 
 1. Kusursuz Kullanıcı Deneyimi (UX) ve Arayüz (UI) API'leri
 Özelleştirilebilir Arayüz API
@@ -2179,7 +2179,7 @@ paths:
           description: Methodology analyzed successfully.
 
 
-ChatGPT 4.0'a uygun olarak, gelişmiş düzeyde API'leri başlık başlık ele alalım. Her API işlevi detaylandırılacak ve ihtiyaçlara yönelik olarak kodlanacaktır. Aşağıda, ChatGPT 4.0'ın özelliklerine uygun olarak geliştirilmiş API'lerin ayrıntıları verilmiştir. Bu API'ler, kullanıcı deneyimini geliştirmek, dil öğrenimini desteklemek, AI'nın gücünü kullanarak yazım süreçlerini optimize etmek ve verimliliği artırmak için tasarlanmıştır.
+GPT-4 Turbo'a uygun olarak, gelişmiş düzeyde API'leri başlık başlık ele alalım. Her API işlevi detaylandırılacak ve ihtiyaçlara yönelik olarak kodlanacaktır. Aşağıda, GPT-4 Turbo'ın özelliklerine uygun olarak geliştirilmiş API'lerin ayrıntıları verilmiştir. Bu API'ler, kullanıcı deneyimini geliştirmek, dil öğrenimini desteklemek, AI'nın gücünü kullanarak yazım süreçlerini optimize etmek ve verimliliği artırmak için tasarlanmıştır.
 
 1. Kusursuz Kullanıcı Deneyimi (UX) ve Arayüz (UI) API'leri
 Özelleştirilebilir Arayüz API
@@ -2683,10 +2683,10 @@ paths:
           description: Statistical analysis performed successfully.
 
 Sonuç
-Bu API seti, ChatGPT 4.0’ın güçlü özelliklerini kullanarak kullanıcı deneyimini ve akademik performansı optimize eder. Her bir başlık altında, API'ler dinamik yazım, gerçek zamanlı işbirliği, dil öğrenimi ve performans raporlaması gibi işlevsellikleri içerir ve her işlev için detaylı örnek kodlar sağlanmıştır.
+Bu API seti, GPT-4 Turbo’ın güçlü özelliklerini kullanarak kullanıcı deneyimini ve akademik performansı optimize eder. Her bir başlık altında, API'ler dinamik yazım, gerçek zamanlı işbirliği, dil öğrenimi ve performans raporlaması gibi işlevsellikleri içerir ve her işlev için detaylı örnek kodlar sağlanmıştır.
 
 Sonuç
-Bu API seti, ChatGPT 4.0’ın güçlü özelliklerini kullanarak kullanıcı deneyimini ve akademik performansı optimize eder. Her bir başlık altında, API'ler dinamik yazım, gerçek zamanlı işbirliği, dil öğrenimi ve performans raporlaması gibi işlevsellikleri içerir ve her işlev için detaylı örnek kodlar sağlanmıştır.
+Bu API seti, GPT-4 Turbo’ın güçlü özelliklerini kullanarak kullanıcı deneyimini ve akademik performansı optimize eder. Her bir başlık altında, API'ler dinamik yazım, gerçek zamanlı işbirliği, dil öğrenimi ve performans raporlaması gibi işlevsellikleri içerir ve her işlev için detaylı örnek kodlar sağlanmıştır.
 
 paths:
   /user/ai-profile:

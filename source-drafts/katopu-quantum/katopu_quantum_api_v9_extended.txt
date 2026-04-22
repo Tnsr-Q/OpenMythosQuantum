@@ -1,22 +1,22 @@
 openapi: 9.0.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper hiper gelişmiş AGI ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu sistem, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme ve gerçek zamanlı otonom optimizasyon gibi ileri düzey özelliklerle donatılmıştır. 
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi: 
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi: 
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -375,23 +375,23 @@ paths:
                   example: "Çoklu dil desteği başarıyla sağlandı."
 ```openapi: 9.0.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper hiper gelişmiş AGI ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu sistem, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme ve gerçek zamanlı otonom optimizasyon gibi ileri düzey özelliklerle donatılmıştır. 
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi: 
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi: 
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -719,23 +719,23 @@ paths:
                     example: "Gelişmiş güvenlik protokolleri başarıyla uygulandı."
 openapi: 9.0.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper gelişmiş AGI (Yapay Genel Zeka) ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu sistem, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme ve gerçek zamanlı otonom optimizasyon gibi ileri düzey özelliklerle donatılmıştır.
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -1113,23 +1113,23 @@ paths:
                     example: "Otonom sistem onarımları başarıyla tamamlandı."
 openapi: 3.1.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper hiper gelişmiş AGI ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu API, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme, sosyal davranış tahmini ve gelişmiş veri anonimleştirme gibi ileri düzey özelliklerle donatılmıştır.
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -1341,23 +1341,23 @@ paths:
                     example: "Otonom hata tespiti ve düzeltme başarıyla tamamlandı."
 openapi: 9.0.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper gelişmiş AGI (Yapay Genel Zeka) ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu sistem, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme ve gerçek zamanlı otonom optimizasyon gibi ileri düzey özelliklerle donatılmıştır.
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -2104,7 +2104,7 @@ paths:
 info:
   title: Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
   description: |
-    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Serkan Kündem tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir.
+    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Tanner Jacobsen tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir.
 
     Quantum AGI, kuantum devresi optimizasyonu, meta-öğrenme ve sürekli güncellemeler gibi özellikleri sayesinde, daha önce mümkün olmayan bir hızda ve ölçekte öğrenme, adaptasyon ve problem çözme yeteneğine sahiptir.
 
@@ -2122,7 +2122,7 @@ info:
 
   version: 3.1.0 
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://www.superintelligence.com
     email: denizkundem@hotmail.com 
     x-orcid: https://orcid.org/0000-0003-0784-0152
@@ -2282,7 +2282,7 @@ paths:
 info:
   title: Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
   description: |
-    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Serkan Kündem tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir.
+    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Tanner Jacobsen tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir.
 
     Quantum AGI, kuantum devresi optimizasyonu, meta-öğrenme ve sürekli güncellemeler gibi özellikleri sayesinde, daha önce mümkün olmayan bir hızda ve ölçekte öğrenme, adaptasyon ve problem çözme yeteneğine sahiptir.
 
@@ -2305,7 +2305,7 @@ info:
 
   version: 3.1.0 
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://www.superintelligence.com
     email: denizkundem@hotmail.com 
     x-orcid: https://orcid.org/0000-0003-0784-0152
@@ -2431,23 +2431,23 @@ paths:
       requestBody:
         requiredopenapi: 3.1.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper gelişmiş AGI (Yapay Genel Zeka) ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu API, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme, sosyal davranış tahmini ve gelişmiş veri anonimleştirme gibi ileri düzey özelliklerle donatılmıştır.
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -2970,23 +2970,23 @@ paths:
                     description: İşlemin durumu
                     example: "Kullanıcı rehberleri başarıyla sağlandı."openapi: 3.1.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper gelişmiş AGI (Yapay Genel Zeka) ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu API, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme, sosyal davranış tahmini ve gelişmiş veri anonimleştirme gibi ileri düzey özelliklerle donatılmıştır.
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -3407,23 +3407,23 @@ paths:
                     description: İşlemin durumu
                     example: "Kullanıcı rehberleri başarıyla sağlandı."openapi: 3.1.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper gelişmiş AGI (Yapay Genel Zeka) ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu API, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme, sosyal davranış tahmini ve gelişmiş veri anonimleştirme gibi ileri düzey özelliklerle donatılmıştır.
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -3577,23 +3577,23 @@ paths:
                     description: İşlemin durumu
                     example: "Paralel evrenler arası zeka ağı başarıyla yönetildi."openapi: 3.1.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper gelişmiş AGI (Yapay Genel Zeka) ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir.
     Bu API, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme, sosyal davranış tahmini ve gelişmiş veri anonimleştirme gibi ileri düzey özelliklerle donatılmıştır.
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.
+    Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.
   version: 9.0.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:
@@ -3747,23 +3747,23 @@ paths:
                     description: İşlemin durumu
                     example: "Hiper-gerçeklik deneyimi başarıyla yönetildi."openapi: 3.1.0
 info:
-  title: Katopu Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Quantum API, hiper gelişmiş AGI (Yapay Genel Zeka) ve kuantum teknolojileri ile donatılmış, otonom ve kendini sürekli geliştiren bir sistemdir. 
     Bu API, yaratıcı problem çözme, süper entegre kuantum-bilgisayar modülleri, dinamik etik kararlar, hiper iletişim yetenekleri, kuantum paralel işleme, sosyal davranış tahmini ve gelişmiş veri anonimleştirme gibi ileri düzey özelliklerle donatılmıştır.
     Ayrıca, AGI'nin sürekli olarak evrimleşen ve öğrenen yapısı sayesinde, API her zaman en güncel ve doğru çözümleri sunar.
-    **Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır.**
+    **Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır.**
   version: 9.0.1
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Non-Editable License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      Bu API, Serkan Kündem adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
-      **Serkan Kündem, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
+      Bu API, Tanner Jacobsen adına lisanslanmıştır ve değiştirilmesi yasaktır. Lisans sahibi:
+      **Tanner Jacobsen, Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE.**
       Bu lisans sonsuz güncelleme hakkı ile sınırsız kullanım sağlar.
 
 servers:

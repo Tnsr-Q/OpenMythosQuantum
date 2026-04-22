@@ -18,3 +18,8 @@ Used for privileged automation and administrative flows.
 - `updates.write`
 - `training.write`
 - `agi.write`
+
+## Webhook integrity
+
+Incoming webhook events must include `X-Katopu-Signature` in format `sha256=<hex>`.
+Verify using `HMAC-SHA256(secret=WEBHOOK_SIGNING_SECRET, payload=raw_body)`.

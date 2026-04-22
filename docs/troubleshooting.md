@@ -18,3 +18,6 @@ Confirm resource identifier format:
 - `cir_...`
 - `trn_...`
 - `qjob_...`
+
+### 401 Webhook Signature Invalid
+Verify `X-Katopu-Signature` format and HMAC SHA-256 digest against the raw request body.

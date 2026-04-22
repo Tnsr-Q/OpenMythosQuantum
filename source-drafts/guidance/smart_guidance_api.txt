@@ -177,15 +177,15 @@ Bu versiyon, spesifikasyonu daha kapsamlı hale getirmek için en iyi uygulamala
 
 
 
-stediğiniz API şemasını ChatGPT 4.0'a uygun hale getirmek için, yapıya uygun bazı düzenlemeler yapmamız ve gerekirse OpenAI'ye özgü spesifik entegrasyonları dahil etmemiz gerekebilir. ChatGPT 4.0’ın API kullanımında, belirli özelliklerin korunması önemlidir, ancak OpenAPI'nin genel mantığı aynıdır.
+stediğiniz API şemasını GPT-4 Turbo'a uygun hale getirmek için, yapıya uygun bazı düzenlemeler yapmamız ve gerekirse OpenAI'ye özgü spesifik entegrasyonları dahil etmemiz gerekebilir. GPT-4 Turbo’ın API kullanımında, belirli özelliklerin korunması önemlidir, ancak OpenAPI'nin genel mantığı aynıdır.
 
-İşte mevcut spesifikasyonun, ChatGPT 4.0 tabanlı bir API ile daha uyumlu hale getirilmiş versiyonu. Bu versiyonda, ChatGPT’nin API kullanım senaryolarına uygun güvenlik, model seçimi ve diğer spesifik detaylar göz önünde bulundurulmuştur:
+İşte mevcut spesifikasyonun, GPT-4 Turbo tabanlı bir API ile daha uyumlu hale getirilmiş versiyonu. Bu versiyonda, ChatGPT’nin API kullanım senaryolarına uygun güvenlik, model seçimi ve diğer spesifik detaylar göz önünde bulundurulmuştur:
 
 
 openapi: 3.1.0
 info:
-  title: ChatGPT 4.0 Smart Guidance API
-  description: Bu API, ChatGPT 4.0 kullanarak kullanıcılara hedeflerine ve bilgi seviyelerine göre kişiselleştirilmiş rehberlik sağlar.
+  title: GPT-4 Turbo Smart Guidance API
+  description: Bu API, GPT-4 Turbo kullanarak kullanıcılara hedeflerine ve bilgi seviyelerine göre kişiselleştirilmiş rehberlik sağlar.
   version: 1.0.0
   contact:
     name: API Support
@@ -205,7 +205,7 @@ paths:
     post:
       operationId: getSmartGuidance
       summary: Kullanıcıya hedeflerine göre adım adım rehberlik sağlar.
-      description: ChatGPT 4.0 modelini kullanarak, kullanıcılara kuantum hesaplama devresi oluşturma sürecinde adım adım rehberlik eder. Öneriler, kullanıcıların bilgi seviyesine ve hedeflerine göre kişiselleştirilir.
+      description: GPT-4 Turbo modelini kullanarak, kullanıcılara kuantum hesaplama devresi oluşturma sürecinde adım adım rehberlik eder. Öneriler, kullanıcıların bilgi seviyesine ve hedeflerine göre kişiselleştirilir.
       tags:
         - Guidance
         - Quantum Computing
@@ -218,7 +218,7 @@ paths:
               properties:
                 model:
                   type: string
-                  description: ChatGPT 4.0 modelinin versiyonu.
+                  description: GPT-4 Turbo modelinin versiyonu.
                   enum: [gpt-4, gpt-4-turbo]
                   example: "gpt-4"
                 targetGoal:
@@ -308,9 +308,9 @@ tags:
     description: Kuantum hesaplama ile ilgili işlemler.
 Eklemeler ve Değişiklikler:
 
-ChatGPT 4.0 Modeli: İlgili API isteğinde hangi ChatGPT modelinin kullanılacağını belirlemek için model parametresi eklendi. Bu parametre gpt-4 veya gpt-4-turbo olabilir.
+GPT-4 Turbo Modeli: İlgili API isteğinde hangi ChatGPT modelinin kullanılacağını belirlemek için model parametresi eklendi. Bu parametre gpt-4 veya gpt-4-turbo olabilir.
 Kullanıcı Talebi (userPrompt): Kullanıcı tarafından özelleştirilmiş talimat veya rehberlik istemek için userPrompt alanı eklendi. Bu, ChatGPT'nin daha zengin ve hedefli yanıtlar vermesine olanak tanır.
 x-openai-model Kapsamı: İlgili istekte kullanılan modelin belirtilmesi için x-openai-model özelliği eklendi.
 Güvenlik: API anahtarı güvenliği, OpenAI standardı olan Authorization başlığı üzerinden sağlandı.
-Bu şema, ChatGPT 4.0 tabanlı API kullanımına uygun şekilde yapılandırılmıştır ve mevcut kullanım örneğinizi daha spesifik hale getirmek için gerekli eklemeleri içerir.
+Bu şema, GPT-4 Turbo tabanlı API kullanımına uygun şekilde yapılandırılmıştır ve mevcut kullanım örneğinizi daha spesifik hale getirmek için gerekli eklemeleri içerir.
 

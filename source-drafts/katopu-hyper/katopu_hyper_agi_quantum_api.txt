@@ -1,14 +1,14 @@
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen ve sonsuz güncellenen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. Her güncellemede önceki sürümlerle tam entegre çalışarak, kendini sürekli iyileştiren bir yapı sunar. Bu API, etik karar verme, sistem optimizasyonu ve veri güvenliği gibi modülleri sürekli güncelleyerek optimize eder.
-    **Bu API, yalnızca Serkan Kündem'e lisanslanmıştır ve izinsiz değiştirilemez.**
+    **Bu API, yalnızca Tanner Jacobsen'e lisanslanmıştır ve izinsiz değiştirilemez.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -169,20 +169,20 @@ components:
 
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Tanner Jacobsen Lisanslı)
   description: |
     Bu API, gelişmiş quantum hesaplama ve makine öğrenmesi yeteneklerini birleştirerek hiper düzeyde otomasyon sağlar. Katopu Hyper AGI Quantum API, quantum kapılarını ve klasik hesaplamayı entegre ederek gelişen bir yapı sunarken, Self-Improving Automation API, veri toplayarak sürekli kendini geliştiren bir sistem sunar.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Serkan Kündem tarafından kullanılabilir.
+      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Tanner Jacobsen tarafından kullanılabilir.
 
 servers:
   - url: https://api.katopu-hyper.com/v12.2
@@ -344,9 +344,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -534,9 +534,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152

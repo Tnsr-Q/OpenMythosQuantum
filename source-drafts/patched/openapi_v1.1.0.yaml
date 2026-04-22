@@ -5,8 +5,8 @@ info:
   description: "This contract consolidates the draft APIs into a stricter production-oriented interface and patches the gaps identified during validity review.\n\nPatched design choices:\n  - explicit versioned base path\n  - normalized resource naming\n  - unique operationIds\n  - reusable components under #/components/schemas\n  - explicit authentication and authorization\n  - stricter request/response schemas\n  - deterministic verification workflow for LLM-assisted optimization\n  - asynchronous request-reply pattern for heavy simulations\n  - webhooks for long-running operations and alerts\n  - cleaned schema examples and JSON Schema Draft 2020-12 nullable handling\n"
   version: 1.1.0
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Proprietary - review before production use
@@ -103,8 +103,8 @@ paths:
             examples:
               default:
                 value:
-                  username: skundem
-                  email: serkan@example.edu
+                  username: tjacobsen
+                  email: tnsr_q@icloud.com
       responses:
         '201':
           description: User created
@@ -119,8 +119,8 @@ paths:
                 created:
                   value:
                     userId: usr_01HZZY9V74N7R0H0V7S0A0B123
-                    username: skundem
-                    email: serkan@example.edu
+                    username: tjacobsen
+                    email: tnsr_q@icloud.com
                     createdAt: '2026-04-22T12:00:00Z'
         '400':
           $ref: '#/components/responses/BadRequest'
@@ -153,8 +153,8 @@ paths:
                 found:
                   value:
                     userId: usr_01HZZY9V74N7R0H0V7S0A0B123
-                    username: skundem
-                    email: serkan@example.edu
+                    username: tjacobsen
+                    email: tnsr_q@icloud.com
                     createdAt: '2026-04-22T12:00:00Z'
         '404':
           $ref: '#/components/responses/NotFound'
@@ -1631,11 +1631,11 @@ components:
           minLength: 3
           maxLength: 64
           pattern: ^[a-zA-Z0-9._-]+$
-          example: skundem
+          example: tjacobsen
         email:
           type: string
           format: email
-          example: serkan@example.edu
+          example: tnsr_q@icloud.com
     UserResponse:
       type: object
       additionalProperties: false
@@ -1650,11 +1650,11 @@ components:
           example: usr_01HZZY9V74N7R0H0V7S0A0B123
         username:
           type: string
-          example: skundem
+          example: tjacobsen
         email:
           type: string
           format: email
-          example: serkan@example.edu
+          example: tnsr_q@icloud.com
         createdAt:
           type: string
           format: date-time

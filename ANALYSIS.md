@@ -73,7 +73,7 @@ All `source-drafts/**` files inside this archive are **byte-identical** to the o
 
 | File in zip                             | Normalized filename in repo                                        | Lines | Notes |
 |-----------------------------------------|--------------------------------------------------------------------|-------|-------|
-| `12345.txt`                             | `katopu_quantum_api_v9_0_0.txt`                                    |  5,319 | Turkish-language draft, OpenAPI v9.0.0 "Serkan Kündem Lisanslı" |
+| `12345.txt`                             | `katopu_quantum_api_v9_0_0.txt`                                    |  5,319 | Turkish-language draft, OpenAPI v9.0.0 "Tanner Jacobsen Lisanslı" |
 | `APİ DÜZENLE.txt`                       | `api_duzenle_openapi_schema_editing_guide.txt`                     |  4,851 | OpenAPI schema-editing rationale and an example `Örnek API` |
 | `Akıll Rehber Api Şeması.txt`           | `akilli_rehber_api_semasi.txt`                                     |    316 | Smart Guidance API draft |
 | `birleştir.txt`                         | `birlestir_openapi_edit_guide.txt`                                 |    620 | OpenAPI merge / restructuring guide |

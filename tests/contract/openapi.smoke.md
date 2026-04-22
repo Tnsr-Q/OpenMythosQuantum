@@ -7,3 +7,6 @@
 - [ ] examples match schemas
 - [ ] error responses are standardized
 - [ ] prod, staging, and dev servers are declared
+- [ ] all POST routes include `Idempotency-Key` parameter
+- [ ] webhook callbacks require `X-Katopu-Signature` in `sha256=<hex>` format
+- [ ] list endpoints use cursor pagination (`cursor`, `limit`, response pagination metadata)

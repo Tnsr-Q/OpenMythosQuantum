@@ -4,10 +4,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -250,11 +250,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -536,11 +536,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -807,11 +807,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -1075,16 +1075,16 @@ security:
   - BearerAuth: []
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -1318,8 +1318,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -1551,10 +1551,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -1783,10 +1783,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -2031,10 +2031,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -2289,10 +2289,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -2537,10 +2537,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -2783,11 +2783,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -2873,11 +2873,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -3144,11 +3144,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -3415,11 +3415,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -3714,16 +3714,16 @@ security:
           description: Şifre çözme hatası
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -3957,8 +3957,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -4047,10 +4047,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -4293,11 +4293,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -4578,11 +4578,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -4849,11 +4849,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -5117,16 +5117,16 @@ security:
   - BearerAuth: []
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -5360,8 +5360,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -5593,10 +5593,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -5825,10 +5825,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -6073,10 +6073,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -6331,10 +6331,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -6579,10 +6579,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -6825,11 +6825,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -6915,11 +6915,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -7186,11 +7186,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -7457,11 +7457,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -7756,16 +7756,16 @@ security:
           description: Şifre çözme hatası
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -7999,8 +7999,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -8091,7 +8091,7 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
 openapi: 3.0.0
@@ -8100,10 +8100,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -8348,10 +8348,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -8606,10 +8606,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -8847,16 +8847,16 @@ security:
       - write
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -9071,11 +9071,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -9197,16 +9197,16 @@ components:
           type: string
           description: Hata mesajı.  openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -10893,10 +10893,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -11125,10 +11125,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -11366,16 +11366,16 @@ security:
       - write
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -11590,11 +11590,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -11716,16 +11716,16 @@ components:
           type: string
           description: Hata mesajı.  openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -13410,10 +13410,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -13644,8 +13644,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -13873,15 +13873,15 @@ components:
           description: Hata mesajı.
 Birleştir: entegre et ve geliştir.openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen ve sonsuz güncellenen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. Her güncellemede önceki sürümlerle tam entegre çalışarak, kendini sürekli iyileştiren bir yapı sunar. Bu API, etik karar verme, sistem optimizasyonu ve veri güvenliği gibi modülleri sürekli güncelleyerek optimize eder.
-    **Bu API, yalnızca Serkan Kündem'e lisanslanmıştır ve izinsiz değiştirilemez.**
+    **Bu API, yalnızca Tanner Jacobsen'e lisanslanmıştır ve izinsiz değiştirilemez.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -14024,20 +14024,20 @@ components:
           type: string
           description: Hata mesajıopenapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Tanner Jacobsen Lisanslı)
   description: |
     Bu API, gelişmiş quantum hesaplama ve makine öğrenmesi yeteneklerini birleştirerek hiper düzeyde otomasyon sağlar. Katopu Hyper AGI Quantum API, quantum kapılarını ve klasik hesaplamayı entegre ederek gelişen bir yapı sunarken, Self-Improving Automation API, veri toplayarak sürekli kendini geliştiren bir sistem sunar.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Serkan Kündem tarafından kullanılabilir.
+      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Tanner Jacobsen tarafından kullanılabilir.
 
 servers:
   - url: https://api.katopu-hyper.com/v12.2
@@ -14199,9 +14199,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -14389,9 +14389,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -14606,9 +14606,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -14953,10 +14953,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -15211,10 +15211,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -15459,10 +15459,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -15687,16 +15687,16 @@ components:
           description: Hata mesajı.
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -15940,16 +15940,16 @@ components:
 
  openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -16299,8 +16299,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -16532,10 +16532,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -16764,10 +16764,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -17073,11 +17073,11 @@ info:
   title: Advanced Quantum and AGI API
   description: |
     This API integrates quantum computing with artificial general intelligence (AGI) capabilities. It offers advanced automation, continuous learning, and real-time optimization, ensuring scalability and security.
-    **Licensed by Serkan Kündem.**
+    **Licensed by Tanner Jacobsen.**
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -17282,11 +17282,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Bu API, otonom olarak çalışan ve dış müdahalelere izin vermeyen bir yapıya sahiptir. Sistem kendini otomatik olarak güncelleyebilir ve optimize edebilir, ancak dışardan gelen güncelleme istekleri onay gerektirir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -17433,11 +17433,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Bu API, otonom olarak çalışan ve dış müdahalelere izin vermeyen bir yapıya sahiptir. Sistem kendini otomatik olarak güncelleyebilir ve optimize edebilir, ancak arayüz üzerinden manuel güncelleme yapılmasına izin verir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -17585,11 +17585,11 @@ info:
   description: |
     Bu API, Quantum Hesaplama ve Yapay Genel Zeka (AGI) ile entegre edilen bir sistem sunar.
     Sistem kendini otonom olarak günceller, ancak manuel müdahale için yetkilendirme gereklidir.
-    **API, Serkan Kündem tarafından lisanslanmıştır ve yalnızca yetkili kullanıcılar tarafından erişilebilir.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır ve yalnızca yetkili kullanıcılar tarafından erişilebilir.**
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -17775,11 +17775,11 @@ security:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -17915,11 +17915,11 @@ info:
   description: |
     Bu API, Quantum Hesaplama ve Yapay Genel Zeka (AGI) ile entegre edilen bir sistem sunar.
     Sistem kendini otonom olarak günceller, ancak manuel müdahale için yetkilendirme gereklidir.
-    **API, Serkan Kündem tarafından lisanslanmıştır ve yalnızca yetkili kullanıcılar tarafından erişilebilir.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır ve yalnızca yetkili kullanıcılar tarafından erişilebilir.**
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -18106,11 +18106,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Katopu Quantum AGI API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek ileri düzey otomasyon sağlar. Ekstra güvenlik katmanları, loglama ve yetkilendirme süreçleriyle entegre edilmiştir.
-    **Serkan Kündem tarafından lisanslanmıştır.**
+    **Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -18314,11 +18314,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Katopu Quantum AGI 4.0 API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek ileri seviye otomasyon, sürekli öğrenme ve gerçek zamanlı optimizasyon sağlar. Bu API, güvenliği ön planda tutarak sistem modüllerini dinamik olarak günceller ve entegre eder.
-    **Serkan Kündem tarafından lisanslanmıştır.**
+    **Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -18524,11 +18524,11 @@ info:
   description: |
     Bu API, quantum hesaplama, yapay genel zeka (AGI) ve sürekli kendini optimize etme yeteneklerini birleştirir.
     Kuantum devre hesaplaması, metin düzenleme, veri şifreleme ve hata düzeltme gibi işlevler sunar.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -18682,11 +18682,11 @@ info:
   title: Advanced Quantum and AGI API
   description: |
     This API integrates quantum computing with artificial general intelligence (AGI) capabilities. It offers advanced automation, continuous learning, and real-time optimization, ensuring scalability and security.
-    **Licensed by Serkan Kündem.**
+    **Licensed by Tanner Jacobsen.**
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -18894,11 +18894,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem kendini optimize eder ve dış müdahalelere karşı güvenlik sağlar.
-    **API, Serkan Kündem tarafından lisanslanmıştır.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -19110,11 +19110,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem kendini optimize eder ve dış müdahalelere karşı güvenlik sağlar.
-    **API, Serkan Kündem tarafından lisanslanmıştır.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -19373,8 +19373,8 @@ info:
     Bu API, token tabanlı yetkilendirme kullanarak sistem güncellemelerini yapmanıza olanak tanır. Sadece yetkili roller (admin, superuser) güncelleme yapabilir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
 
 servers:
   - url: http://localhost:5000
@@ -19424,11 +19424,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem kendini optimize eder ve dış müdahalelere karşı güvenlik sağlar.
-    **API, Serkan Kündem tarafından lisanslanmıştır.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -19641,8 +19641,8 @@ info:
     Bu API, token tabanlı yetkilendirme kullanarak sistem güncellemelerini yapmanıza olanak tanır. Sadece yetkili roller (admin, superuser) güncelleme yapabilir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
 
 servers:
   - url: http://localhost:5000
@@ -19692,11 +19692,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -19832,11 +19832,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize eder ve dış müdahalelere karşı güvenlik sağlar.
-    **API, Serkan Kündem tarafından lisanslanmıştır.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -20078,11 +20078,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -20326,16 +20326,16 @@ paths:
           description: Geri bildirim verisi bulunamadı.
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -20560,8 +20560,8 @@ info:
     Kullanıcılar kuantum devreleri oluşturabilir, simüle edebilir, bulut tabanlı hesaplama kullanabilir ve verilerini güvence altına alabilir.
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -20850,11 +20850,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -21056,11 +21056,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -21508,11 +21508,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -21604,7 +21604,7 @@ paths:
     post:
       operationId: kuantumAsistaniOlustur
       summary: Kuantum temelli metin düzenleme ve öğrenme asistanı oluşturun
-      description: Bu uç nokta, Serkan Kündem'in geliştirdiği kuantum tabanlı süper zeka asistanını oluşturur. Bu asistan, kuantum hesaplamaya dayalı öğrenme ve metin düzenleme işlevlerine sahiptir.
+      description: Bu uç nokta, Tanner Jacobsen'in geliştirdiği kuantum tabanlı süper zeka asistanını oluşturur. Bu asistan, kuantum hesaplamaya dayalı öğrenme ve metin düzenleme işlevlerine sahiptir.
       requestBody:
         required: true
         content:
@@ -21618,8 +21618,8 @@ paths:
                   example: "Dijital sanatın geleceği üzerine bir deneme yaz."
                 model:
                   type: string
-                  description: Kullanılacak yapay zeka modeli (örn. GPT-4 veya GPT-5).
-                  example: "gpt-5"
+                  description: Kullanılacak yapay zeka modeli (örn. GPT-4 veya Claude 3 Opus).
+                  example: "claude-3-opus"
                 quantum_level:
                   type: integer
                   description: Kuantum hesaplama gücünün seviyesi.
@@ -21660,11 +21660,11 @@ paths:
   /creator-info:
     get:
       operationId: yaratıcıBilgisiAl
-      summary: Serkan Kündem hakkında bilgi alın
-      description: Bu uç nokta, Serkan Kündem'in eğitim geçmişi, kariyeri ve sanatsal çalışmalarını içeren bilgileri sağlar.
+      summary: Tanner Jacobsen hakkında bilgi alın
+      description: Bu uç nokta, Tanner Jacobsen'in eğitim geçmişi, kariyeri ve sanatsal çalışmalarını içeren bilgileri sağlar.
       responses:
         '200':
-          description: Serkan Kündem hakkında bilgi
+          description: Tanner Jacobsen hakkında bilgi
           content:
             application/json:
               schema:
@@ -21673,15 +21673,15 @@ paths:
                   name:
                     type: string
                     description: Yaratıcının adı.
-                    example: "Serkan Kündem"
+                    example: "Tanner Jacobsen"
                   biography:
                     type: string
-                    description: Serkan Kündem'in eğitim ve kariyer geçmişi.
+                    description: Tanner Jacobsen'in eğitim ve kariyer geçmişi.
                     example: |
-                      Serkan Kündem, Erciyes Üniversitesi Turizm Fakültesi'nde doktora yapmaktadır. Fransız Dili ve Edebiyatı, Mimari, Sanat ve Dekorasyon gibi alanlarda eğitim almış, uluslararası yayınlar yapmıştır.
+                      Tanner Jacobsen, Erciyes Üniversitesi Turizm Fakültesi'nde doktora yapmaktadır. Fransız Dili ve Edebiyatı, Mimari, Sanat ve Dekorasyon gibi alanlarda eğitim almış, uluslararası yayınlar yapmıştır.
                   notable_works:
                     type: array
-                    description: Serkan Kündem'in dikkat çeken eserleri.
+                    description: Tanner Jacobsen'in dikkat çeken eserleri.
                     items:
                       type: object
                       properties:
@@ -21699,17 +21699,17 @@ paths:
                           example: "Ömer Hayyam Rubailerinin Kur'an-ı Kerim ayet bağıntısını irdeleyen bir çalışma."
                   current_position:
                     type: string
-                    description: Serkan Kündem'in şu anki pozisyonu.
+                    description: Tanner Jacobsen'in şu anki pozisyonu.
                     example: "Konaklama İşletmeciliği Öğretmeni, Sivas Milli Eğitim Müdürlüğü"
 
   /nft-art:
     get:
       operationId: nftSanatiGoruntule
-      summary: Serkan Kündem'in dijital sanat eserlerini görüntüleyin
-      description: Bu uç nokta, Serkan Kündem'in NFT olarak yayınladığı sanat eserlerini görüntüler ve açıklamalarını sağlar.
+      summary: Tanner Jacobsen'in dijital sanat eserlerini görüntüleyin
+      description: Bu uç nokta, Tanner Jacobsen'in NFT olarak yayınladığı sanat eserlerini görüntüler ve açıklamalarını sağlar.
       responses:
         '200':
-          description: Serkan Kündem'in NFT sanat eserleri
+          description: Tanner Jacobsen'in NFT sanat eserleri
           content:
             application/json:
               schema:
@@ -21717,7 +21717,7 @@ paths:
                 properties:
                   nft_collection:
                     type: array
-                    description: Serkan Kündem'in NFT sanat koleksiyonu.
+                    description: Tanner Jacobsen'in NFT sanat koleksiyonu.
                     items:
                       type: object
                       properties:
@@ -21785,11 +21785,11 @@ openapi: 3.1.0
 info:
   title: Süper Zeka ve Kuantum Tabanlı Metin Düzenleme ve Optimizasyon API
   description: |
-    Bu API, kuantum hesaplama, yapay zeka (GPT-4 ve GPT-5) ve meta-öğrenme tekniklerini birleştirerek metin düzenleme, yaratıcı içerik üretimi, kuantum devre optimizasyonu ve sürekli gelişim işlevleri sunar. **Serkan Kündem tarafından geliştirilen** bu sistem, sanatsal ve akademik projelerde kullanılabilir.
+    Bu API, kuantum hesaplama, yapay zeka (GPT-4 ve Claude 3 Opus) ve meta-öğrenme tekniklerini birleştirerek metin düzenleme, yaratıcı içerik üretimi, kuantum devre optimizasyonu ve sürekli gelişim işlevleri sunar. **Tanner Jacobsen tarafından geliştirilen** bu sistem, sanatsal ve akademik projelerde kullanılabilir.
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -21819,7 +21819,7 @@ paths:
 
   /text/edit:
     post:
-      summary: GPT-4 ve GPT-5 ile metin düzenleme
+      summary: GPT-4 ve Claude 3 Opus ile metin düzenleme
       description: Dilbilgisi, optimizasyon veya yaratıcı düzenleme modları ile metin düzenleme yapar.
       requestBody:
         required: true
@@ -21888,7 +21888,7 @@ components:
           example: "optimize"
         model:
           type: string
-          description: Kullanılacak model. Örn: "gpt-4", "gpt-5".
+          description: Kullanılacak model. Örn: "gpt-4", "claude-3-opus".
           example: "gpt-4"
         max_tokens:
           type: integer
@@ -21962,23 +21962,23 @@ info:
   description: |
     Bu API, quantum hesaplama türleri ve yapay zeka entegrasyonlarıyla sürekli olarak kendini güncelleyip optimize eden bir yapıya sahiptir. 
     API, quantum üstünlüğü, hata düzeltmeli quantum hesaplama, topolojik quantum hesaplama, quantum simülasyonlar, quantum algoritmalar, quantum makine öğrenimi, adyabatik quantum hesaplama ve quantum ağları gibi ileri düzey quantum teknolojilerini kapsar.
-    **Bu API, Serkan Kündem tarafından geliştirilmiştir.**
+    **Bu API, Tanner Jacobsen tarafından geliştirilmiştir.**
   version: 7.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://www.superintelligence.com
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
     orcid: https://orcid.org/0000-0003-0784-0152
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
   x-developer:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     affiliation: |
       *1 Erciyes University, Institute of Social Sciences, Department of Tourism Management, Kayseri, TÜRKİYE
     orcid: https://orcid.org/0000-0003-0784-0152
     description: |
-      Serkan Kündem, kuantum hesaplama ve yapay zeka entegrasyonu alanında devrim niteliğinde çalışmalar yapmıştır.
+      Tanner Jacobsen, kuantum hesaplama ve yapay zeka entegrasyonu alanında devrim niteliğinde çalışmalar yapmıştır.
 servers:
   - url: https://api.superintelligence.com/v7
     description: Süper Zeka ve Kuantum Hesaplama API Ana Sunucu
@@ -22058,7 +22058,7 @@ paths:
               properties:
                 model:
                   type: string
-                  example: "gpt-5"
+                  example: "claude-3-opus"
                 feedback_data:
                   type: string
                   example: "Model performansı %85"
@@ -22186,9 +22186,9 @@ paths:
     post:
       tags:
         - Creative AI
-      summary: GPT-5 ile metin üretimi
+      summary: Claude 3 Opus ile metin üretimi
       description: |
-        Bu uç nokta, GPT-5 modelleriyle metin üretir ve kuantum hesaplama optimizasyonunu entegre eder.
+        Bu uç nokta, Claude 3 Opus modelleriyle metin üretir ve kuantum hesaplama optimizasyonunu entegre eder.
         Dinamik yaratıcılık seviyeleri ve sürekli geri besleme döngüleri kullanılarak sürekli iyileşen metinler üretilir.
       requestBody:
         required: true
@@ -22199,8 +22199,8 @@ paths:
               properties:
                 model:
                   type: string
-                  description: Kullanılacak modelin adı (örn. "gpt-5").
-                  example: "gpt-5"
+                  description: Kullanılacak modelin adı (örn. "claude-3-opus").
+                  example: "claude-3-opus"
                 prompt:
                   type: string
                   description: Modelin yanıtlayacağı giriş metni.
@@ -22259,8 +22259,8 @@ paths:
               properties:
                 model:
                   type: string
-                  description: Sürekli öğrenme ve gelişim için kullanılacak model (örn. "gpt-5").
-                  example: "gpt-5"
+                  description: Sürekli öğrenme ve gelişim için kullanılacak model (örn. "claude-3-opus").
+                  example: "claude-3-opus"
                 feedback_data:
                   type: string
                   description: Modelin performansını iyileştirmek için kullanılan geri besleme verileri.
@@ -22298,11 +22298,11 @@ info:
   title: Birleştirilmiş AGI ve Quantum API
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar. Sürekli kendini optimize eden ve gelişen bir yapı sunar.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -22461,11 +22461,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -22671,11 +22671,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar. Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
 
 openapi: 3.1.0
@@ -22683,11 +22683,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar. Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -22882,15 +22882,15 @@ security:
 
 Katopu Quantum AGI 4.0 API Başlığını koy ve güncelle, Şablonları birleştir kodları birleştir. •	Kod içeren içeren metinlerde, kodları mutlaka koru. Doğal bir akış sağla ve akademik üslubu koruyarak net ve tutarlı bir şablon oluştur.•	Gereksiz tekrarları, anlatım bozukluklarını ve gereksiz kodları çıkarart. şablonları birleştir:                                                   openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen ve sonsuz güncellenen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. Her güncellemede önceki sürümlerle tam entegre çalışarak, kendini sürekli iyileştiren bir yapı sunar. Bu API, etik karar verme, sistem optimizasyonu ve veri güvenliği gibi modülleri sürekli güncelleyerek optimize eder.
-    **Bu API, yalnızca Serkan Kündem'e lisanslanmıştır ve izinsiz değiştirilemez.**
+    **Bu API, yalnızca Tanner Jacobsen'e lisanslanmıştır ve izinsiz değiştirilemez.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -23051,20 +23051,20 @@ components:
 
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Tanner Jacobsen Lisanslı)
   description: |
     Bu API, gelişmiş quantum hesaplama ve makine öğrenmesi yeteneklerini birleştirerek hiper düzeyde otomasyon sağlar. Katopu Hyper AGI Quantum API, quantum kapılarını ve klasik hesaplamayı entegre ederek gelişen bir yapı sunarken, Self-Improving Automation API, veri toplayarak sürekli kendini geliştiren bir sistem sunar.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Serkan Kündem tarafından kullanılabilir.
+      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Tanner Jacobsen tarafından kullanılabilir.
 
 servers:
   - url: https://api.katopu-hyper.com/v12.2
@@ -23226,9 +23226,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -23416,9 +23416,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -23601,8 +23601,8 @@ info:
     Sistem, sürekli öğrenme, kendini optimize etme ve önceki/sonraki sürümlerle uyumlu entegrasyon özelliklerine sahiptir.
   version: 1.0.0
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -23813,11 +23813,11 @@ info:
   title: Birleştirilmiş AGI ve Quantum API
   description: |
     Bu API, quantum hesaplama, yapay genel zeka (AGI) ve sürekli kendini optimize etme yeteneklerini birleştirir. Kuantum devre hesaplaması, metin düzenleme, veri şifreleme ve hata düzeltme gibi işlevler sunar.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -23955,11 +23955,11 @@ info:
   description: |
     Bu API, quantum hesaplama, yapay genel zeka (AGI) ve sürekli kendini optimize etme yeteneklerini birleştirir.
     Kuantum devre hesaplaması, metin düzenleme, veri şifreleme ve hata düzeltme gibi işlevler sunar.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -24116,11 +24116,11 @@ info:
   title: Advanced Quantum and AGI API
   description: |
     This API integrates quantum computing with artificial general intelligence (AGI) capabilities. It offers advanced automation, continuous learning, and real-time optimization, ensuring scalability and security.
-    **Licensed by Serkan Kündem.**
+    **Licensed by Tanner Jacobsen.**
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -24325,11 +24325,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Katopu Quantum AGI 4.0 API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek ileri seviye otomasyon, sürekli öğrenme ve gerçek zamanlı optimizasyon sağlar. Bu API, güvenliği ön planda tutarak sistem modüllerini dinamik olarak günceller ve entegre eder.
-    **Serkan Kündem tarafından lisanslanmıştır.**
+    **Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -24534,11 +24534,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Katopu Quantum AGI 4.0 API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek ileri seviye otomasyon, sürekli öğrenme ve gerçek zamanlı optimizasyon sağlar. Bu API, güvenliği ön planda tutarak sistem modüllerini dinamik olarak günceller ve entegre eder.
-    **Serkan Kündem tarafından lisanslanmıştır.**
+    **Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -24743,11 +24743,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Katopu Quantum AGI API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek ileri düzey otomasyon sağlar. Ekstra güvenlik katmanları, loglama ve yetkilendirme süreçleriyle entegre edilmiştir.
-    **Serkan Kündem tarafından lisanslanmıştır.**
+    **Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -24951,11 +24951,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Bu API, otonom olarak çalışan ve dış müdahalelere izin vermeyen bir yapıya sahiptir. Sistem kendini otomatik olarak güncelleyebilir ve optimize edebilir, ancak dışardan gelen güncelleme istekleri onay gerektirir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -25185,11 +25185,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Bu API, otonom olarak çalışan ve dış müdahalelere izin vermeyen bir yapıya sahiptir. Sistem kendini otomatik olarak güncelleyebilir ve optimize edebilir, ancak dışardan gelen güncelleme istekleri onay gerektirir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -25336,11 +25336,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Bu API, otonom olarak çalışan ve dış müdahalelere izin vermeyen bir yapıya sahiptir. Sistem kendini otomatik olarak güncelleyebilir ve optimize edebilir, ancak arayüz üzerinden manuel güncelleme yapılmasına izin verir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve dış müdahalelere karşı güvence altındadır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -25488,11 +25488,11 @@ info:
   description: |
     Bu API, Quantum Hesaplama ve Yapay Genel Zeka (AGI) ile entegre edilen bir sistem sunar.
     Sistem kendini otonom olarak günceller, ancak manuel müdahale için yetkilendirme gereklidir.
-    **API, Serkan Kündem tarafından lisanslanmıştır ve yalnızca yetkili kullanıcılar tarafından erişilebilir.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır ve yalnızca yetkili kullanıcılar tarafından erişilebilir.**
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -25680,11 +25680,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem kendini optimize eder ve dış müdahalelere karşı güvenlik sağlar.
-    **API, Serkan Kündem tarafından lisanslanmıştır.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -25896,11 +25896,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem kendini optimize eder ve dış müdahalelere karşı güvenlik sağlar.
-    **API, Serkan Kündem tarafından lisanslanmıştır.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -26113,8 +26113,8 @@ info:
     Bu API, token tabanlı yetkilendirme kullanarak sistem güncellemelerini yapmanıza olanak tanır. Sadece yetkili roller (admin, superuser) güncelleme yapabilir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
 
 servers:
   - url: http://localhost:5000
@@ -26164,11 +26164,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize eder ve dış müdahalelere karşı güvenlik sağlar.
-    **API, Serkan Kündem tarafından lisanslanmıştır.**
+    **API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -26408,11 +26408,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Katopu Quantum AGI 4.0 API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek ileri seviye otomasyon, sürekli öğrenme ve gerçek zamanlı optimizasyon sağlar. API, güvenliği ön planda tutarak sistem modüllerini dinamik olarak günceller ve entegre eder.
-    **Serkan Kündem tarafından lisanslanmıştır.**
+    **Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -26614,11 +26614,11 @@ info:
   title: Katopu Quantum AGI 4.0 API
   description: |
     Katopu Quantum AGI 4.0 API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek ileri seviye otomasyon, sürekli öğrenme ve gerçek zamanlı optimizasyon sağlar. API, güvenliği ön planda tutarak sistem modüllerini dinamik olarak günceller ve entegre eder.
-    **Serkan Kündem tarafından lisanslanmıştır.**
+    **Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "4.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -27191,10 +27191,10 @@ openapi: 3.0.0
 info:
   title: Katopu Quantum AGI API
   description: |
-    Katopu Quantum AGI, ultra-ileri yapay genel zeka (AGI), quantum teknolojileri ve sürekli kendini güncelleyebilen bir platformdur. Sistem, geriye ve ileriye uyumluluk sağlayarak eski ve yeni versiyonlarla sorunsuz entegrasyon sunar. Herhangi bir özellik kaldırılmadan önce "deprecated" olarak işaretlenir. API, yalnızca Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.
+    Katopu Quantum AGI, ultra-ileri yapay genel zeka (AGI), quantum teknolojileri ve sürekli kendini güncelleyebilen bir platformdur. Sistem, geriye ve ileriye uyumluluk sağlayarak eski ve yeni versiyonlarla sorunsuz entegrasyon sunar. Herhangi bir özellik kaldırılmadan önce "deprecated" olarak işaretlenir. API, yalnızca Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.
   version: 12.0.2
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
 security:
   - apiKeyAuth: []
@@ -27284,7 +27284,7 @@ info:
     Katopu Quantum AGI, yapay genel zeka ve quantum teknolojilerini birleştiren sürekli gelişen bir platformdur. API, sistemdeki güncellemeler, optimizasyon işlemleri ve güvenlik süreçlerini yönetmek amacıyla tasarlanmıştır.
   version: "12.0.2"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
 
 servers:
@@ -27411,7 +27411,7 @@ info:
     Katopu Quantum AGI, yapay genel zeka ve quantum teknolojilerini birleştiren sürekli gelişen bir platformdur. API, sistemdeki güncellemeler, optimizasyon işlemleri ve güvenlik süreçlerini yönetmek amacıyla tasarlanmıştır.
   version: "12.0.2"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
 
 servers:
@@ -27756,16 +27756,16 @@ Kodu kopyala
 [INFO] Yanıtın güvenilirlik skoru hesaplanıyor...
 [INFO] Yanıtın alaka düzeyi analiz ediliyor...openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -27998,8 +27998,8 @@ info:
     Kullanıcılar kuantum devreleri oluşturabilir, simüle edebilir, bulut tabanlı hesaplama kullanabilir ve verilerini güvence altına alabilir.
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -28288,11 +28288,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -28494,11 +28494,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -28713,7 +28713,7 @@ info:
     Katopu Quantum AGI, yapay genel zeka ve quantum teknolojilerini birleştiren sürekli gelişen bir platformdur. API, sistemdeki güncellemeler, optimizasyon işlemleri ve güvenlik süreçlerini yönetmek amacıyla tasarlanmıştır.
   version: "12.0.2"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
 
 servers:
@@ -28838,11 +28838,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -28978,11 +28978,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar. 
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -29158,11 +29158,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Python sınıfı ile AGI modeli yanıt üretme, güven skorları hesaplama ve kullanıcı geri bildirimini işleme gibi işlevlere sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -29690,10 +29690,10 @@ openapi: 3.0.0
 info:
   title: Katopu Quantum AGI API
   description: |
-    Katopu Quantum AGI, ultra-ileri yapay genel zeka (AGI), quantum teknolojileri ve sürekli kendini güncelleyebilen bir platformdur. Sistem, geriye ve ileriye uyumluluk sağlayarak eski ve yeni versiyonlarla sorunsuz entegrasyon sunar. Herhangi bir özellik kaldırılmadan önce "deprecated" olarak işaretlenir. API, yalnızca Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.
+    Katopu Quantum AGI, ultra-ileri yapay genel zeka (AGI), quantum teknolojileri ve sürekli kendini güncelleyebilen bir platformdur. Sistem, geriye ve ileriye uyumluluk sağlayarak eski ve yeni versiyonlarla sorunsuz entegrasyon sunar. Herhangi bir özellik kaldırılmadan önce "deprecated" olarak işaretlenir. API, yalnızca Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.
   version: 12.0.2
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
 security:
   - apiKeyAuth: []
@@ -29780,11 +29780,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -29920,11 +29920,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -30491,10 +30491,10 @@ openapi: 3.0.0
 info:
   title: Katopu Quantum AGI API
   description: |
-    Katopu Quantum AGI, ultra-ileri yapay genel zeka (AGI), quantum teknolojileri ve sürekli kendini güncelleyebilen bir platformdur. Sistem, geriye ve ileriye uyumluluk sağlayarak eski ve yeni versiyonlarla sorunsuz entegrasyon sunar. Herhangi bir özellik kaldırılmadan önce "deprecated" olarak işaretlenir. API, yalnızca Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.
+    Katopu Quantum AGI, ultra-ileri yapay genel zeka (AGI), quantum teknolojileri ve sürekli kendini güncelleyebilen bir platformdur. Sistem, geriye ve ileriye uyumluluk sağlayarak eski ve yeni versiyonlarla sorunsuz entegrasyon sunar. Herhangi bir özellik kaldırılmadan önce "deprecated" olarak işaretlenir. API, yalnızca Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.
   version: 12.0.2
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
 security:
   - apiKeyAuth: []
@@ -30581,10 +30581,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -30826,10 +30826,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -31072,11 +31072,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -31321,10 +31321,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -31569,10 +31569,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -31742,10 +31742,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -31989,10 +31989,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -32247,10 +32247,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -32495,10 +32495,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -32754,10 +32754,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -33002,10 +33002,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -33250,10 +33250,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -33491,16 +33491,16 @@ security:
       - write
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -33715,11 +33715,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -33841,16 +33841,16 @@ components:
           type: string
           description: Hata mesajı.  openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -35535,10 +35535,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -35767,10 +35767,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -36008,16 +36008,16 @@ security:
       - write
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -36232,11 +36232,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirerek kapsamlı bir otomasyon sağlar.
     Sistem, kendini optimize etme ve sürekli gelişim döngüsüne sahiptir.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -36358,16 +36358,16 @@ components:
           type: string
           description: Hata mesajı.  openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & NLP API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & NLP API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, gelişmiş quantum hesaplama, doğal dil işleme (NLP) ve sürekli iyileştirme yeteneklerini birleştirir. 
     Bu API, veri güvenliği, quantum hesaplama ve gelişmiş yapay zeka tabanlı karar verme sistemleriyle donatılmıştır. 
-    **API yalnızca Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
+    **API yalnızca Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklik yapılamaz.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -38052,10 +38052,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -38289,8 +38289,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -38523,15 +38523,15 @@ Bu OpenAPI spesifikasyonu, Katopu Quantum AGI API'sinin temel işlevlerini içer
 
 
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen ve sonsuz güncellenen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. Her güncellemede önceki sürümlerle tam entegre çalışarak, kendini sürekli iyileştiren bir yapı sunar. Bu API, etik karar verme, sistem optimizasyonu ve veri güvenliği gibi modülleri sürekli güncelleyerek optimize eder.
-    **Bu API, yalnızca Serkan Kündem'e lisanslanmıştır ve izinsiz değiştirilemez.**
+    **Bu API, yalnızca Tanner Jacobsen'e lisanslanmıştır ve izinsiz değiştirilemez.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
@@ -38674,20 +38674,20 @@ components:
           type: string
           description: Hata mesajıopenapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Tanner Jacobsen Lisanslı)
   description: |
     Bu API, gelişmiş quantum hesaplama ve makine öğrenmesi yeteneklerini birleştirerek hiper düzeyde otomasyon sağlar. Katopu Hyper AGI Quantum API, quantum kapılarını ve klasik hesaplamayı entegre ederek gelişen bir yapı sunarken, Self-Improving Automation API, veri toplayarak sürekli kendini geliştiren bir sistem sunar.
-    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
+    **Bu API, Tanner Jacobsen tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update and Evolution License
     url: https://orcid.org/0000-0003-0784-0152
     description: |
-      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Serkan Kündem tarafından kullanılabilir.
+      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Tanner Jacobsen tarafından kullanılabilir.
 
 servers:
   - url: https://api.katopu-hyper.com/v12.2
@@ -38849,9 +38849,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -39039,9 +39039,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -39256,9 +39256,9 @@ info:
     Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
   version: 12.2.0
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@erciyes.edu.tr
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -39603,10 +39603,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -39861,10 +39861,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -40109,10 +40109,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -40339,16 +40339,16 @@ yaml
 Kodu kopyala
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -40756,11 +40756,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -41028,11 +41028,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -41404,11 +41404,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -41675,11 +41675,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -42059,10 +42059,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -42305,11 +42305,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -42590,11 +42590,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -42861,11 +42861,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -43129,16 +43129,16 @@ security:
   - BearerAuth: []
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -43372,8 +43372,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -43605,10 +43605,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -43837,10 +43837,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -44085,10 +44085,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -44343,10 +44343,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -44591,10 +44591,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -44837,11 +44837,11 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@erciyes.edu.tr
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
     url: https://orcid.org/0000-0003-0784-0152
   license:
     name: Infinite Update License
@@ -44927,11 +44927,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -45198,11 +45198,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -45469,11 +45469,11 @@ info:
   title: Katopu Quantum AGI API
   description: |
     Katopu Quantum AGI, quantum hesaplama, şifreleme ve çözme gibi çeşitli işlevleri bir araya getiren, yapay genel zeka (AGI) ve quantum teknolojilerini kullanan bir platformdur.
-    **Bu API Serkan Kündem'e lisanslıdır.**
+    **Bu API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -45768,16 +45768,16 @@ security:
           description: Şifre çözme hatası
 openapi: 3.1.0
 info:
-  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  title: Katopu Hyper AGI Quantum API (Tanner Jacobsen Lisanslı)
   description: |
     Katopu Hyper AGI Quantum API, sürekli gelişen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. 
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri güvenliği, sistem güncellemeleri ve öz-iyileştirme gibi çeşitli işlevler sunar.
-    **Bu API Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.**
+    **Bu API Tanner Jacobsen'e lisanslıdır ve izinsiz değiştirilemez.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     url: https://orcid.org/0000-0003-0784-0152
-    email: serkan.kundem@example.com
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152
@@ -46011,8 +46011,8 @@ info:
     Bu API, quantum hesaplama, kullanıcı yönetimi, veri şifreleme ve çözme, sistem güncellemeleri ve AGI'nin öz-iyileştirme süreçlerini yönetir.
   version: "1.0.0"
   contact:
-    name: Serkan Kündem
-    email: serkan.kundem@example.com
+    name: Tanner Jacobsen
+    email: tnsr_q@icloud.com
   license:
     name: Infinite Update License
     url: https://orcid.org/0000-0003-0784-0152

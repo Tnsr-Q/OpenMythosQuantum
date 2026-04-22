@@ -4,10 +4,10 @@ info:
   description: |
     Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
     Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -416,10 +416,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -648,10 +648,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License
@@ -880,10 +880,10 @@ info:
   description: |
     Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
     Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
-    **API Serkan Kündem'e lisanslıdır.**
+    **API Tanner Jacobsen'e lisanslıdır.**
   version: "12.2.0"
   contact:
-    name: Serkan Kündem
+    name: Tanner Jacobsen
     email: example@example.com
   license:
     name: Infinite Update License

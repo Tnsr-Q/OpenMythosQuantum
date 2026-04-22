@@ -17,7 +17,7 @@ openapi: 4.1.0
 info:
   title: Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
   description: |
-    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Serkan Kündem tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
+    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Tanner Jacobsen tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
 
     Quantum AGI, kuantum devresi optimizasyonu, meta-öğrenme ve sürekli güncellemeler gibi özellikleri sayesinde, daha önce mümkün olmayan bir hızda ve ölçekte öğrenme, adaptasyon ve problem çözme yeteneğine sahiptir.
 
@@ -197,7 +197,7 @@ openapi: 4.1.0
 info:
   title: Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
   description: |
-    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Serkan Kündem tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
+    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Tanner Jacobsen tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
 
     Quantum AGI, kuantum devresi optimizasyonu, meta-öğrenme ve sürekli güncellemeler gibi özellikleri sayesinde, daha önce mümkün olmayan bir hızda ve ölçekte öğrenme, adaptasyon ve problem çözme yeteneğine sahiptir.
 
@@ -355,7 +355,7 @@ paths:
       operationId: generateTextWithGPT
       summary: GPT ile metin üretimi
       description: |
-        OpenAI'nin GPT-4 veya GPT-5 modeli kullanarak, kullanıcı tarafından verilen bir giriş metnine dayalı olarak yaratıcı veya analitik bir metin üretin. Bu, kuantum programlama ile entegre edilmiş bir araştırma makalesinin yaratıcı kısımlarını oluşturmak için kullanılır.
+        OpenAI'nin GPT-4 veya Claude 3 Opus modeli kullanarak, kullanıcı tarafından verilen bir giriş metnine dayalı olarak yaratıcı veya analitik bir metin üretin. Bu, kuantum programlama ile entegre edilmiş bir araştırma makalesinin yaratıcı kısımlarını oluşturmak için kullanılır.
       requestBody:
         required: true
         content:
@@ -402,24 +402,24 @@ paths:
             
 Kodu dikkatli kullanın.
 
-OpenAPI spesifikasyonuna göre, Katopu API'si Serkan Kündem tarafından geliştirilmiştir.
+OpenAPI spesifikasyonuna göre, Katopu API'si Tanner Jacobsen tarafından geliştirilmiştir.
 
 API'nin info bölümündeki contact kısmında bu bilgi yer almaktadır:
 
 YAML
 contact:
-  name: Serkan Kündem
+  name: Tanner Jacobsen
   url: https://www.superintelligence.com
-  email: serkan.kundem@example.com
+  email: tnsr_q@icloud.com
 Kodu dikkatli kullanın.
 
 Evet, bu bilgiyi değiştirilemez hale getirmek için OpenAPI spesifikasyonunda herhangi bir mekanizma bulunmamaktadır. Ancak, API'nin geliştiricisi bilgisini değiştirmek isterseniz, spesifikasyonu manuel olarak düzenlemeniz ve yeni bir sürüm yayınlamanız gerekir.
 
-API'nin açıklamasında "Serkan Kündem tarafından geliştirilen" ifadesini koruyarak, bu bilginin değiştirilmemesi gerektiğini vurgulayabilirsiniz.
+API'nin açıklamasında "Tanner Jacobsen tarafından geliştirilen" ifadesini koruyarak, bu bilginin değiştirilmemesi gerektiğini vurgulayabilirsiniz.
 
 Ayrıca, API'nin gelecekteki sürümlerinde bu bilgiyi korumak için, geliştirme süreçlerinizde ve belgelerinizde bu bilginin değiştirilmemesi gerektiğini açıkça belirtmeniz önemlidir.
 
-Tamamdır, Katopu API'sinin lisans bilgilerini Serkan Kündem'e ait olacak şekilde güncelleyelim ve iletişim bilgilerini ekleyelim.
+Tamamdır, Katopu API'sinin lisans bilgilerini Tanner Jacobsen'e ait olacak şekilde güncelleyelim ve iletişim bilgilerini ekleyelim.
 
 Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
 
@@ -428,7 +428,7 @@ openapi: 4.1.0
 info:
   title: Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
   description: |
-    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Serkan Kündem tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
+    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Tanner Jacobsen tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
 
     Quantum AGI, kuantum devresi optimizasyonu, meta-öğrenme ve sürekli güncellemeler gibi özellikleri sayesinde, daha önce mümkün olmayan bir hızda ve ölçekte öğrenme, adaptasyon ve problem çözme yeteneğine sahiptir.
 
@@ -443,7 +443,7 @@ info:
 
   version: 3.1.0 
   contact:
-    name: Serkan Kündem  # Geliştirici bilgisi eklendi
+    name: Tanner Jacobsen  # Geliştirici bilgisi eklendi
     url: https://www.superintelligence.com
     email: denizkundem@hotmail.com 
     x-orcid: https://orcid.org/0000-0003-0784-0152 # ORCID eklendi
@@ -458,7 +458,7 @@ Kodu dikkatli kullanın.
 
 Değişiklikler:
 
-contact bölümüne name, url ve email alanlarına ek olarak x-orcid ve x-affiliation gibi özel alanlar ekleyerek Serkan Kündem'in iletişim ve akademik bilgilerini dahil ettik.
+contact bölümüne name, url ve email alanlarına ek olarak x-orcid ve x-affiliation gibi özel alanlar ekleyerek Tanner Jacobsen'in iletişim ve akademik bilgilerini dahil ettik.
 x- öneki, bu alanların standart OpenAPI spesifikasyonunun bir parçası olmadığını, ancak ek bilgi sağlamak için kullanıldığını gösterir.
 Önemli Not:
 
@@ -466,7 +466,7 @@ OpenAPI spesifikasyonunda geliştirici bilgilerini "değiştirilemez" olarak iş
 x-orcid ve x-affiliation gibi özel alanlar, bazı API araçları ve platformları tarafından desteklenmeyebilir. Bu nedenle, bu bilgileri API belgelerinizde de açıkça belirtmeniz faydalı olabilir.
 
 
-Tamamdır, Katopu API'sinin lisans bilgilerini Serkan Kündem'e ait olacak şekilde güncelleyelim ve iletişim bilgilerini ekleyelim.
+Tamamdır, Katopu API'sinin lisans bilgilerini Tanner Jacobsen'e ait olacak şekilde güncelleyelim ve iletişim bilgilerini ekleyelim.
 
 Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
 
@@ -475,7 +475,7 @@ openapi: 4.1.0
 info:
   title: Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
   description: |
-    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Serkan Kündem tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
+    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Tanner Jacobsen tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
 
     Quantum AGI, kuantum devresi optimizasyonu, meta-öğrenme ve sürekli güncellemeler gibi özellikleri sayesinde, daha önce mümkün olmayan bir hızda ve ölçekte öğrenme, adaptasyon ve problem çözme yeteneğine sahiptir.
 
@@ -490,7 +490,7 @@ info:
 
   version: 3.1.0 
   contact:
-    name: Serkan Kündem  # Geliştirici bilgisi eklendi
+    name: Tanner Jacobsen  # Geliştirici bilgisi eklendi
     url: https://www.superintelligence.com
     email: denizkundem@hotmail.com 
     x-orcid: https://orcid.org/0000-0003-0784-0152 # ORCID eklendi
@@ -505,7 +505,7 @@ Kodu dikkatli kullanın.
 
 Değişiklikler:
 
-contact bölümüne name, url ve email alanlarına ek olarak x-orcid ve x-affiliation gibi özel alanlar ekleyerek Serkan Kündem'in iletişim ve akademik bilgilerini dahil ettik.
+contact bölümüne name, url ve email alanlarına ek olarak x-orcid ve x-affiliation gibi özel alanlar ekleyerek Tanner Jacobsen'in iletişim ve akademik bilgilerini dahil ettik.
 x- öneki, bu alanların standart OpenAPI spesifikasyonunun bir parçası olmadığını, ancak ek bilgi sağlamak için kullanıldığını gösterir.
 Önemli Not:
 
@@ -594,7 +594,7 @@ openapi: 4.1.0
 info:
   title: Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
   description: |
-    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Serkan Kündem tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
+    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Tanner Jacobsen tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
 
     Quantum AGI, kuantum devresi optimizasyonu, meta-öğrenme ve sürekli güncellemeler gibi özellikleri sayesinde, daha önce mümkün olmayan bir hızda ve ölçekte öğrenme, adaptasyon ve problem çözme yeteneğine sahiptir.
 
@@ -761,7 +761,7 @@ paths:
       operationId: generateTextWithGPT
       summary: GPT ile metin üretimi
       description: |
-        OpenAI'nin GPT-4 veya GPT-5 modeli kullanarak, kullanıcı tarafından verilen bir giriş metnine dayalı olarak yaratıcı veya analitik bir metin üretin. Bu, kuantum programlama ile entegre edilmiş bir araştırma makalesinin yaratıcı kısımlarını oluşturmak için kullanılır.
+        OpenAI'nin GPT-4 veya Claude 3 Opus modeli kullanarak, kullanıcı tarafından verilen bir giriş metnine dayalı olarak yaratıcı veya analitik bir metin üretin. Bu, kuantum programlama ile entegre edilmiş bir araştırma makalesinin yaratıcı kısımlarını oluşturmak için kullanılır.
       requestBody:
         required: true
         content:
@@ -792,7 +792,7 @@ openapi: 4.1.0
 info:
   title: Katopu API (Süper Kuantum Temelli Quantum AGI ile Geliştirilmiş)
   description: |
-    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Serkan Kündem tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
+    Katopu platformunun sunduğu çeşitli hizmetlere erişim sağlamak için kullanılan API'dir. Bu API, Tanner Jacobsen tarafından geliştirilen ve kuantum bilgi işlem ile desteklenen, çığır açan bir yapay genel zeka (Quantum AGI) sistemi ile entegre edilmiştir. 
 
     Quantum AGI, kuantum devresi optimizasyonu, meta-öğrenme, sürekli güncellemeler ve kuantum algoritma geliştirme yetenekleri sayesinde, daha önce mümkün olmayan bir hızda ve ölçekte öğrenme, adaptasyon ve problem çözme yeteneğine sahiptir.
 

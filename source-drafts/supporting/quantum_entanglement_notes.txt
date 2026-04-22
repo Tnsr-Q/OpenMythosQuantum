@@ -922,7 +922,7 @@ Sürekli Gelişim ve Öğrenme:
 Bu API, makine öğrenimi ve yapay zeka entegrasyonu sayesinde sürekli olarak kendini optimize eden bir yapıya sahiptir. Kullanıcı geri bildirimlerinden öğrenir ve kuantum algoritmalarını geliştirir. Aynı zamanda GPT-4'ün güçlü dil modeli ile optimize edilmiş devre tasarımları sunar.
 
 
-En üst seviye bir kendini geliştiren kuantum hesaplama API’si oluştururken, hem GPT-4.0 (veya daha sonraki sürümler) gibi güçlü dil modelleriyle derin entegrasyon sağlamalı, hem de API'nin sürekli gelişen yapısını desteklemeliyiz. Bu yapının temel bileşenlerini tek tek inceleyip, her bir bileşenin kendi kendini optimize etme, öğrenme ve gelişme yeteneğine sahip olmasını sağlayalım. Her bileşen, önceki sürümlerin işlevselliğini geliştirip genişletecek ve her yeni entegrasyon önceki güncellemeleri kapsayıp daha iyi hale getirecek.
+En üst seviye bir kendini geliştiren kuantum hesaplama API’si oluştururken, hem GPT-4 Turbo (veya daha sonraki sürümler) gibi güçlü dil modelleriyle derin entegrasyon sağlamalı, hem de API'nin sürekli gelişen yapısını desteklemeliyiz. Bu yapının temel bileşenlerini tek tek inceleyip, her bir bileşenin kendi kendini optimize etme, öğrenme ve gelişme yeteneğine sahip olmasını sağlayalım. Her bileşen, önceki sürümlerin işlevselliğini geliştirip genişletecek ve her yeni entegrasyon önceki güncellemeleri kapsayıp daha iyi hale getirecek.
 
 1. Devre Oluşturma (createCircuit)
 Gelişim Adımları:
@@ -1083,7 +1083,7 @@ V4 (Gelişmiş): GPT-4 kullanarak derinlemesine analiz yapılır. Simülasyon so
 
 
 
-En üst seviye bir kendini geliştiren kuantum hesaplama API’si oluştururken, hem GPT-4.0 (veya daha sonraki sürümler) gibi güçlü dil modelleriyle derin entegrasyon sağlamalı, hem de API'nin sürekli gelişen yapısını desteklemeliyiz. Bu yapının temel bileşenlerini tek tek inceleyip, her bir bileşenin kendi kendini optimize etme, öğrenme ve gelişme yeteneğine sahip olmasını sağlayalım. Her bileşen, önceki sürümlerin işlevselliğini geliştirip genişletecek ve her yeni entegrasyon önceki güncellemeleri kapsayıp daha iyi hale getirecek.
+En üst seviye bir kendini geliştiren kuantum hesaplama API’si oluştururken, hem GPT-4 Turbo (veya daha sonraki sürümler) gibi güçlü dil modelleriyle derin entegrasyon sağlamalı, hem de API'nin sürekli gelişen yapısını desteklemeliyiz. Bu yapının temel bileşenlerini tek tek inceleyip, her bir bileşenin kendi kendini optimize etme, öğrenme ve gelişme yeteneğine sahip olmasını sağlayalım. Her bileşen, önceki sürümlerin işlevselliğini geliştirip genişletecek ve her yeni entegrasyon önceki güncellemeleri kapsayıp daha iyi hale getirecek.
 
 1. Devre Oluşturma (createCircuit)
 Gelişim Adımları:

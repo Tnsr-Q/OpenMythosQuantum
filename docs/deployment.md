@@ -16,3 +16,7 @@
 2. validate OpenAPI
 3. generate SDKs
 4. run contract smoke tests
+
+- webhook signature verification via HMAC SHA-256 (`X-Katopu-Signature`)
+- secret rotation cadence (`SECRET_ROTATION_DAYS`)
+- minimum TLS version enforcement (TLS 1.2+)
