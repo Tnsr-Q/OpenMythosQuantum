@@ -1,51 +1,53 @@
-# Action Manifest — Katopu API Modernization
+# Action Manifest — Katopu API Modernization (Week 1 Execution Focus)
 
 ## Executive Summary
 
-The repository has been upgraded for high-confidence contract modernization:
-- outdated ownership/contact references removed,
-- legacy model names replaced with production-grade alternatives,
-- OpenAPI modern patterns added (idempotency, pagination, webhook signature integrity),
-- SHA-256 verifier plugin introduced for end-to-end webhook authenticity checks.
+Contract-first modernization is complete for core API design (idempotency, pagination, webhook signature contract, security defaults). Week 1 now focuses on converting contract confidence into operational confidence with pragmatic, high-ROI steps.
 
-OpenAPI validation now passes with only non-blocking placeholder-domain warnings.
+OpenMythos guidance remains active as a standing rule for decisions:
+- adopt plugin architecture for optimization strategies,
+- use documentation patterns that include actionable client examples,
+- enforce CI validation for spec evolution.
 
-## Prioritized Actions
+## Week 1 Immediate Priorities (Now)
 
-| Priority | Action | Acceptance Criteria (Falsifiable) | Risk | Complexity | Dependencies | Rollback Strategy |
-|---|---|---|---|---|---|---|
-| P0 | Contact info modernization | `grep -R "<legacy_contact_markers>|<legacy_contact_email_prefix>|<legacy_contact_username>" /home/ubuntu/katopu-api` returns zero matches | Low | Low | None | Revert commit touching contact replacements |
-| P0 | Model name modernization | `grep -R "<legacy_model_a>\|<legacy_model_b>\|<legacy_model_c>" /home/ubuntu/katopu-api` returns zero matches | Low | Low | None | Revert config/spec model-name changes |
-| P0 | POST idempotency contract | Every POST operation in OpenAPI references `#/components/parameters/IdempotencyKey` | Low | Medium | OpenAPI schema edit | Revert OpenAPI operation parameter additions |
-| P0 | Cursor pagination for list APIs | `GET /training/jobs` exists with `cursor` + `limit` params and paginated response schema | Low | Medium | New schema + endpoint | Remove endpoint and pagination schemas |
-| P0 | Webhook signature integrity (SHA-256) | OpenAPI has `webhooks` with required `X-Katopu-Signature` header pattern `^sha256=` and verifier plugin returns VERIFIED on known-good input | Low | Medium | Shared secret in config | Revert webhooks + plugin directory |
-| P1 | Security operations defaults | `.secrets.example` includes `SECRET_ROTATION_DAYS`, `TLS_MIN_VERSION`, `ENFORCE_HSTS` | Low | Low | None | Revert env-example edits |
-| P1 | README modernization tracking | README contains `Modernization Status` section with explicit status table | Low | Low | Action manifest finalized | Revert README section |
-| P2 | Runtime enforcement implementation | Gateway/service actually enforces webhook signature, idempotency persistence, and scope claims | Medium | High | Engineering implementation | Feature flags + staged rollout |
+| Action ID | Priority | Action | Week 1 Deliverable | Acceptance Criteria (Falsifiable) | Dependencies |
+|---|---|---|---|---|---|
+| ACT-013 | P0 | Re-prioritize manifest around runtime readiness | Updated manifest with execution-ready sequence | This file contains explicit Week 1 actions with owner-ready acceptance criteria | None |
+| ACT-014 | P0 | Decide training compute strategy (provider + budget) | `docs/training-compute-strategy.md` | Doc contains provider decision, monthly budget envelope, phase gates, and rollback trigger | ACT-013 |
+| ACT-015 | P0 | Validate SHA-256 verifier against realistic webhook payloads | Automated test script + fixtures + recorded run output | Plugin returns VERIFIED for valid signatures and INVALID for tampered signatures across both webhook event types | ACT-013 |
+| ACT-016 | P1 | Add CI contract-validation pattern (OpenMythos-inspired) | Planned in next iteration (workflow + checks) | CI job fails on OpenAPI validation/test failures | ACT-013 |
+| ACT-017 | P1 | Plugin architecture expansion for circuit optimization strategies | Spec draft for plugin contract | `plugins/` includes clear plugin contract for non-security plugins | ACT-015 |
+| ACT-018 | P2 | API client example structure alignment | Structured docs/examples for common API flows | `docs/` includes executable-style request/response examples for key endpoints | ACT-013 |
 
-## Dependency Graph (Simplified)
+## Remaining Backlog Reprioritized
 
-1. OpenAPI components (`IdempotencyKey`, pagination schemas, webhook schemas)
-2. Path operation adoption (POST header references, list endpoint)
-3. Documentation alignment (`README`, auth/deployment/troubleshooting docs)
-4. Runtime plugin/tooling (SHA-256 verifier entrypoint)
-5. Falsifiable test checklist finalization
+| Priority | Area | Why It Matters Now | Suggested Timing |
+|---|---|---|---|
+| P0 | Runtime webhook verification enforcement | Prevents spoofed callbacks in production | Week 1-2 |
+| P0 | Training compute provisioning strategy | Unblocks real training execution beyond contract-only API | Week 1 |
+| P1 | Idempotency persistence in runtime store | Prevents duplicate side effects under retries | Week 2 |
+| P1 | Cursor determinism at persistence layer | Ensures stable list behavior under load | Week 2 |
+| P1 | CI policy for OpenAPI/spec evolution | Prevents regression drift | Week 2 |
+| P2 | Full capability matrix (contract vs implemented) | Improves release clarity and onboarding | Week 3 |
 
-## Risk Assessment Notes
+## Dependency Graph (Week 1)
 
-- **Schema-level changes** are low operational risk because they are additive and contract-forward.
-- **List endpoint introduction** may require backend implementation if deployed beyond mock/stub mode.
-- **Webhook signing** can fail if consumers hash transformed JSON instead of raw body bytes.
+1. **ACT-013** (manifest reset)
+2. **ACT-014 + ACT-015** (parallelizable execution)
+3. **ACT-016 + ACT-017** (next iteration, based on Week 1 outcomes)
+4. **ACT-018** (docs maturity once runtime direction is stable)
 
-## Estimated Effort
+## Risk Notes
 
-- Completed P0/P1 contract modernization: ~1 engineer-day equivalent.
-- Remaining P2 runtime hardening: ~3–7 engineer-days depending on gateway/service stack.
+- Largest delivery risk is not API contract quality; it is runtime infrastructure readiness.
+- Compute cost can drift quickly without strict budget caps and phase gates.
+- Signature verification is robust only when raw-body hashing is preserved end-to-end.
 
-## Rollback Strategy (Global)
+## Rollback Strategy
 
-- Use git commit boundaries per modernization wave.
-- If regressions occur:
-  1. revert webhook/idempotency/pagination commit,
-  2. keep contact/model text upgrades intact,
-  3. reintroduce changes behind feature flags after backend readiness.
+- Keep all Week 1 work in isolated commits by action ID.
+- If operational tests fail:
+  1. keep contract-level spec changes,
+  2. disable non-critical runtime extensions,
+  3. rerun deterministic plugin tests before re-enabling.

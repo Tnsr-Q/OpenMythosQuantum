@@ -3,7 +3,8 @@
 ## Contact + Identity Modernization
 
 - [ ] `grep -R -n "<legacy_contact_markers>|<legacy_contact_email_prefix>|<legacy_contact_username>" /home/ubuntu/katopu-api` returns no matches.
-- [ ] `grep -R -n "tnsr_q@icloud.com" /home/ubuntu/katopu-api` returns at least one match.
+- [ ] `grep -R -n "github.com/Tnsr-Q" /home/ubuntu/katopu-api/openapi /home/ubuntu/katopu-api/README.md` returns matches.
+- [ ] `grep -R -n "0009-0000-7999-7242" /home/ubuntu/katopu-api/openapi /home/ubuntu/katopu-api/README.md` returns matches.
 
 ## Model Name Modernization
 
@@ -46,21 +47,16 @@ PY
 - [ ] OpenAPI includes top-level `webhooks` with required `X-Katopu-Signature` header pattern `^sha256=[A-Fa-f0-9]{64}$`.
 - [ ] Plugin verifier returns VERIFIED for known-good payload/signature.
 
-Example deterministic check:
+Example deterministic check (realistic webhook payload fixtures):
 ```bash
-cat > /tmp/payload.json <<'JSON'
-{"ok":true}
-JSON
-SIG=$(python3 - <<'PY'
-import hmac, hashlib
-secret='test-secret'
-payload=open('/tmp/payload.json','rb').read()
-print('sha256='+hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest())
-PY
-)
-python3 plugins/sha256_verifier/entrypoint.py --secret test-secret --signature "$SIG" --payload-file /tmp/payload.json
+python3 tests/plugins/run_sha256_webhook_tests.py
 ```
-Expected output: `VERIFIED`
+Expected output includes:
+- `PASS: training.completed valid signature`
+- `PASS: notification.delivered valid signature`
+- `PASS: training.completed tampered payload`
+- `PASS: notification.delivered wrong secret`
+- `All SHA-256 webhook verifier checks passed.`
 
 ## Security Baseline Flags
 

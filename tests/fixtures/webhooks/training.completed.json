@@ -1,0 +1,17 @@
+{
+  "eventId": "evt_01HZZZABCDEFG1234567890",
+  "eventType": "training.completed",
+  "sentAt": "2026-04-22T12:05:00Z",
+  "data": {
+    "trainingId": "trn_01HZZZ6JTK98FCG73RBTQ2P5EJ",
+    "status": "completed",
+    "finalLoss": 0.0178,
+    "evaluationMetrics": {
+      "accuracy": 0.94,
+      "f1Score": 0.91,
+      "precision": 0.91,
+      "recall": 0.93
+    },
+    "savedModelPath": "/models/transformer-v1"
+  }
+}

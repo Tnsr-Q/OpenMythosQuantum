@@ -42,7 +42,7 @@ Tracked in [`ACTION_MANIFEST.md`](ACTION_MANIFEST.md).
 
 | Area | Status | Notes |
 |---|---|---|
-| Contact info modernization | ✅ Completed | Tanner Jacobsen / tnsr_q@icloud.com applied |
+| Contact info modernization | ✅ Completed | GitHub `Tnsr-Q` + ORCID `0009-0000-7999-7242` applied |
 | Model name modernization | ✅ Completed | Production-grade model names introduced |
 | JSON Schema/OpenAPI correctness | ✅ Completed (contract level) | Validation passes; only placeholder server-domain warnings remain |
 | Idempotency-Key on POST | ✅ Completed | All POST operations include Idempotency-Key parameter |

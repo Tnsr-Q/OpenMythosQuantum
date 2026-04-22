@@ -5,12 +5,12 @@ info:
   description: "This contract consolidates the draft APIs into a stricter production-oriented interface.\n\nDesign choices:\n  - explicit versioned base path\n  - normalized resource naming\n  - unique operationIds\n  - reusable components\n  - explicit authentication and authorization\n  - stricter request/response schemas\n  - examples cleaned up for implementation and testing\n"
   version: 1.1.0
   contact:
-    name: Tanner Jacobsen
-    email: tnsr_q@icloud.com
-    url: mailto:tnsr_q@icloud.com
+    name: Tnsr-Q
+    url: https://github.com/Tnsr-Q
+    x-orcid: https://orcid.org/0009-0000-7999-7242
   license:
     name: Proprietary - review before production use
-    url: https://orcid.org/0000-0003-0784-0152
+    url: https://github.com/Tnsr-Q
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 servers:
 - url: https://api.{environment}.katopu.example.com/{basePath}

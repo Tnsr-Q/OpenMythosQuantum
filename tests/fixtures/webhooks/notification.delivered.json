@@ -1,0 +1,9 @@
+{
+  "eventId": "evt_01HZZZABCDNOTIFY1234567",
+  "eventType": "notification.delivered",
+  "sentAt": "2026-04-22T12:06:00Z",
+  "data": {
+    "subscriptionId": "sub_01HZZZN0T1F1CAT10N",
+    "deliveryStatus": "delivered"
+  }
+}

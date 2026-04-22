@@ -5,7 +5,7 @@ Scope: `/home/ubuntu/katopu-api`
 
 ## Executive Findings
 
-- **Outdated contact info:** remediated in active contract and repository text assets (`<legacy_contact_name>` → `Tanner Jacobsen`, email → `tnsr_q@icloud.com`).
+- **Outdated contact info:** remediated in active contract and repository text assets (canonical identity now GitHub `Tnsr-Q` + ORCID `0009-0000-7999-7242`).
 - **Model naming posture:** legacy placeholders (`<legacy_model_a>`, `<legacy_model_b>`) removed; modern production-oriented model names introduced (`gpt-4-turbo`, `claude-3-opus`, `gemini-1.5-pro`, `llama-3.1-70b-instruct`).
 - **JSON Schema/OpenAPI correctness:** OpenAPI 3.1.0 + JSON Schema 2020-12 is valid; schema strictness remains strong (`additionalProperties: false` used broadly). Validation passes with only 2 non-blocking warnings (`example.com` server domains).
 - **Modern API practices:** idempotency headers now present for all POST operations; cursor pagination introduced; webhook signature contract and SHA-256 verifier plugin added; rate-limit headers added to POST success responses and paginated GET endpoint.

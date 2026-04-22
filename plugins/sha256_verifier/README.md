@@ -15,3 +15,9 @@ python3 plugins/sha256_verifier/entrypoint.py   --secret "$WEBHOOK_SIGNING_SECRE
 Expected output:
 - `VERIFIED` (exit 0)
 - `INVALID` (exit 1)
+
+## Week 1 realistic payload test
+
+```bash
+python3 tests/plugins/run_sha256_webhook_tests.py
+```
