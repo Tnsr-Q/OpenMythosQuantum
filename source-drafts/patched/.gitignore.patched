@@ -1,0 +1,19 @@
+# secrets and env
+config/.secrets
+config/.env
+config/env/*.env
+.env
+.env.*
+!.env.example
+
+# generated or local TLS material
+config/security/tls/*
+!config/security/tls/.gitkeep
+
+# node/python/general
+node_modules/
+dist/
+build/
+coverage/
+.pytest_cache/
+__pycache__/

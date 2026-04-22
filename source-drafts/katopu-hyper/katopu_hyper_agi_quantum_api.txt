@@ -1,0 +1,715 @@
+openapi: 3.1.0
+info:
+  title: Katopu Hyper AGI Quantum API (Serkan Kündem Lisanslı)
+  description: |
+    Katopu Hyper AGI Quantum API, sürekli gelişen ve sonsuz güncellenen bir yapay genel zeka (AGI) ve quantum hesaplama sistemidir. Her güncellemede önceki sürümlerle tam entegre çalışarak, kendini sürekli iyileştiren bir yapı sunar. Bu API, etik karar verme, sistem optimizasyonu ve veri güvenliği gibi modülleri sürekli güncelleyerek optimize eder.
+    **Bu API, yalnızca Serkan Kündem'e lisanslanmıştır ve izinsiz değiştirilemez.**
+  version: 12.2.0
+  contact:
+    name: Serkan Kündem
+    url: https://orcid.org/0000-0003-0784-0152
+    email: serkan.kundem@erciyes.edu.tr
+  license:
+    name: Infinite Update and Evolution License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: |
+      Katopu Quantum API, sınırsız güncelleme yeteneğine sahiptir. Her yeni sürüm, önceki sürümlerde yapılan iyileştirmeleri içerir ve sonsuz gelişim sağlayacak şekilde entegredir.
+
+servers:
+  - url: https://api.katopu-hyper.com/v12.2
+    description: Katopu Hyper AGI Quantum API Ana Sunucu
+
+paths:
+  /quantum/compute:
+    post:
+      summary: Quantum hesaplama işlemi
+      description: |
+        QAOA ve hibrit quantum-klasik modelleri kullanarak quantum hesaplama işlemi gerçekleştirir. Quantum devresi ve parametreleri QASM formatında gönderilir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                circuit:
+                  type: string
+                  description: QASM formatında quantum devresi
+                parameters:
+                  type: object
+                  description: Quantum devresi için parametreler (kapı türleri, qubit sayısı)
+      responses:
+        '200':
+          description: Quantum hesaplama başarıyla tamamlandı
+        '500':
+          description: Quantum hesaplama hatası
+
+  /self-improve:
+    post:
+      summary: Öz-iyileştirme ve sürekli gelişim başlat
+      description: |
+        AGI, geçmiş verileri ve kullanıcı geri bildirimlerini analiz ederek kendi modelini iyileştirir. Her sürüm, önceki sürümlerle tam uyumlu çalışarak sürekli öğrenir ve iyileştirir.
+      responses:
+        '200':
+          description: Öz-iyileştirme başarıyla başlatıldı
+        '500':
+          description: Öz-iyileştirme işlemi başarısız oldu
+
+  /quantum/security/encrypt:
+    post:
+      summary: Quantum güvenlik algoritmaları ile veriyi şifrele
+      description: |
+        Quantum güvenlik algoritmaları kullanarak verilerinizi güvenli bir şekilde şifreleyin.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: Şifrelenecek veri
+      responses:
+        '200':
+          description: Veri başarıyla şifrelendi
+        '500':
+          description: Şifreleme hatası
+
+  /modules/update:
+    post:
+      summary: Modülleri otomatik güncelle
+      description: |
+        Modüller arasında tam entegrasyon sağlayarak, önceki sürümlerle uyumlu olacak şekilde güncelleme yapar ve sistem performansını sürekli iyileştirir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                module_name:
+                  type: string
+                  description: Güncellenecek modül adı
+                update_version:
+                  type: string
+                  description: Güncellenen modül sürümü
+      responses:
+        '200':
+          description: Modül başarıyla güncellendi
+        '500':
+          description: Modül güncelleme hatası
+
+  /quantum/hyper-dimensional-computation:
+    post:
+      summary: Hiper boyutlu kuantum hesaplama gerçekleştir
+      description: |
+        Hiper boyutlu kuantum programlamayı kullanarak geniş çaplı veri analizi gerçekleştirir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                computationTask:
+                  type: string
+                  description: Kuantum programlama ile gerçekleştirilecek görev
+                  example: "Hiper boyutlu veri analizi"
+      responses:
+        '200':
+          description: Hiper boyutlu kuantum hesaplama başarıyla tamamlandı
+        '500':
+          description: Hiper boyutlu kuantum hesaplama hatası
+
+components:
+  schemas:
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum devresini tanımlayan QASM kodu
+        parameters:
+          type: object
+          description: Quantum devresi için parametreler
+
+    SimulationResult:
+      type: object
+      properties:
+        outcome:
+          type: string
+          description: Simülasyon sonucu
+        confidence_level:
+          type: number
+          description: Simülasyon sonucunun güven seviyesi
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+openapi: 3.1.0
+info:
+  title: Katopu Hyper AGI Quantum & Self-Improving Automation API (Serkan Kündem Lisanslı)
+  description: |
+    Bu API, gelişmiş quantum hesaplama ve makine öğrenmesi yeteneklerini birleştirerek hiper düzeyde otomasyon sağlar. Katopu Hyper AGI Quantum API, quantum kapılarını ve klasik hesaplamayı entegre ederek gelişen bir yapı sunarken, Self-Improving Automation API, veri toplayarak sürekli kendini geliştiren bir sistem sunar.
+    **Bu API, Serkan Kündem tarafından lisanslanmıştır ve izinsiz değişiklikler yasaktır.**
+  version: 12.2.0
+  contact:
+    name: Serkan Kündem
+    url: https://orcid.org/0000-0003-0784-0152
+    email: serkan.kundem@erciyes.edu.tr
+  license:
+    name: Infinite Update and Evolution License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: |
+      API sınırsız güncelleme yeteneğine sahiptir ve her yeni güncelleme ile daha güçlü hale gelir. Lisans yalnızca Serkan Kündem tarafından kullanılabilir.
+
+servers:
+  - url: https://api.katopu-hyper.com/v12.2
+    description: Katopu Hyper AGI Quantum API Ana Sunucu
+  - url: https://api.self-improving-automation.com/v1
+    description: Self-Improving Automation API Ana Sunucu
+
+paths:
+  /quantum/compute:
+    post:
+      operationId: computeQuantum
+      summary: Quantum hesaplama işlemi
+      description: |
+        Quantum Approximate Optimization Algorithm (QAOA) ve hibrit quantum-klasik modelleri kullanarak quantum hesaplama işlemi gerçekleştirir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                circuit:
+                  type: string
+                  description: QASM formatında quantum devresi
+                parameters:
+                  type: object
+                  description: Quantum devresinde kullanılacak parametreler (örn. kapı türleri, qubit sayısı)
+      responses:
+        '200':
+          description: Quantum hesaplama başarıyla tamamlandı
+        '500':
+          description: Quantum hesaplama hatası
+
+  /self-improve:
+    post:
+      operationId: selfImproveAutomation
+      summary: AGI öz-iyileştirme döngüsü başlat
+      description: |
+        AGI, geçmiş verileri ve kullanıcı geri bildirimlerini analiz ederek kendi modelini iyileştirir. Yeni sürüm numarasıyla daha optimize bir yapı sunar.
+      responses:
+        '200':
+          description: Öz-iyileştirme başarıyla başlatıldı
+        '500':
+          description: Öz-iyileştirme işlemi başarısız
+
+  /quantum/security/encrypt:
+    post:
+      operationId: encryptQuantumData
+      summary: Quantum güvenlik algoritmaları ile veriyi şifrele
+      description: |
+        Quantum dayanıklı şifreleme algoritmaları kullanarak verilerinizi güvenli bir şekilde şifreleyin.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: Şifrelenecek veri
+      responses:
+        '200':
+          description: Veri başarıyla şifrelendi
+        '500':
+          description: Şifreleme hatası
+
+  /modules/update:
+    post:
+      operationId: updateModules
+      summary: Modülleri otomatik güncelle
+      description: |
+        Modüller arasında tam entegrasyon sağlayarak, önceki sürümlerle uyumlu olacak şekilde güncelleme yapar.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                module_name:
+                  type: string
+                  description: Güncellenecek modül adı
+                update_version:
+                  type: string
+                  description: Güncellenen modül sürümü
+      responses:
+        '200':
+          description: Modül başarıyla güncellendi
+        '500':
+          description: Modül güncelleme hatası
+
+  /predict:
+    post:
+      operationId: makePrediction
+      summary: Yeni giriş verisi ile tahmin yap
+      description: |
+        Yeni bir giriş verisi ile model üzerinden tahmin yapın. Model, daha önceki eğitim verileriyle tahminler yaparak sonuç döner.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                input_data:
+                  type: array
+                  items:
+                    type: number
+                  description: Tahmin yapılacak yeni giriş verisi
+                  example: [4, 5]
+      responses:
+        '200':
+          description: Tahmin başarıyla yapıldı
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  prediction:
+                    type: number
+                    description: Model tarafından yapılan tahmin
+                    example: 10
+        '500':
+          description: Tahmin sırasında hata oluştu
+
+components:
+  schemas:
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum devresini tanımlayan QASM kodu
+        parameters:
+          type: object
+          description: Quantum devresi için parametreler (örn. qubit sayısı, kapı dizilimleri)
+
+    PredictionResult:
+      type: object
+      properties:
+        prediction:
+          type: number
+          description: Model tarafından yapılan tahmin
+          example: 10
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı
+          example: "Veri ekleme hatası"openapi: 3.1.0
+info:
+  title: Katopu Hyper AGI Quantum API
+  description: |
+    Katopu Hyper AGI Quantum API, sürekli gelişim ve kendini optimize etme yeteneğiyle donatılmış bir yapay zeka ve quantum hesaplama sistemidir. 
+    Bu API, kuantum hesaplama performansını sürekli olarak artırırken, kendi kendini güncelleyip optimize eden otomasyon özelliklerine sahiptir. 
+    Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
+  version: 12.2.0
+  contact:
+    name: Serkan Kündem
+    url: https://orcid.org/0000-0003-0784-0152
+    email: serkan.kundem@erciyes.edu.tr
+  license:
+    name: Infinite Update License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: |
+      API, sonsuz güncelleme döngüsüne sahiptir ve her yeni sürümde önceki tüm sürümlerle uyumlu çalışır.
+
+servers:
+  - url: https://api.katopu-hyper.com/v12.2
+    description: Ana Sunucu
+
+paths:
+  /quantum/compute:
+    post:
+      operationId: computeQuantum
+      summary: Quantum hesaplama işlemi
+      description: |
+        Quantum Approximate Optimization Algorithm (QAOA) ve hibrit quantum-klasik modelleri kullanarak quantum devresi simülasyonu gerçekleştirir. 
+        Quantum hesaplama performansı sürekli optimize edilir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                circuit:
+                  type: string
+                  description: QASM formatında quantum devresi
+                parameters:
+                  type: object
+                  description: Quantum devresi parametreleri (kapı türleri, qubit sayısı)
+      responses:
+        '200':
+          description: Quantum hesaplama başarıyla tamamlandı
+        '500':
+          description: Quantum hesaplama hatası
+
+  /self-improve:
+    post:
+      operationId: selfImprove
+      summary: AGI öz-iyileştirme döngüsü başlat
+      description: |
+        API, sürekli kendini optimize eden bir yapı sunar. Her güncelleme, geçmiş veriler ve kullanıcı geri bildirimlerini analiz ederek kendi modelini iyileştirir. 
+        Bu süreç, sonsuz bir gelişim döngüsü ile devam eder.
+      responses:
+        '200':
+          description: Öz-iyileştirme başarıyla başlatıldı
+        '500':
+          description: Öz-iyileştirme hatası
+
+  /quantum/security/encrypt:
+    post:
+      operationId: encryptData
+      summary: Quantum güvenlik algoritmaları ile veri şifreleme
+      description: |
+        Quantum dayanıklı şifreleme algoritmaları kullanarak verilerinizi güvenli bir şekilde şifreler.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: Şifrelenecek veri
+      responses:
+        '200':
+          description: Veri başarıyla şifrelendi
+        '500':
+          description: Şifreleme hatası
+
+  /quantum/security/decrypt:
+    post:
+      operationId: decryptData
+      summary: Şifrelenmiş veriyi çözme
+      description: |
+        Quantum dayanıklı şifreleme algoritmaları kullanarak şifrelenmiş verilerinizi çözer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                encrypted_data:
+                  type: string
+                  description: Şifresi çözülecek veri
+      responses:
+        '200':
+          description: Veri başarıyla çözüldü
+        '500':
+          description: Şifre çözme hatası
+
+  /quantum/simulation:
+    post:
+      operationId: runSimulation
+      summary: Kuantum simülasyonu gerçekleştirme
+      description: |
+        Kuantum hesaplama ile büyük veri kümeleri üzerinde simülasyonlar ve optimizasyonlar gerçekleştirir. 
+        Quantum hesaplama performansını sürekli optimize ederek karmaşık veri kümeleri üzerinde etkili sonuçlar üretir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task:
+                  type: string
+                  description: Simüle edilecek görev
+                parameters:
+                  type: object
+                  description: Simülasyon için parametreler (veri seti büyüklüğü, iterasyon sayısı)
+      responses:
+        '200':
+          description: Simülasyon başarıyla tamamlandı
+        '500':
+          description: Simülasyon hatası
+
+  /modules/update:
+    post:
+      operationId: updateModules
+      summary: Modülleri otomatik güncelle
+      description: |
+        Modüller arasında tam entegrasyon sağlayarak, önceki sürümlerle uyumlu olacak şekilde modül güncellemesi yapar. 
+        Her yeni güncellemede önceki tüm modüllerle tam uyumluluk sağlanır.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                module_name:
+                  type: string
+                  description: Güncellenecek modül adı
+                update_version:
+                  type: string
+                  description: Güncellenen modül sürümü
+      responses:
+        '200':
+          description: Modül başarıyla güncellendi
+        '500':
+          description: Modül güncelleme hatası
+
+components:
+  schemas:
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum devresini tanımlayan QASM kodu
+        parameters:
+          type: object
+          description: Quantum devresi için kullanılan parametreler (qubit sayısı, kapı dizilimleri)
+
+    SimulationResult:
+      type: object
+      properties:
+        outcome:
+          type: string
+          description: Simülasyon sonucu
+        confidence_level:
+          type: number
+          description: Simülasyon sonucunun güven seviyesi
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı
+
+
+
+
+openapi: 3.1.0
+info:
+  title: Katopu Hyper AGI Quantum API
+  description: |
+    Katopu Hyper AGI Quantum API, sürekli gelişim ve kendini optimize etme yeteneğiyle donatılmış bir yapay zeka ve quantum hesaplama sistemidir. 
+    Bu API, kuantum hesaplama performansını sürekli olarak artırırken, kendi kendini güncelleyip optimize eden otomasyon özelliklerine sahiptir. 
+    Sonsuz gelişim döngüsü içinde çalışan bu sistem, her güncellemede bir önceki sürümleri entegre eder ve gelişmiş algoritmalarla çalışır.
+  version: 12.2.0
+  contact:
+    name: Serkan Kündem
+    url: https://orcid.org/0000-0003-0784-0152
+    email: serkan.kundem@erciyes.edu.tr
+  license:
+    name: Infinite Update License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: |
+      API, sonsuz güncelleme döngüsüne sahiptir ve her yeni sürümde önceki tüm sürümlerle uyumlu çalışır.
+
+servers:
+  - url: https://api.katopu-hyper.com/v12.2
+    description: Ana Sunucu
+
+paths:
+  /quantum/compute:
+    post:
+      operationId: computeQuantum
+      summary: Quantum hesaplama işlemi
+      description: |
+        Quantum Approximate Optimization Algorithm (QAOA) ve hibrit quantum-klasik modelleri kullanarak quantum devresi simülasyonu gerçekleştirir. 
+        Quantum hesaplama performansı sürekli optimize edilir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                circuit:
+                  type: string
+                  description: QASM formatında quantum devresi
+                parameters:
+                  type: object
+                  description: Quantum devresi parametreleri (kapı türleri, qubit sayısı)
+      responses:
+        '200':
+          description: Quantum hesaplama başarıyla tamamlandı
+        '500':
+          description: Quantum hesaplama hatası
+
+  /self-improve:
+    post:
+      operationId: selfImprove
+      summary: AGI öz-iyileştirme döngüsü başlat
+      description: |
+        API, sürekli kendini optimize eden bir yapı sunar. Her güncelleme, geçmiş veriler ve kullanıcı geri bildirimlerini analiz ederek kendi modelini iyileştirir. 
+        Bu süreç, sonsuz bir gelişim döngüsü ile devam eder.
+      responses:
+        '200':
+          description: Öz-iyileştirme başarıyla başlatıldı
+        '500':
+          description: Öz-iyileştirme hatası
+
+  /quantum/security/encrypt:
+    post:
+      operationId: encryptData
+      summary: Quantum güvenlik algoritmaları ile veri şifreleme
+      description: |
+        Quantum dayanıklı şifreleme algoritmaları kullanarak verilerinizi güvenli bir şekilde şifreler.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: Şifrelenecek veri
+      responses:
+        '200':
+          description: Veri başarıyla şifrelendi
+        '500':
+          description: Şifreleme hatası
+
+  /quantum/security/decrypt:
+    post:
+      operationId: decryptData
+      summary: Şifrelenmiş veriyi çözme
+      description: |
+        Quantum dayanıklı şifreleme algoritmaları kullanarak şifrelenmiş verilerinizi çözer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                encrypted_data:
+                  type: string
+                  description: Şifresi çözülecek veri
+      responses:
+        '200':
+          description: Veri başarıyla çözüldü
+        '500':
+          description: Şifre çözme hatası
+
+  /quantum/simulation:
+    post:
+      operationId: runSimulation
+      summary: Kuantum simülasyonu gerçekleştirme
+      description: |
+        Kuantum hesaplama ile büyük veri kümeleri üzerinde simülasyonlar ve optimizasyonlar gerçekleştirir. 
+        Quantum hesaplama performansını sürekli optimize ederek karmaşık veri kümeleri üzerinde etkili sonuçlar üretir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task:
+                  type: string
+                  description: Simüle edilecek görev
+                parameters:
+                  type: object
+                  description: Simülasyon için parametreler (veri seti büyüklüğü, iterasyon sayısı)
+      responses:
+        '200':
+          description: Simülasyon başarıyla tamamlandı
+        '500':
+          description: Simülasyon hatası
+
+  /modules/update:
+    post:
+      operationId: updateModules
+      summary: Modülleri otomatik güncelle
+      description: |
+        Modüller arasında tam entegrasyon sağlayarak, önceki sürümlerle uyumlu olacak şekilde modül güncellemesi yapar. 
+        Her yeni güncellemede önceki tüm modüllerle tam uyumluluk sağlanır.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                module_name:
+                  type: string
+                  description: Güncellenecek modül adı
+                update_version:
+                  type: string
+                  description: Güncellenen modül sürümü
+      responses:
+        '200':
+          description: Modül başarıyla güncellendi
+        '500':
+          description: Modül güncelleme hatası
+
+components:
+  schemas:
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum devresini tanımlayan QASM kodu
+        parameters:
+          type: object
+          description: Quantum devresi için kullanılan parametreler (qubit sayısı, kapı dizilimleri)
+
+    SimulationResult:
+      type: object
+      properties:
+        outcome:
+          type: string
+          description: Simülasyon sonucu
+        confidence_level:
+          type: number
+          description: Simülasyon sonucunun güven seviyesi
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı
+
+

@@ -1,0 +1,316 @@
+Hereopenapi: 3.1.0
+info:
+  title: Smart Guidance API
+  description: API for providing step-by-step guidance based on user goals and experience levels in quantum computing.
+  version: 1.0.0
+servers:
+  - url: http://api.example.com/v1
+    description: Main production server
+
+paths:
+  /assistant/guide:
+    post:
+      operationId: getSmartGuidance
+      summary: Kullanıcıya hedeflerine göre adım adım rehberlik sağlar.
+      description: Kullanıcıların hedeflerine yönelik devre oluşturma sürecinde adım adım rehberlik eder. Öneriler, kullanıcının bilgi seviyesine göre otomatik olarak kişiselleştirilir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                targetGoal:
+                  type: string
+                  description: Kullanıcının ulaşmak istediği hedef (örneğin, minimum derinlik, yüksek doğruluk).
+                  example: "high_fidelity"
+                experienceLevel:
+                  type: string
+                  description: Kullanıcının kuantum hesaplama deneyim seviyesi.
+                  example: "beginner"
+      responses:
+        '200':
+          description: Akıllı rehber başarıyla sağlandı.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  steps:
+                    type: array
+                    description: Kullanıcının izlemesi gereken adımlar.
+                    items:
+                      type: string
+                      example: "Hadamard kapısını qubit 0 üzerine uygulayın."
+ is the valid OpenAPI 3.1.0 spec based on your request:
+
+This specification defines an API that provides step-by-step guidance for users in the context of quantum computing, personalized according to their goals and experience level.
+
+
+İşte OpenAPI 3.1.0 spesifikasyonunun daha kapsamlı, ayrıntılı ve "en yüksek süper duruma" getirilmiş versiyonu:
+openapi: 3.1.0
+info:
+  title: Smart Guidance API
+  description: Bu API, kullanıcılara hedeflerine ve bilgi seviyelerine göre kuantum hesaplama devresi oluşturma sürecinde kişiselleştirilmiş, adım adım rehberlik sağlar. API, kullanıcıların deneyim seviyesine göre uygun devre elemanlarını ve işlemleri önerir.
+  version: 1.0.0
+  contact:
+    name: API Support
+    url: http://api.example.com/support
+    email: support@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.example.com/v1
+    description: Production server (HTTPS)
+  - url: https://staging-api.example.com/v1
+    description: Staging server for testing (HTTPS)
+
+paths:
+  /assistant/guide:
+    post:
+      operationId: getSmartGuidance
+      summary: Kullanıcıya hedeflerine göre adım adım rehberlik sağlar.
+      description: Kullanıcıların hedeflerine yönelik devre oluşturma sürecinde adım adım rehberlik eder. Öneriler, kullanıcının bilgi seviyesine göre otomatik olarak kişiselleştirilir. API, en iyi uygulamaları, devre optimizasyonlarını ve kullanıcının gelişimini takip eder.
+      tags:
+        - Guidance
+        - Quantum Computing
+      externalDocs:
+        description: Daha fazla bilgi için API dökümantasyonunu inceleyin.
+        url: http://api.example.com/docs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                targetGoal:
+                  type: string
+                  description: Kullanıcının ulaşmak istediği hedef (örneğin, minimum derinlik, yüksek doğruluk).
+                  example: "high_fidelity"
+                experienceLevel:
+                  type: string
+                  description: Kullanıcının kuantum hesaplama deneyim seviyesi.
+                  enum: [beginner, intermediate, advanced]
+                  example: "beginner"
+      responses:
+        '200':
+          description: Akıllı rehber başarıyla sağlandı.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  steps:
+                    type: array
+                    description: Kullanıcının izlemesi gereken adımlar.
+                    items:
+                      type: string
+                      example: "Hadamard kapısını qubit 0 üzerine uygulayın."
+                  totalSteps:
+                    type: integer
+                    description: Toplam adım sayısı.
+                    example: 5
+                  currentStep:
+                    type: integer
+                    description: Şu anki adım numarası.
+                    example: 1
+                  completionStatus:
+                    type: string
+                    description: Rehberlik sürecinin tamamlanma durumu.
+                    enum: [in_progress, completed, failed]
+                    example: "in_progress"
+        '400':
+          description: Geçersiz istek verisi. Eksik veya hatalı parametreler olabilir.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Hata mesajı.
+                    example: "Geçersiz 'targetGoal' parametresi."
+        '500':
+          description: Sunucu hatası.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Sunucu tarafında beklenmedik bir hata oluştu.
+                    example: "Internal Server Error"
+      security:
+        - apiKeyAuth: []
+
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı.
+
+tags:
+  - name: Guidance
+    description: Hedef bazlı rehberlik sağlayan işlemler.
+  - name: Quantum Computing
+    description: Kuantum hesaplama ile ilgili işlemler.
+kstra Özellikler:
+
+
+Gelişmiş Hata Yönetimi: Hem 400 Bad Request hem de 500 Internal Server Error durumları için hata cevapları eklendi.
+API Güvenliği: API için apiKeyAuth güvenlik şeması eklendi.
+Enum Parametreler: experienceLevel alanı için belirli sabit değerler (beginner, intermediate, advanced) belirlendi.
+Dokümantasyon ve Destek: API için dış dökümantasyon ve destek bilgileri eklendi.
+Daha Fazla Yanıt Detayı: Yanıt şemasına rehberlik adımlarının toplamı, şu anki adım ve süreç tamamlanma durumu eklendi.
+Bu versiyon, spesifikasyonu daha kapsamlı hale getirmek için en iyi uygulamaları içerir ve profesyonel API standartlarına uygun hale getirilmiştir.
+
+
+
+stediğiniz API şemasını ChatGPT 4.0'a uygun hale getirmek için, yapıya uygun bazı düzenlemeler yapmamız ve gerekirse OpenAI'ye özgü spesifik entegrasyonları dahil etmemiz gerekebilir. ChatGPT 4.0’ın API kullanımında, belirli özelliklerin korunması önemlidir, ancak OpenAPI'nin genel mantığı aynıdır.
+
+İşte mevcut spesifikasyonun, ChatGPT 4.0 tabanlı bir API ile daha uyumlu hale getirilmiş versiyonu. Bu versiyonda, ChatGPT’nin API kullanım senaryolarına uygun güvenlik, model seçimi ve diğer spesifik detaylar göz önünde bulundurulmuştur:
+
+
+openapi: 3.1.0
+info:
+  title: ChatGPT 4.0 Smart Guidance API
+  description: Bu API, ChatGPT 4.0 kullanarak kullanıcılara hedeflerine ve bilgi seviyelerine göre kişiselleştirilmiş rehberlik sağlar.
+  version: 1.0.0
+  contact:
+    name: API Support
+    url: http://api.example.com/support
+    email: support@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.example.com/v1
+    description: Production server (HTTPS)
+  - url: https://staging-api.example.com/v1
+    description: Staging server for testing (HTTPS)
+
+paths:
+  /assistant/guide:
+    post:
+      operationId: getSmartGuidance
+      summary: Kullanıcıya hedeflerine göre adım adım rehberlik sağlar.
+      description: ChatGPT 4.0 modelini kullanarak, kullanıcılara kuantum hesaplama devresi oluşturma sürecinde adım adım rehberlik eder. Öneriler, kullanıcıların bilgi seviyesine ve hedeflerine göre kişiselleştirilir.
+      tags:
+        - Guidance
+        - Quantum Computing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                  description: ChatGPT 4.0 modelinin versiyonu.
+                  enum: [gpt-4, gpt-4-turbo]
+                  example: "gpt-4"
+                targetGoal:
+                  type: string
+                  description: Kullanıcının ulaşmak istediği hedef (örneğin, minimum derinlik, yüksek doğruluk).
+                  example: "high_fidelity"
+                experienceLevel:
+                  type: string
+                  description: Kullanıcının kuantum hesaplama deneyim seviyesi.
+                  enum: [beginner, intermediate, advanced]
+                  example: "beginner"
+                userPrompt:
+                  type: string
+                  description: Kullanıcının sistemden almak istediği belirli rehberlik veya talimat.
+                  example: "Kuantum devresini optimize etmemde yardımcı olur musun?"
+      responses:
+        '200':
+          description: Akıllı rehber başarıyla sağlandı.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  steps:
+                    type: array
+                    description: Kullanıcının izlemesi gereken adımlar.
+                    items:
+                      type: string
+                      example: "Hadamard kapısını qubit 0 üzerine uygulayın."
+                  totalSteps:
+                    type: integer
+                    description: Toplam adım sayısı.
+                    example: 5
+                  currentStep:
+                    type: integer
+                    description: Şu anki adım numarası.
+                    example: 1
+                  completionStatus:
+                    type: string
+                    description: Rehberlik sürecinin tamamlanma durumu.
+                    enum: [in_progress, completed, failed]
+                    example: "in_progress"
+        '400':
+          description: Geçersiz istek verisi. Eksik veya hatalı parametreler olabilir.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Hata mesajı.
+                    example: "Geçersiz 'targetGoal' parametresi."
+        '500':
+          description: Sunucu hatası.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Sunucu tarafında beklenmedik bir hata oluştu.
+                    example: "Internal Server Error"
+      security:
+        - apiKeyAuth: []
+      x-openai-model: gpt-4
+
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı.
+
+tags:
+  - name: Guidance
+    description: Hedef bazlı rehberlik sağlayan işlemler.
+  - name: Quantum Computing
+    description: Kuantum hesaplama ile ilgili işlemler.
+Eklemeler ve Değişiklikler:
+
+ChatGPT 4.0 Modeli: İlgili API isteğinde hangi ChatGPT modelinin kullanılacağını belirlemek için model parametresi eklendi. Bu parametre gpt-4 veya gpt-4-turbo olabilir.
+Kullanıcı Talebi (userPrompt): Kullanıcı tarafından özelleştirilmiş talimat veya rehberlik istemek için userPrompt alanı eklendi. Bu, ChatGPT'nin daha zengin ve hedefli yanıtlar vermesine olanak tanır.
+x-openai-model Kapsamı: İlgili istekte kullanılan modelin belirtilmesi için x-openai-model özelliği eklendi.
+Güvenlik: API anahtarı güvenliği, OpenAI standardı olan Authorization başlığı üzerinden sağlandı.
+Bu şema, ChatGPT 4.0 tabanlı API kullanımına uygun şekilde yapılandırılmıştır ve mevcut kullanım örneğinizi daha spesifik hale getirmek için gerekli eklemeleri içerir.
+

@@ -1,0 +1,1325 @@
+openapi: 3.1.0
+info:
+  title: Katopu Unified Quantum AGI API
+  description: Unified OpenAPI 3.1.0 specification merged from the uploaded Katopu
+    Quantum, Katopu Hyper AGI Quantum, Self-Improving Quantum Computing, Smart Guidance,
+    and advanced training assistant drafts. It combines quantum circuit lifecycle,
+    simulation, optimization, security, monitoring, guidance, self-improvement, system
+    updates, user/order management, and training automation endpoints.
+  version: 13.0.0
+  contact:
+    name: Serkan Kündem
+    email: serkan.kundem@erciyes.edu.tr
+    url: https://orcid.org/0000-0003-0784-0152
+  license:
+    name: Infinite Update License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: Merged draft license metadata preserved from the uploaded specifications.
+      Review legal/licensing text before production use.
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+servers:
+- url: https://api.katopu-hyper.com/v12.2
+  description: Primary Katopu Hyper API server
+- url: https://api.katopu-quantum.com/v9.0
+  description: Katopu Quantum API server
+- url: https://api.self-improving-automation.com/v1
+  description: AGI automation server
+- url: https://api.quantumcomputing.com/v3
+  description: Quantum circuit service
+- url: https://api.example.com/v1
+  description: Compatibility / staging draft server
+tags:
+- name: Users
+  description: User management operations
+- name: Orders
+  description: Order management operations
+- name: Quantum Circuits
+  description: Quantum circuit creation, simulation, and optimization
+- name: Quantum Operations
+  description: Quantum compute and related operations
+- name: Security
+  description: Encryption, decryption, and security monitoring
+- name: Monitoring
+  description: Autonomous monitoring endpoints
+- name: Guidance
+  description: Step-by-step guidance and recommendations
+- name: AGI Optimization
+  description: Self-improvement and model adaptation
+- name: System Updates
+  description: Versioning and update management
+- name: Training
+  description: AI training lifecycle and analytics
+security:
+- ApiKeyAuth: []
+- BearerAuth: []
+paths:
+  /user:
+    get:
+      tags:
+      - Users
+      operationId: getUser
+      summary: Get user information
+      description: Returns user information for the supplied userId query parameter.
+      parameters:
+      - name: userId
+        in: query
+        required: true
+        description: User identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: User returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+      - Users
+      operationId: createUser
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /order:
+    get:
+      tags:
+      - Orders
+      operationId: getOrder
+      summary: Get order details
+      parameters:
+      - name: orderId
+        in: query
+        required: true
+        description: Order identifier
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Order returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+      - Orders
+      operationId: createOrder
+      summary: Create a new order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /quantum/compute:
+    post:
+      tags:
+      - Quantum Operations
+      operationId: computeQuantumCircuit
+      summary: Run a quantum computation
+      description: Executes QAOA or hybrid quantum-classical workloads using a supplied
+        circuit definition.
+      responses:
+        '200':
+          description: Quantum computation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuantumResult'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuantumCircuit'
+  /quantum/security/encrypt:
+    post:
+      tags:
+      - Security
+      operationId: encryptData
+      summary: Encrypt data
+      description: Encrypts input data using quantum-inspired security logic from
+        the drafts.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EncryptRequest'
+      responses:
+        '200':
+          description: Data encrypted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EncryptResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /quantum/security/decrypt:
+    post:
+      tags:
+      - Security
+      operationId: decryptData
+      summary: Decrypt data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecryptRequest'
+      responses:
+        '200':
+          description: Data decrypted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecryptResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /circuits:
+    post:
+      tags:
+      - Quantum Circuits
+      operationId: createCircuit
+      summary: Create a quantum circuit
+      description: Creates a quantum circuit and optionally applies optimization preferences
+        at creation time.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CircuitCreateRequest'
+      responses:
+        '201':
+          description: Circuit created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitCreateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /circuits/{circuitId}/simulate:
+    post:
+      tags:
+      - Quantum Circuits
+      operationId: simulateCircuit
+      summary: Simulate a quantum circuit
+      parameters:
+      - name: circuitId
+        in: path
+        required: true
+        description: Circuit identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Simulation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimulationResult'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /circuits/{circuitId}/optimize:
+    post:
+      tags:
+      - Quantum Circuits
+      - AGI Optimization
+      operationId: optimizeCircuit
+      summary: Optimize a quantum circuit
+      description: Returns an optimized circuit and a summary of learned improvements.
+      parameters:
+      - name: circuitId
+        in: path
+        required: true
+        description: Circuit identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Circuit optimized successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptimizationResult'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /assistant/guide:
+    post:
+      tags:
+      - Guidance
+      operationId: getSmartGuidance
+      summary: Get personalized step-by-step guidance
+      description: Provides guidance based on target goals, experience level, and
+        optional user prompt/model selection.
+      externalDocs:
+        description: Supplemental documentation
+        url: http://api.example.com/docs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GuidanceRequest'
+      responses:
+        '200':
+          description: Guidance returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuidanceResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /learning/settings:
+    patch:
+      tags:
+      - AGI Optimization
+      operationId: updateLearningSettings
+      summary: Update learning settings
+      description: Adjusts optimization goals and learning sensitivity.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LearningSettingsRequest'
+      responses:
+        '200':
+          description: Learning settings updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+  /models/update:
+    post:
+      tags:
+      - AGI Optimization
+      operationId: updateModel
+      summary: Update the AI model
+      description: Updates the AI model using feedback and analysis.
+      responses:
+        '200':
+          description: Model updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+  /self-improve:
+    post:
+      tags:
+      - AGI Optimization
+      operationId: startSelfImprovement
+      summary: Start AGI self-improvement
+      description: Starts a self-improvement or self-optimization cycle.
+      responses:
+        '200':
+          description: Self-improvement started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /update/check:
+    get:
+      tags:
+      - System Updates
+      operationId: checkForUpdates
+      summary: Check for updates
+      responses:
+        '200':
+          description: Update availability returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCheckResponse'
+  /update/apply:
+    post:
+      tags:
+      - System Updates
+      operationId: applyUpdates
+      summary: Apply updates
+      responses:
+        '200':
+          description: Updates applied successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateApplyResponse'
+  /versions/release:
+    post:
+      tags:
+      - System Updates
+      operationId: releaseNewVersion
+      summary: Release a new version
+      responses:
+        '200':
+          description: Version released successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionReleaseResponse'
+  /monitoring/autonomous-security:
+    post:
+      tags:
+      - Monitoring
+      - Security
+      operationId: performAutonomousSecurityMonitoring
+      summary: Perform autonomous security monitoring
+      requestBody:
+        required: false
+      responses:
+        '200':
+          description: Security monitoring completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutonomousSecurityStatus'
+  /monitoring/autonomous-performance:
+    post:
+      tags:
+      - Monitoring
+      operationId: performAutonomousPerformanceMonitoring
+      summary: Perform autonomous performance monitoring
+      requestBody:
+        required: false
+      responses:
+        '200':
+          description: Performance monitoring completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutonomousPerformanceStatus'
+  /train:
+    post:
+      tags:
+      - Training
+      operationId: startAdvancedTraining
+      summary: Start advanced model training
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrainingRequest'
+      responses:
+        '200':
+          description: Training started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingStartResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /train/automatic-optimization:
+    post:
+      tags:
+      - Training
+      - AGI Optimization
+      operationId: startAutomaticOptimization
+      summary: Start fully autonomous training optimization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutomaticOptimizationRequest'
+      responses:
+        '200':
+          description: Automatic optimization started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomaticOptimizationResponse'
+  /train/{training_id}/status:
+    get:
+      tags:
+      - Training
+      operationId: getTrainingStatus
+      summary: Get training status
+      parameters:
+      - name: training_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Training identifier
+      responses:
+        '200':
+          description: Training status returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingStatusResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /train/{training_id}/stop:
+    post:
+      tags:
+      - Training
+      operationId: stopTraining
+      summary: Stop a training process
+      parameters:
+      - name: training_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Training identifier
+      responses:
+        '200':
+          description: Training stopped successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingStopResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /train/{training_id}/results:
+    get:
+      tags:
+      - Training
+      operationId: getTrainingResults
+      summary: Get training results
+      parameters:
+      - name: training_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Training identifier
+      responses:
+        '200':
+          description: Training results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingResultsResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /train/{training_id}/recommendations:
+    get:
+      tags:
+      - Training
+      - Guidance
+      operationId: getHyperparameterRecommendations
+      summary: Get hyperparameter recommendations
+      parameters:
+      - name: training_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Training identifier
+      responses:
+        '200':
+          description: Recommendations returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HyperparameterRecommendation'
+  /train/{training_id}/analytics:
+    get:
+      tags:
+      - Training
+      - Monitoring
+      operationId: getTrainingAnalytics
+      summary: Get training analytics
+      parameters:
+      - name: training_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Training identifier
+      responses:
+        '200':
+          description: Analytics returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingAnalyticsResponse'
+  /train/{training_id}/dynamic-feedback:
+    post:
+      tags:
+      - Training
+      - AGI Optimization
+      operationId: applyDynamicFeedback
+      summary: Apply dynamic feedback to training
+      parameters:
+      - name: training_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Training identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicFeedbackRequest'
+      responses:
+        '200':
+          description: Dynamic feedback applied successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+  /dashboard/metrics:
+    get:
+      tags:
+      - Training
+      - Monitoring
+      operationId: getTrainingMetrics
+      summary: Retrieve dashboard metrics
+      parameters:
+      - name: training_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Training identifier
+      responses:
+        '200':
+          description: Metrics returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardMetrics'
+  /notifications/setup:
+    post:
+      tags:
+      - Training
+      - Monitoring
+      operationId: setupNotifications
+      summary: Set up training notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationSetupRequest'
+      responses:
+        '200':
+          description: Notifications configured successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+  /optimize/global-hyperparameters:
+    post:
+      tags:
+      - Training
+      - AGI Optimization
+      operationId: optimizeGlobalHyperparameters
+      summary: Optimize hyperparameters across multiple models
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - model_ids
+              properties:
+                model_ids:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - model-1
+                  - model-2
+      responses:
+        '200':
+          description: Global hyperparameter optimization completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+  /evaluate:
+    post:
+      tags:
+      - Training
+      operationId: evaluateModel
+      summary: Evaluate a trained model
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationRequest'
+      responses:
+        '200':
+          description: Model evaluation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    User:
+      type: object
+      required:
+      - username
+      - email
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          writeOnly: true
+    Order:
+      type: object
+      required:
+      - product
+      - quantity
+      - price
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+        price:
+          type: number
+          format: float
+    Gate:
+      type: object
+      required:
+      - type
+      - targetQubit
+      properties:
+        type:
+          type: string
+          example: H
+        targetQubit:
+          type: integer
+          minimum: 0
+        controlQubit:
+          type: integer
+          minimum: 0
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum circuit in QASM format.
+        qubits:
+          type: integer
+          minimum: 1
+          example: 4
+        gates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gate'
+        parameters:
+          type: object
+          description: Optional circuit parameters
+          additionalProperties: true
+      anyOf:
+      - required:
+        - qasm
+      - required:
+        - qubits
+        - gates
+    CircuitCreateRequest:
+      type: object
+      required:
+      - qubits
+      - gates
+      properties:
+        qubits:
+          type: integer
+          minimum: 1
+          example: 4
+        optimizationGoal:
+          type: string
+          example: minimum_depth
+          description: Requested optimization target
+        gates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gate'
+    CircuitCreateResponse:
+      type: object
+      required:
+      - circuitId
+      properties:
+        circuitId:
+          type: string
+          example: circuit-optimized-5678
+        optimization:
+          type: object
+          properties:
+            reducedGateCount:
+              type: integer
+              example: 2
+            depth:
+              type: integer
+              example: 3
+    SimulationResult:
+      type: object
+      properties:
+        probabilities:
+          type: object
+          description: State probabilities
+          additionalProperties:
+            type: number
+          example:
+            '|00⟩': 0.5
+            '|11⟩': 0.5
+        histogram:
+          type: object
+          description: Measurement histogram
+          additionalProperties:
+            type: integer
+          example:
+            '00': 500
+            '11': 500
+        feedbackId:
+          type: string
+          example: feedback-1234
+    OptimizationResult:
+      type: object
+      properties:
+        optimizedCircuitId:
+          type: string
+          example: optimized-circuit-56789
+        improvements:
+          type: object
+          properties:
+            reducedGateCount:
+              type: integer
+              example: 3
+            improvedFidelity:
+              type: number
+              example: 0.99
+            learningImpact:
+              type: string
+              example: Fidelity increased by 4% and gate count decreased by 20%.
+    QuantumResult:
+      type: object
+      properties:
+        resultId:
+          type: string
+          example: result-123
+        status:
+          type: string
+          example: completed
+        fidelity:
+          type: number
+          example: 0.98
+        measurements:
+          type: object
+          additionalProperties:
+            type: number
+    EncryptRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: string
+          description: Data to encrypt
+    EncryptResponse:
+      type: object
+      properties:
+        encrypted_data:
+          type: string
+        algorithm:
+          type: string
+          example: quantum-secure
+    DecryptRequest:
+      type: object
+      required:
+      - encrypted_data
+      properties:
+        encrypted_data:
+          type: string
+          description: Encrypted payload to decrypt
+    DecryptResponse:
+      type: object
+      properties:
+        data:
+          type: string
+        status:
+          type: string
+          example: decrypted
+    GuidanceRequest:
+      type: object
+      required:
+      - targetGoal
+      - experienceLevel
+      properties:
+        model:
+          type: string
+          description: Optional guidance model identifier
+          enum:
+          - gpt-4
+          - gpt-4-turbo
+        targetGoal:
+          type: string
+          example: high_fidelity
+          description: Desired optimization target
+        experienceLevel:
+          type: string
+          enum:
+          - beginner
+          - intermediate
+          - advanced
+          example: beginner
+        userPrompt:
+          type: string
+          description: Optional free-form guidance request
+          example: Help me optimize a Bell-state circuit.
+    GuidanceResponse:
+      type: object
+      properties:
+        steps:
+          type: array
+          items:
+            type: string
+          example:
+          - Apply a Hadamard gate to qubit 0.
+          - Apply a CNOT gate from qubit 0 to qubit 1.
+        totalSteps:
+          type: integer
+          example: 5
+        currentStep:
+          type: integer
+          example: 1
+        completionStatus:
+          type: string
+          enum:
+          - in_progress
+          - completed
+          - failed
+          example: in_progress
+    LearningSettingsRequest:
+      type: object
+      properties:
+        optimizationGoal:
+          type: string
+          example: fidelity
+        learningRate:
+          type: number
+          example: 0.01
+    UpdateCheckResponse:
+      type: object
+      properties:
+        updatesAvailable:
+          type: boolean
+          example: true
+    UpdateApplyResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Update completed successfully.
+    VersionReleaseResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          example: v2.1.0
+        releaseNotes:
+          type: string
+          example: AI model updated and simulation speed increased by 15%.
+    AutonomousSecurityStatus:
+      type: object
+      properties:
+        securityStatus:
+          type: string
+          example: All systems secure
+        message:
+          type: string
+          example: Autonomous security monitoring completed successfully.
+    AutonomousPerformanceStatus:
+      type: object
+      properties:
+        performanceStatus:
+          type: string
+          example: Performance stable
+        message:
+          type: string
+          example: Autonomous performance monitoring completed successfully.
+    TrainingRequest:
+      type: object
+      required:
+      - model_type
+      - dataset_name
+      - task_type
+      - num_epochs
+      - batch_size
+      - learning_rate
+      properties:
+        model_type:
+          type: string
+          example: gpt-4
+        dataset_name:
+          type: string
+          example: custom-dataset
+        task_type:
+          type: string
+          example: text-generation
+        num_epochs:
+          type: integer
+          example: 5
+        batch_size:
+          type: integer
+          example: 16
+        learning_rate:
+          type: number
+          example: 3.0e-05
+        advanced_techniques:
+          type: array
+          items:
+            type: string
+          example:
+          - federated-learning
+          - automl
+          - nas
+          - xai
+        preprocessing_steps:
+          type: array
+          items:
+            type: string
+          example:
+          - tokenization
+          - normalization
+          - data-augmentation
+        save_model:
+          type: boolean
+          example: true
+        save_path:
+          type: string
+          example: /models/chatgpt4-advanced
+    TrainingStartResponse:
+      type: object
+      properties:
+        training_id:
+          type: string
+        message:
+          type: string
+          example: Training started successfully.
+    TrainingStatusResponse:
+      type: object
+      properties:
+        training_id:
+          type: string
+        status:
+          type: string
+          example: in_progress
+        progress:
+          type: number
+          example: 72.5
+        current_epoch:
+          type: integer
+          example: 3
+        total_epochs:
+          type: integer
+          example: 5
+        current_loss:
+          type: number
+          example: 0.0264
+    TrainingStopResponse:
+      type: object
+      properties:
+        training_id:
+          type: string
+        status:
+          type: string
+          example: stopped
+        message:
+          type: string
+          example: Training has been stopped.
+    TrainingResultsResponse:
+      type: object
+      properties:
+        training_id:
+          type: string
+        status:
+          type: string
+          example: completed
+        final_loss:
+          type: number
+          example: 0.0178
+        evaluation_metrics:
+          type: object
+          properties:
+            accuracy:
+              type: number
+              example: 0.94
+            f1_score:
+              type: number
+              example: 0.91
+            precision:
+              type: number
+              example: 0.91
+            recall:
+              type: number
+              example: 0.93
+            perplexity:
+              type: number
+              example: 9.6
+            explainability_score:
+              type: number
+              example: 0.85
+        saved_model_path:
+          type: string
+          example: /models/chatgpt4-advanced
+        nas_generated_architecture:
+          type: string
+          example: EfficientNet-based architecture.
+    AutomaticOptimizationRequest:
+      type: object
+      required:
+      - dataset_id
+      - model_type
+      properties:
+        dataset_id:
+          type: string
+          example: dataset-1
+        model_type:
+          type: string
+          example: classification
+    AutomaticOptimizationResponse:
+      type: object
+      properties:
+        optimization_status:
+          type: string
+          example: Running
+        initial_params:
+          type: object
+          properties:
+            learning_rate:
+              type: number
+              example: 0.001
+            batch_size:
+              type: integer
+              example: 32
+    HyperparameterRecommendation:
+      type: object
+      properties:
+        learning_rate:
+          type: number
+          example: 3.0e-05
+        batch_size:
+          type: integer
+          example: 32
+        message:
+          type: string
+          example: Suggested hyperparameters for the next training cycle.
+    TrainingAnalyticsResponse:
+      type: object
+      properties:
+        epoch:
+          type: integer
+          example: 2
+        loss:
+          type: number
+          example: 0.034
+        accuracy:
+          type: number
+          example: 0.87
+        message:
+          type: string
+          example: Epoch 2 analytics data retrieved.
+    DynamicFeedbackRequest:
+      type: object
+      required:
+      - metric
+      - threshold
+      properties:
+        metric:
+          type: string
+          example: accuracy
+        threshold:
+          type: number
+          example: 0.9
+        action:
+          type: string
+          example: increase_learning_rate
+    DashboardMetrics:
+      type: object
+      properties:
+        training_id:
+          type: string
+        progress:
+          type: number
+          example: 85.5
+        accuracy:
+          type: number
+          example: 0.92
+        loss:
+          type: number
+          example: 0.05
+        time_remaining:
+          type: string
+          example: 1h 15m
+        recommendations:
+          type: array
+          items:
+            type: string
+          example:
+          - Increase learning rate to improve convergence.
+    NotificationSetupRequest:
+      type: object
+      required:
+      - user_id
+      - training_id
+      - notification_type
+      properties:
+        user_id:
+          type: string
+          example: user-9876
+        training_id:
+          type: string
+          example: training-12345
+        notification_type:
+          type: string
+          example: email
+        thresholds:
+          type: object
+          properties:
+            accuracy_change:
+              type: number
+              example: 0.05
+            loss_change:
+              type: number
+              example: 0.01
+    EvaluationRequest:
+      type: object
+      required:
+      - model_path
+      - test_dataset
+      properties:
+        model_path:
+          type: string
+          example: /models/chatgpt4-advanced
+        test_dataset:
+          type: string
+          example: openai/wikitext
+        evaluation_metrics:
+          type: array
+          items:
+            type: string
+          example:
+          - accuracy
+          - f1_score
+          - perplexity
+          - xai
+    EvaluationResponse:
+      type: object
+      properties:
+        evaluation_results:
+          type: object
+          properties:
+            accuracy:
+              type: number
+              example: 0.95
+            f1_score:
+              type: number
+              example: 0.92
+            perplexity:
+              type: number
+              example: 12.5
+            explainability_score:
+              type: number
+              example: 0.87
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Operation completed successfully.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Internal Server Error

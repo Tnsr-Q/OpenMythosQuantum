@@ -1,0 +1,1124 @@
+openapi: 3.0.0
+info:
+  title: Katopu Quantum AGI Birleştirilmiş API
+  description: |
+    Bu API, quantum hesaplama ve yapay genel zeka (AGI) yeteneklerini birleştirir. 
+    Sistem, modüllerin güncellenmesi, quantum şifreleme ve çözme, otonom optimizasyon gibi yetenekler sunar.
+    **API Serkan Kündem'e lisanslıdır.**
+  version: "12.2.0"
+  contact:
+    name: Serkan Kündem
+    email: example@example.com
+  license:
+    name: Infinite Update License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: Bu API sürekli güncellenir ve eski sürümlerle uyumlu çalışır.
+
+servers:
+  - url: https://api.example.com/v1
+    description: Ana sunucu
+
+paths:
+  /user:
+    get:
+      summary: "Kullanıcı bilgilerini getir"
+      responses:
+        '200':
+          description: "Kullanıcı bilgileri başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: "Kullanıcı bulunamadı."
+    
+    post:
+      summary: "Yeni kullanıcı oluştur"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: "Yeni kullanıcı başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /order:
+    get:
+      summary: "Sipariş detaylarını getir"
+      parameters:
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: "Sipariş ID'si"
+      responses:
+        '200':
+          description: "Sipariş detayları başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: "Sipariş bulunamadı."
+
+    post:
+      summary: "Yeni sipariş oluştur"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: "Sipariş başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /quantum/compute:
+    post:
+      summary: Quantum hesaplama
+      description: QAOA ve hibrit quantum-klasik modelleri ile hesaplama yapar.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuantumCircuit'
+      responses:
+        '200':
+          description: Hesaplama başarıyla tamamlandı.
+        '500':
+          description: Hesaplama hatası.
+
+  /quantum/security/encrypt:
+    post:
+      summary: Quantum şifreleme
+      description: Quantum algoritmaları ile veri şifreleme işlemi yapar.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EncryptRequest'
+      responses:
+        '200':
+          description: Veri başarıyla şifrelendi.
+        '500':
+          description: Şifreleme hatası.
+
+  /quantum/security/decrypt:
+    post:
+      summary: Şifre çözme
+      description: Şifrelenmiş veriyi quantum algoritmaları ile çözer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecryptRequest'
+      responses:
+        '200':
+          description: Veri başarıyla çözüldü.
+        '500':
+          description: Şifre çözme hatası.
+
+  /update/check:
+    get:
+      summary: Mevcut güncellemeleri kontrol eder
+      description: Sistemin mevcut güncellemelerini kontrol eder ve yeni güncellemeleri bildirir.
+      responses:
+        '200':
+          description: Güncellemeler başarıyla kontrol edildi.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updatesAvailable:
+                    type: boolean
+                    description: Yeni güncellemelerin olup olmadığını belirtir.
+
+  /update/apply:
+    post:
+      summary: Yeni güncellemeleri uygular
+      description: Sisteme yeni güncellemeler uygulanarak mevcut yapı ile uyumluluğu sağlanır.
+      responses:
+        '200':
+          description: Güncellemeler başarıyla uygulandı.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Güncellemenin başarıyla tamamlandığını belirtir.
+
+  /self-improve:
+    post:
+      summary: AGI öz-iyileştirme başlat
+      description: AGI, sürekli gelişim ve iyileştirme döngüsüyle geçmiş verileri analiz ederek kendini optimize eder.
+      responses:
+        '200':
+          description: Öz-iyileştirme başarıyla başlatıldı.
+        '500':
+          description: Öz-iyileştirme işlemi başarısız.
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: float
+
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: QASM formatında quantum devresi.
+        parameters:
+          type: object
+          description: Quantum devresi için parametreler.
+
+    EncryptRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Şifrelenecek veri.
+
+    DecryptRequest:
+      type: object
+      properties:
+        encrypted_data:
+          type: string
+          description: Şifresi çözülecek veri.
+
+    UpdateModuleRequest:
+      type: object
+      properties:
+        module_name:
+          type: string
+          description: Güncellenecek modül adı.
+        update_version:
+          type: string
+          description: Modülün güncellenecek sürümü.
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı.
+
+security:
+  - api_key: []
+  - oauth2:
+      - read
+      - write
+
+
+
+*****************************************************************************************************************
+  Talimat: Kod Şablonlarını Birleştir ve Optimize Et
+1.	Amacım:
+o	Verilen iki farklı kod parçasını birleştirerek ve optimize ederek daha verimli, okunabilir ve sürdürülebilir bir kod yapısı oluşturmanı istiyorum. Bu, performansı artırmalı, aynı zamanda kodun işlevselliğini bozma.
+2.	Kod Bloklarını Olduğu Gibi Koru:
+o	Kod bloklarını ve fonksiyonları orijinal halleriyle sakla. Hiçbir değişiklik yapmadan fonksiyon isimlerini, parametre yapılarını ve değişken isimlerini korumalısın.
+3.	Gereksiz Tekrarları Tespit Et ve Optimize Et:
+o	Aynı işlevi gerçekleştiren tekrarlayan kod parçalarını tespit et ve yalnızca birini bırak. Tekrarlayan kod bloklarını ortak bir fonksiyon haline getir.
+o	Bu fonksiyonları, ilgili yerlerde çağırarak tekrarları ortadan kaldır.
+4.	Kodun Mantığını ve Performansını Koru:
+o	Algoritmanın genel işleyişini ve mantığını bozma. Kodun daha iyi performans göstermesini sağla, ancak sonuçlar ve çıktıların aynı kalmasını garanti et.
+o	Ek olarak, algoritma karmaşıklığını azalt ve verimliliği artırmak için en uygun çözümleri değerlendir.
+5.	Kısıtlamalar:
+o	Harici kütüphaneleri kaldırma ve kodun modüler yapısını koru. Ayrıca algoritmanın sonuçları etkileyecek değişiklikler yapılmadığından emin ol.
+o	Aynı fonksiyon birden fazla yerde kullanılıyorsa, kodu tekrarlamadan, fonksiyon çağrılarıyla çözüm üret.
+6.	Dil ve Yazım Hatalarını Düzelt:
+o	Yorum satırları ve dökümantasyondaki yazım hatalarını düzelt.
+o	İsimlendirme ve dökümantasyon dilinde tutarlılığı sağla.
+7.	Test Et ve Raporla:
+o	Kod birleştirildikten sonra, çalıştırılabilirliğini test et ve sonuçların doğru olduğundan emin ol.
+o	Hata raporu oluştur ve yaptığın değişikliklerin kısa bir özetini ver.
+/quantum/compute:
+    post:
+      summary: "Quantum hesaplama gerçekleştir"
+      description: QAOA ve hibrit quantum-klasik modelleri ile quantum hesaplama gerçekleştirir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuantumCircuit'
+      responses:
+        '200':
+          description: Quantum hesaplama başarıyla tamamlandı.
+        '500':
+          description: Quantum hesaplama hatası.
+
+  /quantum/security/encrypt:
+    post:
+      summary: "Quantum şifreleme yap"
+      description: Quantum algoritmaları kullanarak veri şifreleme işlemi yapar.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EncryptRequest'
+      responses:
+        '200':
+          description: Veri başarıyla şifrelendi.
+        '500':
+          description: Şifreleme hatası.
+
+  /quantum/security/decrypt:
+    post:
+      summary: "Quantum şifre çözme yap"
+      description: Quantum algoritmaları ile şifrelenmiş veriyi çözer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecryptRequest'
+      responses:
+        '200':
+          description: Veri başarıyla çözüldü.
+        '500':
+          description: Şifre çözme hatası.
+
+  /update/check:
+    get:
+      summary: "Sistem güncellemelerini kontrol et"
+      description: Sistemin mevcut güncellemelerini kontrol eder ve yeni güncellemeleri bildirir.
+      responses:
+        '200':
+          description: Güncellemeler başarıyla kontrol edildi.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updatesAvailable:
+                    type: boolean
+                    description: Yeni güncelleme olup olmadığını belirtir.
+
+  /update/apply:
+    post:
+      summary: "Sistem güncellemelerini uygula"
+      description: Sistemdeki yeni güncellemeleri uygular.
+      responses:
+        '200':
+          description: Güncellemeler başarıyla uygulandı.
+        '500':
+          description: Güncelleme uygulama hatası.
+
+  /self-improve:
+    post:
+      summary: "AGI öz-iyileştirme başlat"
+      description: AGI, öz-iyileştirme döngüsünü başlatarak kendini optimize eder.
+      responses:
+        '200':
+          description: Öz-iyileştirme başarıyla başlatıldı.
+        '500':
+          description: Öz-iyileştirme hatası.
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: float
+
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum devresini tanımlayan QASM kodu.
+        parameters:
+          type: object
+          description: Quantum devresi için kullanılan parametreler.
+
+    EncryptRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Şifrelenecek veri.
+
+    DecryptRequest:
+      type: object
+      properties:
+        encrypted_data:
+          type: string
+          description: Şifresi çözülecek veri.
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı.
+openapi: 3.0.0
+info:
+  title: Katopu Quantum AGI Birleştirilmiş API
+  description: |
+    Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
+    Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
+    **API Serkan Kündem'e lisanslıdır.**
+  version: "12.2.0"
+  contact:
+    name: Serkan Kündem
+    email: example@example.com
+  license:
+    name: Infinite Update License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: |
+      API sürekli güncellenir ve geriye dönük uyumluluğu korur.
+
+servers:
+  - url: https://api.example.com/v1
+    description: Ana sunucu
+
+paths:
+  /user:
+    get:
+      summary: "Kullanıcı bilgilerini getir"
+      description: Kullanıcıya ait bilgileri getirir.
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Kullanıcı ID'si
+      responses:
+        '200':
+          description: "Kullanıcı bilgileri başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: "Kullanıcı bulunamadı."
+    
+    post:
+      summary: "Yeni kullanıcı oluştur"
+      description: Yeni bir kullanıcı oluşturur.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: "Yeni kullanıcı başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /order:
+    get:
+      summary: "Sipariş detaylarını getir"
+      description: Siparişe ait detayları getirir.
+      parameters:
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Sipariş ID'si
+      responses:
+        '200':
+          description: "Sipariş detayları başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: "Sipariş bulunamadı."
+
+    post:
+      summary: "Yeni sipariş oluştur"
+      description: Yeni bir sipariş oluşturur.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: "Sipariş başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /quantum/compute:
+    post:
+      summary: "Quantum hesaplama"
+      description: QAOA ve hibrit quantum-klasik modelleri ile quantum hesaplama gerçekleştirir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuantumCircuit'
+      responses:
+        '200':
+          description: "Quantum hesaplama başarıyla tamamlandı."
+        '500':
+          description: "Quantum hesaplama hatası."
+
+  /quantum/security/encrypt:
+    post:
+      summary: "Quantum şifreleme"
+      description: Quantum algoritmaları ile veri şifreleme işlemi yapar.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EncryptRequest'
+      responses:
+        '200':
+          description: "Veri başarıyla şifrelendi."
+        '500':
+          description: "Şifreleme hatası."
+
+  /quantum/security/decrypt:
+    post:
+      summary: "Quantum şifre çözme"
+      description: Quantum algoritmaları ile şifrelenmiş veriyi çözer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecryptRequest'
+      responses:
+        '200':
+          description: "Şifre çözme başarıyla tamamlandı."
+        '500':
+          description: "Şifre çözme hatası."
+
+  /update/check:
+    get:
+      summary: "Mevcut güncellemeleri kontrol eder"
+      description: Sistemin mevcut güncellemelerini kontrol eder ve yeni güncellemeleri bildirir.
+      responses:
+        '200':
+          description: "Güncellemeler başarıyla kontrol edildi."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updatesAvailable:
+                    type: boolean
+                    description: Yeni güncellemelerin olup olmadığını belirtir.
+  
+  /update/apply:
+    post:
+      summary: "Yeni güncellemeleri uygular"
+      description: Sisteme yeni güncellemeler uygulanarak mevcut yapı ile uyumluluğu sağlanır.
+      responses:
+        '200':
+          description: "Güncellemeler başarıyla uygulandı."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Güncellemenin başarıyla tamamlandığını belirtir.
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: float
+
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum devresini tanımlayan QASM kodu.
+        parameters:
+          type: object
+          description: Quantum devresi için kullanılan parametreler.
+
+    EncryptRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Şifrelenecek veri.
+
+    DecryptRequest:
+      type: object
+      properties:
+        encrypted_data:
+          type: string
+          description: Şifresi çözülecek veri.
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı.
+openapi: 3.0.0
+info:
+  title: Katopu Quantum AGI Birleştirilmiş API
+  description: |
+    Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
+    Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
+    **API Serkan Kündem'e lisanslıdır.**
+  version: "12.2.0"
+  contact:
+    name: Serkan Kündem
+    email: example@example.com
+  license:
+    name: Infinite Update License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: |
+      API sürekli güncellenir ve geriye dönük uyumluluğu korur.
+
+servers:
+  - url: https://api.example.com/v1
+    description: Ana sunucu
+
+paths:
+  /user:
+    get:
+      summary: "Kullanıcı bilgilerini getir"
+      description: Kullanıcıya ait bilgileri getirir.
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Kullanıcı ID'si
+      responses:
+        '200':
+          description: "Kullanıcı bilgileri başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: "Kullanıcı bulunamadı."
+    
+    post:
+      summary: "Yeni kullanıcı oluştur"
+      description: Yeni bir kullanıcı oluşturur.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: "Yeni kullanıcı başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /order:
+    get:
+      summary: "Sipariş detaylarını getir"
+      description: Siparişe ait detayları getirir.
+      parameters:
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Sipariş ID'si
+      responses:
+        '200':
+          description: "Sipariş detayları başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: "Sipariş bulunamadı."
+
+    post:
+      summary: "Yeni sipariş oluştur"
+      description: Yeni bir sipariş oluşturur.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: "Sipariş başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /quantum/compute:
+    post:
+      summary: "Quantum hesaplama"
+      description: QAOA ve hibrit quantum-klasik modelleri ile quantum hesaplama gerçekleştirir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuantumCircuit'
+      responses:
+        '200':
+          description: "Quantum hesaplama başarıyla tamamlandı."
+        '500':
+          description: "Quantum hesaplama hatası."
+
+  /quantum/security/encrypt:
+    post:
+      summary: "Quantum şifreleme"
+      description: Quantum algoritmaları ile veri şifreleme işlemi yapar.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EncryptRequest'
+      responses:
+        '200':
+          description: "Veri başarıyla şifrelendi."
+        '500':
+          description: "Şifreleme hatası."
+
+  /quantum/security/decrypt:
+    post:
+      summary: "Quantum şifre çözme"
+      description: Quantum algoritmaları ile şifrelenmiş veriyi çözer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecryptRequest'
+      responses:
+        '200':
+          description: "Şifre çözme başarıyla tamamlandı."
+        '500':
+          description: "Şifre çözme hatası."
+
+  /update/check:
+    get:
+      summary: "Mevcut güncellemeleri kontrol eder"
+      description: Sistemin mevcut güncellemelerini kontrol eder ve yeni güncellemeleri bildirir.
+      responses:
+        '200':
+          description: "Güncellemeler başarıyla kontrol edildi."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updatesAvailable:
+                    type: boolean
+                    description: Yeni güncellemelerin olup olmadığını belirtir.
+  
+  /update/apply:
+    post:
+      summary: "Yeni güncellemeleri uygular"
+      description: Sisteme yeni güncellemeler uygulanarak mevcut yapı ile uyumluluğu sağlanır.
+      responses:
+        '200':
+          description: "Güncellemeler başarıyla uygulandı."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Güncellemenin başarıyla tamamlandığını belirtir.
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: float
+
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum devresini tanımlayan QASM kodu.
+        parameters:
+          type: object
+          description: Quantum devresi için kullanılan parametreler.
+
+    EncryptRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Şifrelenecek veri.
+
+    DecryptRequest:
+      type: object
+      properties:
+        encrypted_data:
+          type: string
+          description: Şifresi çözülecek veri.
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı.
+openapi: 3.0.0
+info:
+  title: Katopu Quantum AGI Birleştirilmiş API
+  description: |
+    Katopu Quantum AGI, yapay genel zeka (AGI) ve quantum hesaplama teknolojilerini birleştiren sürekli gelişen bir platformdur. 
+    Bu API, kullanıcı yönetimi, sipariş yönetimi, quantum şifreleme ve çözme, sistem güncellemeleri ve otonom optimizasyon gibi işlevler sunar.
+    **API Serkan Kündem'e lisanslıdır.**
+  version: "12.2.0"
+  contact:
+    name: Serkan Kündem
+    email: example@example.com
+  license:
+    name: Infinite Update License
+    url: https://orcid.org/0000-0003-0784-0152
+    description: |
+      API sürekli güncellenir ve geriye dönük uyumluluğu korur.
+
+servers:
+  - url: https://api.example.com/v1
+    description: Ana sunucu
+
+paths:
+  /user:
+    get:
+      summary: "Kullanıcı bilgilerini getir"
+      description: Kullanıcıya ait bilgileri getirir.
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Kullanıcı ID'si
+      responses:
+        '200':
+          description: "Kullanıcı bilgileri başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: "Kullanıcı bulunamadı."
+    
+    post:
+      summary: "Yeni kullanıcı oluştur"
+      description: Yeni bir kullanıcı oluşturur.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: "Yeni kullanıcı başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /order:
+    get:
+      summary: "Sipariş detaylarını getir"
+      description: Siparişe ait detayları getirir.
+      parameters:
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Sipariş ID'si
+      responses:
+        '200':
+          description: "Sipariş detayları başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: "Sipariş bulunamadı."
+
+    post:
+      summary: "Yeni sipariş oluştur"
+      description: Yeni bir sipariş oluşturur.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: "Sipariş başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /quantum/compute:
+    post:
+      summary: "Quantum hesaplama"
+      description: QAOA ve hibrit quantum-klasik modelleri ile quantum hesaplama gerçekleştirir.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuantumCircuit'
+      responses:
+        '200':
+          description: "Quantum hesaplama başarıyla tamamlandı."
+        '500':
+          description: "Quantum hesaplama hatası."
+
+  /quantum/security/encrypt:
+    post:
+      summary: "Quantum şifreleme"
+      description: Quantum algoritmaları ile veri şifreleme işlemi yapar.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EncryptRequest'
+      responses:
+        '200':
+          description: "Veri başarıyla şifrelendi."
+        '500':
+          description: "Şifreleme hatası."
+
+  /quantum/security/decrypt:
+    post:
+      summary: "Quantum şifre çözme"
+      description: Quantum algoritmaları ile şifrelenmiş veriyi çözer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecryptRequest'
+      responses:
+        '200':
+          description: "Şifre çözme başarıyla tamamlandı."
+        '500':
+          description: "Şifre çözme hatası."
+
+  /update/check:
+    get:
+      summary: "Mevcut güncellemeleri kontrol eder"
+      description: Sistemin mevcut güncellemelerini kontrol eder ve yeni güncellemeleri bildirir.
+      responses:
+        '200':
+          description: "Güncellemeler başarıyla kontrol edildi."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updatesAvailable:
+                    type: boolean
+                    description: Yeni güncellemelerin olup olmadığını belirtir.
+
+  /update/apply:
+    post:
+      summary: "Yeni güncellemeleri uygular"
+      description: Sisteme yeni güncellemeler uygulanarak mevcut yapı ile uyumluluğu sağlanır.
+      responses:
+        '200':
+          description: "Güncellemeler başarıyla uygulandı."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Güncellemenin başarıyla tamamlandığını belirtir.
+
+  /self-improve:
+    post:
+      summary: "AGI öz-iyileştirme başlat"
+      description: AGI, sürekli gelişim ve iyileştirme döngüsüyle geçmiş verileri analiz ederek kendini optimize eder.
+      responses:
+        '200':
+          description: "Öz-iyileştirme başarıyla başlatıldı."
+        '500':
+          description: "Öz-iyileştirme işlemi başarısız."
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: float
+
+    QuantumCircuit:
+      type: object
+      properties:
+        qasm:
+          type: string
+          description: Quantum devresini tanımlayan QASM kodu.
+        parameters:
+          type: object
+          description: Quantum devresi için kullanılan parametreler.
+
+    EncryptRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Şifrelenecek veri.
+
+    DecryptRequest:
+      type: object
+      properties:
+        encrypted_data:
+          type: string
+          description: Şifresi çözülecek veri.
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Hata mesajı.
+
+security:
+  - api_key: []
+  - oauth2:
+      - read
+      - write

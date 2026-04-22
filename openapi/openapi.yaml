@@ -1,0 +1,1851 @@
+openapi: 3.1.0
+info:
+  title: Katopu Quantum AGI API
+  summary: Production-ready unified API for quantum workflows, AGI optimization, guidance, security, and training automation.
+  description: |
+    This contract consolidates the draft APIs into a stricter production-oriented interface.
+
+    Design choices:
+      - explicit versioned base path
+      - normalized resource naming
+      - unique operationIds
+      - reusable components
+      - explicit authentication and authorization
+      - stricter request/response schemas
+      - examples cleaned up for implementation and testing
+  version: 1.0.0
+  contact:
+    name: Serkan Kündem
+    email: serkan.kundem@erciyes.edu.tr
+    url: https://orcid.org/0000-0003-0784-0152
+  license:
+    name: Proprietary - review before production use
+    url: https://orcid.org/0000-0003-0784-0152
+
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+
+servers:
+  - url: https://api.{environment}.katopu.example.com/{basePath}
+    description: Main API gateway
+    variables:
+      environment:
+        default: prod
+        enum: [prod, staging, dev]
+      basePath:
+        default: v1
+  - url: https://{region}.api.{environment}.katopu.example.com/{basePath}
+    description: Regional API gateway
+    variables:
+      region:
+        default: us
+        enum: [us, eu, ap]
+      environment:
+        default: prod
+        enum: [prod, staging]
+      basePath:
+        default: v1
+
+tags:
+  - name: Health
+  - name: Users
+  - name: Orders
+  - name: Circuits
+  - name: Quantum
+  - name: Guidance
+  - name: Security
+  - name: Monitoring
+  - name: Updates
+  - name: Training
+  - name: Notifications
+  - name: AGI
+
+security:
+  - BearerAuth: []
+  - ApiKeyAuth: []
+
+paths:
+  /healthz:
+    get:
+      tags: [Health]
+      operationId: getHealthStatus
+      summary: Get service health
+      description: Returns a lightweight health summary for load balancers and uptime checks.
+      security: []
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              examples:
+                ok:
+                  value:
+                    status: ok
+                    version: 1.0.0
+                    environment: prod
+                    timestamp: "2026-04-22T12:00:00Z"
+
+  /users:
+    post:
+      tags: [Users]
+      operationId: createUser
+      summary: Create user
+      description: Creates a new user account.
+      security:
+        - BearerAuth: []
+        - OAuth2ClientCredentials: [users.write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+            examples:
+              default:
+                value:
+                  username: skundem
+                  email: serkan@example.edu
+      responses:
+        '201':
+          description: User created
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                created:
+                  value:
+                    userId: usr_01HZZY9V74N7R0H0V7S0A0B123
+                    username: skundem
+                    email: serkan@example.edu
+                    createdAt: "2026-04-22T12:00:00Z"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /users/{userId}:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    get:
+      tags: [Users]
+      operationId: getUserById
+      summary: Get user by ID
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [users.read]
+      responses:
+        '200':
+          description: User found
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+              examples:
+                found:
+                  value:
+                    userId: usr_01HZZY9V74N7R0H0V7S0A0B123
+                    username: skundem
+                    email: serkan@example.edu
+                    createdAt: "2026-04-22T12:00:00Z"
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /orders:
+    post:
+      tags: [Orders]
+      operationId: createOrder
+      summary: Create order
+      security:
+        - BearerAuth: []
+        - OAuth2ClientCredentials: [orders.write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+            examples:
+              default:
+                value:
+                  product: quantum_compute_credit
+                  quantity: 10
+                  price: 199.99
+      responses:
+        '201':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+              examples:
+                created:
+                  value:
+                    orderId: ord_01HZZYBG4J67D4Q5J1WJNSG8VX
+                    product: quantum_compute_credit
+                    quantity: 10
+                    price: 199.99
+                    currency: USD
+                    createdAt: "2026-04-22T12:00:00Z"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /orders/{orderId}:
+    parameters:
+      - $ref: '#/components/parameters/OrderId'
+    get:
+      tags: [Orders]
+      operationId: getOrderById
+      summary: Get order by ID
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [orders.read]
+      responses:
+        '200':
+          description: Order found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+              examples:
+                found:
+                  value:
+                    orderId: ord_01HZZYBG4J67D4Q5J1WJNSG8VX
+                    product: quantum_compute_credit
+                    quantity: 10
+                    price: 199.99
+                    currency: USD
+                    createdAt: "2026-04-22T12:00:00Z"
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /circuits:
+    post:
+      tags: [Circuits]
+      operationId: createCircuit
+      summary: Create a quantum circuit
+      description: Creates a circuit definition with optional optimization preferences.
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [circuits.write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CircuitCreateRequest'
+            examples:
+              bellState:
+                value:
+                  qubits: 2
+                  optimizationGoal: minimum_depth
+                  gates:
+                    - type: H
+                      targetQubit: 0
+                    - type: CNOT
+                      controlQubit: 0
+                      targetQubit: 1
+      responses:
+        '201':
+          description: Circuit created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitCreateResponse'
+              examples:
+                created:
+                  value:
+                    circuitId: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+                    qubits: 2
+                    status: created
+                    optimization:
+                      reducedGateCount: 0
+                      depth: 2
+                    createdAt: "2026-04-22T12:00:00Z"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /circuits/{circuitId}:
+    parameters:
+      - $ref: '#/components/parameters/CircuitId'
+    get:
+      tags: [Circuits]
+      operationId: getCircuitById
+      summary: Get circuit by ID
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [circuits.read]
+      responses:
+        '200':
+          description: Circuit found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitResource'
+              examples:
+                found:
+                  value:
+                    circuitId: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+                    qubits: 2
+                    status: created
+                    gates:
+                      - type: H
+                        targetQubit: 0
+                      - type: CNOT
+                        controlQubit: 0
+                        targetQubit: 1
+                    createdAt: "2026-04-22T12:00:00Z"
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /circuits/{circuitId}/simulate:
+    parameters:
+      - $ref: '#/components/parameters/CircuitId'
+    post:
+      tags: [Circuits, Quantum]
+      operationId: simulateCircuit
+      summary: Simulate a circuit
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [circuits.execute]
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CircuitSimulationRequest'
+            examples:
+              shots:
+                value:
+                  shots: 1000
+      responses:
+        '200':
+          description: Simulation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimulationResult'
+              examples:
+                bellState:
+                  value:
+                    circuitId: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+                    shots: 1000
+                    probabilities:
+                      "00": 0.5
+                      "11": 0.5
+                    histogram:
+                      "00": 497
+                      "11": 503
+                    completedAt: "2026-04-22T12:01:00Z"
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /circuits/{circuitId}/optimize:
+    parameters:
+      - $ref: '#/components/parameters/CircuitId'
+    post:
+      tags: [Circuits, AGI]
+      operationId: optimizeCircuit
+      summary: Optimize a circuit
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [circuits.write]
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CircuitOptimizationRequest'
+            examples:
+              default:
+                value:
+                  objective: fidelity
+      responses:
+        '200':
+          description: Optimization completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptimizationResult'
+              examples:
+                optimized:
+                  value:
+                    originalCircuitId: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+                    optimizedCircuitId: cir_01HZZYJ2DS44A6N9J23NT2K5A1
+                    objective: fidelity
+                    reducedGateCount: 1
+                    originalDepth: 3
+                    optimizedDepth: 2
+                    estimatedFidelity: 0.993
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /quantum/jobs:
+    post:
+      tags: [Quantum]
+      operationId: createQuantumJob
+      summary: Submit a quantum computation job
+      description: Creates a compute job from a QASM circuit or a structured circuit definition.
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [quantum.execute]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuantumJobCreateRequest'
+            examples:
+              qasm:
+                value:
+                  qasm: |
+                    OPENQASM 2.0;
+                    include "qelib1.inc";
+                    qreg q[2];
+                    creg c[2];
+                    h q[0];
+                    cx q[0],q[1];
+                    measure q -> c;
+      responses:
+        '202':
+          description: Job accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuantumJobAcceptedResponse'
+              examples:
+                accepted:
+                  value:
+                    jobId: qjob_01HZZYQJK5SM0Q4MB4J1F96M6B
+                    status: queued
+                    submittedAt: "2026-04-22T12:00:00Z"
+
+  /quantum/jobs/{jobId}:
+    parameters:
+      - $ref: '#/components/parameters/JobId'
+    get:
+      tags: [Quantum]
+      operationId: getQuantumJobById
+      summary: Get quantum job status
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [quantum.read]
+      responses:
+        '200':
+          description: Job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuantumJobResponse'
+              examples:
+                complete:
+                  value:
+                    jobId: qjob_01HZZYQJK5SM0Q4MB4J1F96M6B
+                    status: completed
+                    result:
+                      fidelity: 0.981
+                      measurements:
+                        "00": 0.49
+                        "11": 0.51
+                    startedAt: "2026-04-22T12:00:20Z"
+                    completedAt: "2026-04-22T12:01:05Z"
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /guidance/assist:
+    post:
+      tags: [Guidance]
+      operationId: generateGuidance
+      summary: Generate guided assistance
+      description: Produces step-by-step guidance based on target goal and experience level.
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [guidance.read]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GuidanceRequest'
+            examples:
+              beginnerBell:
+                value:
+                  targetGoal: high_fidelity
+                  experienceLevel: beginner
+                  userPrompt: Help me build a Bell-state circuit.
+      responses:
+        '200':
+          description: Guidance generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuidanceResponse'
+              examples:
+                beginnerBell:
+                  value:
+                    steps:
+                      - Apply a Hadamard gate to qubit 0.
+                      - Apply a CNOT gate from qubit 0 to qubit 1.
+                      - Simulate the circuit with 1000 shots.
+                    totalSteps: 3
+                    completionStatus: completed
+
+  /security/encrypt:
+    post:
+      tags: [Security]
+      operationId: encryptPayload
+      summary: Encrypt payload
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [security.write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EncryptRequest'
+            examples:
+              default:
+                value:
+                  data: "sensitive payload"
+      responses:
+        '200':
+          description: Payload encrypted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EncryptResponse'
+              examples:
+                encrypted:
+                  value:
+                    encryptedData: "base64:c2VjdXJlLWJsb2I="
+                    algorithm: aes-256-gcm
+                    keyId: key_2026_04
+
+  /security/decrypt:
+    post:
+      tags: [Security]
+      operationId: decryptPayload
+      summary: Decrypt payload
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [security.write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecryptRequest'
+            examples:
+              default:
+                value:
+                  encryptedData: "base64:c2VjdXJlLWJsb2I="
+      responses:
+        '200':
+          description: Payload decrypted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecryptResponse'
+              examples:
+                decrypted:
+                  value:
+                    data: "sensitive payload"
+                    status: decrypted
+
+  /monitoring/security:
+    post:
+      tags: [Monitoring, Security]
+      operationId: runSecurityMonitoring
+      summary: Run security monitoring
+      description: Triggers an authenticated security monitoring cycle.
+      security:
+        - OAuth2ClientCredentials: [monitoring.write]
+      responses:
+        '200':
+          description: Monitoring completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityMonitoringResponse'
+              examples:
+                completed:
+                  value:
+                    securityStatus: healthy
+                    findings: []
+                    message: Security monitoring completed successfully.
+
+  /monitoring/performance:
+    post:
+      tags: [Monitoring]
+      operationId: runPerformanceMonitoring
+      summary: Run performance monitoring
+      security:
+        - OAuth2ClientCredentials: [monitoring.write]
+      responses:
+        '200':
+          description: Monitoring completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceMonitoringResponse'
+              examples:
+                completed:
+                  value:
+                    performanceStatus: stable
+                    p95LatencyMs: 187
+                    errorRate: 0.002
+                    message: Performance monitoring completed successfully.
+
+  /updates/check:
+    get:
+      tags: [Updates]
+      operationId: checkForSystemUpdates
+      summary: Check for system updates
+      security:
+        - BearerAuth: []
+        - OAuth2ClientCredentials: [updates.read]
+      responses:
+        '200':
+          description: Update status returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCheckResponse'
+              examples:
+                available:
+                  value:
+                    updatesAvailable: true
+                    currentVersion: 1.0.0
+                    latestVersion: 1.0.3
+
+  /updates/apply:
+    post:
+      tags: [Updates]
+      operationId: applySystemUpdates
+      summary: Apply system updates
+      security:
+        - OAuth2ClientCredentials: [updates.write]
+      responses:
+        '200':
+          description: Update applied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateApplyResponse'
+              examples:
+                applied:
+                  value:
+                    success: true
+                    version: 1.0.3
+                    message: Update completed successfully.
+
+  /agi/self-improvement/runs:
+    post:
+      tags: [AGI]
+      operationId: startSelfImprovementRun
+      summary: Start self-improvement run
+      description: Starts a controlled AGI self-improvement cycle.
+      security:
+        - OAuth2ClientCredentials: [agi.write]
+      responses:
+        '202':
+          description: Run accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+              examples:
+                accepted:
+                  value:
+                    message: Self-improvement run accepted.
+
+  /training/jobs:
+    post:
+      tags: [Training]
+      operationId: createTrainingJob
+      summary: Create training job
+      security:
+        - BearerAuth: []
+        - OAuth2ClientCredentials: [training.write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrainingCreateRequest'
+            examples:
+              default:
+                value:
+                  modelType: transformer
+                  datasetName: custom-dataset
+                  taskType: text-generation
+                  numEpochs: 5
+                  batchSize: 16
+                  learningRate: 0.00003
+                  saveModel: true
+      responses:
+        '202':
+          description: Training job accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingAcceptedResponse'
+              examples:
+                accepted:
+                  value:
+                    trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                    status: queued
+                    submittedAt: "2026-04-22T12:00:00Z"
+
+  /training/jobs/{trainingId}:
+    parameters:
+      - $ref: '#/components/parameters/TrainingId'
+    get:
+      tags: [Training]
+      operationId: getTrainingJobById
+      summary: Get training job status
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [training.read]
+      responses:
+        '200':
+          description: Training job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingJobResponse'
+              examples:
+                running:
+                  value:
+                    trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                    status: running
+                    progress: 72.5
+                    currentEpoch: 3
+                    totalEpochs: 5
+                    currentLoss: 0.0264
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /training/jobs/{trainingId}/stop:
+    parameters:
+      - $ref: '#/components/parameters/TrainingId'
+    post:
+      tags: [Training]
+      operationId: stopTrainingJob
+      summary: Stop training job
+      security:
+        - BearerAuth: []
+        - OAuth2ClientCredentials: [training.write]
+      responses:
+        '200':
+          description: Training stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+              examples:
+                stopped:
+                  value:
+                    message: Training has been stopped.
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /training/jobs/{trainingId}/results:
+    parameters:
+      - $ref: '#/components/parameters/TrainingId'
+    get:
+      tags: [Training]
+      operationId: getTrainingResultsById
+      summary: Get training results
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [training.read]
+      responses:
+        '200':
+          description: Training results returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingResultsResponse'
+              examples:
+                complete:
+                  value:
+                    trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                    status: completed
+                    finalLoss: 0.0178
+                    evaluationMetrics:
+                      accuracy: 0.94
+                      f1Score: 0.91
+                      precision: 0.91
+                      recall: 0.93
+                    savedModelPath: /models/transformer-v1
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /training/jobs/{trainingId}/recommendations:
+    parameters:
+      - $ref: '#/components/parameters/TrainingId'
+    get:
+      tags: [Training]
+      operationId: getTrainingRecommendationsById
+      summary: Get training recommendations
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [training.read]
+      responses:
+        '200':
+          description: Recommendations returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingRecommendationResponse'
+              examples:
+                default:
+                  value:
+                    trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                    learningRate: 0.00002
+                    batchSize: 32
+                    message: Lower learning rate to improve convergence.
+
+  /training/jobs/{trainingId}/analytics:
+    parameters:
+      - $ref: '#/components/parameters/TrainingId'
+    get:
+      tags: [Training]
+      operationId: getTrainingAnalyticsById
+      summary: Get training analytics
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [training.read]
+      responses:
+        '200':
+          description: Analytics returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingAnalyticsResponse'
+              examples:
+                default:
+                  value:
+                    trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                    epoch: 2
+                    loss: 0.034
+                    accuracy: 0.87
+                    message: Epoch analytics data retrieved.
+
+  /dashboard/metrics:
+    get:
+      tags: [Training]
+      operationId: getDashboardMetrics
+      summary: Get dashboard metrics
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        - OAuth2ClientCredentials: [training.read]
+      parameters:
+        - $ref: '#/components/parameters/TrainingIdQuery'
+      responses:
+        '200':
+          description: Dashboard metrics returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardMetricsResponse'
+              examples:
+                default:
+                  value:
+                    trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                    progress: 85.5
+                    accuracy: 0.92
+                    loss: 0.05
+                    timeRemaining: 1h 15m
+                    recommendations:
+                      - Increase batch size to stabilize gradients.
+
+  /notifications:
+    post:
+      tags: [Notifications]
+      operationId: createNotificationSubscription
+      summary: Create notification subscription
+      security:
+        - BearerAuth: []
+        - OAuth2ClientCredentials: [notifications.write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationCreateRequest'
+            examples:
+              email:
+                value:
+                  userId: usr_01HZZY9V74N7R0H0V7S0A0B123
+                  trainingId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                  notificationType: email
+                  thresholds:
+                    accuracyChange: 0.05
+                    lossChange: 0.01
+      responses:
+        '201':
+          description: Subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+              examples:
+                created:
+                  value:
+                    message: Notification subscription created.
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.katopu.example.com/oauth2/token
+          scopes:
+            users.read: Read users
+            users.write: Write users
+            orders.read: Read orders
+            orders.write: Write orders
+            circuits.read: Read circuits
+            circuits.write: Write circuits
+            circuits.execute: Execute circuits
+            quantum.read: Read quantum jobs
+            quantum.execute: Execute quantum jobs
+            guidance.read: Read guidance
+            security.write: Encrypt/decrypt data
+            monitoring.write: Run monitoring operations
+            updates.read: Read system updates
+            updates.write: Apply system updates
+            training.read: Read training jobs
+            training.write: Write training jobs
+            notifications.write: Write notifications
+            agi.write: Run AGI operations
+
+  headers:
+    XRequestId:
+      description: Correlation ID for request tracing
+      schema:
+        type: string
+        example: req_01HZZZXKZX7EP7DAX2GN9CT7R9
+
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^usr_[A-Za-z0-9]+$'
+      description: User identifier
+    OrderId:
+      name: orderId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^ord_[A-Za-z0-9]+$'
+      description: Order identifier
+    CircuitId:
+      name: circuitId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^cir_[A-Za-z0-9]+$'
+      description: Circuit identifier
+    TrainingId:
+      name: trainingId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^trn_[A-Za-z0-9]+$'
+      description: Training job identifier
+    TrainingIdQuery:
+      name: trainingId
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: '^trn_[A-Za-z0-9]+$'
+      description: Training job identifier
+    JobId:
+      name: jobId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^qjob_[A-Za-z0-9]+$'
+      description: Quantum job identifier
+
+  responses:
+    BadRequest:
+      description: Request validation failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            badRequest:
+              value:
+                requestId: req_01HZZZXKZX7EP7DAX2GN9CT7R9
+                error:
+                  code: bad_request
+                  message: Request body failed validation.
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            notFound:
+              value:
+                requestId: req_01HZZZXKZX7EP7DAX2GN9CT7R9
+                error:
+                  code: not_found
+                  message: Requested resource was not found.
+    Conflict:
+      description: Resource conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            conflict:
+              value:
+                requestId: req_01HZZZXKZX7EP7DAX2GN9CT7R9
+                error:
+                  code: conflict
+                  message: Resource already exists.
+    Unauthorized:
+      description: Missing or invalid credentials
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Authenticated but not permitted
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+    HealthResponse:
+      type: object
+      additionalProperties: false
+      required: [status, version, environment, timestamp]
+      properties:
+        status:
+          type: string
+          enum: [ok]
+        version:
+          type: string
+        environment:
+          type: string
+          enum: [dev, staging, prod]
+        timestamp:
+          type: string
+          format: date-time
+
+    ErrorDetail:
+      type: object
+      additionalProperties: false
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          example: bad_request
+        message:
+          type: string
+          example: Request body failed validation.
+
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required: [requestId, error]
+      properties:
+        requestId:
+          type: string
+          example: req_01HZZZXKZX7EP7DAX2GN9CT7R9
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+
+    SuccessMessage:
+      type: object
+      additionalProperties: false
+      required: [message]
+      properties:
+        message:
+          type: string
+          example: Operation completed successfully.
+
+    UserCreateRequest:
+      type: object
+      additionalProperties: false
+      required: [username, email]
+      properties:
+        username:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: '^[a-zA-Z0-9._-]+$'
+          example: skundem
+        email:
+          type: string
+          format: email
+          example: serkan@example.edu
+
+    UserResponse:
+      type: object
+      additionalProperties: false
+      required: [userId, username, email, createdAt]
+      properties:
+        userId:
+          type: string
+          example: usr_01HZZY9V74N7R0H0V7S0A0B123
+        username:
+          type: string
+          example: skundem
+        email:
+          type: string
+          format: email
+          example: serkan@example.edu
+        createdAt:
+          type: string
+          format: date-time
+
+    OrderCreateRequest:
+      type: object
+      additionalProperties: false
+      required: [product, quantity, price]
+      properties:
+        product:
+          type: string
+          minLength: 1
+          example: quantum_compute_credit
+        quantity:
+          type: integer
+          minimum: 1
+          example: 10
+        price:
+          type: number
+          minimum: 0
+          example: 199.99
+        currency:
+          type: string
+          minLength: 3
+          maxLength: 3
+          default: USD
+          example: USD
+
+    OrderResponse:
+      type: object
+      additionalProperties: false
+      required: [orderId, product, quantity, price, currency, createdAt]
+      properties:
+        orderId:
+          type: string
+          example: ord_01HZZYBG4J67D4Q5J1WJNSG8VX
+        product:
+          type: string
+          example: quantum_compute_credit
+        quantity:
+          type: integer
+          minimum: 1
+        price:
+          type: number
+          minimum: 0
+        currency:
+          type: string
+          minLength: 3
+          maxLength: 3
+        createdAt:
+          type: string
+          format: date-time
+
+    Gate:
+      type: object
+      additionalProperties: false
+      required: [type, targetQubit]
+      properties:
+        type:
+          type: string
+          enum: [H, X, Y, Z, RX, RY, RZ, CNOT, CZ, SWAP, MEASURE]
+          example: H
+        targetQubit:
+          type: integer
+          minimum: 0
+          example: 0
+        controlQubit:
+          type: integer
+          minimum: 0
+          example: 0
+        angle:
+          type: number
+          description: Rotation angle for parameterized gates
+          example: 1.5708
+
+    CircuitCreateRequest:
+      type: object
+      additionalProperties: false
+      required: [qubits, gates]
+      properties:
+        qubits:
+          type: integer
+          minimum: 1
+          maximum: 128
+          example: 2
+        optimizationGoal:
+          type: string
+          enum: [minimum_depth, minimum_gate_count, fidelity]
+          default: minimum_depth
+          example: minimum_depth
+        gates:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Gate'
+
+    CircuitCreateResponse:
+      type: object
+      additionalProperties: false
+      required: [circuitId, qubits, status, optimization, createdAt]
+      properties:
+        circuitId:
+          type: string
+          example: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+        qubits:
+          type: integer
+          minimum: 1
+        status:
+          type: string
+          enum: [created]
+        optimization:
+          type: object
+          additionalProperties: false
+          required: [reducedGateCount, depth]
+          properties:
+            reducedGateCount:
+              type: integer
+              minimum: 0
+              example: 0
+            depth:
+              type: integer
+              minimum: 1
+              example: 2
+        createdAt:
+          type: string
+          format: date-time
+
+    CircuitResource:
+      type: object
+      additionalProperties: false
+      required: [circuitId, qubits, status, gates, createdAt]
+      properties:
+        circuitId:
+          type: string
+        qubits:
+          type: integer
+          minimum: 1
+        status:
+          type: string
+          enum: [created, optimized, simulated]
+        gates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gate'
+        createdAt:
+          type: string
+          format: date-time
+
+    CircuitSimulationRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        shots:
+          type: integer
+          minimum: 1
+          maximum: 100000
+          default: 1000
+          example: 1000
+
+    CircuitOptimizationRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        objective:
+          type: string
+          enum: [fidelity, minimum_depth, minimum_gate_count]
+          default: fidelity
+          example: fidelity
+
+    SimulationResult:
+      type: object
+      additionalProperties: false
+      required: [circuitId, shots, probabilities, histogram, completedAt]
+      properties:
+        circuitId:
+          type: string
+          example: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+        shots:
+          type: integer
+          minimum: 1
+          example: 1000
+        probabilities:
+          type: object
+          additionalProperties:
+            type: number
+          example:
+            "00": 0.5
+            "11": 0.5
+        histogram:
+          type: object
+          additionalProperties:
+            type: integer
+          example:
+            "00": 497
+            "11": 503
+        completedAt:
+          type: string
+          format: date-time
+
+    OptimizationResult:
+      type: object
+      additionalProperties: false
+      required:
+        [originalCircuitId, optimizedCircuitId, objective, reducedGateCount, originalDepth, optimizedDepth, estimatedFidelity]
+      properties:
+        originalCircuitId:
+          type: string
+          example: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+        optimizedCircuitId:
+          type: string
+          example: cir_01HZZYJ2DS44A6N9J23NT2K5A1
+        objective:
+          type: string
+          enum: [fidelity, minimum_depth, minimum_gate_count]
+        reducedGateCount:
+          type: integer
+          minimum: 0
+          example: 1
+        originalDepth:
+          type: integer
+          minimum: 1
+          example: 3
+        optimizedDepth:
+          type: integer
+          minimum: 1
+          example: 2
+        estimatedFidelity:
+          type: number
+          minimum: 0
+          maximum: 1
+          example: 0.993
+
+    QuantumJobCreateRequest:
+      type: object
+      additionalProperties: false
+      oneOf:
+        - required: [qasm]
+        - required: [qubits, gates]
+      properties:
+        qasm:
+          type: string
+          minLength: 1
+        qubits:
+          type: integer
+          minimum: 1
+          maximum: 128
+        gates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gate'
+        parameters:
+          type: object
+          additionalProperties: true
+
+    QuantumJobAcceptedResponse:
+      type: object
+      additionalProperties: false
+      required: [jobId, status, submittedAt]
+      properties:
+        jobId:
+          type: string
+          example: qjob_01HZZYQJK5SM0Q4MB4J1F96M6B
+        status:
+          type: string
+          enum: [queued]
+        submittedAt:
+          type: string
+          format: date-time
+
+    QuantumJobResponse:
+      type: object
+      additionalProperties: false
+      required: [jobId, status]
+      properties:
+        jobId:
+          type: string
+          example: qjob_01HZZYQJK5SM0Q4MB4J1F96M6B
+        status:
+          type: string
+          enum: [queued, running, completed, failed]
+        result:
+          type: object
+          additionalProperties: false
+          properties:
+            fidelity:
+              type: number
+              minimum: 0
+              maximum: 1
+              example: 0.981
+            measurements:
+              type: object
+              additionalProperties:
+                type: number
+              example:
+                "00": 0.49
+                "11": 0.51
+        startedAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+
+    GuidanceRequest:
+      type: object
+      additionalProperties: false
+      required: [targetGoal, experienceLevel]
+      properties:
+        targetGoal:
+          type: string
+          enum: [minimum_depth, high_fidelity, low_gate_count]
+          example: high_fidelity
+        experienceLevel:
+          type: string
+          enum: [beginner, intermediate, advanced]
+          example: beginner
+        userPrompt:
+          type: string
+          maxLength: 2000
+          example: Help me build a Bell-state circuit.
+
+    GuidanceResponse:
+      type: object
+      additionalProperties: false
+      required: [steps, totalSteps, completionStatus]
+      properties:
+        steps:
+          type: array
+          minItems: 1
+          items:
+            type: string
+          example:
+            - Apply a Hadamard gate to qubit 0.
+            - Apply a CNOT gate from qubit 0 to qubit 1.
+            - Simulate the circuit with 1000 shots.
+        totalSteps:
+          type: integer
+          minimum: 1
+          example: 3
+        completionStatus:
+          type: string
+          enum: [completed, in_progress, failed]
+          example: completed
+
+    EncryptRequest:
+      type: object
+      additionalProperties: false
+      required: [data]
+      properties:
+        data:
+          type: string
+          minLength: 1
+          example: sensitive payload
+
+    EncryptResponse:
+      type: object
+      additionalProperties: false
+      required: [encryptedData, algorithm, keyId]
+      properties:
+        encryptedData:
+          type: string
+          example: "base64:c2VjdXJlLWJsb2I="
+        algorithm:
+          type: string
+          example: aes-256-gcm
+        keyId:
+          type: string
+          example: key_2026_04
+
+    DecryptRequest:
+      type: object
+      additionalProperties: false
+      required: [encryptedData]
+      properties:
+        encryptedData:
+          type: string
+          minLength: 1
+          example: "base64:c2VjdXJlLWJsb2I="
+
+    DecryptResponse:
+      type: object
+      additionalProperties: false
+      required: [data, status]
+      properties:
+        data:
+          type: string
+          example: sensitive payload
+        status:
+          type: string
+          enum: [decrypted]
+
+    SecurityMonitoringResponse:
+      type: object
+      additionalProperties: false
+      required: [securityStatus, findings, message]
+      properties:
+        securityStatus:
+          type: string
+          enum: [healthy, degraded, critical]
+          example: healthy
+        findings:
+          type: array
+          items:
+            type: string
+          example: []
+        message:
+          type: string
+          example: Security monitoring completed successfully.
+
+    PerformanceMonitoringResponse:
+      type: object
+      additionalProperties: false
+      required: [performanceStatus, p95LatencyMs, errorRate, message]
+      properties:
+        performanceStatus:
+          type: string
+          enum: [stable, degraded, critical]
+          example: stable
+        p95LatencyMs:
+          type: integer
+          minimum: 0
+          example: 187
+        errorRate:
+          type: number
+          minimum: 0
+          maximum: 1
+          example: 0.002
+        message:
+          type: string
+          example: Performance monitoring completed successfully.
+
+    UpdateCheckResponse:
+      type: object
+      additionalProperties: false
+      required: [updatesAvailable, currentVersion, latestVersion]
+      properties:
+        updatesAvailable:
+          type: boolean
+          example: true
+        currentVersion:
+          type: string
+          example: 1.0.0
+        latestVersion:
+          type: string
+          example: 1.0.3
+
+    UpdateApplyResponse:
+      type: object
+      additionalProperties: false
+      required: [success, version, message]
+      properties:
+        success:
+          type: boolean
+          example: true
+        version:
+          type: string
+          example: 1.0.3
+        message:
+          type: string
+          example: Update completed successfully.
+
+    TrainingCreateRequest:
+      type: object
+      additionalProperties: false
+      required: [modelType, datasetName, taskType, numEpochs, batchSize, learningRate, saveModel]
+      properties:
+        modelType:
+          type: string
+          example: transformer
+        datasetName:
+          type: string
+          example: custom-dataset
+        taskType:
+          type: string
+          enum: [text-generation, classification, regression]
+          example: text-generation
+        numEpochs:
+          type: integer
+          minimum: 1
+          example: 5
+        batchSize:
+          type: integer
+          minimum: 1
+          example: 16
+        learningRate:
+          type: number
+          exclusiveMinimum: 0
+          example: 0.00003
+        saveModel:
+          type: boolean
+          example: true
+        savePath:
+          type: string
+          example: /models/transformer-v1
+
+    TrainingAcceptedResponse:
+      type: object
+      additionalProperties: false
+      required: [trainingId, status, submittedAt]
+      properties:
+        trainingId:
+          type: string
+          example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+        status:
+          type: string
+          enum: [queued]
+        submittedAt:
+          type: string
+          format: date-time
+
+    TrainingJobResponse:
+      type: object
+      additionalProperties: false
+      required: [trainingId, status, progress, currentEpoch, totalEpochs, currentLoss]
+      properties:
+        trainingId:
+          type: string
+          example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+        status:
+          type: string
+          enum: [queued, running, completed, failed, stopped]
+        progress:
+          type: number
+          minimum: 0
+          maximum: 100
+          example: 72.5
+        currentEpoch:
+          type: integer
+          minimum: 0
+          example: 3
+        totalEpochs:
+          type: integer
+          minimum: 1
+          example: 5
+        currentLoss:
+          type: number
+          minimum: 0
+          example: 0.0264
+
+    TrainingResultsResponse:
+      type: object
+      additionalProperties: false
+      required: [trainingId, status, finalLoss, evaluationMetrics]
+      properties:
+        trainingId:
+          type: string
+          example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+        status:
+          type: string
+          enum: [completed]
+        finalLoss:
+          type: number
+          minimum: 0
+          example: 0.0178
+        evaluationMetrics:
+          type: object
+          additionalProperties: false
+          required: [accuracy, f1Score, precision, recall]
+          properties:
+            accuracy:
+              type: number
+              minimum: 0
+              maximum: 1
+              example: 0.94
+            f1Score:
+              type: number
+              minimum: 0
+              maximum: 1
+              example: 0.91
+            precision:
+              type: number
+              minimum: 0
+              maximum: 1
+              example: 0.91
+            recall:
+              type: number
+              minimum: 0
+              maximum: 1
+              example: 0.93
+        savedModelPath:
+          type: string
+          example: /models/transformer-v1
+
+    TrainingRecommendationResponse:
+      type: object
+      additionalProperties: false
+      required: [trainingId, learningRate, batchSize, message]
+      properties:
+        trainingId:
+          type: string
+          example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+        learningRate:
+          type: number
+          exclusiveMinimum: 0
+          example: 0.00002
+        batchSize:
+          type: integer
+          minimum: 1
+          example: 32
+        message:
+          type: string
+          example: Lower learning rate to improve convergence.
+
+    TrainingAnalyticsResponse:
+      type: object
+      additionalProperties: false
+      required: [trainingId, epoch, loss, accuracy, message]
+      properties:
+        trainingId:
+          type: string
+          example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+        epoch:
+          type: integer
+          minimum: 1
+          example: 2
+        loss:
+          type: number
+          minimum: 0
+          example: 0.034
+        accuracy:
+          type: number
+          minimum: 0
+          maximum: 1
+          example: 0.87
+        message:
+          type: string
+          example: Epoch analytics data retrieved.
+
+    DashboardMetricsResponse:
+      type: object
+      additionalProperties: false
+      required: [trainingId, progress, accuracy, loss, timeRemaining, recommendations]
+      properties:
+        trainingId:
+          type: string
+          example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+        progress:
+          type: number
+          minimum: 0
+          maximum: 100
+          example: 85.5
+        accuracy:
+          type: number
+          minimum: 0
+          maximum: 1
+          example: 0.92
+        loss:
+          type: number
+          minimum: 0
+          example: 0.05
+        timeRemaining:
+          type: string
+          example: 1h 15m
+        recommendations:
+          type: array
+          items:
+            type: string
+          example:
+            - Increase batch size to stabilize gradients.
+
+    NotificationThresholds:
+      type: object
+      additionalProperties: false
+      properties:
+        accuracyChange:
+          type: number
+          minimum: 0
+          maximum: 1
+          example: 0.05
+        lossChange:
+          type: number
+          minimum: 0
+          example: 0.01
+
+    NotificationCreateRequest:
+      type: object
+      additionalProperties: false
+      required: [userId, trainingId, notificationType]
+      properties:
+        userId:
+          type: string
+          example: usr_01HZZY9V74N7R0H0V7S0A0B123
+        trainingId:
+          type: string
+          example: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+        notificationType:
+          type: string
+          enum: [email, webhook]
+          example: email
+        thresholds:
+          $ref: '#/components/schemas/NotificationThresholds'

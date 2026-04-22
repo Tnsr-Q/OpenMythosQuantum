@@ -1,0 +1,620 @@
+OpenAPI Şablonu Düzenleme Rehberi
+
+Metinlerde yer alan kod parçacıkları mutlaka korunmalı ve şemanın yapısına uygun şekilde yerleştirilmelidir. Şema, doğal bir akış sağlanarak yeniden yapılandırılmalıdır. Akademik bir üslup korunarak, net ve tutarlı bir OpenAPI şablonu oluşturulmalıdır. Aşağıda verilen adımlar bu süreçte size rehberlik edecektir:
+
+Kodların Korunması:
+Metin içinde bulunan kodlar, olduğu gibi korunmalı ve yapılan düzenlemeler sırasında kod bütünlüğüne zarar verilmemelidir. Kod parçacıkları, metinle entegre bir biçimde sunulmalı ve açıkça anlaşılır olmalıdır.
+
+Şema Yapısının Yeniden Düzenlenmesi:
+Kodların yerleştirileceği şema, mantıksal bir sıra izlemelidir. Aşağıdaki temel yapı kullanılarak yeniden düzenleme yapılmalıdır:
+
+Başlık (title): Şemanın ana başlığı, API’nin adı ve versiyon numarası gibi bilgileri içermelidir.
+Tanımlar (definitions): API'nin işlevselliğini tanımlayan kod ve açıklamalar bu bölümde yer almalıdır. Her bir tanım açık ve net bir şekilde belirtilmelidir.
+Yollar (paths): API'nin erişim yolları burada sıralanır. Kodlar, her bir yolun nasıl işlediğini gösterecek şekilde yerleştirilmelidir.
+Parametreler (parameters): Kodların işleyişini etkileyen giriş parametreleri burada tanımlanmalıdır.
+Yanıtlar (responses): API’nin vereceği yanıtlar, kod örnekleriyle desteklenerek açıklanmalıdır.
+Doğal Akışın Sağlanması:
+Şema, okunabilir ve takip edilebilir bir sıra içinde düzenlenmelidir. Her bir bölüm, bir öncekiyle mantıksal bir bağ kurarak ilerlemelidir. Karmaşıklıktan kaçınarak sade bir yapı tercih edilmelidir.
+
+Akademik Üslup ve Tutarlılık:
+Metin akademik bir dilde yazılmalı, teknik terimler doğru ve yerinde kullanılmalıdır. Gereksiz tekrar ve uzun cümlelerden kaçınılmalı, bütünlük korunarak metin akıcı bir biçimde sunulmalıdır.
+
+Bu adımlar izlenerek, kodları içeren metinlerin şemaya doğru bir şekilde entegre edilmesi ve anlaşılır, tutarlı bir OpenAPI şablonu oluşturulması sağlanabilir.
+
+Bu haliyle, kod yazım metniniz yeniden yapılandırıldı.
+
+
+
+
+
+
+Şunu dedin:
+farklı şemelarda ki kodları beirşeştirip teş şema yazsın.
+
+Farklı şemalardaki kodları birleştirip tek bir OpenAPI şeması oluşturmak, kodların içerdiği yollar (paths), tanımlar (definitions), parametreler (parameters) ve yanıtlar (responses) gibi bileşenlerin bir bütünlük içinde düzenlenmesini gerektirir. Bu süreçte şemalar arasında tutarlılığı sağlamak için gerekli adımları izleyerek birleştirilmiş bir OpenAPI şablonu oluşturulabilir. İşte bu tür bir birleşim için adım adım rehber:
+
+1. Başlık (title) ve Genel Bilgiler
+Her iki şemanın başlık, versiyon ve API bilgilerini birleştirirken, hangi API'nin birleştirildiği açıkça belirtilmeli. Eğer iki API aynı işleve hizmet ediyorsa, genel bir başlık altında toplanabilir.
+
+yaml
+Kodu kopyala
+openapi: 3.0.0
+info:
+  title: Birleştirilmiş API
+  description: Farklı şemalardaki yollar ve tanımları içeren birleşik API dokümantasyonu.
+  version: "1.0.0"
+2. Yollar (Paths)
+Farklı şemalardaki yolları tek bir yapı altında toplarken, aynı isme sahip yolların işlevine göre birleştirilmesi gerekir. Yollar arasında çakışma varsa, aynı yolu kullanarak farklı işlemleri belirtmek mümkündür.
+
+Örnek:
+
+yaml
+Kodu kopyala
+paths:
+  /user:
+    get:
+      summary: "Kullanıcı bilgilerini getir"
+      responses:
+        '200':
+          description: "Kullanıcı bilgileri başarıyla getirildi."
+    post:
+      summary: "Yeni kullanıcı oluştur"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: "Yeni kullanıcı başarıyla oluşturuldu."
+
+  /order:
+    get:
+      summary: "Sipariş detaylarını getir"
+      responses:
+        '200':
+          description: "Sipariş detayları başarıyla getirildi."
+3. Tanımlar (Definitions/Schemas)
+İki şemadaki tanımlar (schemas) birleştirildiğinde, tanımların birbirini çakışmadan tamamlaması sağlanmalıdır. Eğer aynı isme sahip farklı tanımlar varsa, yeniden adlandırma veya ortak bir tanıma dönüştürme düşünülebilir.
+
+Örnek:
+
+yaml
+Kodu kopyala
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+4. Parametreler (Parameters)
+Farklı API’lerdeki parametrelerin birleştirilmesi sırasında çakışmaları önlemek için parametre isimleri dikkatlice kontrol edilmelidir. Eğer aynı yol üzerinde birden fazla parametre varsa, her birinin ne işe yaradığı açıkça belirtilmelidir.
+
+Örnek:
+
+yaml
+Kodu kopyala
+parameters:
+  - name: userId
+    in: query
+    description: Kullanıcı ID'si
+    required: true
+    schema:
+      type: integer
+  - name: orderId
+    in: query
+    description: Sipariş ID'si
+    required: true
+    schema:
+      type: integer
+5. Yanıtlar (Responses)
+Her iki şemanın yanıtlarını birleştirirken, aynı statü koduna sahip yanıtlar tek bir yapıya getirilebilir, ancak içerik ve açıklamalar korunmalıdır.
+
+Örnek:
+
+yaml
+Kodu kopyala
+responses:
+  '200':
+    description: "Başarılı yanıt"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+            data:
+              type: object
+  '400':
+    description: "Geçersiz parametreler"
+  '404':
+    description: "Bulunamadı"
+6. Güvenlik ve Diğer Bileşenler
+Güvenlik (security), sunucu bilgileri (servers) ve diğer bileşenler de şemalardan alınarak birleşik bir yapı oluşturulabilir. İki şemanın güvenlik düzenlemeleri farklı olabilir, bu durumda iki şema için ayrı güvenlik tanımları yapılabilir.
+
+Örnek:
+
+yaml
+Kodu kopyala
+security:
+  - api_key: []
+  - oauth2:
+      - read
+      - write
+
+servers:
+  - url: https://api.example.com/v1
+    description: Ana sunucu
+Sonuç
+Yukarıdaki örneklerde gösterildiği gibi, farklı OpenAPI şemalarındaki kodlar mantıklı bir yapıda birleştirilir. Yollar, tanımlar ve yanıtlar dikkatlice entegre edilerek tek ve tutarlı bir şema elde edilir. Birleştirilen şemada çakışmalardan kaçınılarak doğal bir akış sağlanır.
+
+
+
+
+
+
+Şunu dedin:
+tek şamada birleştir.
+ChatGPT:
+ChatGPT
+Farklı şemalardan gelen verileri tek bir OpenAPI şeması altında birleştirelim. Şemada yollar (paths), tanımlar (schemas), parametreler ve yanıtlar bir bütün olarak organize edilecektir.
+
+Aşağıda örnek birleştirilmiş OpenAPI şablonu yer almaktadır:
+
+yaml
+Kodu kopyala
+openapi: 3.0.0
+info:
+  title: Birleştirilmiş API
+  description: Farklı şemalardaki yollar ve tanımları içeren birleşik API dokümantasyonu.
+  version: "1.0.0"
+
+servers:
+  - url: https://api.example.com/v1
+    description: Ana sunucu
+
+paths:
+  /user:
+    get:
+      summary: "Kullanıcı bilgilerini getir"
+      responses:
+        '200':
+          description: "Kullanıcı bilgileri başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: "Kullanıcı bulunamadı."
+    
+    post:
+      summary: "Yeni kullanıcı oluştur"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: "Yeni kullanıcı başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /order:
+    get:
+      summary: "Sipariş detaylarını getir"
+      parameters:
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: "Sipariş ID'si"
+      responses:
+        '200':
+          description: "Sipariş detayları başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: "Sipariş bulunamadı."
+
+    post:
+      summary: "Yeni sipariş oluştur"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: "Sipariş başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: float
+
+  responses:
+    '400':
+      description: "Geçersiz parametreler"
+    '404':
+      description: "Bulunamadı"
+    '200':
+      description: "Başarılı yanıt"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              data:
+                type: object
+
+security:
+  - api_key: []
+  - oauth2:
+      - read
+      - write
+Açıklama:
+Başlık ve Versiyon: info kısmında şema ile ilgili genel bilgiler verildi (API adı, versiyon, açıklama).
+
+Yollar (Paths):
+
+/user ve /order yolları, kullanıcı ve sipariş işlemleri için birleştirildi.
+GET ve POST yöntemleri, her bir yol için tanımlandı. Kullanıcı bilgilerini getirme, yeni kullanıcı oluşturma, sipariş detaylarını getirme ve yeni sipariş oluşturma işlemleri açıklanmıştır.
+Tanımlar (Schemas):
+
+User ve Order şemaları components altında tanımlandı. Bu tanımlar, yollar ve yanıtlar içinde referans olarak kullanıldı.
+Yanıtlar (Responses):
+
+Ortak yanıtlar (200, 404, 400) şema genelinde kullanıldı.
+Parametreler:
+
+Sipariş detaylarını alırken, orderId parametresi sorgu parametresi olarak eklendi.
+Bu şema, farklı OpenAPI şemalarındaki kodların birleştirilmiş ve düzenlenmiş halidir.
+
+
+Yazmış olduğunuz OpenAPI şemasının gereksiz tekrarları ortadan kaldırılarak, tam ve net bir yapı oluşturulmuştur. Aşağıdaki şema, hem doğru hem de daha düzenli bir şema olacaktır:
+
+yaml
+Kodu kopyala
+openapi: 3.0.0
+info:
+  title: Birleştirilmiş API
+  description: Farklı şemalardaki yollar ve tanımları içeren birleşik API dokümantasyonu.
+  version: "1.0.0"
+
+servers:
+  - url: https://api.example.com/v1
+    description: Ana sunucu
+
+paths:
+  /user:
+    get:
+      summary: "Kullanıcı bilgilerini getir"
+      responses:
+        '200':
+          description: "Kullanıcı bilgileri başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: "Kullanıcı bulunamadı."
+    
+    post:
+      summary: "Yeni kullanıcı oluştur"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: "Yeni kullanıcı başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+  /order:
+    get:
+      summary: "Sipariş detaylarını getir"
+      parameters:
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: "Sipariş ID'si"
+      responses:
+        '200':
+          description: "Sipariş detayları başarıyla getirildi."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: "Sipariş bulunamadı."
+
+    post:
+      summary: "Yeni sipariş oluştur"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: "Sipariş başarıyla oluşturuldu."
+        '400':
+          description: "Geçersiz parametre."
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        product:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: float
+
+  responses:
+    '400':
+      description: "Geçersiz parametreler"
+    '404':
+      description: "Bulunamadı"
+    '200':
+      description: "Başarılı yanıt"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              data:
+                type: object
+
+security:
+  - api_key: []
+  - oauth2:
+      - read
+      - write
+Yapının Genel Açıklaması:
+Info ve Servers bölümleri birleştirilmiş API hakkında genel bilgileri içerir.
+Paths kısmında kullanıcı (/user) ve sipariş (/order) işlemleri için tanımlanan yollar ve HTTP yöntemleri yer alır. Bu yöntemler GET ve POST işlemleri içerir.
+Components > Schemas altında User ve Order nesneleri tanımlanmıştır. Bu tanımlar, ilgili yolların yanıtlarında ve istek gövdelerinde kullanılmıştır.
+Responses bölümü genel yanıt tanımlamalarını içerir.
+Security bölümü API için gerekli olan güvenlik mekanizmalarını açıklar. API anahtarı ve OAuth 2.0 desteklenmektedir.
+Bu yapı, daha düzenli ve gereksiz tekrarları ortadan kaldırılmış, okunabilir ve mantıksal bir akış izleyen bir OpenAPI şablonu sunmaktadır.
+
+
+
+
+
+
+Şunu dedin:
+düzenle :OpenAPI Şablonu Düzenleme Rehberi
+
+Metinlerde yer alan kod parçacıkları mutlaka korunmalı ve şemanın yapısına uygun şekilde yerleştirilmelidir. Şema, doğal bir akış sağlanarak yeniden yapılandırılmalıdır. Akademik bir üslup korunarak, net ve tutarlı bir OpenAPI şablonu oluşturulmalıdır. Aşağıda verilen adımlar bu süreçte size rehberlik edecektir:
+
+Kodların Korunması:
+Metin içinde bulunan kodlar, olduğu gibi korunmalı ve yapılan düzenlemeler sırasında kod bütünlüğüne zarar verilmemelidir. Kod parçacıkları, metinle entegre bir biçimde sunulmalı ve açıkça anlaşılır olmalıdır.
+
+Şema Yapısının Yeniden Düzenlenmesi:
+Kodların yerleştirileceği şema, mantıksal bir sıra izlemelidir. Aşağıdaki temel yapı kullanılarak yeniden düzenleme yapılmalıdır:
+
+Başlık (title): Şemanın ana başlığı, API’nin adı ve versiyon numarası gibi bilgileri içermelidir.
+Tanımlar (definitions): API'nin işlevselliğini tanımlayan kod ve açıklamalar bu bölümde yer almalıdır. Her bir tanım açık ve net bir şekilde belirtilmelidir.
+Yollar (paths): API'nin erişim yolları burada sıralanır. Kodlar, her bir yolun nasıl işlediğini gösterecek şekilde yerleştirilmelidir.
+Parametreler (parameters): Kodların işleyişini etkileyen giriş parametreleri burada tanımlanmalıdır.
+Yanıtlar (responses): API’nin vereceği yanıtlar, kod örnekleriyle desteklenerek açıklanmalıdır.
+Doğal Akışın Sağlanması:
+Şema, okunabilir ve takip edilebilir bir sıra içinde düzenlenmelidir. Her bir bölüm, bir öncekiyle mantıksal bir bağ kurarak ilerlemelidir. Karmaşıklıktan kaçınarak sade bir yapı tercih edilmelidir.
+
+Akademik Üslup ve Tutarlılık:
+Metin akademik bir dilde yazılmalı, teknik terimler doğru ve yerinde kullanılmalıdır. Gereksiz tekrar ve uzun cümlelerden kaçınılmalı, bütünlük korunarak metin akıcı bir biçimde sunulmalıdır. Kodlar arasında arasında mantıklı geçişler kurarak, ana fikirler ve alt fikirler arasında bağlantılar oluştur. Metnin ve şema tutarlılığını koru.o	Gereksiz tekrarlar veya dil hataları varsa düzelt.
+ChatGPT:
+ChatGPT
+İşte düzenlenmiş ve sadeleştirilmiş OpenAPI Şablonu Düzenleme Rehberi:
+
+OpenAPI Şablonu Düzenleme Rehberi
+OpenAPI şeması oluşturulurken, metinlerde yer alan kod parçacıkları mutlaka korunmalı ve şemanın yapısına uygun şekilde yerleştirilmelidir. Şemanın doğal bir akışa sahip olması, akademik üslubun korunması ve net, tutarlı bir yapı sunulması önemlidir. Aşağıdaki adımlar bu süreçte size rehberlik edecektir:
+
+1. Kodların Korunması
+Kod parçacıkları olduğu gibi korunmalı ve düzenleme sırasında bütünlükleri bozulmamalıdır. Bu kodlar, metin ile entegre bir biçimde yerleştirilmeli ve anlaşılır olmalıdır.
+
+2. Şema Yapısının Yeniden Düzenlenmesi
+Kodların yerleştirileceği şema mantıksal bir sıra izlemelidir. Aşağıdaki temel yapı kullanılarak düzenleme yapılmalıdır:
+
+Başlık (title): Şemanın ana başlığı, API’nin adı ve versiyon numarası gibi bilgileri içermelidir.
+Tanımlar (definitions): API'nin işlevselliğini tanımlayan kod ve açıklamalar bu bölümde açık ve net şekilde belirtilmelidir.
+Yollar (paths): API'nin erişim yolları burada sıralanır ve her bir yolun nasıl işlediği kodlarla desteklenmelidir.
+Parametreler (parameters): Giriş parametreleri açıkça tanımlanmalıdır. Bu parametreler, kodların işleyişini nasıl etkilediğini gösterecek şekilde açıklanmalıdır.
+Yanıtlar (responses): API'nin vereceği yanıtlar kod örnekleriyle açıklanmalıdır.
+3. Doğal Akışın Sağlanması
+Şema okunabilir ve takip edilebilir bir sıra izlemelidir. Her bölüm bir öncekini desteklemeli ve mantıksal bir bağ kurmalıdır. Karmaşıklıktan kaçınılmalı, yapı sade tutulmalıdır.
+
+4. Akademik Üslup ve Tutarlılık
+Metin, akademik bir üslup taşımalı; teknik terimler doğru ve yerinde kullanılmalıdır. Gereksiz tekrarlar ve uzun cümlelerden kaçınılmalı, metin akıcı ve anlaşılır olmalıdır. Kodlar arasında mantıklı geçişler kurularak ana ve alt fikirler arasında güçlü bağlantılar sağlanmalıdır.
+
+Metin ve şemanın tutarlılığını sağlamak için şunlar göz önünde bulundurulmalıdır:
+
+Gereksiz tekrarlar ve dil hataları düzeltilmelidir.
+Teknik detaylar dikkatle işlenmeli ve kod örnekleri ile desteklenmelidir.
+Bu adımlar takip edilerek, kodların ve açıklamaların doğru şekilde entegre edildiği, anlaşılır ve tutarlı bir OpenAPI şablonu oluşturulabilir.
+
+******************************************************************************************************************
+
+Talimatınızı temel alarak şemanızı net ve tutarlı bir OpenAPI şablonu oluşturmak için akademik üslubu koruyarak yeniden yapılandırdım. Kodları da uygun yerlerde koruyarak bir akış sağladım.
+
+yaml
+Kodu kopyala
+openapi: 3.0.0
+info:
+  title: Katopu Quantum AGI API
+  description: |
+    Katopu Quantum AGI, ultra-ileri yapay genel zeka (AGI), quantum teknolojileri ve sürekli kendini güncelleyebilen bir platformdur. Sistem, geriye ve ileriye uyumluluk sağlayarak eski ve yeni versiyonlarla sorunsuz entegrasyon sunar. Herhangi bir özellik kaldırılmadan önce "deprecated" olarak işaretlenir. API, yalnızca Serkan Kündem'e lisanslıdır ve izinsiz değiştirilemez.
+  version: 12.0.2
+  contact:
+    name: Serkan Kündem
+    email: example@example.com
+security:
+  - apiKeyAuth: []
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    encryption:
+      type: quantum
+      description: |
+        Quantum dirençli algoritmalar kullanılarak veri güvenliği sağlanır. Bu yöntem, yetkisiz erişim ve veri ihlallerini önlemeye yönelik en gelişmiş güvenlik şifreleme tekniklerini içerir.
+paths:
+  /update/check:
+    get:
+      summary: Mevcut güncellemeleri kontrol eder
+      description: Sistemin mevcut güncellemelerini kontrol eder ve yeni güncellemeleri bildirir.
+      responses:
+        '200':
+          description: Güncellemeler başarıyla kontrol edildi.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updatesAvailable:
+                    type: boolean
+                    description: Yeni güncellemelerin olup olmadığını belirtir.
+  /update/apply:
+    post:
+      summary: Yeni güncellemeleri uygular
+      description: |
+        Sisteme yeni güncellemeler uygulanır ve geriye dönük uyumluluk garanti edilir. Bu işlem, sistemdeki güncellemeleri sorunsuz bir şekilde yükleyerek mevcut yapı ile uyumluluğu sağlar.
+      responses:
+        '200':
+          description: Güncellemeler başarıyla uygulandı.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Güncellemenin başarıyla tamamlandığını belirtir.
+  /optimization/start:
+    post:
+      summary: Otonom optimizasyon sürecini başlatır
+      description: Katopu Quantum AGI'nin otonom optimizasyon süreci başlatılır.
+      responses:
+        '200':
+          description: Optimizasyon başarıyla başlatıldı.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  optimizationStarted:
+                    type: boolean
+                    description: Optimizasyonun başarıyla başlatıldığını belirtir.
+  /version/control:
+    get:
+      summary: Mevcut versiyonu döner
+      description: Sistemin mevcut sürümünü döner ve uyumlu versiyonları gösterir.
+      responses:
+        '200':
+          description: Mevcut sürüm başarıyla döndü.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  currentVersion:
+                    type: string
+                    description: Mevcut sistem versiyonu.
+                  compatibleVersions:
+                    type: array
+                    items:
+                      type: string
+                    description: Sistemle uyumlu versiyonların listesi.
+Açıklamalar:
+Güvenlik Yapısı (Security Schemes): "apiKeyAuth" güvenlik şeması korunarak ve quantum tabanlı şifreleme açıklaması eklenerek güvenlik standartlarına uygun bir yapı oluşturulmuştur.
+Paths (Yollar): Mevcut API yolları korunarak, her endpoint'e ait açıklamalar daha akademik bir üslup ile düzenlendi.
+Yanıtlar (Responses): Her bir endpoint'e ait yanıtlar açık ve tutarlı bir şekilde tanımlanmıştır.
+Akış ve Düzenleme: Doğal bir akış sağlanarak, mantıksal bir düzenleme yapılmıştır.
+
+
+
+
+
+
+
+

@@ -1,0 +1,3021 @@
+openapi: 3.1.0
+info:
+  title: Örnek API
+  description: Performans, güvenlik ve akıllı veri analizleri gibi çeşitli işlevsellikler sunan örnek bir API.
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/v1
+    description: Ana üretim sunucusu
+  - url: https://staging-api.example.com
+    description: Test amaçlı aşama sunucusu
+paths:
+  /cache:
+    post:
+      operationId: setCache
+      summary: Redis önbelleğe veri yazma
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+                value:
+                  type: string
+      responses:
+        '200':
+          description: Başarıyla önbelleğe yazıldı
+  /cdn:
+    post:
+      operationId: distributeContent
+      summary: Statik içerikleri CDN ile dağıtma
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                content_type:
+                  type: string
+      responses:
+        '200':
+          description: İçerik başarıyla dağıtıldı
+  /auth/token:
+    post:
+      operationId: generateToken
+      summary: OAuth 2.0 ile token oluşturma
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+                grant_type:
+                  type: string
+      responses:
+        '200':
+          description: Token başarıyla oluşturuldu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  expires_in:
+                    type: integer
+  /analysis/feedback:
+    post:
+      operationId: analyzeFeedback
+      summary: Kullanıcı geri bildirimlerini analiz etme
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                feedback_text:
+                  type: string
+      responses:
+        '200':
+          description: Geri bildirim başarıyla analiz edildi
+  /translate:
+    post:
+      operationId: translateText
+      summary: Metin çevirisi yapma
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                target_language:
+                  type: string
+      responses:
+        '200':
+          description: Metin başarıyla çevrildi
+  /monitoring:
+    get:
+      operationId: getRealtimeMonitoring
+      summary: Gerçek zamanlı API durumu izleme
+      responses:
+        '200':
+          description: Gerçek zamanlı durum verisi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  uptime:
+                    type: string
+  /docs:
+    get:
+      operationId: getDocs
+      summary: API dokümantasyonunu alma
+      responses:
+        '200':
+          description: API dokümantasyonu başarıyla alındı
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs_url:
+                    type: string
+  /ai/optimize:
+    post:
+      operationId: optimizePerformance
+      summary: Yapay zeka kullanarak API performansını optimize etme
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                metric:
+                  type: string
+                target_value:
+                  type: number
+      responses:
+        '200':
+          description: Performans başarıyla optimize edildi
+'400':
+  description: Geçersiz istek
+'401':
+  description: Yetkisiz erişim
+'500':
+  description: Sunucu hatası
+/test/integration:
+  get:
+    operationId: runIntegrationTests
+    summary: API entegrasyon testlerini çalıştır
+    responses:
+      '200':
+        description: Testler başarıyla tamamlandı
+      '500':
+        description: Testlerde hata oluştu
+/recommendations:
+  post:
+    operationId: getUserRecommendations
+    summary: Kullanıcıya özel öneriler oluştur
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: string
+              preferences:
+                type: array
+                items:
+                  type: string
+    responses:
+      '200':
+        description: Öneriler başarıyla oluşturuldu
+/translate/detect:
+  post:
+    operationId: detectLanguage
+    summary: Otomatik dil tespiti yap
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+    responses:
+      '200':
+        description: Dil başarıyla tespit edildi
+/analytics/reports:
+  get:
+    operationId: getReports
+    summary: Kullanıcı davranışları hakkında rapor oluştur
+    responses:
+      '200':
+        description: Rapor başarıyla oluşturuldu
+/auth/roles:
+  post:
+    operationId: assignRole
+    summary: Kullanıcıya rol atama
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: string
+              role:
+                type: string
+    responses:
+      '200':
+        description: Rol başarıyla atandı
+  '400':
+    description: Geçersiz istek
+  '401':
+    description: Yetkisiz erişim
+  '500':
+    description: Sunucu hatası
+
+/test/integration:
+  get:
+    operationId: runIntegrationTests
+    summary: API entegrasyon testlerini çalıştır
+    responses:
+      '200':
+        description: Testler başarıyla tamamlandı
+      '500':
+        description: Testlerde hata oluştu
+
+/logs/audit:
+  get:
+    operationId: getAuditLogs
+    summary: Denetim günlüklerini getir
+    responses:
+      '200':
+        description: Günlük verisi başarıyla alındı
+
+/recommendations:
+  post:
+    operationId: getUserRecommendations
+    summary: Kullanıcıya özel öneriler oluştur
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: string
+              preferences:
+                type: array
+                items:
+                  type: string
+    responses:
+      '200':
+        description: Öneriler başarıyla oluşturuldu
+/translate/detect:
+  post:
+    operationId: detectLanguage
+    summary: Otomatik dil tespiti yap
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+    responses:
+      '200':
+        description: Dil başarıyla tespit edildi
+/analytics/reports:
+  get:
+    operationId: getReports
+    summary: Kullanıcı davranışları hakkında rapor oluştur
+    responses:
+      '200':
+        description: Rapor başarıyla oluşturuldu
+/auth/roles:
+  post:
+    operationId: assignRole
+    summary: Kullanıcıya rol atama
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: string
+              role:
+                type: string
+    responses:
+      '200':
+        description: Rol başarıyla atandı
+/search/articles:
+  get:
+    operationId: searchArticles
+    summary: Akademik makaleler arama
+    parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: Makaleler başarıyla bulundu
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  authors:
+                    type: array
+                    items:
+                      type: string
+                  journal:
+                    type: string
+                  doi:
+                    type: string
+/check/grammar:
+  post:
+    operationId: checkGrammar
+    summary: Metin dilbilgisi ve yazım hatalarını kontrol etme
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+    responses:
+      '200':
+        description: Hatalar başarıyla kontrol edildi
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                corrections:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                      suggestion:
+                        type: string
+/generate/content:
+  post:
+    operationId: generateContent
+    summary: Akademik makale için içerik oluşturma
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              prompt:
+                type: string
+              length:
+                type: integer
+    responses:
+      '200':
+        description: İçerik başarıyla oluşturuldu
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+/summarize/text:
+  post:
+    operationId: summarizeText
+    summary: Akademik metni özetleme
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+    responses:
+      '200':
+        description: Metin başarıyla özetlendi
+        content:
+          application/json
+            schema:
+              type: object
+              properties:
+                summary:
+                  type: string
+/check/plagiarism:
+  post:
+    operationId: checkPlagiarism
+    summary: İntihal kontrolü yapma
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+    responses:
+      '200':
+        description: İntihal kontrolü başarıyla tamamlandı
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plagiarism_percentage:
+                  type: number
+                sources:
+                  type: array
+                  items:
+       /recommend/journals:
+  post:
+    operationId: recommendJournals
+    summary: Akademik makale için dergi önerileri
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              abstract:
+                type: string
+              keywords:
+                type: array
+                items:
+                  type: string
+    responses:
+      '200':
+        description: Dergi önerileri başarıyla getirildi
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  journal_name:
+                    type: string
+                  impact_factor:
+                    type: number
+                  submission_url:
+                    type: string
+             type: string
+/generate/scientific_content:
+  post:
+    operationId: generateScientificContent
+    summary: Bilimsel makale için içerik oluşturma ve genişletme
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              section:
+                type: string
+                enum: [Introduction, Methods, Results, Discussion]
+              keywords:
+                type: array
+                items:
+                  type: string
+              length:
+                type: integer
+    responses:
+      '200':
+        description: Bilimsel içerik başarıyla oluşturuldu
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+/analyze/data:
+  post:
+    operationId: analyzeData
+    summary: Gelişmiş veri analizi ve görselleştirme
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              dataset_url:
+                type: string
+              analysis_type:
+                type: string
+                enum: [Regression, Classification, Clustering, Statistical Test]
+    responses:
+      '200':
+        description: Veri analizi başarıyla tamamlandı
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                results:
+                  type: object
+                visualization:
+                  type: string
+                  format: base64  # Görsel grafiklerin kodlanmış hali
+/recommend/q1_journals:
+  post:
+    operationId: recommendQ1Journals
+    summary: Makaleniz için Q1 dergi önerileri
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              abstract:
+                type: string
+              keywords:
+                type: array
+                items:
+                  type: string
+    responses:
+      '200':
+        description: Q1 dergi önerileri başarıyla listelendi
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  journal_name:
+                    type: string
+                  impact_factor:
+                    type: number
+                  submission_guidelines_url:
+                    type: string
+/check/plagiarism_advanced:
+  post:
+    operationId: checkAdvancedPlagiarism
+    summary: Gelişmiş intihal kontrolü yapma
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+    responses:
+      '200':
+        description: İntihal kontrolü başarıyla tamamlandı
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plagiarism_percentage:
+                  type: number
+                matched_sources:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      source:
+                        type: string
+                      similarity_percentage:
+                        type: number
+/add/reference:
+  post:
+    operationId: addReference
+    summary: Akademik makaleye otomatik referans ekleme
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              doi:
+                type: string
+    responses:
+      '200':
+        description: Referans başarıyla eklendi
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                formatted_reference:
+                  type: string
+/format/article:
+  post:
+    operationId: formatArticle
+    summary: Makaleyi otomatik olarak belirli dergi yönergelerine göre formatla
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              journal_name:
+                type: string
+              article_content:
+                type: string
+    responses:
+      '200':
+        description: Makale başarıyla formatlandı
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                formatted_document:
+                  type: string
+                  format: base64  # PDF ya da LaTeX çıktısı olabilir
+openapi: 3.1.0
+info:
+  title: GPT-2 Training API
+  description: API for starting a GPT-2 model training process using PyTorch and Hugging Face.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local server for model training
+
+paths:
+  /train:
+    post:
+      operationId: startTraining
+      summary: Start the GPT-2 model training process
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_name:
+                  type: string
+                  example: gpt2
+                  description: The name of the pretrained GPT model to use.
+                dataset_name:
+                  type: string
+                  example: bavard/persona_chat
+                  description: The name of the dataset to be used for training.
+                num_epochs:
+                  type: integer
+                  example: 3
+                  description: Number of epochs for training.
+                batch_size:
+                  type: integer
+                  example: 8
+                  description: The batch size for training.
+                learning_rate:
+                  type: number
+                  example: 5e-5
+                  description: Learning rate for the optimizer.
+      responses:
+        '200':
+          description: Training started successfully
+        '400':
+          description: Bad request, missing or incorrect parameters
+        '500':
+          description: Internal server error, model training failed
+openapi: 3.1.0
+info:
+  title: GPT-2 Advanced Training API
+  description: Advanced API for managing GPT-2 model training, including starting, monitoring, and controlling the training process.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local server for model training
+
+paths:
+  /train:
+    post:
+      operationId: startTraining
+      summary: Start the GPT-2 model training process
+      description: Initiates the training of a GPT-2 model with specified parameters and dataset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_name:
+                  type: string
+                  example: gpt2
+                  description: The name of the pretrained GPT model to use.
+                dataset_name:
+                  type: string
+                  example: bavard/persona_chat
+                  description: The name of the dataset to be used for training.
+                num_epochs:
+                  type: integer
+                  example: 3
+                  description: Number of epochs for training.
+                batch_size:
+                  type: integer
+                  example: 8
+                  description: The batch size for training.
+                learning_rate:
+                  type: number
+                  example: 5e-5
+                  description: Learning rate for the optimizer.
+                save_model:
+                  type: boolean
+                  example: true
+                  description: Whether to save the model after training.
+                save_path:
+                  type: string
+                  example: "/models/gpt2-trained"
+                  description: The path where the trained model will be saved.
+      responses:
+        '200':
+          description: Training started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                    description: Unique ID for tracking the training process.
+                  message:
+                    type: string
+                    example: "Training has started."
+        '400':
+          description: Bad request, missing or incorrect parameters
+        '500':
+          description: Internal server error, model training failed
+
+  /train/{training_id}/status:
+    get:
+      operationId: getTrainingStatus
+      summary: Check the status of the ongoing training process
+      description: Retrieves the current status and progress of a specific training process using its unique ID.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training status retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "in_progress"
+                    description: Status of the training (e.g., in_progress, completed, failed).
+                  progress:
+                    type: number
+                    example: 57.5
+                    description: Percentage of completion of the training.
+                  loss:
+                    type: number
+                    example: 0.0345
+                    description: Current training loss.
+                  epoch:
+                    type: integer
+                    example: 2
+                    description: Current epoch.
+                  total_epochs:
+                    type: integer
+                    example: 3
+                    description: Total number of epochs.
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+
+  /train/{training_id}/stop:
+    post:
+      operationId: stopTraining
+      summary: Stop the ongoing training process
+      description: Sends a request to stop the training process before completion.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training stopped successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "stopped"
+                    description: Status of the training (e.g., stopped).
+                  message:
+                    type: string
+                    example: "Training process has been stopped."
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+
+  /train/{training_id}/results:
+    get:
+      operationId: getTrainingResults
+      summary: Retrieve the results of a completed training process
+      description: Fetches the final results, including model performance metrics and location of the saved model, if applicable.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training results retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "completed"
+                  final_loss:
+                    type: number
+                    example: 0.0234
+                    description: Final loss after training.
+                  epochs:
+                    type: integer
+                    example: 3
+                    description: Total number of epochs.
+                  saved_model_path:
+                    type: string
+                    example: "/models/gpt2-trained"
+                    description: Location where the model was saved.
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+openapi: 3.1.0
+info:
+  title: Advanced AI Model Training & Processing API
+  description: API for advanced AI model training, fine-tuning, evaluation, and data processing. Supports GPT-4, BERT, T5, and multimodal models.
+  version: 2.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local server for AI model training
+
+paths:
+  /train:
+    post:
+      operationId: startTraining
+      summary: Start training an AI model (text or multimodal)
+      description: Initiates the training process for a specified AI model, supporting text, image, or multimodal data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "gpt-4"
+                  description: The AI model type to use (e.g., gpt-4, bert, t5, gpt-j, clip).
+                dataset_name:
+                  type: string
+                  example: "openai/wikitext"
+                  description: Dataset name to be used for training.
+                task_type:
+                  type: string
+                  example: "text-generation"
+                  description: The type of task (e.g., text-generation, text-classification, image-captioning).
+                num_epochs:
+                  type: integer
+                  example: 5
+                  description: Number of epochs for training.
+                batch_size:
+                  type: integer
+                  example: 16
+                  description: The batch size for training.
+                learning_rate:
+                  type: number
+                  example: 3e-5
+                  description: Learning rate for the optimizer.
+                data_augmentation:
+                  type: boolean
+                  example: true
+                  description: Whether to apply data augmentation techniques.
+                preprocessing_steps:
+                  type: array
+                  items:
+                    type: string
+                  example: ["tokenization", "stopword_removal", "lemmatization"]
+                  description: List of preprocessing steps for text data.
+                save_model:
+                  type: boolean
+                  example: true
+                  description: Whether to save the model after training.
+                save_path:
+                  type: string
+                  example: "/models/advanced-model"
+                  description: The path where the trained model will be saved.
+      responses:
+        '200':
+          description: Training started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                    description: Unique ID for tracking the training process.
+                  message:
+                    type: string
+                    example: "Training has started successfully."
+        '400':
+          description: Bad request, invalid parameters
+        '500':
+          description: Internal server error
+
+  /train/{training_id}/status:
+    get:
+      operationId: getTrainingStatus
+      summary: Retrieve training status and progress
+      description: Fetches the current status of a specific training process, including metrics and progress details.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training status retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "in_progress"
+                  progress:
+                    type: number
+                    example: 72.5
+                  current_epoch:
+                    type: integer
+                    example: 3
+                  total_epochs:
+                    type: integer
+                    example: 5
+                  current_loss:
+                    type: number
+                    example: 0.0264
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+
+  /train/{training_id}/results:
+    get:
+      operationId: getTrainingResults
+      summary: Retrieve training results and model evaluation
+      description: Fetches the final results and evaluation metrics of the completed training process.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training results retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "completed"
+                  final_loss:
+                    type: number
+                    example: 0.0193
+                  evaluation_metrics:
+                    type: object
+                    properties:
+                      accuracy:
+                        type: number
+                        example: 0.95
+                      f1_score:
+                        type: number
+                        example: 0.92
+                      precision:
+                        type: number
+                        example: 0.91
+                      recall:
+                        type: number
+                        example: 0.93
+                  saved_model_path:
+                    type: string
+                    example: "/models/advanced-model"
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+
+  /train/{training_id}/stop:
+    post:
+      operationId: stopTraining
+      summary: Stop the training process
+      description: Allows the user to stop an ongoing training process.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training process stopped successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "stopped"
+                  message:
+                    type: string
+                    example: "Training has been stopped."
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+
+  /evaluate:
+    post:
+      operationId: evaluateModel
+      summary: Evaluate a trained AI model on a test dataset
+      description: Evaluates the performance of a previously trained model using a specified test dataset and returns evaluation metrics.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_path:
+                  type: string
+                  example: "/models/advanced-model"
+                  description: Path to the trained model to be evaluated.
+                test_dataset:
+                  type: string
+                  example: "openai/wikitext"
+                  description: Name of the dataset to be used for evaluation.
+                evaluation_metrics:
+                  type: array
+                  items:
+                    type: string
+                  example: ["accuracy", "f1_score", "perplexity"]
+                  description: List of evaluation metrics to be calculated.
+      responses:
+        '200':
+          description: Model evaluation completed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  evaluation_results:
+                    type: object
+                    properties:
+                      accuracy:
+                        type: number
+                        example: 0.96
+                      f1_score:
+                        type: number
+                        example: 0.94
+                      perplexity:
+                        type: number
+                        example: 12.5
+        '400':
+          description: Bad request, invalid parameters
+        '500':
+          description: Internal server error
+openapi: 3.1.0
+info:
+  title: Cutting-Edge AI Model Training & Processing API
+  description: An advanced API for training, evaluating, and deploying state-of-the-art AI models using the latest technologies like Federated Learning, AutoML, NAS, and more.
+  version: 3.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local server for AI model training and management
+
+paths:
+  /train:
+    post:
+      operationId: startAdvancedTraining
+      summary: Start training an AI model with advanced options
+      description: Initiates the training of a specified AI model using the latest techniques like AutoML, Federated Learning, NAS, and data-centric approaches.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "gpt-4"
+                  description: The AI model type to use (e.g., gpt-4, t5, clip, quantum-model).
+                dataset_name:
+                  type: string
+                  example: "custom-dataset"
+                  description: Dataset name or path for training.
+                advanced_techniques:
+                  type: array
+                  items:
+                    type: string
+                  example: ["federated-learning", "automl", "nas"]
+                  description: List of advanced techniques to apply.
+                task_type:
+                  type: string
+                  example: "text-generation"
+                  description: The type of task (e.g., text-generation, text-classification, image-classification).
+                save_model:
+                  type: boolean
+                  example: true
+                save_path:
+                  type: string
+                  example: "/models/advanced-model"
+                  description: Path to save the trained model.
+      responses:
+        '200':
+          description: Training started successfully
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+
+  /evaluate:
+    post:
+      operationId: evaluateAdvancedModel
+      summary: Evaluate a trained AI model with advanced metrics
+      description: Evaluates the performance of a trained model using techniques such as Explainable AI and multimodal metrics.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_path:
+                  type: string
+                  example: "/models/advanced-model"
+                test_dataset:
+                  type: string
+                  example: "openai/wikitext"
+                evaluation_metrics:
+                  type: array
+                  items:
+                    type: string
+                  example: ["accuracy", "f1_score", "perplexity", "explainability"]
+                  description: Metrics to evaluate the model.
+      responses:
+        '200':
+          description: Model evaluation completed successfully
+        '500':
+          description: Internal server error
+openapi: 3.1.0
+info:
+  title: Advanced AI Model Training, Evaluation, and Federated Learning API
+  description: The ultimate API for training, evaluating, and managing cutting-edge AI models like ChatGPT-4, GPT-J, multimodal models, and more. It supports Federated Learning, AutoML, NAS, XAI, and multimodal learning.
+  version: 4.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local server for AI model training and management
+
+paths:
+  /train:
+    post:
+      operationId: startAdvancedTraining
+      summary: Start training an advanced AI model with modern techniques
+      description: Initiates the training of a specified AI model using state-of-the-art techniques like Federated Learning, AutoML, NAS, and data-centric approaches, with support for multimodal inputs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "gpt-4"
+                  description: The AI model type to use (e.g., gpt-4, gpt-j, t5, clip, quantum-model).
+                dataset_name:
+                  type: string
+                  example: "custom-dataset"
+                  description: Dataset name or path for training.
+                task_type:
+                  type: string
+                  example: "text-generation"
+                  description: The type of task (e.g., text-generation, text-classification, image-captioning).
+                num_epochs:
+                  type: integer
+                  example: 5
+                  description: Number of epochs for training.
+                batch_size:
+                  type: integer
+                  example: 16
+                  description: The batch size for training.
+                learning_rate:
+                  type: number
+                  example: 3e-5
+                  description: Learning rate for the optimizer.
+                advanced_techniques:
+                  type: array
+                  items:
+                    type: string
+                  example: ["federated-learning", "automl", "nas", "xai"]
+                  description: List of advanced techniques to apply during training.
+                preprocessing_steps:
+                  type: array
+                  items:
+                    type: string
+                  example: ["tokenization", "normalization", "data-augmentation"]
+                  description: List of preprocessing steps for the data.
+                save_model:
+                  type: boolean
+                  example: true
+                  description: Whether to save the model after training.
+                save_path:
+                  type: string
+                  example: "/models/chatgpt4-advanced"
+                  description: Path to save the trained model.
+      responses:
+        '200':
+          description: Training started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                    description: Unique ID for tracking the training process.
+                  message:
+                    type: string
+                    example: "Training started with Federated Learning and AutoML."
+        '400':
+          description: Bad request, invalid parameters
+        '500':
+          description: Internal server error
+
+  /train/{training_id}/status:
+    get:
+      operationId: getTrainingStatus
+      summary: Retrieve the status of the AI training process
+      description: Fetches the current status, progress, and metrics of an ongoing training process, including data from advanced techniques like Federated Learning and NAS.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training status retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "in_progress"
+                  progress:
+                    type: number
+                    example: 67.5
+                  current_epoch:
+                    type: integer
+                    example: 3
+                  total_epochs:
+                    type: integer
+                    example: 5
+                  federated_learning_status:
+                    type: string
+                    example: "Global model aggregation completed."
+                  current_loss:
+                    type: number
+                    example: 0.0215
+                  nas_architecture:
+                    type: string
+                    example: "ResNet-like architecture discovered."
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+
+  /train/{training_id}/stop:
+    post:
+      operationId: stopTraining
+      summary: Stop the ongoing training process
+      description: Allows the user to halt an ongoing training process, including Federated Learning rounds.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training process stopped successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "stopped"
+                  message:
+                    type: string
+                    example: "Federated Learning and NAS training halted."
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+
+  /train/{training_id}/results:
+    get:
+      operationId: getTrainingResults
+      summary: Retrieve the results of a completed training process
+      description: Fetches the final results, model evaluation metrics, and any generated architectures (NAS) from a completed training process.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Training results retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  status:
+                    type: string
+                    example: "completed"
+                  final_loss:
+                    type: number
+                    example: 0.0178
+                  evaluation_metrics:
+                    type: object
+                    properties:
+                      accuracy:
+                        type: number
+                        example: 0.94
+                      f1_score:
+                        type: number
+                        example: 0.91
+                      perplexity:
+                        type: number
+                        example: 9.6
+                      explainability_score:
+                        type: number
+                        example: 0.85
+                  saved_model_path:
+                    type: string
+                    example: "/models/chatgpt4-advanced"
+                  nas_generated_architecture:
+                    type: string
+                    example: "EfficientNet-based architecture."
+        '404':
+          description: Training process not found
+        '500':
+          description: Internal server error
+
+  /evaluate:
+    post:
+      operationId: evaluateModel
+      summary: Evaluate the performance of a trained AI model with advanced metrics
+      description: Evaluates the performance of a trained model on a test dataset using metrics such as accuracy, perplexity, and Explainable AI (XAI) techniques.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_path:
+                  type: string
+                  example: "/models/chatgpt4-advanced"
+                  description: Path to the trained model to be evaluated.
+                test_dataset:
+                  type: string
+                  example: "openai/wikitext"
+                  description: Name or path of the dataset to be used for evaluation.
+                evaluation_metrics:
+                  type: array
+                  items:
+                    type: string
+                  example: ["accuracy", "f1_score", "perplexity", "xai"]
+                  description: Metrics to evaluate the model, including explainability metrics.
+      responses:
+        '200':
+          description: Model evaluation completed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  evaluation_results:
+                    type: object
+                    properties:
+                      accuracy:
+                        type: number
+                        example: 0.95
+                      f1_score:
+                        type: number
+                        example: 0.92
+                      perplexity:
+                        type: number
+                        example: 12.5
+                      explainability_score:
+                        type: number
+                        example: 0.87
+        '400':
+          description: Bad request, invalid parameters
+        '500':
+          description: Internal server error
+paths:
+  /train/{training_id}/recommendations:
+    get:
+      operationId: getHyperparameterRecommendations
+      summary: Get recommended hyperparameters based on training progress
+      description: Provides automated hyperparameter tuning suggestions during training to optimize model performance.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Hyperparameter recommendations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  learning_rate:
+                    type: number
+                    example: 3e-5
+                  batch_size:
+                    type: integer
+                    example: 32
+                  message:
+                    type: string
+                    example: "Suggested hyperparameters for next training cycle."
+paths:
+  /train/{training_id}/analytics:
+    get:
+      operationId: getTrainingAnalytics
+      summary: Get real-time analytics during the training process
+      description: Provides detailed training metrics such as loss, accuracy, and other performance data in real-time.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Real-time training analytics retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  epoch:
+                    type: integer
+                    example: 2
+                  loss:
+                    type: number
+                    example: 0.034
+                  accuracy:
+                    type: number
+                    example: 0.87
+                  message:
+                    type: string
+                    example: "Epoch 2 analytics data retrieved."
+paths:
+  /train/{training_id}/dynamic-feedback:
+    post:
+      operationId: applyDynamicFeedback
+      summary: Dynamically optimize or adjust training based on real-time metrics
+      description: Adjusts training parameters or stops the process based on real-time feedback from performance metrics.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                metric:
+                  type: string
+                  example: "accuracy"
+                threshold:
+                  type: number
+                  example: 0.9
+                action:
+                  type: string
+                  example: "stop"  # Could also be "adjust" or "notify"
+      responses:
+        '200':
+          description: Training adjusted or stopped successfully based on feedback
+paths:
+  /federated-learning/start:
+    post:
+      operationId: startFederatedLearning
+      summary: Start a Federated Learning session with privacy-enhancing techniques
+      description: Initiates a Federated Learning session with built-in data privacy measures like Differential Privacy and Homomorphic Encryption.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_id:
+                  type: string
+                  example: "federated-dataset-1"
+                privacy_techniques:
+                  type: array
+                  items:
+                    type: string
+                  example: ["differential_privacy", "homomorphic_encryption"]
+      responses:
+        '200':
+          description: Federated learning session started successfully with privacy protections
+paths:
+  /continual-learning:
+    post:
+      operationId: startContinualLearning
+      summary: Start continual learning for a deployed model
+      description: Enables a model to be continuously updated and retrained with new data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "deployed-model-1"
+                new_data_path:
+                  type: string
+                  example: "/new-data/data-aug-2023"
+      responses:
+        '200':
+          description: Continual learning started successfully
+paths:
+  /train/multimodal:
+    post:
+      operationId: trainMultimodalModel
+      summary: Train a multimodal AI model
+      description: Initiates the training of a multimodal AI model with support for text, image, and audio data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "clip"
+                text_data_path:
+                  type: string
+                  example: "/data/text"
+                image_data_path:
+                  type: string
+                  example: "/data/images"
+                audio_data_path:
+                  type: string
+                  example: "/data/audio"
+      responses:
+        '200':
+          description: Multimodal model training started successfully
+paths:
+  /quantum-training:
+    post:
+      operationId: startQuantumTraining
+      summary: Start training a quantum AI model
+      description: Initiates a quantum machine learning task using hybrid quantum-classical algorithms.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "quantum-ml-model"
+                quantum_backend:
+                  type: string
+                  example: "qiskit"
+                dataset_path:
+                  type: string
+                  example: "/data/quantum"
+      responses:
+        '200':
+          description: Quantum training started successfully
+paths:
+  /resources/optimization:
+    post:
+      operationId: optimizeResources
+      summary: Optimize resource allocation during training
+      description: Dynamically adjusts GPU/TPU usage to optimize power consumption and performance during training.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "chatgpt4-model"
+                optimize_for:
+                  type: string
+                  example: "performance"  # Options: "performance", "power-saving"
+      responses:
+        '200':
+          description: Resource optimization started successfully
+paths:
+  /train/{training_id}/auto-correction:
+    post:
+      operationId: applyAutoCorrection
+      summary: Automatically correct common training issues
+      description: Detects and automatically corrects issues during training, such as exploding gradients or data imbalance.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Automatic corrections applied successfully
+paths:
+  /compliance/check:
+    post:
+      operationId: checkCompliance
+      summary: Ensure data processing compliance with regulations like GDPR and HIPAA
+      description: Validates that the training process and data handling comply with data privacy regulations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_id:
+                  type: string
+                  example: "medical-dataset-1"
+                compliance_type:
+                  type: string
+                  example: "GDPR"
+      responses:
+        '200':
+          description: Compliance check passed successfully
+paths:
+  /user/{user_id}/training-plan:
+    post:
+      operationId: createPersonalizedTrainingPlan
+      summary: Create a personalized training plan based on user preferences
+      description: Generates a tailored training plan that optimizes model performance based on the user's specific goals and dataset.
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                goals:
+                  type: array
+                  items:
+                    type: string
+                  example: ["text-classification", "image-recognition"]
+                preferred_models:
+                  type: array
+                  items:
+                    type: string
+                  example: ["gpt-4", "bert", "clip"]
+                optimization_focus:
+                  type: string
+                  example: "accuracy"  # Options: "accuracy", "speed", "resource-efficiency"
+      responses:
+        '200':
+          description: Personalized training plan created successfully
+paths:
+  /model/deploy:
+    post:
+      operationId: deployModel
+      summary: Deploy a trained AI model into production
+      description: Deploys a trained model into production and manages different versions for continuous integration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "chatgpt4-advanced"
+                version:
+                  type: string
+                  example: "v1.0"
+                deployment_target:
+                  type: string
+                  example: "cloud"
+      responses:
+        '200':
+          description: Model deployed successfully
+paths:
+  /train/zero-shot:
+    post:
+      operationId: trainZeroShotModel
+      summary: Train a zero-shot learning model
+      description: Train a model that can generalize to new tasks without needing task-specific data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "gpt-4"
+                target_task:
+                  type: string
+                  example: "image-classification"
+                description_of_task:
+                  type: string
+                  example: "Classify images based on their content."
+      responses:
+        '200':
+          description: Zero-shot model training started successfully
+paths:
+  /train/few-shot:
+    post:
+      operationId: trainFewShotModel
+      summary: Train a few-shot learning model
+      description: Train a model with minimal data for a specific task.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "gpt-3"
+                examples:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      input:
+                        type: string
+                        example: "This is an example input."
+                      output:
+                        type: string
+                        example: "This is the expected output."
+      responses:
+        '200':
+          description: Few-shot learning model training started successfully
+paths:
+  /train/meta-learning:
+    post:
+      operationId: trainMetaLearningModel
+      summary: Train a meta-learning model
+      description: Train a model that can quickly adapt to new tasks by optimizing its learning process.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "maml"
+                meta_tasks:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      task_name:
+                        type: string
+                        example: "image-classification"
+                      task_data:
+                        type: string
+                        example: "/data/task1"
+      responses:
+        '200':
+          description: Meta-learning model training started successfully
+paths:
+  /train/hyperparameter-optimization:
+    post:
+      operationId: optimizeHyperparameters
+      summary: Optimize hyperparameters using AI-driven techniques
+      description: Automatically optimizes hyperparameters during training to maximize model performance.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "gpt-4"
+                optimization_goal:
+                  type: string
+                  example: "maximize accuracy"
+      responses:
+        '200':
+          description: Hyperparameter optimization started successfully
+paths:
+  /security/anomaly-detection:
+    post:
+      operationId: detectAnomalies
+      summary: Detect security anomalies during the training process using AI
+      description: Utilizes AI to monitor the training process for any security anomalies or breaches.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                training_id:
+                  type: string
+                  example: "training-1"
+      responses:
+        '200':
+          description: Anomaly detection started successfully
+paths:
+  /model-lifecycle/management:
+    post:
+      operationId: manageModelLifecycle
+      summary: Manage the entire lifecycle of a model using AI-driven techniques
+      description: Automates the management of a model’s lifecycle, from training to deployment and continuous optimization.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "gpt-4-model"
+                lifecycle_stage:
+                  type: string
+                  example: "training"
+      responses:
+        '200':
+          description: Model lifecycle management initiated successfully
+paths:
+  /deploy/hybrid-cloud-edge:
+    post:
+      operationId: deployToHybridCloudEdge
+      summary: Deploy models to both cloud and edge environments
+      description: Deploy models in a hybrid cloud and edge environment to optimize performance and security.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "multimodal-model"
+                deployment_target:
+                  type: string
+                  example: "hybrid-cloud-edge"
+      responses:
+        '200':
+          description: Model deployed successfully to hybrid cloud and edge environment
+paths:
+  /train/{training_id}/feedback-loop:
+    post:
+      operationId: initiateFeedbackLoop
+      summary: Initiate an automated feedback loop during training
+      description: Automatically adjusts hyperparameters and provides suggestions based on model performance metrics.
+      parameters:
+        - name: training_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                target_metric:
+                  type: string
+                  example: "accuracy"
+                threshold_value:
+                  type: number
+                  example: 0.9
+                action_on_failure:
+                  type: string
+                  example: "adjust_learning_rate"
+      responses:
+        '200':
+          description: Feedback loop initiated successfully
+paths:
+  /explain/{model_id}:
+    get:
+      operationId: getModelExplanation
+      summary: Get an explanation of the model’s decision-making process
+      description: Provides a visual and textual explanation of how the model arrived at a particular decision.
+      parameters:
+        - name: model_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the model.
+        - name: input_data
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "Sample input data for which the model’s decision needs to be explained."
+      responses:
+        '200':
+          description: Model explanation retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  explanation:
+                    type: string
+                    example: "The model emphasized the following features in its decision..."
+                  visualization:
+                    type: string
+                    example: "base64-encoded image showing feature importance"
+paths:
+  /models/archive:
+    post:
+      operationId: archiveModel
+      summary: Archive a trained model and its performance metrics
+      description: Automatically stores a model and its associated metrics for future reference and comparison.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "trained-model-1"
+                save_metrics:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Model archived successfully
+paths:
+  /audit-trail/{model_id}:
+    get:
+      operationId: getAuditTrail
+      summary: Retrieve the audit trail of a model’s training process
+      description: Provides a detailed log of the decisions made during the training process, including parameter adjustments and performance changes.
+      parameters:
+        - name: model_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the model.
+      responses:
+        '200':
+          description: Audit trail retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  audit_log:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          type: string
+                        action_taken:
+                          type: string
+                        result:
+                          type: string
+paths:
+  /security/permissions:
+    post:
+      operationId: setUserPermissions
+      summary: Set personalized access levels for users
+      description: Configures user-specific access controls, ensuring that users can only access their own models.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  example: "user-123"
+                model_access:
+                  type: array
+                  items:
+                    type: string
+                  example: ["model-1", "model-2"]
+      responses:
+        '200':
+          description: Permissions set successfully
+
+paths:
+  /security/permissions:
+    post:
+      operationId: setUserPermissions
+      summary: Set personalized access levels for users
+      description: Configures user-specific access controls, ensuring that users can only access their own models.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  example: "user-123"
+                model_access:
+                  type: array
+                  items:
+                    type: string
+                  example: ["model-1", "model-2"]
+      responses:
+        '200':
+      paths:
+  /train/simulation:
+    post:
+      operationId: startSimulationTraining
+      summary: Train a model using simulated environments
+      description: Trains a model using simulated data to test its performance across various scenarios.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_type:
+                  type: string
+                  example: "autonomous-driving-model"
+                simulation_type:
+                  type: string
+                  example: "urban-traffic"
+                simulation_data_path:
+                  type: string
+                  example: "/data/simulation/urban-traffic"
+      responses:
+        '200':
+          description: Simulation training started successfully
+ paths:
+  /assist/proactive:
+    post:
+      operationId: startProactiveAssistance
+      summary: Provide proactive assistance during training
+      description: Automatically detects potential issues in the training process and offers real-time solutions and optimizations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                training_id:
+                  type: string
+                  example: "training-1"
+                alert_threshold:
+                  type: string
+                  example: "high-training-time"
+      responses:
+        '200':
+          description: Proactive assistance initiated successfully
+   paths:
+  /documentation/tutorials:
+    get:
+      operationId: getPersonalizedTutorials
+      summary: Provide personalized tutorials and guides
+      description: Offers tailored tutorials based on the user’s experience level and usage history.
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "user-123"
+      responses:
+        '200':
+          description: Personalized tutorials retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tutorials:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                          example: "Introduction to AI model training"
+                        video_url:
+                          type: string
+                          example: "https://example.com/tutorials/intro-to-ai"
+paths:
+  /models/{model_id}/performance-report:
+    get:
+      operationId: generatePerformanceReport
+      summary: Generate a comprehensive performance report for the trained model
+      description: Provides detailed metrics and analysis of the model’s performance across various dimensions such as accuracy, precision, recall, and execution time.
+      parameters:
+        - name: model_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the model.
+      responses:
+        '200':
+          description: Performance report generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metrics:
+                    type: object
+                    properties:
+                      accuracy:
+                        type: number
+                        example: 0.94
+                      precision:
+                        type: number
+                        example: 0.91
+                      recall:
+                        type: number
+                        example: 0.88
+                  report_summary:
+                    type: string
+                    example: "The model performs well on general classification tasks but struggles with edge cases."
+description: Permissions set successfully
+paths:
+  /models/benchmark:
+    post:
+      operationId: compareModelPerformance
+      summary: Compare the performance of multiple models
+      description: Benchmarks the performance of multiple trained models to help users identify the most effective one.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_ids:
+                  type: array
+                  items:
+                    type: string
+                  example: ["model-1", "model-2", "model-3"]
+      responses:
+        '200':
+          description: Benchmarking completed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  best_model_id:
+                    type: string
+                    example: "model-2"
+                  performance_comparison:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        model_id:
+                          type: string
+                        accuracy:
+                          type: number
+                          example: 0.94
+                        speed:
+                          type: string
+                          example: "120ms per inference"
+paths:
+  /data/clean:
+    post:
+      operationId: cleanData
+      summary: Automatically clean the training dataset
+      description: Cleans the dataset by identifying and correcting missing, duplicate, or erroneous data entries to improve model performance.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_id:
+                  type: string
+                  example: "dataset-1"
+      responses:
+        '200':
+          description: Data cleaning completed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cleaned_data_summary:
+                    type: string
+                    example: "10 missing entries filled, 5 duplicate rows removed."
+
+
+paths:
+  /data/augment:
+    post:
+      operationId: augmentData
+      summary: Automatically augment the dataset to enhance model robustness
+      description: Applies augmentation techniques to the dataset such as random rotations, noise injection, or synthetic data generation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_id:
+                  type: string
+                  example: "dataset-1"
+                augmentation_techniques:
+                  type: array
+                  items:
+                    type: string
+                  example: ["rotation", "flip", "noise"]
+      responses:
+        '200':
+          description: Data augmentation completed successfully
+paths:
+  /models/{model_id}/maintenance:
+    post:
+      operationId: initiateModelMaintenance
+      summary: Automatically update and maintain the model
+      description: Continuously updates the model with new data and performs regular maintenance to ensure peak performance.
+      parameters:
+        - name: model_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the model.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                maintenance_schedule:
+                  type: string
+                  example: "weekly"
+                update_data_path:
+                  type: string
+                  example: "/new-data"
+      responses:
+        '200':
+          description: Model maintenance initiated successfully
+paths:
+  /train/no-code:
+    post:
+      operationId: trainModelNoCode
+      summary: Train a model using no-code/low-code tools
+      description: Enables non-technical users to train a model by simply selecting a dataset and choosing basic parameters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_id:
+                  type: string
+                  example: "dataset-1"
+                model_type:
+                  type: string
+                  example: "classification"
+                basic_parameters:
+                  type: object
+                  properties:
+                    learning_rate:
+                      type: number
+                      example: 0.001
+                    epochs:
+                      type: integer
+                      example: 5
+      responses:
+        '200':
+          description: No-code training initiated successfully
+paths:
+  /models/{model_id}/fairness-check:
+    post:
+      operationId: checkFairness
+      summary: Perform a fairness audit on the trained model
+      description: Identifies potential biases in the model’s decision-making process and provides optimization suggestions to ensure fairness.
+      parameters:
+        - name: model_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the model.
+      responses:
+        '200':
+          description: Fairness check completed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bias_issues:
+                    type: string
+                    example: "Gender bias detected in classification results."
+                  optimization_suggestions:
+                    type: string
+                    example: "Rebalance dataset or apply fairness constraints in loss function."
+paths:
+  /automl/train:
+    post:
+      operationId: autoTrainModel
+      summary: Automatically train and optimize a model using AutoML 2.0
+      description: Trains multiple models and selects the best one based on performance. Automatically adjusts hyperparameters for optimal results.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_id:
+                  type: string
+                  example: "dataset-1"
+                optimization_goal:
+                  type: string
+                  example: "maximize_accuracy"
+      responses:
+        '200':
+          description: AutoML training and optimization completed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  best_model_id:
+                    type: string
+                    example: "best-model-1"
+                  performance_metrics:
+                    type: object
+                    properties:
+                      accuracy:
+                        type: number
+                        example: 0.98
+                      training_time:
+                        type: string
+                        example: "2h 34m"
+paths:
+  /autonomous-learning/start:
+    post:
+      operationId: startAutonomousLearning
+      summary: Start autonomous learning and model optimization
+      description: Automatically trains the model using real-time data and optimizes learning strategies without user intervention.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "model-1"
+                real_time_data_source:
+                  type: string
+                  example: "live-sensor-data"
+      responses:
+        '200':
+          description: Autonomous learning started successfully
+paths:
+  /meta-learning/train:
+    post:
+      operationId: startMetaLearning
+      summary: Start training with meta-learning for adaptive AI
+      description: Trains models that can adapt to new data and scenarios by learning from past experiences and preferences.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "adaptive-model-1"
+                past_preference_data:
+                  type: string
+                  example: "user-preferences.json"
+      responses:
+        '200':
+          description: Meta-learning initiated successfully
+paths:
+  /real-time/adaptation:
+    post:
+      operationId: startRealTimeAdaptation
+      summary: Start real-time environment adaptation for AI models
+      description: Enables the model to adapt its strategies and behavior based on real-time environmental data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_id:
+                  type: string
+                  example: "dynamic-model-1"
+                environment_data_source:
+                  type: string
+                  example: "sensor-feed"
+      responses:
+        '200':
+          description: Real-time adaptation initiated successfully
+
+paths:
+  /train/multimodal:
+    post:
+      operationId: trainMultimodalModel
+      summary: Train a model using multimodal data
+      description: Combines multiple data types such as text, image, and audio to enhance the model's learning capabilities.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text_data:
+                  type: string
+                  example: "path/to/text_data"
+                image_data:
+                  type: string
+                  example: "path/to/image_data"
+                audio_data:
+                  type: string
+                  example: "path/to/audio_data"
+      responses:
+        '200':
+          description: Multimodal training started successfully
+paths:
+  /train/multitask:
+    post:
+      operationId: trainMultitaskModel
+      summary: Train a model for multitask learning
+      description: Enables the model to learn multiple tasks simultaneously, improving its overall performance across different domains.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task_definitions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      task_name:
+                        type: string
+                        example: "text-classification"
+                      data_source:
+                        type: string
+                        example: "path/to/data"
+      responses:
+        '200':
+    paths:
+  /train/quantum:
+    post:
+      operationId: trainQuantumModel
+      summary: Train a model using quantum-based deep learning
+      description: Leverages quantum computing to enhance the speed and accuracy of deep learning models.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantum_backend:
+                  type: string
+                  example: "IBM-Q"
+                model_type:
+                  type: string
+                  example: "quantum-neural-net"
+                data_path:
+                  type: string
+                  example: "path/to/data"
+      responses:
+        '200':
+          description: Quantum model training started successfully
+      description: Multitask learning initiated successfully
+
+paths:
+  /train/hybrid:
+    post:
+      operationId: trainHybridModel
+      summary: Train a hybrid quantum-classical AI model
+      description: Combines quantum computing with classical deep learning techniques for enhanced model performance.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantum_backend:
+                  type: string
+                  example: "IBM-Q"
+                classical_backend:
+                  type: string
+                  example: "TensorFlow"
+                data_path:
+                  type: string
+                  example: "path/to/data"
+      responses:
+        '200':
+          description: Hybrid model training started successfully
+paths:
+  /optimize/global-hyperparameters:
+    post:
+      operationId: optimizeGlobalHyperparameters
+      summary: Perform global hyperparameter optimization across multiple models
+      description: Uses global optimization techniques to determine the best hyperparameters for a set of models.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_ids:
+                  type: array
+                  items:
+                    type: string
+                  example: ["model-1", "model-2"]
+      responses:
+        '200':
+          description: Global hyperparameter optimization completed successfully
+paths:
+  /optimize/global-hyperparameters:
+    post:
+      operationId: optimizeGlobalHyperparameters
+      summary: Perform global hyperparameter optimization across multiple models
+      description: Uses global optimization techniques to determine the best hyperparameters for a set of models.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_ids:
+                  type: array
+                  items:
+                    type: string
+                  example: ["model-1", "model-2"]
+      responses:
+        '200':
+          description: Global hyperparameter optimization completed successfully
+paths:
+  /dashboard/metrics:
+    get:
+      operationId: getTrainingMetrics
+      summary: Retrieve training metrics for dashboard display
+      description: Provides real-time metrics such as accuracy, loss, and training progress for display on a dashboard interface.
+      parameters:
+        - name: training_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The unique ID of the training process.
+      responses:
+        '200':
+          description: Metrics retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  training_id:
+                    type: string
+                  progress:
+                    type: number
+                    example: 85.5
+                  accuracy:
+                    type: number
+                    example: 0.92
+                  loss:
+                    type: number
+                    example: 0.05
+                  time_remaining:
+                    type: string
+                    example: "1h 15m"
+                  recommendations:
+                    type: array
+                    items:
+                      type: string
+                      example: "Increase learning rate to improve convergence."
+paths:
+  /notifications/setup:
+    post:
+      operationId: setupNotifications
+      summary: Set up notifications for training updates
+      description: Automatically sends notifications when significant training events occur, such as completion or metric changes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  example: "user-9876"
+                training_id:
+                  type: string
+                  example: "training-12345"
+                notification_type:
+                  type: string
+                  example: "email"
+                thresholds:
+                  type: object
+                  properties:
+                    accuracy_change:
+                      type: number
+                      example: 0.05
+                    loss_change:
+                      type: number
+                      example: 0.01
+      responses:
+        '200':
+          description: Notifications set up successfully
+paths:
+  /train/automatic-optimization:
+    post:
+      operationId: startAutomaticOptimization
+      summary: Start fully autonomous training with automatic optimization
+      description: Automatically selects the optimal parameters during the training process, without user intervention.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_id:
+                  type: string
+                  example: "dataset-1"
+                model_type:
+                  type: string
+                  example: "classification"
+      responses:
+        '200':
+          description: Automatic optimization started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  optimization_status:
+                    type: string
+                    example: "Running"
+                  initial_params:
+                    type: object
+                    properties:
+                      learning_rate:
+                        type: number
+                        example: 0.001
+                      batch_size:
+                        type: integer
+                        example: 32
+paths:
+  /data/dynamic-integration:
+    post:
+      operationId: integrateDynamicData
+      summary: Integrate new data dynamically and update the model in real-time
+      description: Automatically updates the model when new data is detected from real-time data sources, ensuring the model is always current.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data_source:
+                  type: string
+                  example: "live-stream-sensor"
+                model_id:
+                  type: string
+                  example: "dynamic-model-1"
+      responses:
+        '200':
+          description: Dynamic data integration started successfully
+paths:
+  /self-improvement:
+    post:
+      operationId: startSelfImprovement
+      summary: Enable self-improvement for the AI assistant
+      description: Allows the assistant to learn from user interactions, feedback, and model success rates, improving its future performance.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_feedback:
+                  type: string
+                  example: "The suggestions were helpful, but the explanations were too technical."
+                success_metric:
+                  type: string
+                  example: "Model accuracy improved by 5% after applying suggestions."
+      responses:
+        '200':
+          description: Self-improvement initiated successfully
+paths:
+  /model/performance-monitor:
+    post:
+      operationId: monitorModelPerformance
+      summary: Monitor model performance in real-time and automatically adjust parameters
+      description: Monitors metrics like loss and accuracy in real-time and automatically adjusts parameters if performance deteriorates.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                training_id:
+                  type: string
+                  example: "training-5678"
+                threshold_values:
+                  type: object
+                  properties:
+                    max_loss:
+                      type: number
+                      example: 0.05
+                    min_accuracy:
+                      type: number
+                      example: 0.85
+      responses:
+        '200':
+          description: Performance monitoring initiated
+
+paths:
+  /data/preparation:
+    post:
+      operationId: prepareData
+      summary: Automatically analyze and prepare data for model training
+      description: Analyzes the dataset for issues such as missing values, anomalies, or data type mismatches, and provides recommendations or automatic corrections.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_id:
+                  type: string
+                  example: "dataset-345"
+                auto_fix:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Data preparation completed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  issues_found:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Missing values in column A", "Anomalies in column B"]
+                  actions_taken:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Filled missing values with mean", "Removed outliers in column B"]
+paths:
+  /federated-learning/start:
+    post:
+      operationId: startFederatedLearning
+      summary: Start federated learning across multiple devices with privacy protection
+      description: Initiates federated learning across different devices, ensuring data privacy through encryption and secure aggregation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                devices:
+                  type: array
+                  items:
+                    type: string
+                  example: ["device-1", "device-2"]
+                privacy_protection:
+                  type: string
+                  example: "differential-privacy"
+      responses:
+        '200':
+          description: Federated learning started with privacy protection
+paths:
+  /error-handling/auto-fix:
+    post:
+      operationId: autoFixErrors
+      summary: Automatically detect and fix common issues during model training
+      description: Detects common issues during training such as data set errors, anomalies, or performance problems, and applies automatic fixes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                training_id:
+                  type: string
+                  example: "training-987"
+                auto_fix_enabled:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Auto-fix process initiated
+paths:
+  /assistant/proactive-helper:
+    post:
+      operationId: proactiveHelper
+      summary: Provide proactive insights and suggestions during training
+      description: Offers real-time insights such as training time estimates, potential performance improvements, and process guidance to the user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  example: "user-1234"
+                training_id:
+                  type: string
+                  example: "training-5678"
+      responses:
+        '200':
+          description: Proactive helper activated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  estimated_completion_time:
+                    type: string
+                    example: "2 hours remaining"
+                  suggested_action:
+                    type: string
+                    example: "Consider increasing batch size for faster training."
