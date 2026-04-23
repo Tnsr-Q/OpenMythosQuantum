@@ -1,0 +1,13 @@
+{
+  "name": "openmythos-quantum-api",
+  "version": "1.3.0",
+  "private": true,
+  "scripts": {
+    "validate": "bash scripts/validate-openapi.sh",
+    "lint": "bash scripts/lint-openapi.sh"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.10.0",
+    "swagger-cli": "^4.0.4"
+  }
+}
