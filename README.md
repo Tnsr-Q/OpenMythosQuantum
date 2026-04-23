@@ -71,6 +71,20 @@ python3 tests/plugins/run_sha256_webhook_tests.py
 
 See [Contract Testing Documentation](docs/contract-testing.md) for details.
 
+## Developer Experience
+
+- Contributor guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- One-command local setup: `bash scripts/setup-dev.sh`
+- Common commands via `Makefile`:
+
+```bash
+make install
+make validate
+make lint
+make test
+make docs
+```
+
 ## Modernization Status
 
 Tracked in [`ACTION_MANIFEST.md`](ACTION_MANIFEST.md).
