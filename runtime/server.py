@@ -13,7 +13,7 @@ from typing import Any
 from uuid import uuid4
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, PlainTextResponse
 
 from plugins.sha256_verifier.entrypoint import verify as verify_webhook_signature
 
@@ -198,7 +198,6 @@ def metrics() -> Any:
         'openmythos_info{version="1.3.0",service="openmythos-api"} 1',
     ]
 
-    from fastapi.responses import PlainTextResponse
     return PlainTextResponse(content="\n".join(lines), media_type="text/plain; version=0.0.4")
 
 
