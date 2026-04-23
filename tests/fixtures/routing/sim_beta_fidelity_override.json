@@ -1,0 +1,51 @@
+{
+  "policy_version": "gateway_policy_v1.0.0",
+  "simulation": "beta_fidelity_override",
+  "job": {
+    "job_id": "job-beta-001",
+    "optimize_for": "cost",
+    "minimum_required_fidelity": 0.82,
+    "max_queue_latency_ms": 4000,
+    "strict_routing": false,
+    "preferred_region": "eu-central-1"
+  },
+  "candidates": [
+    {
+      "node_id": "node-cheap-degraded",
+      "region": "eu-central-1",
+      "cost_per_shot": 0.01,
+      "queue_depth": 4,
+      "avg_wait_per_job_ms": 90,
+      "region_rtt_ms": 15,
+      "fallback_status": "UP",
+      "t1_us": 55,
+      "t2_us": 70,
+      "median_2q_error": 0.031,
+      "topology": {
+        "embeddable": true,
+        "swap_penalty_ratio": 0.18
+      }
+    },
+    {
+      "node_id": "node-expensive-optimal",
+      "region": "eu-west-1",
+      "cost_per_shot": 0.50,
+      "queue_depth": 6,
+      "avg_wait_per_job_ms": 70,
+      "region_rtt_ms": 18,
+      "fallback_status": "UP",
+      "t1_us": 130,
+      "t2_us": 170,
+      "median_2q_error": 0.006,
+      "topology": {
+        "embeddable": true,
+        "swap_penalty_ratio": 0.04
+      }
+    }
+  ],
+  "expected": {
+    "selected_node_id": "node-expensive-optimal",
+    "must_not_error": true,
+    "reason": "cheap target fails fidelity gate"
+  }
+}

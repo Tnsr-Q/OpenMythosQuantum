@@ -1,0 +1,51 @@
+{
+  "policy_version": "gateway_policy_v1.0.0",
+  "simulation": "alpha_cost_vs_queue",
+  "job": {
+    "job_id": "job-alpha-001",
+    "optimize_for": "cost",
+    "minimum_required_fidelity": 0.70,
+    "max_queue_latency_ms": 1200,
+    "strict_routing": false,
+    "preferred_region": "us-east-1"
+  },
+  "candidates": [
+    {
+      "node_id": "node-a",
+      "region": "us-east-1",
+      "cost_per_shot": 0.10,
+      "queue_depth": 5,
+      "avg_wait_per_job_ms": 100,
+      "region_rtt_ms": 25,
+      "fallback_status": "UP",
+      "t1_us": 110,
+      "t2_us": 140,
+      "median_2q_error": 0.015,
+      "topology": {
+        "embeddable": true,
+        "swap_penalty_ratio": 0.08
+      }
+    },
+    {
+      "node_id": "node-b",
+      "region": "us-west-2",
+      "cost_per_shot": 0.02,
+      "queue_depth": 20,
+      "avg_wait_per_job_ms": 60,
+      "region_rtt_ms": 35,
+      "fallback_status": "UP",
+      "t1_us": 115,
+      "t2_us": 145,
+      "median_2q_error": 0.013,
+      "topology": {
+        "embeddable": true,
+        "swap_penalty_ratio": 0.10
+      }
+    }
+  ],
+  "expected": {
+    "selected_node_id": "node-a",
+    "must_not_error": true,
+    "reason": "node-b breaches max_queue_latency_ms due to queue_depth"
+  }
+}
