@@ -1,0 +1,23 @@
+{
+  "id": "observability_exporter",
+  "name": "Observability Exporter",
+  "version": "1.0.0",
+  "description": "Reference observability_exporter capability plugin.",
+  "capabilities": [
+    "observability.export.prometheus"
+  ],
+  "entrypoint": {
+    "runtime": "python3",
+    "module": "entrypoint",
+    "path": "entrypoint.py"
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "entrypoint": "sha256:4f9eead9a2e0b9df1e6c0d1cb7fbed0ed3b79d54b5588b9a178813a41515b79f",
+    "reference": "ACT-020 plugin integrity verification"
+  },
+  "author": "OpenMythos",
+  "license": "Proprietary",
+  "lifecycle": "active",
+  "contractVersion": "1.3.0"
+}

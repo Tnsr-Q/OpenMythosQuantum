@@ -93,3 +93,15 @@ The runtime includes:
 - Sliding-window rate limiting
 - OAuth2 scope checks (header-based reference guard)
 - Webhook signature verification via `plugins/sha256_verifier`
+
+## Code Generation
+
+Generate SDKs, server stubs, and docs from `openapi/openapi.yaml`:
+
+```bash
+bash scripts/generate-clients.sh
+bash scripts/generate-server-stubs.sh
+bash scripts/generate-api-docs.sh
+```
+
+Generated usage samples are in `examples/`.

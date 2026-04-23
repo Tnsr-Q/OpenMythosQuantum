@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "validate": "bash scripts/validate-openapi.sh",
-    "lint": "bash scripts/lint-openapi.sh"
+    "lint": "bash scripts/lint-openapi.sh",
+    "generate:clients": "bash scripts/generate-clients.sh",
+    "generate:stubs": "bash scripts/generate-server-stubs.sh",
+    "generate:docs": "bash scripts/generate-api-docs.sh"
   },
   "devDependencies": {
     "@redocly/cli": "^1.10.0",

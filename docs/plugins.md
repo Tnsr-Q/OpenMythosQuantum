@@ -84,6 +84,9 @@ Currently registered:
 | `webhook.verify.sha256` | `sha256_verifier` |
 | `hash.canonicalize` | `freeze_snapshot` |
 | `hash.freeze.sha256` | `freeze_snapshot` |
+| `circuit.optimize.gate_reduction` | `circuit_optimizer` |
+| `quantum.estimate.cost` | `cost_estimator` |
+| `observability.export.prometheus` | `observability_exporter` |
 
 A single plugin may declare multiple capabilities when they share the same
 entrypoint. See `plugins/freeze_snapshot/plugin.json` for an example.
@@ -208,3 +211,18 @@ requires signing.
 - [`plugins/descriptor.schema.json`](../plugins/descriptor.schema.json) — JSON Schema
 - [`docs/freeze-snapshot.md`](./freeze-snapshot.md) — ACT-019 (JSON freeze hashing)
 - [`tests/plugins/run_registry_tests.py`](../tests/plugins/run_registry_tests.py) — deterministic tests
+
+
+## Plugin SDK
+
+Shared authoring helpers are available in [`plugins/sdk`](../plugins/sdk/README.md).
+Use this for base interfaces and payload-validation utilities when creating
+new plugins.
+
+## Marketplace Manifest
+
+A machine-readable plugin index is maintained at
+[`plugins/marketplace.json`](../plugins/marketplace.json).
+
+See [`docs/plugin-development.md`](./plugin-development.md) for the complete
+authoring workflow.
