@@ -31,6 +31,15 @@ Supported auth methods:
 
 Route-level requirements are defined in the OpenAPI spec.
 
+## Security
+
+- Security policy and reporting process: [`SECURITY.md`](SECURITY.md)
+- Baseline security controls check:
+
+```bash
+python3 scripts/security-baseline-check.py
+```
+
 ## Validation
 
 ```bash
