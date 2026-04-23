@@ -3,7 +3,7 @@ info:
   title: Katopu Quantum AGI API
   summary: Production-ready unified API for quantum workflows, AGI optimization, guidance, security, and training automation.
   description: "This contract consolidates the draft APIs into a stricter production-oriented interface.\n\nDesign choices:\n  - explicit versioned base path\n  - normalized resource naming\n  - unique operationIds\n  - reusable components\n  - explicit authentication and authorization\n  - stricter request/response schemas\n  - examples cleaned up for implementation and testing\n"
-  version: 1.3.0
+  version: 1.4.0
   contact:
     name: Tnsr-Q
     url: https://github.com/Tnsr-Q
