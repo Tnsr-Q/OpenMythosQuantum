@@ -41,7 +41,7 @@ This policy is designed to run as middleware and align with the repository's plu
 | `region_rtt_ms` | 30s | use rolling median RTT; if unavailable, use regional default and mark uncertain |
 | `hardware_fidelity` inputs (`t1_us`, `t2_us`, `median_2q_error`) | 30s | disqualify candidate if `job.strict_routing=true` or `job.minimum_required_fidelity` is set; otherwise mark fidelity scoring uncertain and continue |
 | `fallback_status` | 3s | treat as `DEGRADED` |
-| `topology_graph` | 300s | continue (topology is quasi-static) |
+| `signal.topology_match` (from cached `topology.*` snapshot) | 300s | continue (topology is quasi-static) |
 
 If all candidates are filtered due to staleness and `job.strict_routing` is `true`, return `503 ROUTING_STATE_UNAVAILABLE`; otherwise continue with best-effort routing using the remaining non-disqualified signals and uncertainty penalties. `job.strict_routing` is a per-job flag, not a global evaluator mode.
 
