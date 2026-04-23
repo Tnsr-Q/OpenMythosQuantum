@@ -46,6 +46,6 @@
   "expected": {
     "selected_node_id": "node-a",
     "must_not_error": true,
-    "reason": "node-b breaches max_queue_latency_ms due to queue_depth"
+    "reason": "node-b breaches max_queue_latency_ms based on estimated_queue_latency_ms (queue_depth × avg_wait_per_job_ms + region_rtt_ms)"
   }
 }
