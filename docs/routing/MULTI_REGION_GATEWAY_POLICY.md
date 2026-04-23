@@ -39,7 +39,7 @@ This policy is designed to run as middleware and align with the repository's plu
 | `queue_depth` | 5s | apply `STALE_QUEUE_PENALTY` |
 | `avg_wait_per_job_ms` | 30s | use last value; if unavailable, disqualify candidate |
 | `region_rtt_ms` | 30s | use rolling median RTT; if unavailable, use regional default and mark uncertain |
-| `hardware_fidelity` inputs (`t1_us`, `t2_us`, `median_2q_error`) | 30s | disqualify for strict-fidelity jobs |
+| `hardware_fidelity` inputs (`t1_us`, `t2_us`, `median_2q_error`) | 30s | disqualify candidate if `job.strict_routing=true` or `job.minimum_required_fidelity` is set; otherwise mark fidelity scoring uncertain and continue |
 | `fallback_status` | 3s | treat as `DEGRADED` |
 | `topology_graph` | 300s | continue (topology is quasi-static) |
 
