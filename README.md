@@ -18,6 +18,7 @@ Production-ready unified API contract for:
 - `config/.secrets.example` — safe placeholder secrets
 - `scripts/validate-openapi.sh` — contract validation
 - `plugins/sha256_verifier/` — webhook signature verifier plugin entrypoint
+- `runtime/server.py` — FastAPI reference runtime with middleware enforcement
 - `source-drafts/` — original normalized source drafts
 
 ## Authentication
@@ -75,4 +76,20 @@ Tracked in [`ACTION_MANIFEST.md`](ACTION_MANIFEST.md).
 | Webhook SHA-256 signature standard | ✅ Completed | OpenAPI webhooks + verifier plugin entrypoint |
 | Security baseline env flags | ✅ Completed | Rotation + TLS floor + webhook signature algorithm |
 | Contract testing suite | ✅ Completed | Automated OpenAPI validation + integration test examples |
-| Runtime enforcement hardening | ⏳ Pending | Requires gateway/service implementation |
+| Runtime enforcement hardening | 🟡 In Progress | Reference FastAPI runtime now enforces idempotency, rate limits, webhook signatures, and OAuth scopes |
+
+
+## Reference Runtime
+
+Run a minimal executable bridge for the contract:
+
+```bash
+uvicorn runtime.server:app --host 0.0.0.0 --port 8080
+```
+
+The runtime includes:
+
+- Redis-shaped idempotency middleware (in-memory fallback for local validation)
+- Sliding-window rate limiting
+- OAuth2 scope checks (header-based reference guard)
+- Webhook signature verification via `plugins/sha256_verifier`
