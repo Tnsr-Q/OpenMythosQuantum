@@ -1,23 +1,30 @@
-# Generated SDK Examples
+# Example Gallery
 
-These examples demonstrate how to call API operations using generated SDKs.
+Runnable examples for common OpenMythos Quantum API workflows.
 
-## Prerequisite
+## API workflow examples
 
-Generate the SDKs first:
+- `quickstart.py` — basic API usage for training endpoints
+- `training-job-example.py` — full training lifecycle (create, poll, results, freeze)
+- `circuit-optimization-example.py` — circuit creation + optimization + freeze snapshot
+- `webhook-integration-example.py` — local webhook receiver with signature validation
+- `plugin-development-example/` — sample plugin scaffold and descriptor
+
+## Generated SDK examples
+
+- `generated-python-client-example.py`
+- `generated-typescript-client-example.ts`
+
+Generate SDKs first:
 
 ```bash
 bash scripts/generate-clients.sh
 ```
 
-## Python
+## Quick run
 
 ```bash
-python3 examples/generated-python-client-example.py
-```
-
-## TypeScript
-
-```bash
-npx tsx examples/generated-typescript-client-example.ts
+export KATOPU_API_URL=http://localhost:8080
+export KATOPU_API_KEY=dev-api-key
+python3 examples/quickstart.py
 ```

@@ -1,0 +1,18 @@
+{
+  "id": "example_gate_counter",
+  "name": "Example Gate Counter",
+  "version": "0.1.0",
+  "entrypoint": "examples/plugin-development-example/entrypoint.py",
+  "description": "Counts gate operations in a circuit payload for tutorial purposes.",
+  "capabilities": [
+    "circuit.analysis"
+  ],
+  "author": {
+    "name": "OpenMythos",
+    "url": "https://github.com/Tnsr-Q/OpenMythosQuantum"
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "entrypoint": "sha256:replace-with-generated-hash"
+  }
+}
