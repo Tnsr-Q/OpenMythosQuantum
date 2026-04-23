@@ -1,0 +1,449 @@
+{
+  "dashboard": {
+    "title": "OpenMythos API Performance",
+    "tags": ["openmythos", "api", "performance"],
+    "timezone": "browser",
+    "editable": true,
+    "graphTooltip": 1,
+    "time": {
+      "from": "now-3h",
+      "to": "now"
+    },
+    "refresh": "10s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Request Rate (QPS)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(rate(openmythos_http_requests_total[1m])) by (endpoint)",
+            "legendFormat": "{{endpoint}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 20,
+              "stacking": {
+                "mode": "normal"
+              }
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "max", "mean"]
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Error Rate",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(rate(openmythos_http_errors_total[5m])) / sum(rate(openmythos_http_requests_total[5m]))",
+            "legendFormat": "Error Rate",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 0.01, "color": "yellow"},
+                {"value": 0.05, "color": "red"}
+              ]
+            }
+          }
+        },
+        "options": {
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "value",
+          "graphMode": "area"
+        }
+      },
+      {
+        "id": 3,
+        "title": "Total Requests (24h)",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(increase(openmythos_http_requests_total[24h]))",
+            "legendFormat": "Requests",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "decimals": 0,
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"}
+              ]
+            }
+          }
+        },
+        "options": {
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "value"
+        }
+      },
+      {
+        "id": 4,
+        "title": "P95 Latency by Endpoint",
+        "type": "timeseries",
+        "gridPos": {"h": 9, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, sum by (endpoint, le) (rate(openmythos_http_request_duration_seconds_bucket[5m])))",
+            "legendFormat": "{{endpoint}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 0,
+              "lineWidth": 2
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "max", "mean"]
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Latency Distribution",
+        "type": "heatmap",
+        "gridPos": {"h": 9, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "sum(rate(openmythos_http_request_duration_seconds_bucket[5m])) by (le)",
+            "legendFormat": "{{le}}",
+            "refId": "A",
+            "format": "heatmap"
+          }
+        ],
+        "options": {
+          "calculate": true,
+          "cellGap": 2,
+          "color": {
+            "mode": "scheme",
+            "scheme": "Spectral"
+          },
+          "yAxis": {
+            "unit": "s",
+            "decimals": 2
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Status Codes",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 17},
+        "targets": [
+          {
+            "expr": "sum by (status_code) (rate(openmythos_http_requests_total[1m]))",
+            "legendFormat": "{{status_code}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 20
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {"id": "byRegexp", "options": "/^2../"},
+              "properties": [
+                {"id": "color", "value": {"mode": "fixed", "fixedColor": "green"}}
+              ]
+            },
+            {
+              "matcher": {"id": "byRegexp", "options": "/^4../"},
+              "properties": [
+                {"id": "color", "value": {"mode": "fixed", "fixedColor": "yellow"}}
+              ]
+            },
+            {
+              "matcher": {"id": "byRegexp", "options": "/^5../"},
+              "properties": [
+                {"id": "color", "value": {"mode": "fixed", "fixedColor": "red"}}
+              ]
+            }
+          ]
+        },
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          }
+        }
+      },
+      {
+        "id": 7,
+        "title": "Error Rate by Endpoint",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 17},
+        "targets": [
+          {
+            "expr": "sum by (endpoint) (rate(openmythos_http_errors_total[5m])) / sum by (endpoint) (rate(openmythos_http_requests_total[5m]))",
+            "legendFormat": "{{endpoint}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 10
+            },
+            "max": 1,
+            "min": 0
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "max"]
+          }
+        }
+      },
+      {
+        "id": 8,
+        "title": "Rate Limit Remaining",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 25},
+        "targets": [
+          {
+            "expr": "openmythos_rate_limit_remaining",
+            "legendFormat": "{{principal}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 10
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "red"},
+                {"value": 10, "color": "yellow"},
+                {"value": 50, "color": "green"}
+              ]
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "min"]
+          }
+        }
+      },
+      {
+        "id": 9,
+        "title": "Webhook Verification Status",
+        "type": "piechart",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 25},
+        "targets": [
+          {
+            "expr": "sum by (status) (increase(openmythos_webhook_verifications_total[1h]))",
+            "legendFormat": "{{status}}",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "percent"]
+          },
+          "pieType": "pie"
+        },
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": [
+            {
+              "matcher": {"id": "byName", "options": "verified"},
+              "properties": [
+                {"id": "color", "value": {"mode": "fixed", "fixedColor": "green"}}
+              ]
+            },
+            {
+              "matcher": {"id": "byName", "options": "failed"},
+              "properties": [
+                {"id": "color", "value": {"mode": "fixed", "fixedColor": "red"}}
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": 10,
+        "title": "Idempotency Cache Size",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 25},
+        "targets": [
+          {
+            "expr": "openmythos_idempotency_cache_size",
+            "legendFormat": "Cache Entries",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 30
+            }
+          }
+        }
+      },
+      {
+        "id": 11,
+        "title": "Plugin Call Success Rate",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 33},
+        "targets": [
+          {
+            "expr": "sum by (capability) (rate(openmythos_plugin_calls_total{status=\"success\"}[5m])) / sum by (capability) (rate(openmythos_plugin_calls_total[5m]))",
+            "legendFormat": "{{capability}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 10
+            },
+            "max": 1,
+            "min": 0
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "min", "mean"]
+          }
+        }
+      },
+      {
+        "id": 12,
+        "title": "Request Method Distribution",
+        "type": "barchart",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 33},
+        "targets": [
+          {
+            "expr": "sum by (method) (increase(openmythos_http_requests_total[1h]))",
+            "legendFormat": "{{method}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          }
+        },
+        "options": {
+          "orientation": "horizontal",
+          "xTickLabelRotation": 0
+        }
+      }
+    ],
+    "templating": {
+      "list": [
+        {
+          "name": "datasource",
+          "type": "datasource",
+          "query": "prometheus"
+        },
+        {
+          "name": "endpoint",
+          "type": "query",
+          "datasource": "${datasource}",
+          "query": "label_values(openmythos_http_requests_total, endpoint)",
+          "multi": true,
+          "includeAll": true,
+          "refresh": 1
+        },
+        {
+          "name": "interval",
+          "type": "interval",
+          "query": "1m,5m,10m,30m,1h",
+          "auto": true,
+          "auto_count": 30,
+          "auto_min": "10s"
+        }
+      ]
+    },
+    "annotations": {
+      "list": [
+        {
+          "name": "Deployments",
+          "datasource": "${datasource}",
+          "enable": true,
+          "iconColor": "blue",
+          "tags": ["deployment"]
+        },
+        {
+          "name": "Alerts",
+          "datasource": "${datasource}",
+          "enable": true,
+          "iconColor": "red",
+          "tags": ["alert"]
+        }
+      ]
+    }
+  }
+}

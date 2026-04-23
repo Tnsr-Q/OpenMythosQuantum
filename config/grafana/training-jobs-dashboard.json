@@ -1,0 +1,356 @@
+{
+  "dashboard": {
+    "title": "OpenMythos Training Jobs",
+    "tags": ["openmythos", "training", "ml"],
+    "timezone": "browser",
+    "editable": true,
+    "graphTooltip": 1,
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Training Job Success Rate",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(openmythos_training_jobs_total{status=\"completed\"}[5m]) / rate(openmythos_training_jobs_total[5m])",
+            "legendFormat": "Success Rate",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "red"},
+                {"value": 0.95, "color": "yellow"},
+                {"value": 0.99, "color": "green"}
+              ]
+            },
+            "mappings": []
+          }
+        },
+        "options": {
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto"
+        }
+      },
+      {
+        "id": 2,
+        "title": "Training Jobs by Status",
+        "type": "piechart",
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "sum by (status) (increase(openmythos_training_jobs_total[1h]))",
+            "legendFormat": "{{status}}",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "percent"]
+          },
+          "pieType": "pie",
+          "tooltip": {
+            "mode": "single"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Daily Training Cost",
+        "type": "stat",
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(increase(openmythos_training_job_cost_dollars[1d]))",
+            "legendFormat": "Today's Cost",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1100, "color": "yellow"},
+                {"value": 1500, "color": "red"}
+              ]
+            }
+          }
+        },
+        "options": {
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "value",
+          "graphMode": "area"
+        }
+      },
+      {
+        "id": 4,
+        "title": "Queue Depth",
+        "type": "gauge",
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0},
+        "targets": [
+          {
+            "expr": "openmythos_training_job_queue_depth",
+            "legendFormat": "{{profile}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 10, "color": "yellow"},
+                {"value": 50, "color": "red"}
+              ]
+            },
+            "max": 100
+          }
+        },
+        "options": {
+          "showThresholdLabels": true,
+          "showThresholdMarkers": true
+        }
+      },
+      {
+        "id": 5,
+        "title": "Training Job Duration (P95) by Profile",
+        "type": "timeseries",
+        "gridPos": {"h": 9, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(openmythos_training_job_duration_seconds_bucket[5m])) by (profile)",
+            "legendFormat": "{{profile}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 10
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Training Cost by Profile (24h)",
+        "type": "barchart",
+        "gridPos": {"h": 9, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "sum by (profile) (increase(openmythos_training_job_cost_dollars[24h]))",
+            "legendFormat": "{{profile}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD"
+          }
+        },
+        "options": {
+          "orientation": "horizontal",
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 100
+        }
+      },
+      {
+        "id": 7,
+        "title": "Training Jobs Rate (jobs/min)",
+        "type": "timeseries",
+        "gridPos": {"h": 9, "w": 12, "x": 0, "y": 17},
+        "targets": [
+          {
+            "expr": "sum(rate(openmythos_training_jobs_total[5m])) by (status) * 60",
+            "legendFormat": "{{status}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 20,
+              "stacking": {
+                "mode": "normal"
+              }
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          }
+        }
+      },
+      {
+        "id": 8,
+        "title": "Training Failures by Reason",
+        "type": "timeseries",
+        "gridPos": {"h": 9, "w": 12, "x": 12, "y": 17},
+        "targets": [
+          {
+            "expr": "sum by (failure_reason) (increase(openmythos_training_failures_total[1h]))",
+            "legendFormat": "{{failure_reason}}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "custom": {
+              "drawStyle": "bars",
+              "fillOpacity": 80
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": ["value", "max"]
+          }
+        }
+      },
+      {
+        "id": 9,
+        "title": "Checkpoint Activity",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 26},
+        "targets": [
+          {
+            "expr": "sum(rate(openmythos_training_checkpoints_total[5m])) * 60",
+            "legendFormat": "Checkpoints/min",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 30
+            }
+          }
+        }
+      },
+      {
+        "id": 10,
+        "title": "Cost Trend (7-day moving average)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 26},
+        "targets": [
+          {
+            "expr": "avg_over_time(sum(increase(openmythos_training_job_cost_dollars[1d]))[7d:1d])",
+            "legendFormat": "7-day avg",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(increase(openmythos_training_job_cost_dollars[1d]))",
+            "legendFormat": "Daily",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 10
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {"id": "byName", "options": "7-day avg"},
+              "properties": [
+                {
+                  "id": "custom.lineWidth",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          }
+        }
+      }
+    ],
+    "templating": {
+      "list": [
+        {
+          "name": "datasource",
+          "type": "datasource",
+          "query": "prometheus"
+        },
+        {
+          "name": "profile",
+          "type": "query",
+          "datasource": "${datasource}",
+          "query": "label_values(openmythos_training_jobs_total, profile)",
+          "multi": true,
+          "includeAll": true,
+          "refresh": 1
+        },
+        {
+          "name": "region",
+          "type": "query",
+          "datasource": "${datasource}",
+          "query": "label_values(openmythos_training_job_cost_dollars, region)",
+          "multi": true,
+          "includeAll": true,
+          "refresh": 1
+        }
+      ]
+    },
+    "annotations": {
+      "list": [
+        {
+          "name": "Deployments",
+          "datasource": "${datasource}",
+          "enable": true,
+          "iconColor": "blue",
+          "tags": ["deployment"]
+        }
+      ]
+    }
+  }
+}
