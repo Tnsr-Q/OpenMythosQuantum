@@ -1,0 +1,50 @@
+CXX      ?= g++
+CXXFLAGS ?= -std=c++17 -O2 -Wall -Wextra \
+            -I../phase_c_upgraded/include -I/usr/include/eigen3
+
+.PHONY: all bowtie universality figures manuscript clean
+
+all: manuscript
+
+# ----- Bowtie verification (Fig. 1) -----
+bowtie: phase_d_gap_scan.csv phase_d_fig1.pdf
+
+phase_d_verify: phase_d_verify.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+phase_d_gap_scan.csv: phase_d_verify
+	./phase_d_verify
+
+phase_d_fig1.pdf: phase_d_gap_scan.csv make_fig1.py
+	python3 make_fig1.py
+
+# ----- Universality study (Fig. 2) -----
+universality: phase_d_universality.csv phase_d_fig2.pdf
+
+phase_d_universality: phase_d_universality.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+phase_d_universality.csv: phase_d_universality
+	./phase_d_universality
+
+phase_d_fig2.pdf: phase_d_universality.csv make_fig2.py
+	python3 make_fig2.py
+
+figures: phase_d_fig1.pdf phase_d_fig2.pdf
+
+# ----- Manuscript -----
+manuscript: phase_d_manuscript.pdf
+
+phase_d_manuscript.pdf: phase_d_manuscript.tex phase_d_fig1.pdf phase_d_fig2.pdf
+	pdflatex -interaction=nonstopmode phase_d_manuscript.tex > /dev/null
+	pdflatex -interaction=nonstopmode phase_d_manuscript.tex > /dev/null
+	@echo "Wrote phase_d_manuscript.pdf"
+
+clean:
+	rm -f phase_d_verify phase_d_universality
+	rm -f phase_d_gap_scan.csv phase_d_universality.csv
+	rm -f phase_d_fig1.pdf phase_d_fig1.png
+	rm -f phase_d_fig2.pdf phase_d_fig2.png
+	rm -f phase_d_manuscript.pdf phase_d_manuscript.log
+	rm -f phase_d_manuscript.aux phase_d_manuscript.out
+	rm -f page-*.png
