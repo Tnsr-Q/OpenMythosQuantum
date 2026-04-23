@@ -164,7 +164,7 @@ latency:  w_cost=0.15, w_latency=0.55, w_fidelity=0.20, w_region=0.10
 fidelity: w_cost=0.10, w_latency=0.15, w_fidelity=0.65, w_region=0.10
 ```
 
-`region_score_i` is `1` for preferred region, else `0.7` for same legal zone, else `0.4`.
+`region_score_i` is `1` if `signal.region == job.preferred_region`, else `0.4` for all other regions.
 
 Final score after penalties:
 
@@ -205,6 +205,7 @@ Each routing decision should emit:
   - `fidelity_effective`
   - `final_score`
   - `disqualification_reasons[]`
+  - `signal_staleness` (object with boolean flags per signal: `cost_stale`, `queue_stale`, `fidelity_stale`, `rtt_uncertain`)
 - `selected_node_id` or `error_code`
 
 ---
