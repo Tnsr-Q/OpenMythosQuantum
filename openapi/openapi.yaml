@@ -1940,6 +1940,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            internalError:
+              value:
+                requestId: req_01HZZZXKZX7EP7DAX2GN9CT7R9
+                error:
+                  code: internal_error
+                  message: An unexpected error occurred.
   schemas:
     HealthResponse:
       type: object

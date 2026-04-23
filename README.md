@@ -37,6 +37,31 @@ Route-level requirements are defined in the OpenAPI spec.
 bash scripts/validate-openapi.sh
 ```
 
+## Testing
+
+### Contract Tests
+
+Automated validation of the OpenAPI specification:
+
+```bash
+# Run all contract tests
+python3 tests/contract/run_all_contract_tests.py
+
+# Or run individual test suites
+python3 tests/contract/test_openapi_contract.py
+python3 tests/contract/test_integration_examples.py
+```
+
+### Plugin Tests
+
+```bash
+python3 tests/plugins/run_freeze_tests.py
+python3 tests/plugins/run_registry_tests.py
+python3 tests/plugins/run_sha256_webhook_tests.py
+```
+
+See [Contract Testing Documentation](docs/contract-testing.md) for details.
+
 ## Modernization Status
 
 Tracked in [`ACTION_MANIFEST.md`](ACTION_MANIFEST.md).
@@ -50,6 +75,7 @@ Tracked in [`ACTION_MANIFEST.md`](ACTION_MANIFEST.md).
 | Cursor pagination | ✅ Completed | `GET /training/jobs` added with cursor/limit |
 | Webhook SHA-256 signature standard | ✅ Completed | OpenAPI webhooks + verifier plugin entrypoint |
 | Security baseline env flags | ✅ Completed | Rotation + TLS floor + webhook signature algorithm |
+| Contract testing suite | ✅ Completed | Automated OpenAPI validation + integration test examples |
 | Runtime enforcement hardening | 🟡 In Progress | Reference FastAPI runtime now enforces idempotency, rate limits, webhook signatures, and OAuth scopes |
 
 

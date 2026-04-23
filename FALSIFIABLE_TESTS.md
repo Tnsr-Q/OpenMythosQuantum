@@ -240,3 +240,98 @@ grep -c 'operationId: verifyPluginIntegrity'        openapi/openapi.yaml   # == 
       `PluginIntegrityVerification` schemas are all defined.
 - [ ] OAuth scopes `plugins.read` and `plugins.verify` declared under
       `OAuth2ClientCredentials`.
+
+
+
+## Contract Testing Suite (ACT-XXX)
+
+Automated contract validation tests added in `tests/contract/`.
+
+### TEST-CONTRACT-001: OpenAPI Metadata Validation
+
+```bash
+python3 tests/contract/test_openapi_contract.py
+```
+
+- [ ] OpenAPI version is 3.1.0
+- [ ] JSON Schema dialect is 2020-12
+- [ ] API title is present
+- [ ] API version is present
+- [ ] Contact information includes GitHub URL
+- [ ] Servers are declared
+
+### TEST-CONTRACT-002: Unique Operation IDs
+
+- [ ] All operation IDs are unique across the specification
+- [ ] No duplicate operationId values found
+
+### TEST-CONTRACT-003: Idempotency Key Coverage
+
+- [ ] All POST operations include `#/components/parameters/IdempotencyKey`
+- [ ] IdempotencyKey parameter is defined in components
+- [ ] No POST operations missing idempotency key
+
+### TEST-CONTRACT-004: Pagination Contract
+
+- [ ] `GET /training/jobs` exists with cursor and limit parameters
+- [ ] Response schema includes pagination metadata
+- [ ] Pagination response includes nextCursor and hasMore fields
+
+### TEST-CONTRACT-005: Security Schemes
+
+- [ ] BearerAuth (JWT) is defined
+- [ ] ApiKeyAuth (X-API-Key) is defined
+- [ ] OAuth2ClientCredentials is defined
+- [ ] All non-health endpoints declare security requirements
+
+### TEST-CONTRACT-006: Webhook Signatures
+
+- [ ] Webhooks section exists in OpenAPI spec
+- [ ] All webhook definitions include X-Katopu-Signature parameter
+- [ ] Signature pattern matches `sha256=[a-f0-9]{64}`
+
+### TEST-CONTRACT-007: Schema Strictness
+
+- [ ] At least 70% of object schemas use `additionalProperties: false`
+- [ ] Strict schemas enforce closed object models
+
+### TEST-CONTRACT-008: Standard Error Responses
+
+- [ ] BadRequest response is defined
+- [ ] Unauthorized response is defined
+- [ ] Forbidden response is defined
+- [ ] NotFound response is defined
+- [ ] Conflict response is defined
+- [ ] TooManyRequests response is defined
+- [ ] InternalServerError response is defined
+- [ ] ErrorResponse schema is defined
+
+### TEST-CONTRACT-009: Freeze & Plugin Endpoints
+
+- [ ] Freeze endpoints exist for circuits and training jobs
+- [ ] Plugin registry endpoints exist (list, get, find by capability, verify)
+- [ ] FreezeHash and FreezeResponse schemas are defined
+- [ ] Plugin, PluginCapability, and PluginLifecycle schemas are defined
+
+### Integration Test Examples
+
+Run with:
+```bash
+python3 tests/contract/test_integration_examples.py
+```
+
+- [ ] Training job lifecycle workflow validates correctly
+- [ ] Circuit optimization with freeze hash workflow validates correctly
+- [ ] Webhook payload structures match expected format
+- [ ] Plugin discovery and verification workflow validates correctly
+- [ ] Pagination determinism is maintained across requests
+
+### Master Test Runner
+
+Run all contract tests:
+```bash
+python3 tests/contract/run_all_contract_tests.py
+```
+
+Expected result: All test suites pass (exit code 0).
+
