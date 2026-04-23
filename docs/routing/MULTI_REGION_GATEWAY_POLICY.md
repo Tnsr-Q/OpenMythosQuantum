@@ -71,7 +71,14 @@ Job-scoped constraints:
 - `job.max_queue_latency_ms`
 - `job.strict_routing` boolean
 - `job.optimize_for` in `{balanced, cost, latency, fidelity}`
+- `job.preferred_region` in `{any}` or a valid target `signal.region` identifier
+- `job.topology_requirement` in `{none, preferred, required}`
 
+Notes:
+- `job.preferred_region = any` means no regional preference is applied.
+- `job.topology_requirement = none` means topology is not considered a job constraint.
+- `job.topology_requirement = preferred` means topology affects scoring when available but does not hard-fail a candidate.
+- `job.topology_requirement = required` means a non-embeddable topology is disqualifying.
 ---
 
 ## 4) Deterministic Policy Logic
