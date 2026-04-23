@@ -85,6 +85,19 @@ make test
 make docs
 ```
 
+## Release Management
+
+- Changelog: [`CHANGELOG.md`](CHANGELOG.md) (Keep a Changelog format)
+- Semantic versioning policy: [`docs/semantic-versioning-policy.md`](docs/semantic-versioning-policy.md)
+- API deprecation policy: [`docs/api-deprecation-policy.md`](docs/api-deprecation-policy.md)
+- Release automation: `bash scripts/release.sh --version <X.Y.Z>`
+
+Dry run example:
+
+```bash
+bash scripts/release.sh --version 1.4.0 --dry-run
+```
+
 ## Modernization Status
 
 Tracked in [`ACTION_MANIFEST.md`](ACTION_MANIFEST.md).
