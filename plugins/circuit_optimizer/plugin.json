@@ -1,0 +1,23 @@
+{
+  "id": "circuit_optimizer",
+  "name": "Circuit Optimizer",
+  "version": "1.0.0",
+  "description": "Reference circuit_optimizer capability plugin.",
+  "capabilities": [
+    "circuit.optimize.gate_reduction"
+  ],
+  "entrypoint": {
+    "runtime": "python3",
+    "module": "entrypoint",
+    "path": "entrypoint.py"
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "entrypoint": "sha256:3be0ee8d75599f4d681e721351c4ee03bab3b9e52e046b9ee88f59f9bf3888d7",
+    "reference": "ACT-020 plugin integrity verification"
+  },
+  "author": "OpenMythos",
+  "license": "Proprietary",
+  "lifecycle": "active",
+  "contractVersion": "1.3.0"
+}

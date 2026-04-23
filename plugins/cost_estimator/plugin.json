@@ -1,0 +1,23 @@
+{
+  "id": "cost_estimator",
+  "name": "Cost Estimator",
+  "version": "1.0.0",
+  "description": "Reference cost_estimator capability plugin.",
+  "capabilities": [
+    "quantum.estimate.cost"
+  ],
+  "entrypoint": {
+    "runtime": "python3",
+    "module": "entrypoint",
+    "path": "entrypoint.py"
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "entrypoint": "sha256:ec973ef42be96d6f737dbfd86bc680c0c61a17bba598048609d3006670ccea33",
+    "reference": "ACT-020 plugin integrity verification"
+  },
+  "author": "OpenMythos",
+  "license": "Proprietary",
+  "lifecycle": "active",
+  "contractVersion": "1.3.0"
+}

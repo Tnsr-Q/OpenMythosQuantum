@@ -5,9 +5,9 @@ Deterministic tests for the ACT-020 plugin registry.
 Test cases
 ----------
 
-- TEST-REG-001: descriptor schema validates both existing plugin descriptors
+- TEST-REG-001: descriptor schema validates plugin descriptors
                 (and rejects mutated descriptors).
-- TEST-REG-002: registry.py lists exactly 2 plugins.
+- TEST-REG-002: registry.py lists expected plugin set (>= 5 plugins).
 - TEST-REG-003: registry verifies integrity of both plugins (matching SHA-256).
 - TEST-REG-004: registry rejects tampered entrypoint bytes (mutation → fail).
 - TEST-REG-005: capability lookup finds sha256_verifier by "webhook.verify.sha256".
@@ -72,7 +72,7 @@ def test_reg_001_schema_validation() -> None:
     section("TEST-REG-001: descriptor schema validates both existing plugins")
     schema = load_schema()
 
-    for pid in ("sha256_verifier", "freeze_snapshot"):
+    for pid in ("sha256_verifier", "freeze_snapshot", "circuit_optimizer", "cost_estimator", "observability_exporter"):
         desc = load_descriptor(pid)
         try:
             reg_mod.validate_descriptor(desc, schema)
@@ -127,17 +127,23 @@ def test_reg_001_schema_validation() -> None:
 
 
 # --------------------------------------------------------------------------- #
-# TEST-REG-002 — registry lists 2 plugins
+# TEST-REG-002 — registry lists expected plugin set
 # --------------------------------------------------------------------------- #
 
 def test_reg_002_list() -> None:
-    section("TEST-REG-002: registry lists 2 plugins")
+    section("TEST-REG-002: registry lists expected plugin set")
     reg = reg_mod.Registry.load(PLUGINS_DIR)
     plugins = reg.list_plugins()
-    ids = [p.id for p in plugins]
-    _check(f"registry contains exactly 2 plugins ({ids})", len(plugins) == 2, f"got {len(plugins)}")
-    _check("sha256_verifier is registered", "sha256_verifier" in ids)
-    _check("freeze_snapshot is registered", "freeze_snapshot" in ids)
+    ids = {p.id for p in plugins}
+    expected = {
+        "sha256_verifier",
+        "freeze_snapshot",
+        "circuit_optimizer",
+        "cost_estimator",
+        "observability_exporter",
+    }
+    _check(f"registry includes expected plugins ({sorted(ids)})", expected.issubset(ids), f"missing {sorted(expected - ids)}")
+    _check("registry contains at least 5 plugins", len(plugins) >= 5, f"got {len(plugins)}")
 
 
 # --------------------------------------------------------------------------- #
@@ -148,8 +154,7 @@ def test_reg_003_verify_integrity() -> None:
     section("TEST-REG-003: registry verifies integrity of both plugins")
     reg = reg_mod.Registry.load(PLUGINS_DIR)
     results = reg.verify_integrity()
-    _check("verify returns result for each plugin",
-           set(results.keys()) == {"sha256_verifier", "freeze_snapshot"})
+    _check("verify returns result for every loaded plugin", set(results.keys()) == {p.id for p in reg.list_plugins()})
     for pid, ok in results.items():
         _check(f"{pid}: entrypoint bytes match recorded SHA-256", ok)
 
@@ -166,7 +171,7 @@ def test_reg_004_tamper_detection() -> None:
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_plugins = Path(tmpdir)
         # copy both real plugins and the schema into the tmp dir
-        for pid in ("sha256_verifier", "freeze_snapshot"):
+        for pid in ("sha256_verifier", "freeze_snapshot", "circuit_optimizer", "cost_estimator", "observability_exporter"):
             shutil.copytree(PLUGINS_DIR / pid, tmp_plugins / pid)
         shutil.copy(SCHEMA_PATH, tmp_plugins / "descriptor.schema.json")
 

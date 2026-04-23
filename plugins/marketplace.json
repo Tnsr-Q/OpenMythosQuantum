@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-04-23",
+  "plugins": [
+    {
+      "id": "freeze_snapshot",
+      "version": "1.0.0",
+      "capabilities": ["hash.canonicalize", "hash.freeze.sha256"],
+      "lifecycle": "active"
+    },
+    {
+      "id": "sha256_verifier",
+      "version": "1.0.0",
+      "capabilities": ["webhook.verify.sha256"],
+      "lifecycle": "active"
+    },
+    {
+      "id": "circuit_optimizer",
+      "version": "1.0.0",
+      "capabilities": ["circuit.optimize.gate_reduction"],
+      "lifecycle": "active"
+    },
+    {
+      "id": "cost_estimator",
+      "version": "1.0.0",
+      "capabilities": ["quantum.estimate.cost"],
+      "lifecycle": "active"
+    },
+    {
+      "id": "observability_exporter",
+      "version": "1.0.0",
+      "capabilities": ["observability.export.prometheus"],
+      "lifecycle": "active"
+    }
+  ]
+}
