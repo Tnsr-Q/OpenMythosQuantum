@@ -67,6 +67,13 @@ We verify the correspondence numerically on the bowtie graph from the Phase~C
 test suite, where we observe a sharp phase transition in the shadow-chain
 spectral gap at the analytically predicted threshold
 $\alpha_c = 1/|\kappa_{\mathrm{bridge}}| = 3$.
+A universality study across seven graph families (single-bridge dumbbells
+$K_n$--$K_n$ for $n=3,4,5$; a path-graph control; a ladder-bridge topology;
+a series path-bridge; and an asymmetric $K_3$--$K_5$ dumbbell) shows that
+the prediction $\alpha_c = 1/|\kappa_{\min}|$ holds within a factor of 2
+across all cases, with ratio $0.94 \le \alpha_c^{\mathrm{meas}} /
+\alpha_c^{\mathrm{pred}} \le 1.65$ and systematic drift governed by cluster
+size rather than topology class.
 Three falsifiable predictions follow: (i) mixing-time scaling
 $\tau \sim (\alpha - \alpha_c)^{-1}$ near threshold; (ii) a
 spectral-gap collapse on edges with $\gamma_e < |\kappa_e|$; and (iii) an
@@ -445,6 +452,116 @@ at small $\alpha$ but fails quantitatively by a factor of $\sim\gamma_{e^*}^{-1}
 The linear-response prediction extracted from Theorem~\ref{thm:main} is
 tight up to finite-size corrections.
 
+\subsection{Universality Across Graph Families}
+\label{sec:universality}
+
+The bowtie result by itself does not establish that $\alpha_c = 1/|\kappa_{\min}|$
+is a universal scaling, only that the formula works for one graph. To test
+universality we repeat the spectral-gap measurement on seven graphs spanning
+four topology classes:
+\begin{enumerate}[label={\bfseries G\arabic*:}, leftmargin=2.4em,
+                  itemsep=1pt, topsep=2pt]
+\item[\textbf{G1:}] Single-bridge dumbbells $K_n$--$K_n$ for $n=3,4,5$.
+   One negative-curvature edge; $|\kappa_{\min}|$ grows with $n$.
+\item[\textbf{G2:}] Path graph $P_6$ as control. All $\kappa_e \approx 0$;
+   no phase transition expected.
+\item[\textbf{G3:}] Multi-edge bottleneck topologies: a ladder bridge
+   ($K_3$--$K_3$ joined by two disjoint length-2 paths; four
+   negative-curvature edges) and a series path-bridge
+   ($K_3$--$x$--$K_3$ with pivot node $x$; two negative-curvature edges in series).
+\item[\textbf{G4:}] Asymmetric dumbbell $K_3$--$K_5$.
+\end{enumerate}
+For each graph we apply the Phase~C prescription uniformly: positive-curvature
+edges are fixed at $\gamma_e = 1$ and negative-curvature edges are assigned
+$\gamma_e = \alpha \cdot |\kappa_e|$. We sweep $\alpha$ over four decades and
+measure the shadow-chain spectral gap $\lambda_1(-Q^{\mathrm{G}})$, extracting
+$\alpha_c$ as the half-saturation crossover.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{phase_d_fig2.pdf}
+\caption{Universality test across seven graphs spanning four topology classes.
+(a) Raw spectral gap vs $\alpha$: all graphs with $\kappa_{\min}<0$ exhibit
+the same linear-to-saturation morphology; the $\kappa\approx 0$ control
+($P_6$, gray) shows no transition. (b) Rescaling under
+$\alpha \to \alpha\,|\kappa_{\min}|$ and $\lambda_1 \to \lambda_1/|\kappa_{\min}|$
+partially collapses the curves but is not exact. (c) Measured vs predicted
+critical coupling: all seven points lie within a factor of 2 of the
+diagonal, with systematic drift correlated with cluster size
+($K_5$--$K_5$ shows the largest deviation, ratio 1.65).}
+\label{fig:fig2}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{l c c c c c}
+\hline\hline
+Graph & $|V|$ & $\kappa_{\min}$ &
+$\alpha_c^{\mathrm{pred}} = 1/|\kappa_{\min}|$ &
+$\alpha_c^{\mathrm{meas}}$ & ratio \\
+\hline
+$K_3$--$K_3$ (bowtie)            & 6  & $-0.333$ & 3.000 & 2.833 & 0.944 \\
+$K_4$--$K_4$                     & 8  & $-0.500$ & 2.000 & 2.637 & 1.319 \\
+$K_5$--$K_5$                     & 10 & $-0.600$ & 1.667 & 2.743 & 1.646 \\
+$K_3$--$K_3$ ladder (4 neg ed.)  & 8  & $-0.167$ & 6.000 & 6.525 & 1.088 \\
+$K_3$--path--$K_3$ (2 neg, ser.) & 7  & $-0.167$ & 6.000 & 6.143 & 1.024 \\
+$K_3$--$K_5$ (asymmetric)        & 8  & $-0.467$ & 2.143 & 2.629 & 1.227 \\
+$P_6$ (control)                  & 6  & $\sim 0$ & ---   & ---   & ---   \\
+\hline\hline
+\end{tabular}
+\caption{Quantitative universality data. The prediction
+$\alpha_c = 1/|\kappa_{\min}|$ agrees within a factor of two across all
+seven graphs. The largest deviation (K$_5$--K$_5$, ratio 1.65) correlates
+with cluster size, not topology class; the ladder and series-path cases
+despite multi-edge bottlenecks are within 10\% of the single-edge prediction.}
+\label{tab:universality}
+\end{table}
+
+Figure~\ref{fig:fig2} shows the three-panel result and
+Table~\ref{tab:universality} the numerical values. Four findings are worth
+highlighting.
+
+\paragraph{Qualitative universality is robust.} Every graph with
+$\kappa_{\min}<0$ exhibits the same linear-to-saturation morphology. The
+control graph $P_6$ with $\kappa_e \approx 0$ shows no phase transition,
+confirming that the transition is specifically tied to negative curvature and
+not to some generic property of the Markov chain.
+
+\paragraph{Quantitative universality is approximate.} The prediction
+$\alpha_c = 1/|\kappa_{\min}|$ is correct in order-of-magnitude: ratios lie
+in the range $[0.94, 1.65]$. But the curves in panel (b) do not collapse
+exactly under the natural rescaling, showing that $|\kappa_{\min}|$ is not
+the sole relevant scale.
+
+\paragraph{Deviations are dominated by cluster size, not topology class.}
+The three single-bridge dumbbells $K_n$--$K_n$ show a monotone increase in
+the ratio $\alpha_c^{\mathrm{meas}}/\alpha_c^{\mathrm{pred}}$ with $n$:
+$0.94, 1.32, 1.65$ for $n = 3,4,5$. In contrast, the ladder
+(four parallel bottleneck edges) and path-bridge (two serial bottleneck edges)
+deviate from the prediction by $<10\%$. The dominant correction to
+Theorem~\ref{thm:main} appears to be a cluster-size-dependent prefactor
+absent from the leading-order bound.
+
+\paragraph{Parallel and serial bottlenecks are captured correctly.}
+G3a (ladder) and G3b (path-bridge) share $\kappa_{\min} = -1/6$ but differ
+fundamentally in topology: parallel redundancy vs.\ series resistance.
+Both exhibit $\alpha_c$ close to the single-edge prediction, suggesting
+that the ORC definition already incorporates the relevant effective-resistance
+information. This is a nontrivial success of Ollivier--Ricci curvature as
+the right scalar summary of local graph obstruction: simpler scalars such
+as node degree or betweenness would not discriminate between these cases.
+
+The refined universality statement supported by this data is:
+\begin{equation}
+\alpha_c \;=\; \frac{C(|V_{\mathrm{cluster}}|)}{|\kappa_{\min}|},
+\qquad C : \mathbb{N} \to \mathbb{R}_{>0}\ \text{weakly increasing in}\ |V_{\mathrm{cluster}}|.
+\label{eq:refined_universality}
+\end{equation}
+The function $C$ is $\mathcal{O}(1)$ for the graphs tested; a closed-form
+expression would require extending Theorem~\ref{thm:main} to include
+cluster-scale corrections, likely via the subdominant eigenvalues of the
+within-cluster Laplacian. We leave this as an open question.
+
 \section{Falsifiable Predictions}
 \label{sec:predictions}
 
@@ -586,15 +703,32 @@ The correspondence has three operational consequences for the
 OpenMythosQuantum engine. First, the Phase~C heuristic is no longer a
 heuristic: it is the thermodynamically minimal coupling. Second, a distinguished
 value of $\alpha$ emerges from the graph structure itself, eliminating a
-free parameter. Third, the framework generates three falsifiable predictions
-(P1, P2, P3) that can be tested numerically or experimentally to distinguish
-the correspondence from alternative graph-curvature-to-quantum-dissipation
-mappings.
+free parameter to leading order. Third, the framework generates three
+falsifiable predictions (P1, P2, P3) that can be tested numerically or
+experimentally to distinguish the correspondence from alternative
+graph-curvature-to-quantum-dissipation mappings.
+
+The universality test of Section~\ref{sec:universality} sharpens rather
+than generalizes the theorem. The prediction $\alpha_c = 1/|\kappa_{\min}|$
+is correct in order of magnitude across all seven graphs tested, but is not
+an exact universality: deviations up to a factor of 1.65 are observed,
+correlated with cluster size rather than topology class. This is not a
+failure of the Graph--State Correspondence itself---qualitative universality
+(presence of the transition, dependence on negative curvature, absence in
+$\kappa\approx 0$ controls) is robust---but rather a limitation of the
+leading-order bound. The refined scaling $\alpha_c = C(|V_{\mathrm{cluster}}|)/|\kappa_{\min}|$
+with $C = \mathcal{O}(1)$ points to a subleading correction controlled by
+within-cluster spectral data that Theorem~\ref{thm:main} does not resolve.
+Notably, parallel and serial bottleneck topologies that share $\kappa_{\min}$
+are predicted equally well, indicating that ORC already captures the effective
+local resistance. The deviation is a cluster-size artifact, not a topology-class
+artifact.
 
 Future work should extend the correspondence beyond the diagonal sector
 using Carlen--Maas noncommutative curvature, generalize the hopping ansatz
-to arbitrary 2-local jump operators, and incorporate detailed balance to
-pin down the bath-temperature identification.
+to arbitrary 2-local jump operators, compute the cluster-size correction
+$C(|V_{\mathrm{cluster}}|)$ analytically, and incorporate detailed balance
+to pin down the bath-temperature identification.
 
 \section*{Acknowledgments}
 Developed within the OpenMythosQuantum Phase~D workflow. Phase~C
