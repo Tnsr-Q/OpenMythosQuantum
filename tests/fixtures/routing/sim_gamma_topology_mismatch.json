@@ -1,0 +1,36 @@
+{
+  "policy_version": "gateway_policy_v1.0.0",
+  "simulation": "gamma_topology_mismatch",
+  "job": {
+    "job_id": "job-gamma-001",
+    "optimize_for": "balanced",
+    "minimum_required_fidelity": 0.78,
+    "max_queue_latency_ms": 2500,
+    "strict_routing": true,
+    "preferred_region": "ap-southeast-1",
+    "topology_requirement": "linear_chain_5"
+  },
+  "candidates": [
+    {
+      "node_id": "node-star-5q",
+      "region": "ap-southeast-1",
+      "cost_per_shot": 0.04,
+      "queue_depth": 3,
+      "avg_wait_per_job_ms": 80,
+      "region_rtt_ms": 9,
+      "fallback_status": "UP",
+      "t1_us": 120,
+      "t2_us": 155,
+      "median_2q_error": 0.010,
+      "topology": {
+        "embeddable": false,
+        "swap_penalty_ratio": 0.65
+      }
+    }
+  ],
+  "expected": {
+    "error_code": "422 TOPOLOGY_MISMATCH",
+    "selected_node_id": null,
+    "reason": "strict_routing forbids non-embeddable target"
+  }
+}
