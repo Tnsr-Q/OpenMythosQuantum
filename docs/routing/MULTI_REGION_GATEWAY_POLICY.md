@@ -81,10 +81,14 @@ A candidate is discarded if any condition is true:
 3. `fidelity_effective < job.minimum_required_fidelity`
 4. `job.strict_routing == true && topology.embeddable == false`
 
-If all candidates are discarded:
-- return `422 TOPOLOGY_MISMATCH` if every surviving health node failed topology,
-- otherwise return `503 NO_ELIGIBLE_TARGET`.
+If all candidates are discarded, select the typed error by the following precedence order:
 
+1. return `503 ROUTING_STATE_UNAVAILABLE` if, in strict mode, every candidate was excluded due to required routing state being stale or unavailable under the freshness contract in §2.2;
+2. else return `422 TOPOLOGY_MISMATCH` if at least one candidate was otherwise evaluable (that is, not `DOWN` and not excluded solely for stale required state) and all such candidates failed `job.strict_routing == true && topology.embeddable == false`;
+3. else return `422 FIDELITY_CONSTRAINT_UNSATISFIED` if at least one candidate was otherwise evaluable and all such candidates failed `fidelity_effective < job.minimum_required_fidelity`;
+4. else return `503 NO_ELIGIBLE_TARGET`.
+
+`503 NO_ELIGIBLE_TARGET` is therefore the residual case for exhaustion caused by health, queue-latency, degraded availability, or mixed discard reasons where no more specific typed error above applies.
 ### 4.2 Normalization constants (policy v1)
 
 ```text
