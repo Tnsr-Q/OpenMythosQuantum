@@ -3,7 +3,7 @@ info:
   title: Katopu Quantum AGI API
   summary: Production-ready unified API for quantum workflows, AGI optimization, guidance, security, and training automation.
   description: "This contract consolidates the draft APIs into a stricter production-oriented interface.\n\nDesign choices:\n  - explicit versioned base path\n  - normalized resource naming\n  - unique operationIds\n  - reusable components\n  - explicit authentication and authorization\n  - stricter request/response schemas\n  - examples cleaned up for implementation and testing\n"
-  version: 1.1.0
+  version: 1.2.0
   contact:
     name: Tnsr-Q
     url: https://github.com/Tnsr-Q
@@ -496,6 +496,99 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
       parameters:
       - $ref: '#/components/parameters/IdempotencyKey'
+  /circuits/{circuitId}/freeze:
+    parameters:
+    - $ref: '#/components/parameters/CircuitId'
+    post:
+      tags:
+      - Circuits
+      operationId: freezeCircuit
+      summary: Freeze a circuit to a deterministic content hash
+      description: |
+        Computes a deterministic `freeze:<sha256>` identity over the canonical
+        JSON serialization of the circuit definition (gates, qubits, schema
+        version, metadata). The freeze hash is idempotent: repeated calls on
+        an unchanged circuit return the same hash.
+
+        Freeze hashes are **content** hashes, distinct from `circuitId`
+        (which is a mutable pointer). Use freeze hashes for reproducibility,
+        audit, and caching; use `circuitId` for routing.
+      security:
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - circuits.freeze
+      responses:
+        '200':
+          description: Freeze hash computed (or returned unchanged if the circuit has not been modified).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreezeResponse'
+              examples:
+                bellStateFrozen:
+                  value:
+                    resourceId: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+                    resourceKind: circuit
+                    freezeHash: freeze:95fcc2bdfb71b80a59ed5628871dce2fc9e9f0b857d7f6b90dfc5338c17e2f68
+                    algorithm: jcs-canonical-json+sha256
+                    frozenAt: '2026-04-22T12:30:00Z'
+                    canonicalBytes: 186
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+    get:
+      tags:
+      - Circuits
+      operationId: getCircuitFreeze
+      summary: Retrieve the current freeze hash for a circuit
+      description: |
+        Returns the most recently computed freeze hash for the circuit. Returns
+        404 if the circuit exists but has never been frozen.
+      security:
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - circuits.read
+      responses:
+        '200':
+          description: Current freeze hash
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreezeResponse'
+              examples:
+                current:
+                  value:
+                    resourceId: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+                    resourceKind: circuit
+                    freezeHash: freeze:95fcc2bdfb71b80a59ed5628871dce2fc9e9f0b857d7f6b90dfc5338c17e2f68
+                    algorithm: jcs-canonical-json+sha256
+                    frozenAt: '2026-04-22T12:30:00Z'
+                    canonicalBytes: 186
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
   /quantum/jobs:
     post:
       tags:
@@ -1126,6 +1219,101 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
       parameters:
       - $ref: '#/components/parameters/IdempotencyKey'
+  /training/jobs/{trainingId}/freeze:
+    parameters:
+    - $ref: '#/components/parameters/TrainingId'
+    post:
+      tags:
+      - Training
+      operationId: freezeTrainingJob
+      summary: Freeze a training job configuration to a deterministic content hash
+      description: |
+        Computes a deterministic `freeze:<sha256>` identity over the canonical
+        JSON serialization of the training job configuration (model name,
+        dataset identifier, hyperparameters, seed, schema version). The
+        freeze hash is idempotent: repeated calls on an unchanged
+        configuration return the same hash.
+
+        Freeze hashes are **content** hashes, distinct from `trainingId`
+        (which is a mutable pointer). Use freeze hashes for experiment
+        reproducibility, audit trails, and result caching.
+      security:
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - training.freeze
+      responses:
+        '200':
+          description: Freeze hash computed (or returned unchanged if the configuration has not been modified).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreezeResponse'
+              examples:
+                trainingFrozen:
+                  value:
+                    resourceId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                    resourceKind: training_job
+                    freezeHash: freeze:2adea023c4b47899106b7aa01b52c94ebfa4985e64ecc8a1c481004fae69375f
+                    algorithm: jcs-canonical-json+sha256
+                    frozenAt: '2026-04-22T12:45:00Z'
+                    canonicalBytes: 178
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+    get:
+      tags:
+      - Training
+      operationId: getTrainingJobFreeze
+      summary: Retrieve the current freeze hash for a training job
+      description: |
+        Returns the most recently computed freeze hash for the training job
+        configuration. Returns 404 if the training job exists but has never
+        been frozen.
+      security:
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - training.read
+      responses:
+        '200':
+          description: Current freeze hash
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreezeResponse'
+              examples:
+                current:
+                  value:
+                    resourceId: trn_01HZZZ6JTK98FCG73RBTQ2P5EJ
+                    resourceKind: training_job
+                    freezeHash: freeze:2adea023c4b47899106b7aa01b52c94ebfa4985e64ecc8a1c481004fae69375f
+                    algorithm: jcs-canonical-json+sha256
+                    frozenAt: '2026-04-22T12:45:00Z'
+                    canonicalBytes: 178
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
   /training/jobs/{trainingId}/results:
     parameters:
     - $ref: '#/components/parameters/TrainingId'
@@ -1341,6 +1529,7 @@ components:
             circuits.read: Read circuits
             circuits.write: Write circuits
             circuits.execute: Execute circuits
+            circuits.freeze: Freeze a circuit to a deterministic content hash
             quantum.read: Read quantum jobs
             quantum.execute: Execute quantum jobs
             guidance.read: Read guidance
@@ -1350,6 +1539,7 @@ components:
             updates.write: Apply system updates
             training.read: Read training jobs
             training.write: Write training jobs
+            training.freeze: Freeze a training job configuration to a deterministic content hash
             notifications.write: Write notifications
             agi.write: Run AGI operations
   headers:
@@ -1763,6 +1953,11 @@ components:
         createdAt:
           type: string
           format: date-time
+        freezeHash:
+          allOf:
+          - $ref: '#/components/schemas/FreezeHash'
+          readOnly: true
+          description: Optional deterministic content hash (see POST /circuits/{circuitId}/freeze). Present only after the circuit has been frozen.
     CircuitResource:
       type: object
       additionalProperties: false
@@ -1791,6 +1986,11 @@ components:
         createdAt:
           type: string
           format: date-time
+        freezeHash:
+          allOf:
+          - $ref: '#/components/schemas/FreezeHash'
+          readOnly: true
+          description: Optional deterministic content hash for this circuit (see POST /circuits/{circuitId}/freeze). Present only after the circuit has been frozen.
     CircuitSimulationRequest:
       type: object
       additionalProperties: false
@@ -2277,6 +2477,11 @@ components:
           type: number
           minimum: 0
           example: 0.0264
+        freezeHash:
+          allOf:
+          - $ref: '#/components/schemas/FreezeHash'
+          readOnly: true
+          description: Optional deterministic content hash of the training job configuration (see POST /training/jobs/{trainingId}/freeze). Present only after the training job has been frozen.
     TrainingResultsResponse:
       type: object
       additionalProperties: false
@@ -2329,6 +2534,11 @@ components:
         savedModelPath:
           type: string
           example: /models/transformer-v1
+        freezeHash:
+          allOf:
+          - $ref: '#/components/schemas/FreezeHash'
+          readOnly: true
+          description: Optional deterministic content hash of the training job configuration that produced these results. Present only after the training job has been frozen.
     TrainingRecommendationResponse:
       type: object
       additionalProperties: false
@@ -2569,6 +2779,51 @@ components:
               enum:
               - delivered
               - failed
+    FreezeHash:
+      type: string
+      description: Deterministic content hash of a canonicalized JSON manifest. Produced by the `freeze_snapshot` plugin (RFC 8785 / JCS-style canonical JSON + SHA-256). Two manifests that differ only in key order or insignificant whitespace produce the same FreezeHash; any field-level change produces a different FreezeHash.
+      pattern: ^freeze:[a-f0-9]{64}$
+      minLength: 71
+      maxLength: 71
+      example: freeze:95fcc2bdfb71b80a59ed5628871dce2fc9e9f0b857d7f6b90dfc5338c17e2f68
+    FreezeResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - resourceId
+      - resourceKind
+      - freezeHash
+      - algorithm
+      - frozenAt
+      properties:
+        resourceId:
+          type: string
+          description: Identifier of the frozen resource (e.g. circuitId or trainingId).
+          example: cir_01HZZYH8V2DFD9M8Y4WJB9P3J4
+        resourceKind:
+          type: string
+          description: Kind of the frozen resource.
+          enum:
+          - circuit
+          - training_job
+        freezeHash:
+          $ref: '#/components/schemas/FreezeHash'
+        algorithm:
+          type: string
+          description: Canonicalization and hash algorithm identifier.
+          enum:
+          - jcs-canonical-json+sha256
+          example: jcs-canonical-json+sha256
+        frozenAt:
+          type: string
+          format: date-time
+          description: Timestamp when the freeze hash was last computed.
+          example: '2026-04-22T12:30:00Z'
+        canonicalBytes:
+          type: integer
+          minimum: 0
+          description: Length in bytes of the canonical JSON representation that was hashed. Useful for cache sizing and audit reconciliation.
+          example: 186
 webhooks:
   training.completed:
     post:

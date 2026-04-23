@@ -1,0 +1,92 @@
+{
+  "description": "Known inputs and their expected freeze hashes. Use these to verify any reimplementation of the canonical JSON + SHA-256 freeze algorithm. Regenerate with `python3 plugins/freeze_snapshot/entrypoint.py hash <file>`.",
+  "algorithm": {
+    "canonical_json": "JCS-style: sorted keys, no whitespace, UTF-8, integer-valued numbers render without decimal, -0 and -0.0 collapse to 0, NaN/Infinity rejected",
+    "hash": "sha256",
+    "prefix": "freeze:"
+  },
+  "vectors": [
+    {
+      "name": "empty_object",
+      "input": {},
+      "expected": "freeze:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "name": "empty_array",
+      "input": [],
+      "expected": "freeze:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "null_value",
+      "input": null,
+      "expected": "freeze:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    {
+      "name": "boolean_true",
+      "input": true,
+      "expected": "freeze:b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+    },
+    {
+      "name": "integer_one",
+      "input": 1,
+      "expected": "freeze:6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+    },
+    {
+      "name": "float_one_point_zero_equals_integer_one",
+      "input": 1.0,
+      "expected": "freeze:6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "note": "1.0 must hash identically to 1 — integer-valued numeric canonicalization."
+    },
+    {
+      "name": "negative_zero_float_equals_zero",
+      "input": -0.0,
+      "expected": "freeze:5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+      "note": "-0.0 canonicalizes to 0."
+    },
+    {
+      "name": "ascii_string",
+      "input": "hello",
+      "expected": "freeze:5aa762ae383fbb727af3c7a36d4940a5b8c40a989452d2304fc958ff3f354e7a"
+    },
+    {
+      "name": "unicode_string",
+      "input": "héllo-π",
+      "expected": "freeze:cee60a5841162732a5fbc872b70e1129d4c00eca4b8a3b29ad057ceee732cea7",
+      "note": "UTF-8 passthrough; non-ASCII must not be \\u-escaped."
+    },
+    {
+      "name": "bell_state_circuit",
+      "input": {
+        "schemaVersion": "1.0",
+        "name": "bell-state",
+        "qubits": 2,
+        "gates": [
+          {"op": "h", "target": 0},
+          {"op": "cx", "control": 0, "target": 1}
+        ],
+        "measurements": [
+          {"qubit": 0, "classical": 0},
+          {"qubit": 1, "classical": 1}
+        ]
+      },
+      "expected": "freeze:95fcc2bdfb71b80a59ed5628871dce2fc9e9f0b857d7f6b90dfc5338c17e2f68",
+      "note": "Canonical 2-qubit Bell state circuit — anchor vector for circuit freeze tests."
+    },
+    {
+      "name": "training_job_config",
+      "input": {
+        "schemaVersion": "1.0",
+        "modelName": "katopu-baseline",
+        "datasetId": "ds_abc123",
+        "hyperparameters": {
+          "learningRate": 0.001,
+          "batchSize": 32,
+          "epochs": 10
+        },
+        "seed": 42
+      },
+      "expected": "freeze:2adea023c4b47899106b7aa01b52c94ebfa4985e64ecc8a1c481004fae69375f",
+      "note": "Canonical minimal training job config — anchor vector for training freeze tests."
+    }
+  ]
+}
