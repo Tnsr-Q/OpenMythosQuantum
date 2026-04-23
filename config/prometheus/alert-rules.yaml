@@ -1,0 +1,371 @@
+# OpenMythos Prometheus Alert Rules
+# Place this file in /etc/prometheus/rules/openmythos-alerts.yml
+
+groups:
+  - name: openmythos_api_health
+    interval: 30s
+    rules:
+      # Service is down
+      - alert: OpenMythosAPIDown
+        expr: up{job="openmythos-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "OpenMythos API is down"
+          description: "The OpenMythos API service has been unreachable for more than 1 minute. Instance: {{ $labels.instance }}"
+          runbook: "https://docs.openmythos.example.com/runbooks/api-down"
+
+      # High error rate
+      - alert: OpenMythosHighErrorRate
+        expr: |
+          (
+            sum(rate(openmythos_http_errors_total[5m]))
+            /
+            sum(rate(openmythos_http_requests_total[5m]))
+          ) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "High error rate detected in OpenMythos API"
+          description: "API error rate is {{ $value | humanizePercentage }} (threshold: 5%) over the last 5 minutes"
+          runbook: "https://docs.openmythos.example.com/runbooks/high-error-rate"
+
+      # Elevated error rate (warning)
+      - alert: OpenMythosElevatedErrorRate
+        expr: |
+          (
+            sum(rate(openmythos_http_errors_total[5m]))
+            /
+            sum(rate(openmythos_http_requests_total[5m]))
+          ) > 0.01
+        for: 10m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "Elevated error rate in OpenMythos API"
+          description: "API error rate is {{ $value | humanizePercentage }} (threshold: 1%) over the last 10 minutes"
+
+  - name: openmythos_api_performance
+    interval: 30s
+    rules:
+      # High latency (P95)
+      - alert: OpenMythosHighLatency
+        expr: |
+          histogram_quantile(0.95,
+            rate(openmythos_http_request_duration_seconds_bucket[5m])
+          ) > 2.0
+        for: 10m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "High API latency detected"
+          description: "P95 latency is {{ $value | humanizeDuration }} (threshold: 2s) for endpoint {{ $labels.endpoint }}"
+          runbook: "https://docs.openmythos.example.com/runbooks/high-latency"
+
+      # Very high latency (P95)
+      - alert: OpenMythosVeryHighLatency
+        expr: |
+          histogram_quantile(0.95,
+            rate(openmythos_http_request_duration_seconds_bucket[5m])
+          ) > 5.0
+        for: 5m
+        labels:
+          severity: critical
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "Very high API latency detected"
+          description: "P95 latency is {{ $value | humanizeDuration }} (threshold: 5s) for endpoint {{ $labels.endpoint }}"
+          runbook: "https://docs.openmythos.example.com/runbooks/high-latency"
+
+      # High request rate (potential DDoS)
+      - alert: OpenMythosHighRequestRate
+        expr: |
+          sum(rate(openmythos_http_requests_total[1m])) > 1000
+        for: 2m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "Unusually high request rate"
+          description: "Request rate is {{ $value | humanize }} req/s (threshold: 1000 req/s)"
+          runbook: "https://docs.openmythos.example.com/runbooks/high-request-rate"
+
+  - name: openmythos_training_jobs
+    interval: 30s
+    rules:
+      # High training job failure rate
+      - alert: OpenMythosTrainingHighFailureRate
+        expr: |
+          (
+            sum(rate(openmythos_training_jobs_total{status="failed"}[15m]))
+            /
+            sum(rate(openmythos_training_jobs_total[15m]))
+          ) > 0.10
+        for: 15m
+        labels:
+          severity: warning
+          service: openmythos-training
+          team: ml-platform
+        annotations:
+          summary: "High training job failure rate"
+          description: "{{ $value | humanizePercentage }} of training jobs are failing (threshold: 10%)"
+          runbook: "https://docs.openmythos.example.com/runbooks/training-failures"
+
+      # Critical training job failure rate
+      - alert: OpenMythosTrainingCriticalFailureRate
+        expr: |
+          (
+            sum(rate(openmythos_training_jobs_total{status="failed"}[15m]))
+            /
+            sum(rate(openmythos_training_jobs_total[15m]))
+          ) > 0.25
+        for: 10m
+        labels:
+          severity: critical
+          service: openmythos-training
+          team: ml-platform
+        annotations:
+          summary: "CRITICAL training job failure rate"
+          description: "{{ $value | humanizePercentage }} of training jobs are failing (threshold: 25%)"
+          runbook: "https://docs.openmythos.example.com/runbooks/training-failures"
+
+      # Training queue depth high
+      - alert: OpenMythosTrainingQueueDepthHigh
+        expr: openmythos_training_job_queue_depth > 10
+        for: 5m
+        labels:
+          severity: warning
+          service: openmythos-training
+          team: ml-platform
+        annotations:
+          summary: "Training job queue depth is high"
+          description: "{{ $value }} jobs are queued for profile {{ $labels.profile }} (threshold: 10)"
+          runbook: "https://docs.openmythos.example.com/runbooks/queue-depth"
+
+      # Training queue depth critical
+      - alert: OpenMythosTrainingQueueDepthCritical
+        expr: openmythos_training_job_queue_depth > 50
+        for: 10m
+        labels:
+          severity: critical
+          service: openmythos-training
+          team: ml-platform
+        annotations:
+          summary: "Training job queue depth is CRITICAL"
+          description: "{{ $value }} jobs are queued for profile {{ $labels.profile }} (threshold: 50). Capacity planning required."
+          runbook: "https://docs.openmythos.example.com/runbooks/queue-depth"
+
+      # Long-running training job
+      - alert: OpenMythosTrainingJobStuck
+        expr: |
+          time() - openmythos_training_job_start_timestamp_seconds{status="running"} > 86400
+        labels:
+          severity: warning
+          service: openmythos-training
+          team: ml-platform
+        annotations:
+          summary: "Training job running for over 24 hours"
+          description: "Training job {{ $labels.training_id }} has been running for {{ $value | humanizeDuration }}. May be stuck."
+          runbook: "https://docs.openmythos.example.com/runbooks/stuck-job"
+
+  - name: openmythos_training_budget
+    interval: 60s
+    rules:
+      # Budget soft limit (warning threshold: $1,100/day)
+      - alert: OpenMythosTrainingBudgetWarning
+        expr: |
+          sum(increase(openmythos_training_job_cost_dollars[1d])) > 1100
+        labels:
+          severity: warning
+          service: openmythos-training
+          team: ml-platform
+          oncall: true
+        annotations:
+          summary: "Training budget approaching soft limit"
+          description: "Daily training cost is ${{ $value | humanize }} (soft limit: $1,100/day). Current spend at {{ $value | humanizePercentage }}% of daily budget."
+          runbook: "https://docs.openmythos.example.com/runbooks/budget-threshold"
+          action: "Review running jobs and consider stopping non-critical workloads"
+
+      # Budget hard limit (critical threshold: $1,500/day)
+      - alert: OpenMythosTrainingBudgetExceeded
+        expr: |
+          sum(increase(openmythos_training_job_cost_dollars[1d])) > 1500
+        labels:
+          severity: critical
+          service: openmythos-training
+          team: ml-platform
+          oncall: true
+          page: true
+        annotations:
+          summary: "Training budget HARD LIMIT EXCEEDED"
+          description: "Daily training cost is ${{ $value | humanize }} (hard limit: $1,500/day). IMMEDIATE ACTION REQUIRED - stop all non-essential training jobs."
+          runbook: "https://docs.openmythos.example.com/runbooks/budget-exceeded"
+          action: "IMMEDIATELY stop training jobs and investigate cost spike"
+
+      # Monthly budget projection
+      - alert: OpenMythosTrainingMonthlyBudgetProjection
+        expr: |
+          (
+            sum(increase(openmythos_training_job_cost_dollars[7d])) / 7 * 30
+          ) > 30000
+        for: 1h
+        labels:
+          severity: warning
+          service: openmythos-training
+          team: ml-platform
+        annotations:
+          summary: "Monthly training budget projection exceeds target"
+          description: "Projected monthly cost: ${{ $value | humanize }} (based on 7-day average). Budget: $30,000/month"
+          runbook: "https://docs.openmythos.example.com/runbooks/budget-projection"
+
+      # Cost spike detection
+      - alert: OpenMythosTrainingCostSpike
+        expr: |
+          (
+            sum(rate(openmythos_training_job_cost_dollars[1h]))
+            /
+            sum(rate(openmythos_training_job_cost_dollars[1h] offset 24h))
+          ) > 2.0
+        for: 30m
+        labels:
+          severity: warning
+          service: openmythos-training
+          team: ml-platform
+        annotations:
+          summary: "Training cost spike detected"
+          description: "Current hourly cost is {{ $value | humanize }}x higher than 24h ago"
+          runbook: "https://docs.openmythos.example.com/runbooks/cost-spike"
+
+  - name: openmythos_security
+    interval: 30s
+    rules:
+      # High webhook verification failure rate
+      - alert: OpenMythosWebhookVerificationFailures
+        expr: |
+          (
+            sum(rate(openmythos_webhook_verifications_total{status="failed"}[5m]))
+            /
+            sum(rate(openmythos_webhook_verifications_total[5m]))
+          ) > 0.10
+        for: 5m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: security
+        annotations:
+          summary: "High webhook verification failure rate"
+          description: "{{ $value | humanizePercentage }} of webhook verifications are failing (threshold: 10%)"
+          runbook: "https://docs.openmythos.example.com/runbooks/webhook-failures"
+
+      # Rate limit exhaustion
+      - alert: OpenMythosRateLimitPressure
+        expr: openmythos_rate_limit_remaining < 10
+        for: 2m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "Rate limit pressure detected"
+          description: "Principal {{ $labels.principal }} has only {{ $value }} requests remaining in the rate limit window"
+          runbook: "https://docs.openmythos.example.com/runbooks/rate-limit"
+
+      # Many 401 errors (possible credential issue)
+      - alert: OpenMythosHighUnauthorizedRate
+        expr: |
+          sum(rate(openmythos_http_requests_total{status_code="401"}[5m])) > 10
+        for: 5m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: security
+        annotations:
+          summary: "High rate of 401 Unauthorized responses"
+          description: "{{ $value | humanize }} 401 responses per second (possible credential issue or attack)"
+          runbook: "https://docs.openmythos.example.com/runbooks/high-401"
+
+  - name: openmythos_infrastructure
+    interval: 30s
+    rules:
+      # Idempotency cache growing unbounded
+      - alert: OpenMythosIdempotencyCacheGrowth
+        expr: openmythos_idempotency_cache_size > 100000
+        for: 10m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "Idempotency cache size is large"
+          description: "Idempotency cache contains {{ $value }} entries (threshold: 100,000). May indicate TTL misconfiguration."
+          runbook: "https://docs.openmythos.example.com/runbooks/cache-growth"
+
+      # Plugin failure rate
+      - alert: OpenMythosPluginFailures
+        expr: |
+          (
+            sum(rate(openmythos_plugin_calls_total{status="error"}[5m]))
+            /
+            sum(rate(openmythos_plugin_calls_total[5m]))
+          ) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: platform
+        annotations:
+          summary: "High plugin failure rate"
+          description: "{{ $value | humanizePercentage }} of plugin calls are failing for capability {{ $labels.capability }}"
+          runbook: "https://docs.openmythos.example.com/runbooks/plugin-failures"
+
+  - name: openmythos_slo
+    interval: 60s
+    rules:
+      # SLO: 99.9% availability (error budget burn rate)
+      - alert: OpenMythosErrorBudgetBurnRateHigh
+        expr: |
+          (
+            1 - (
+              sum(rate(openmythos_http_requests_total{status_code=~"2.."}[1h]))
+              /
+              sum(rate(openmythos_http_requests_total[1h]))
+            )
+          ) > (0.001 * 14.4)  # 99.9% SLO, 14.4x burn rate = budget exhausted in 2 days
+        labels:
+          severity: critical
+          service: openmythos-api
+          team: platform
+          slo: availability
+        annotations:
+          summary: "Error budget burn rate is critically high"
+          description: "At current error rate, 30-day error budget will be exhausted in 2 days"
+          runbook: "https://docs.openmythos.example.com/runbooks/error-budget"
+
+      # SLO: P95 latency < 1s
+      - alert: OpenMythosLatencySLOViolation
+        expr: |
+          histogram_quantile(0.95,
+            rate(openmythos_http_request_duration_seconds_bucket[5m])
+          ) > 1.0
+        for: 15m
+        labels:
+          severity: warning
+          service: openmythos-api
+          team: platform
+          slo: latency
+        annotations:
+          summary: "Latency SLO violation"
+          description: "P95 latency ({{ $value | humanizeDuration }}) exceeds 1s SLO for {{ $labels.endpoint }}"
+          runbook: "https://docs.openmythos.example.com/runbooks/latency-slo"

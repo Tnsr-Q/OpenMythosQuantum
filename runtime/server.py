@@ -13,7 +13,7 @@ from typing import Any
 from uuid import uuid4
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, PlainTextResponse
 
 from plugins.sha256_verifier.entrypoint import verify as verify_webhook_signature
 
@@ -139,7 +139,66 @@ async def enforce_idempotency(request: Request, call_next):
 
 @app.get("/healthz")
 def healthz() -> dict[str, str]:
+    """Liveness probe - basic health check for orchestration platforms."""
     return {"status": "ok"}
+
+
+@app.get("/readyz")
+def readyz() -> dict[str, Any]:
+    """Readiness probe - detailed health check including dependency status.
+
+    Returns:
+        Health status with dependency checks for database, redis, storage.
+        Returns 200 if ready, 503 if not ready.
+    """
+    checks: dict[str, str] = {}
+    all_ready = True
+
+    # Database check (placeholder - implement actual connection check)
+    # Example: try database.ping() or execute simple query
+    checks["database"] = "ok"
+
+    # Redis check (placeholder - implement actual connection check)
+    # Example: try redis.ping()
+    checks["redis"] = "ok"
+
+    # Storage check (placeholder - implement actual S3/storage check)
+    # Example: try s3.head_bucket() or list objects
+    checks["storage"] = "ok"
+
+    # Determine overall status
+    all_ready = all(status == "ok" for status in checks.values())
+
+    response = {
+        "status": "ready" if all_ready else "not_ready",
+        "checks": checks,
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    }
+
+    # Return 503 if any check fails (signals to load balancer/k8s to not route traffic)
+    status_code = 200 if all_ready else 503
+    return JSONResponse(status_code=status_code, content=response)
+
+
+@app.get("/metrics")
+def metrics() -> Any:
+    """Prometheus metrics endpoint.
+
+    Returns metrics in Prometheus text exposition format.
+    Currently returns placeholder metrics - implement actual metric collection.
+    """
+    # Placeholder metrics - in production, collect real metrics using prometheus_client
+    lines = [
+        "# HELP openmythos_http_requests_total Total HTTP requests",
+        "# TYPE openmythos_http_requests_total counter",
+        'openmythos_http_requests_total{method="GET",endpoint="/healthz",status_code="200"} 100',
+        "",
+        "# HELP openmythos_info Service information",
+        "# TYPE openmythos_info gauge",
+        'openmythos_info{version="1.3.0",service="openmythos-api"} 1',
+    ]
+
+    return PlainTextResponse(content="\n".join(lines), media_type="text/plain; version=0.0.4")
 
 
 @app.post("/orders", dependencies=[Depends(require_scope("orders:write"))])
