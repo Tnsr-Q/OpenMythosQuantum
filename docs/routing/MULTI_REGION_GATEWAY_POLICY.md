@@ -134,12 +134,12 @@ Let `R` be the set of candidates that passed hard gates.
 
 ```text
 cost_score_i =
-  if max(cost)-min(cost) == 0 then 1
-  else 1 - ((cost_i - min(cost)) / (max(cost)-min(cost)))
+  if max(cost_per_shot)-min(cost_per_shot) == 0 then 1
+  else 1 - ((cost_per_shot_i - min(cost_per_shot)) / (max(cost_per_shot)-min(cost_per_shot)))
 
 latency_score_i =
-  if max(lat)-min(lat) == 0 then 1
-  else 1 - ((lat_i - min(lat)) / (max(lat)-min(lat)))
+  if max(estimated_queue_latency_ms)-min(estimated_queue_latency_ms) == 0 then 1
+  else 1 - ((estimated_queue_latency_ms_i - min(estimated_queue_latency_ms)) / (max(estimated_queue_latency_ms)-min(estimated_queue_latency_ms)))
 ```
 
 Apply penalties and score ordering:
