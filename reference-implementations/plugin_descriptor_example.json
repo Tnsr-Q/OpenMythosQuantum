@@ -1,0 +1,32 @@
+{
+  "registry_version": "katopu.plugin_registry.v1",
+  "plugins": [
+    {
+      "id": {
+        "name": "katopu.circuit_optimizer",
+        "version": "0.1.0",
+        "contract_version": "katopu.optimizer.v1"
+      },
+      "title": "Circuit Optimizer Plugin",
+      "description": "Optimization strategies for depth/width/fidelity tradeoffs.",
+      "capability": {
+        "supports_cluster_compute": true,
+        "supports_browser_viz": false,
+        "supports_browser_preview_compute": false,
+        "supports_custom_gates": true,
+        "supports_cost_aware_search": true
+      },
+      "schemas": {
+        "parameters_json_schema_ref": "schemas/plugins/circuit_optimizer.parameters.v1.schema.json",
+        "parameters_json_schema_sha256_hex": "<sha256-of-schema>",
+        "results_json_schema_ref": "schemas/plugins/circuit_optimizer.results.v1.schema.json",
+        "results_json_schema_sha256_hex": "<sha256-of-results-schema>"
+      },
+      "entrypoint": {
+        "runtime": "python",
+        "module": "plugins.circuit_optimizer.entrypoint",
+        "verify_sha256_hex": "<sha256-of-plugin-package>"
+      }
+    }
+  ]
+}

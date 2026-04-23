@@ -51,3 +51,18 @@ OpenMythos guidance remains active as a standing rule for decisions:
   1. keep contract-level spec changes,
   2. disable non-critical runtime extensions,
   3. rerun deterministic plugin tests before re-enabling.
+
+
+## Research-Informed Actions (Post-Week 1, Not Immediate)
+
+> **Status:** Research Phase — Not Week 1 execution scope.
+
+| Action ID | Phase | Priority | Action | Why It Matters | Acceptance Criteria (Research-to-Execution Gate) | Dependencies |
+|---|---|---|---|---|---|---|
+| ACT-019 | Research Phase - Not Week 1 | P1 | Add manifest canonicalization + freeze-hash standard for circuit/training runs | Enables deterministic reproducibility and auditable rollback | Spec + reference implementation define canonical JSON, freeze hash algorithm, and provenance fields; sample manifests pass deterministic hash tests | Week 1 complete |
+| ACT-020 | Research Phase - Not Week 1 | P1 | Introduce descriptor-based plugin registry beyond SHA-256 verifier | Unlocks secure circuit optimizer/custom-gate plugin growth | Plugin descriptor schema includes id/version/contract/capabilities/schema hashes; at least one non-security plugin spec drafted | ACT-019 |
+| ACT-021 | Research Phase - Not Week 1 | P1 | Add lightweight gateway policy layer for multi-region quantum job routing | Improves cost/perf routing without heavy infra lock-in | Policy doc defines routing signals (cost, region, queue depth, fallback) and includes falsifiable routing simulations | ACT-019 |
+| ACT-022 | ❌ REJECTED (2026-04-22) | — | ~~Pilot ConnectRPC/gRPC as optional transport for orchestration flows~~ | Rejected: REST + OpenAPI 3.1 remains the sole transport. See `research/PROTO_ASSESSMENT.md` for rejection rationale and reconsideration gate. | n/a | n/a |
+| ACT-023 | Research Phase - Not Week 1 | P2 | Prototype swarm proposal/outcome feedback loop for distributed AGI orchestration | Provides controlled distributed adaptation pattern | Design doc includes leader/quorum assumptions, proposal lifecycle, dry-run path, and rollback conditions | ACT-021 |
+| ACT-024 | Research Phase - Not Week 1 | P3 | Evaluate evolutionary optimization loop for circuit/search policy tuning | May improve optimization efficiency if benchmarked properly | Experimental harness defines fitness function, budget cap, and stop/rollback triggers with reproducible benchmark report | ACT-019, ACT-023 |
+| ACT-025 | Research Phase - Not Week 1 | P3 | Assess eBPF-assisted routing only after software policy router baseline | Avoids premature infra complexity | Decision record compares baseline software router vs eBPF-assisted prototype using production-like traffic traces | ACT-021 |
