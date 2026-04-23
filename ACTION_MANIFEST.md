@@ -60,7 +60,7 @@ OpenMythos guidance remains active as a standing rule for decisions:
 | Action ID | Phase | Priority | Action | Why It Matters | Acceptance Criteria (Research-to-Execution Gate) | Dependencies |
 |---|---|---|---|---|---|---|
 | ACT-019 | ✅ COMPLETE (2026-04-22) | P1 | Add manifest canonicalization + freeze-hash standard for circuit/training runs | Enables deterministic reproducibility and auditable rollback | Spec + reference implementation define canonical JSON, freeze hash algorithm, and provenance fields; sample manifests pass deterministic hash tests | Week 1 complete |
-| ACT-020 | Research Phase - Not Week 1 | P1 | Introduce descriptor-based plugin registry beyond SHA-256 verifier | Unlocks secure circuit optimizer/custom-gate plugin growth | Plugin descriptor schema includes id/version/contract/capabilities/schema hashes; at least one non-security plugin spec drafted | ACT-019 |
+| ACT-020 | ✅ COMPLETE (2026-04-22) | P1 | Introduce descriptor-based plugin registry beyond SHA-256 verifier | Unlocks secure circuit optimizer/custom-gate plugin growth | Plugin descriptor schema includes id/version/contract/capabilities/integrity hashes; registry loads + verifies both existing plugins; OpenAPI v1.3.0 adds 4 /plugins endpoints | ACT-019 |
 | ACT-021 | Research Phase - Not Week 1 | P1 | Add lightweight gateway policy layer for multi-region quantum job routing | Improves cost/perf routing without heavy infra lock-in | Policy doc defines routing signals (cost, region, queue depth, fallback) and includes falsifiable routing simulations | ACT-019 |
 | ACT-022 | ❌ REJECTED (2026-04-22) | — | ~~Pilot ConnectRPC/gRPC as optional transport for orchestration flows~~ | Rejected: REST + OpenAPI 3.1 remains the sole transport. See `research/PROTO_ASSESSMENT.md` for rejection rationale and reconsideration gate. | n/a | n/a |
 | ACT-023 | Research Phase - Not Week 1 | P2 | Prototype swarm proposal/outcome feedback loop for distributed AGI orchestration | Provides controlled distributed adaptation pattern | Design doc includes leader/quorum assumptions, proposal lifecycle, dry-run path, and rollback conditions | ACT-021 |
@@ -123,3 +123,72 @@ fails to match its declared hashes. See
 `reference-implementations/plugin_descriptor_example.json` and
 `reference-implementations/plugin_loading_mechanism.md` for the pattern
 sketch that ACT-020 should execute against.
+
+
+
+## ACT-020 — Completion Record (2026-04-22)
+
+**Status:** ✅ COMPLETE
+**OpenAPI version:** bumped `1.2.0` → `1.3.0`.
+
+### Deliverables
+
+- `plugins/REGISTRY_SPEC.md` — full specification (descriptor schema,
+  capability naming, integrity model, lifecycle, discovery, CLI,
+  security considerations + future scope).
+- `plugins/descriptor.schema.json` — JSON Schema Draft 2020-12,
+  `additionalProperties: false`. Validates every `plugin.json`.
+- `plugins/sha256_verifier/plugin.json` — descriptor for the existing
+  webhook verifier. Capability: `webhook.verify.sha256`. Integrity:
+  `sha256:e8635e8a…`.
+- `plugins/freeze_snapshot/plugin.json` — descriptor for the ACT-019
+  freeze utility. Capabilities: `hash.canonicalize`, `hash.freeze.sha256`.
+  Integrity: `sha256:06d4c88e…`.
+- `plugins/registry.py` — stdlib-only registry implementation.
+  - API: `Registry.load`, `list_plugins`, `get`, `get_by_capability`,
+    `verify_integrity`, `set_lifecycle`.
+  - Minimal JSON Schema 2020-12 validator (scoped to descriptor schema).
+  - Lifecycle transition table with explicit allowed edges.
+  - CLI: `list`, `find`, `verify`, `show`.
+- `tests/plugins/run_registry_tests.py` — deterministic runner
+  (TEST-REG-001..007). Result: **43 passed, 0 failed.**
+- `openapi/openapi.yaml` @ v1.3.0:
+  - New tag `Plugins`.
+  - New schemas: `Plugin`, `PluginCapability`, `PluginLifecycle`,
+    `PluginIntegrity`, `PluginEntrypoint`, `PaginatedPluginsResponse`,
+    `PluginIntegrityVerification`.
+  - New path parameters: `PluginId`, `Capability`.
+  - Four new endpoints:
+    - `GET  /plugins` (scope `plugins.read`, cursor pagination)
+    - `GET  /plugins/{pluginId}` (scope `plugins.read`)
+    - `GET  /plugins/capabilities/{capability}` (scope `plugins.read`)
+    - `POST /plugins/{pluginId}/verify` (scope `plugins.verify`,
+      supports `Idempotency-Key`)
+  - Two new OAuth scopes: `plugins.read`, `plugins.verify`.
+- `docs/plugins.md` — authoring guide, capability conventions, integrity
+  model (with cross-reference to ACT-019), lifecycle management,
+  CLI/HTTP surface, security considerations + future scope.
+- `FALSIFIABLE_TESTS.md` — TEST-REG-001..008 added.
+
+### Validation
+
+- `bash scripts/validate-openapi.sh` — passes (`@redocly/cli lint` +
+  `swagger-cli validate`). Warnings: the two pre-existing
+  `no-server-example.com` warnings from v1.1.0, plus one new
+  `no-ambiguous-paths` warning for the intentional
+  `/plugins/capabilities/{capability}` vs `/plugins/{pluginId}/verify`
+  path shape (concrete segment `capabilities` disambiguates at request
+  time).
+- `python3 tests/plugins/run_registry_tests.py` — 43/43 tests pass.
+- `python3 tests/plugins/run_freeze_tests.py` — still 39/39 (no regression).
+- `python3 tests/plugins/run_sha256_webhook_tests.py` — still PASS (no
+  regression).
+
+### Next
+
+**ACT-021 — lightweight gateway policy layer for multi-region quantum
+job routing.** With the plugin registry in place, routing policy
+plugins become the natural growth path: cost/region/queue-depth signals
+can ship as capability `gateway.route.*` plugins with the same
+integrity guarantees. ACT-021 should draft the routing signal set, the
+fallback contract, and the falsifiable routing-simulation harness.

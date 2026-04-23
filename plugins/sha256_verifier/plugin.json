@@ -1,0 +1,24 @@
+{
+  "id": "sha256_verifier",
+  "name": "SHA-256 Webhook Signature Verifier",
+  "version": "1.0.0",
+  "description": "HMAC-SHA256 verifier for inbound webhook signatures. Validates the X-Katopu-Signature header against a shared secret and the raw request body.",
+  "capabilities": [
+    "webhook.verify.sha256"
+  ],
+  "entrypoint": {
+    "runtime": "python3",
+    "module": "entrypoint",
+    "path": "entrypoint.py"
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "entrypoint": "sha256:e8635e8a008a58f0832fca25670d46037fb4b16a1f30cbed1de6f5ff5e095e03",
+    "reference": "ACT-019 freeze_snapshot — SHA-256 primitive applied to raw entrypoint bytes"
+  },
+  "author": "Tanner Jacobsen",
+  "license": "Proprietary",
+  "lifecycle": "active",
+  "contractVersion": "1.3.0",
+  "homepage": "https://github.com/Tnsr-Q/katopu-api/tree/main/plugins/sha256_verifier"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "freeze_snapshot",
+  "name": "Freeze / Snapshot Hasher",
+  "version": "1.0.0",
+  "description": "Canonical JSON + SHA-256 content identity for circuit definitions, training configurations, and any JSON manifest. Produces `freeze:<sha256>` hashes that are stable across key reorderings and insignificant whitespace. Introduced in ACT-019.",
+  "capabilities": [
+    "hash.canonicalize",
+    "hash.freeze.sha256"
+  ],
+  "entrypoint": {
+    "runtime": "python3",
+    "module": "entrypoint",
+    "path": "entrypoint.py"
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "entrypoint": "sha256:06d4c88ed615a8bf0b265e9464a96077d215a6048a25f0c81900c96d17a7cedd",
+    "reference": "ACT-019 self-reference — this plugin IS the freeze primitive; its entrypoint is hashed with raw SHA-256"
+  },
+  "author": "Tanner Jacobsen",
+  "license": "Proprietary",
+  "lifecycle": "active",
+  "contractVersion": "1.3.0",
+  "homepage": "https://github.com/Tnsr-Q/katopu-api/tree/main/plugins/freeze_snapshot"
+}

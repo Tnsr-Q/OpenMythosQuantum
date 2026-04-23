@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Tnsr-Q/katopu-api/plugins/descriptor.schema.json",
+  "title": "Katopu Plugin Descriptor",
+  "description": "Schema for plugin.json descriptors loaded by the Katopu plugin registry. See plugins/REGISTRY_SPEC.md for the full specification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "version",
+    "capabilities",
+    "entrypoint",
+    "integrity",
+    "author",
+    "license",
+    "lifecycle"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{2,63}$",
+      "description": "Unique plugin identifier. Lowercase ASCII, underscores allowed, 3–64 chars."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Human-readable display name."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$",
+      "description": "Semantic version (MAJOR.MINOR.PATCH, optional prerelease/build)."
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9]*(\\.[a-z][a-z0-9_]*){1,3}$",
+        "description": "Dotted capability name (2–4 segments, lowercase ASCII). See REGISTRY_SPEC.md §4."
+      }
+    },
+    "entrypoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime", "module", "path"],
+      "properties": {
+        "runtime": {
+          "type": "string",
+          "enum": ["python3"],
+          "description": "Runtime that loads the entrypoint. Only python3 is supported in ACT-020."
+        },
+        "module": {
+          "type": "string",
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+          "description": "Importable Python module name inside the plugin directory."
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^[^/\\\\][^\\\\]*\\.py$",
+          "description": "Relative path (from plugin.json) to the entrypoint .py file."
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "entrypoint"],
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "enum": ["sha256"],
+          "description": "Hash algorithm. ACT-020 uses raw SHA-256 over the entrypoint file bytes."
+        },
+        "entrypoint": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "SHA-256 of the entrypoint file bytes, prefixed with 'sha256:'."
+        },
+        "reference": {
+          "type": "string",
+          "description": "Human-readable cross-reference to the integrity primitive (e.g. 'ACT-019 freeze_snapshot')."
+        }
+      }
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "SPDX identifier or free-text license label."
+    },
+    "lifecycle": {
+      "type": "string",
+      "enum": ["registered", "active", "deprecated", "revoked"],
+      "description": "Current lifecycle state. See REGISTRY_SPEC.md §6."
+    },
+    "contractVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "replaces": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]{2,63}$"
+      },
+      "uniqueItems": true
+    }
+  }
+}

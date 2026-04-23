@@ -140,3 +140,103 @@ bash scripts/validate-openapi.sh
 - [ ] `@redocly/cli lint` reports only the two pre-existing
       `no-server-example.com` warnings (no new warnings, no errors).
 - [ ] `swagger-cli validate` reports the spec as valid.
+
+
+
+## Plugin Registry (ACT-020)
+
+Exercised by `python3 tests/plugins/run_registry_tests.py`. Expected tail:
+`ALL REGISTRY TESTS PASSED`.
+
+### TEST-REG-001: descriptor.schema.json validates both existing plugin descriptors
+
+- [ ] `plugins/sha256_verifier/plugin.json` passes `descriptor.schema.json`.
+- [ ] `plugins/freeze_snapshot/plugin.json` passes `descriptor.schema.json`.
+- [ ] Removing a required field (`author`) → schema rejects.
+- [ ] Adding an unknown field → `additionalProperties: false` rejects.
+- [ ] Malformed capability (single segment) → schema rejects.
+- [ ] Bad integrity prefix (e.g. `md5:...`) → schema rejects.
+- [ ] Invalid `lifecycle` value → schema rejects.
+
+### TEST-REG-002: registry.py lists 2 plugins
+
+```bash
+python3 plugins/registry.py list
+```
+
+- [ ] Output lists exactly 2 plugins.
+- [ ] `sha256_verifier` present with version `1.0.0`, lifecycle `active`.
+- [ ] `freeze_snapshot` present with version `1.0.0`, lifecycle `active`.
+
+### TEST-REG-003: registry verifies integrity of both plugins
+
+```bash
+python3 plugins/registry.py verify
+```
+
+- [ ] Exit code 0.
+- [ ] `OK    sha256_verifier`
+- [ ] `OK    freeze_snapshot`
+- [ ] Recomputed SHA-256 matches the hash recorded in each `plugin.json`.
+
+### TEST-REG-004: registry rejects tampered descriptor / entrypoint
+
+- [ ] Appending bytes to `entrypoint.py` → `verify_integrity()` returns
+      `False` for that plugin.
+- [ ] Forging the recorded hash in `plugin.json` (schema-valid but wrong)
+      → `verify_integrity()` still returns `False` because the forged
+      hash ≠ actual on-disk SHA-256.
+- [ ] Unchanged plugins continue to verify `True` in the same run.
+
+### TEST-REG-005: capability lookup finds sha256_verifier by "webhook.verify.sha256"
+
+```bash
+python3 plugins/registry.py find --capability=webhook.verify.sha256
+```
+
+- [ ] Returns exactly 1 plugin: `sha256_verifier`.
+- [ ] `find --capability=nonexistent.capability` returns exit code 1.
+- [ ] Revoked plugins are excluded from capability results.
+
+### TEST-REG-006: capability lookup finds freeze_snapshot by "hash.freeze.sha256"
+
+```bash
+python3 plugins/registry.py find --capability=hash.freeze.sha256
+python3 plugins/registry.py find --capability=hash.canonicalize
+```
+
+- [ ] Both capabilities return exactly 1 plugin: `freeze_snapshot`.
+- [ ] `freeze_snapshot` declares both capabilities in its descriptor.
+
+### TEST-REG-007: OpenAPI v1.3.0 validates cleanly
+
+```bash
+grep -n 'version: 1.3.0' openapi/openapi.yaml | head -1
+bash scripts/validate-openapi.sh
+```
+
+- [ ] `info.version == 1.3.0`.
+- [ ] `@redocly/cli lint` reports no errors. Pre-existing warnings
+      (`no-server-example.com` ×2, and the `no-ambiguous-paths` warning
+      for `/plugins/capabilities/{capability}` vs `/plugins/{pluginId}/verify`
+      — intentional path shape) remain as warnings.
+- [ ] `swagger-cli validate` reports the spec as valid.
+
+### TEST-REG-008: All 4 /plugins endpoints present in spec
+
+```bash
+grep -c '^  /plugins:'                              openapi/openapi.yaml   # == 1
+grep -c '^  /plugins/{pluginId}:'                   openapi/openapi.yaml   # == 1
+grep -c '^  /plugins/capabilities/{capability}:'    openapi/openapi.yaml   # == 1
+grep -c '^  /plugins/{pluginId}/verify:'            openapi/openapi.yaml   # == 1
+grep -c 'operationId: listPlugins'                  openapi/openapi.yaml   # == 1
+grep -c 'operationId: getPlugin'                    openapi/openapi.yaml   # == 1
+grep -c 'operationId: findPluginsByCapability'      openapi/openapi.yaml   # == 1
+grep -c 'operationId: verifyPluginIntegrity'        openapi/openapi.yaml   # == 1
+```
+
+- [ ] `Plugin`, `PluginCapability`, `PluginLifecycle`, `PluginIntegrity`,
+      `PluginEntrypoint`, `PaginatedPluginsResponse`, and
+      `PluginIntegrityVerification` schemas are all defined.
+- [ ] OAuth scopes `plugins.read` and `plugins.verify` declared under
+      `OAuth2ClientCredentials`.

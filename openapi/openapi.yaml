@@ -3,7 +3,7 @@ info:
   title: Katopu Quantum AGI API
   summary: Production-ready unified API for quantum workflows, AGI optimization, guidance, security, and training automation.
   description: "This contract consolidates the draft APIs into a stricter production-oriented interface.\n\nDesign choices:\n  - explicit versioned base path\n  - normalized resource naming\n  - unique operationIds\n  - reusable components\n  - explicit authentication and authorization\n  - stricter request/response schemas\n  - examples cleaned up for implementation and testing\n"
-  version: 1.2.0
+  version: 1.3.0
   contact:
     name: Tnsr-Q
     url: https://github.com/Tnsr-Q
@@ -65,6 +65,8 @@ tags:
   description: Notification subscription and delivery contracts.
 - name: AGI
   description: Controlled AGI self-improvement lifecycle operations.
+- name: Plugins
+  description: Capability-aware plugin registry discovery and integrity verification (see plugins/REGISTRY_SPEC.md).
 security:
 - BearerAuth: []
 - ApiKeyAuth: []
@@ -1506,6 +1508,225 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
       parameters:
       - $ref: '#/components/parameters/IdempotencyKey'
+  /plugins:
+    get:
+      tags:
+      - Plugins
+      operationId: listPlugins
+      summary: List registered plugins
+      description: |
+        Returns all plugins known to the registry, with cursor pagination. See
+        `plugins/REGISTRY_SPEC.md` for the descriptor contract.
+      security:
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - plugins.read
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/Limit'
+      - name: lifecycle
+        in: query
+        required: false
+        description: Filter by lifecycle state.
+        schema:
+          $ref: '#/components/schemas/PluginLifecycle'
+      responses:
+        '200':
+          description: Paginated list of registered plugins.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPluginsResponse'
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /plugins/{pluginId}:
+    parameters:
+    - $ref: '#/components/parameters/PluginId'
+    get:
+      tags:
+      - Plugins
+      operationId: getPlugin
+      summary: Get a plugin descriptor
+      description: |
+        Returns the full descriptor for a single plugin, including capabilities,
+        entrypoint metadata, integrity hash, and lifecycle state.
+      security:
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - plugins.read
+      responses:
+        '200':
+          description: Plugin descriptor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugin'
+              examples:
+                sha256Verifier:
+                  value:
+                    id: sha256_verifier
+                    name: SHA-256 Webhook Signature Verifier
+                    version: 1.0.0
+                    description: HMAC-SHA256 verifier for inbound webhook signatures.
+                    capabilities:
+                    - webhook.verify.sha256
+                    entrypoint:
+                      runtime: python3
+                      module: entrypoint
+                      path: entrypoint.py
+                    integrity:
+                      algorithm: sha256
+                      entrypoint: sha256:e8635e8a008a58f0832fca25670d46037fb4b16a1f30cbed1de6f5ff5e095e03
+                      reference: ACT-019 freeze_snapshot — SHA-256 primitive applied to raw entrypoint bytes
+                    author: Tanner Jacobsen
+                    license: Proprietary
+                    lifecycle: active
+                    contractVersion: 1.3.0
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /plugins/capabilities/{capability}:
+    parameters:
+    - $ref: '#/components/parameters/Capability'
+    get:
+      tags:
+      - Plugins
+      operationId: findPluginsByCapability
+      summary: Discover plugins by capability
+      description: |
+        Returns all plugins that declare the given capability (e.g.
+        `webhook.verify.sha256`, `hash.freeze.sha256`). Revoked plugins are
+        excluded. Capability naming rules are documented in
+        `plugins/REGISTRY_SPEC.md` §4.
+      security:
+      - BearerAuth: []
+      - ApiKeyAuth: []
+      - OAuth2ClientCredentials:
+        - plugins.read
+      responses:
+        '200':
+          description: Plugins exposing the requested capability.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required:
+                - capability
+                - plugins
+                properties:
+                  capability:
+                    $ref: '#/components/schemas/PluginCapability'
+                  plugins:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plugin'
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /plugins/{pluginId}/verify:
+    parameters:
+    - $ref: '#/components/parameters/PluginId'
+    post:
+      tags:
+      - Plugins
+      operationId: verifyPluginIntegrity
+      summary: Verify plugin integrity on demand
+      description: |
+        Recomputes the SHA-256 of the plugin's entrypoint file and compares it
+        with the hash recorded in the descriptor. Useful for drift detection,
+        supply-chain audit, and pre-activation checks. See
+        `plugins/REGISTRY_SPEC.md` §5.
+      security:
+      - BearerAuth: []
+      - OAuth2ClientCredentials:
+        - plugins.verify
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '200':
+          description: Verification result (integrity may be match or mismatch; inspect `verified`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PluginIntegrityVerification'
+              examples:
+                match:
+                  value:
+                    pluginId: sha256_verifier
+                    verified: true
+                    algorithm: sha256
+                    expected: sha256:e8635e8a008a58f0832fca25670d46037fb4b16a1f30cbed1de6f5ff5e095e03
+                    computed: sha256:e8635e8a008a58f0832fca25670d46037fb4b16a1f30cbed1de6f5ff5e095e03
+                    verifiedAt: '2026-04-22T12:45:00Z'
+                mismatch:
+                  value:
+                    pluginId: sha256_verifier
+                    verified: false
+                    algorithm: sha256
+                    expected: sha256:e8635e8a008a58f0832fca25670d46037fb4b16a1f30cbed1de6f5ff5e095e03
+                    computed: sha256:deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef
+                    verifiedAt: '2026-04-22T12:45:00Z'
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/XRequestId'
+            X-RateLimit-Limit:
+              $ref: '#/components/headers/XRateLimitLimit'
+            X-RateLimit-Remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+            X-RateLimit-Reset:
+              $ref: '#/components/headers/XRateLimitReset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -1542,6 +1763,8 @@ components:
             training.freeze: Freeze a training job configuration to a deterministic content hash
             notifications.write: Write notifications
             agi.write: Run AGI operations
+            plugins.read: Read plugin registry descriptors and discover by capability
+            plugins.verify: Verify plugin integrity on demand
   headers:
     XRequestId:
       description: Correlation ID for request tracing
@@ -1615,6 +1838,21 @@ components:
         type: string
         pattern: ^qjob_[A-Za-z0-9]+$
       description: Quantum job identifier
+    PluginId:
+      name: pluginId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[a-z][a-z0-9_]{2,63}$
+      description: Plugin identifier (matches descriptor `id`).
+    Capability:
+      name: capability
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/PluginCapability'
+      description: Capability name (e.g. `webhook.verify.sha256`).
     IdempotencyKey:
       name: Idempotency-Key
       in: header
@@ -2824,6 +3062,199 @@ components:
           minimum: 0
           description: Length in bytes of the canonical JSON representation that was hashed. Useful for cache sizing and audit reconciliation.
           example: 186
+    PluginCapability:
+      type: string
+      pattern: ^[a-z][a-z0-9]*(\.[a-z][a-z0-9_]*){1,3}$
+      minLength: 3
+      maxLength: 128
+      description: Dotted capability name (2–4 lowercase segments). Naming rules in plugins/REGISTRY_SPEC.md §4.
+      example: webhook.verify.sha256
+    PluginLifecycle:
+      type: string
+      description: Lifecycle state of a registered plugin. See plugins/REGISTRY_SPEC.md §6.
+      enum:
+      - registered
+      - active
+      - deprecated
+      - revoked
+      example: active
+    PluginIntegrity:
+      type: object
+      additionalProperties: false
+      required:
+      - algorithm
+      - entrypoint
+      properties:
+        algorithm:
+          type: string
+          enum:
+          - sha256
+          description: Hash algorithm used for entrypoint integrity.
+          example: sha256
+        entrypoint:
+          type: string
+          pattern: ^sha256:[a-f0-9]{64}$
+          description: SHA-256 of the entrypoint file bytes, prefixed `sha256:`.
+          example: sha256:e8635e8a008a58f0832fca25670d46037fb4b16a1f30cbed1de6f5ff5e095e03
+        reference:
+          type: string
+          description: Human-readable cross-reference to the integrity primitive.
+          example: ACT-019 freeze_snapshot — SHA-256 primitive applied to raw entrypoint bytes
+    PluginEntrypoint:
+      type: object
+      additionalProperties: false
+      required:
+      - runtime
+      - module
+      - path
+      properties:
+        runtime:
+          type: string
+          enum:
+          - python3
+          description: Runtime that loads the entrypoint.
+          example: python3
+        module:
+          type: string
+          pattern: ^[a-zA-Z_][a-zA-Z0-9_]*$
+          description: Importable Python module name inside the plugin directory.
+          example: entrypoint
+        path:
+          type: string
+          description: Path to the entrypoint file, relative to plugin.json.
+          example: entrypoint.py
+    Plugin:
+      type: object
+      additionalProperties: false
+      description: Plugin descriptor as loaded from `plugin.json` and validated against `descriptor.schema.json`.
+      required:
+      - id
+      - name
+      - version
+      - capabilities
+      - entrypoint
+      - integrity
+      - author
+      - license
+      - lifecycle
+      properties:
+        id:
+          type: string
+          pattern: ^[a-z][a-z0-9_]{2,63}$
+          description: Unique plugin identifier.
+          example: sha256_verifier
+        name:
+          type: string
+          minLength: 1
+          maxLength: 128
+          example: SHA-256 Webhook Signature Verifier
+        version:
+          type: string
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$
+          description: Semantic version of the plugin.
+          example: 1.0.0
+        description:
+          type: string
+          maxLength: 2048
+        capabilities:
+          type: array
+          minItems: 1
+          maxItems: 32
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/PluginCapability'
+        entrypoint:
+          $ref: '#/components/schemas/PluginEntrypoint'
+        integrity:
+          $ref: '#/components/schemas/PluginIntegrity'
+        author:
+          type: string
+          minLength: 1
+          maxLength: 256
+          example: Tanner Jacobsen
+        license:
+          type: string
+          minLength: 1
+          maxLength: 128
+          example: Proprietary
+        lifecycle:
+          $ref: '#/components/schemas/PluginLifecycle'
+        contractVersion:
+          type: string
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$
+          example: 1.3.0
+        homepage:
+          type: string
+          format: uri
+        replaces:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            pattern: ^[a-z][a-z0-9_]{2,63}$
+    PaginatedPluginsResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      - pagination
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plugin'
+        pagination:
+          type: object
+          additionalProperties: false
+          required:
+          - limit
+          - has_more
+          properties:
+            next_cursor:
+              type:
+              - string
+              - "null"
+              description: Cursor to fetch the next page; `null` when no more data.
+            limit:
+              type: integer
+              minimum: 1
+              maximum: 200
+            has_more:
+              type: boolean
+    PluginIntegrityVerification:
+      type: object
+      additionalProperties: false
+      required:
+      - pluginId
+      - verified
+      - algorithm
+      - expected
+      - computed
+      - verifiedAt
+      properties:
+        pluginId:
+          type: string
+          pattern: ^[a-z][a-z0-9_]{2,63}$
+          example: sha256_verifier
+        verified:
+          type: boolean
+          description: True iff the recomputed hash matches the hash recorded in the descriptor.
+        algorithm:
+          type: string
+          enum:
+          - sha256
+        expected:
+          type: string
+          pattern: ^sha256:[a-f0-9]{64}$
+          description: The hash declared in the descriptor at load time.
+        computed:
+          type: string
+          pattern: ^sha256:[a-f0-9]{64}$
+          description: The hash recomputed from the on-disk entrypoint bytes.
+        verifiedAt:
+          type: string
+          format: date-time
+          example: '2026-04-22T12:45:00Z'
 webhooks:
   training.completed:
     post:
